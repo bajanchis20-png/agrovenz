@@ -37,7 +37,7 @@
         </div>
 
         <!-- Botones Acción (Desktop) -->
-        <div class="hidden lg:flex items-center gap-3">
+        <div class="hidden lg:flex items-center gap-3 xl:text-[13px] uppercase tracking-wide font-medium text-stone-700">
             <a href="/login" class="text-xs font-semibold text-stone-900 hover:text-emerald-700">Iniciar Sesión</a>
             <a href="/cotizar" class="bg-emerald-600 text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-emerald-700 transition-all shadow-md">Cotizar</a>
         </div>

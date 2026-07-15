@@ -46,7 +46,7 @@
 <section class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
         <div class="mb-16 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-stone-800">Nuestras Soluciones Integrales</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-800">NUESTRAS SOLUCIONES INTEGRALES</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -99,7 +99,7 @@
 <!-- Sección Compromiso -->
 <section class="py-24 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-emerald-950 mb-16 text-center tracking-tight">Nuestro Compromiso</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-emerald-950 mb-16 text-center tracking-tight">NUESTRO COMPROMISO</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             {#each servicios as s}
                 <div class="group flex flex-col items-center text-center p-6 transition-all duration-300">
