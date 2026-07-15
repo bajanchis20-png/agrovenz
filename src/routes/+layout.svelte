@@ -5,75 +5,88 @@
 </script>
 
 <svelte:head>
-    <title>AgroVenz | Aliado Estratégico del Campo Venezolano</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AgroVenz | Soluciones Integrales para el Agro Venezolano</title>
 </svelte:head>
 
-<!-- Header Responsivo -->
-<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+<!-- Header: Estilo Corporativo -->
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         
         <!-- Logo -->
-        <a href="/" class="flex-shrink-0">
-            <img src="/logo.png" alt="AgroVenz" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+        <a href="/" class="flex items-center gap-2">
+            <img src="/logo.png" alt="AgroVenz" class="w-10 h-10 object-contain" />
+            <span class="font-black text-xl tracking-tight text-stone-900 hidden sm:block">AGROVENZ</span>
         </a>
 
+        <!-- Menú Desktop -->
+        <div class="hidden lg:flex gap-8 text-[12px] font-bold uppercase tracking-widest text-stone-700">
+            <a href="/" class="hover:text-emerald-700 transition-colors">Inicio</a>
+            <a href="/catalogo" class="hover:text-emerald-700 transition-colors">Catálogo</a>
+            <a href="/soluciones" class="hover:text-emerald-700 transition-colors">Soluciones</a>
+            <a href="/servicios" class="hover:text-emerald-700 transition-colors">Servicios</a>
+            <a href="/educacion" class="hover:text-emerald-700 transition-colors">Educación</a>
+        </div>
+
+        <!-- Botones Acción -->
+        <div class="hidden lg:flex items-center gap-4">
+            <a href="/login" class="text-[12px] font-semibold text-stone-600 hover:text-emerald-700">Acceso</a>
+            <a href="/cotizar" class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-2.5 rounded-lg text-[12px] font-bold tracking-wide transition-all shadow-md hover:shadow-lg">
+                COTIZAR PEDIDO
+            </a>
+        </div>
+
         <!-- Botón Hamburguesa -->
-        <button class="lg:hidden p-2 text-stone-700" onclick={() => isMenuOpen = !isMenuOpen}>
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button class="lg:hidden p-2 text-stone-800" onclick={() => isMenuOpen = !isMenuOpen}>
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </button>
-
-        <!-- Menú Desktop -->
-        <div class="hidden lg:flex gap-6 text-[11px] xl:text-[13px] uppercase tracking-wide font-medium text-stone-700">
-            <a href="/" class="hover:text-emerald-700 border-b-2 border-emerald-600 pb-1">Inicio</a>
-            <a href="/catalogo" class="hover:text-emerald-700 transition-colors">Productos</a>
-            <a href="/soluciones" class="hover:text-emerald-700 transition-colors">Soluciones</a>
-            <a href="/ganaderia" class="hover:text-emerald-700 transition-colors">Ganadería</a>
-            <a href="/servicios" class="hover:text-emerald-700 transition-colors">Servicios</a>
-            <a href="/educacion" class="hover:text-emerald-700 transition-colors">Educación</a>
-            <a href="/contacto" class="hover:text-emerald-700 transition-colors">Contacto</a>
-        </div>
-
-        <!-- Botones Acción (Desktop) -->
-        <div class="hidden lg:flex items-center gap-3 xl:text-[13px] uppercase tracking-wide font-medium text-stone-700">
-            <a href="/login" class="text-xs font-semibold text-stone-900 hover:text-emerald-700">Iniciar Sesión</a>
-            <a href="/cotizar" class="bg-emerald-600 text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-emerald-700 transition-all shadow-md">Cotizar</a>
-        </div>
     </div>
 
-    <!-- Menú Móvil (Desplegable Completo) -->
+    <!-- Menú Móvil Mejorado -->
     {#if isMenuOpen}
-        <div class="lg:hidden flex flex-col px-6 py-6 space-y-4 bg-stone-50 border-t border-stone-100">
-            <a href="/" class="text-sm uppercase font-semibold text-stone-800">Inicio</a>
-            <a href="/catalogo" class="text-sm uppercase font-semibold text-stone-800">Productos</a>
-            <a href="/soluciones" class="text-sm uppercase font-semibold text-stone-800">Soluciones</a>
-            <a href="/ganaderia" class="text-sm uppercase font-semibold text-stone-800">Ganadería</a>
-            <a href="/servicios" class="text-sm uppercase font-semibold text-stone-800">Servicios</a>
-            <a href="/educacion" class="text-sm uppercase font-semibold text-stone-800">Educación</a>
-            <a href="/contacto" class="text-sm uppercase font-semibold text-stone-800">Contacto</a>
-            <hr class="border-stone-200" />
-            <a href="/login" class="text-sm uppercase font-bold text-stone-900">Iniciar Sesión</a>
-            <a href="/cotizar" class="bg-emerald-600 text-white py-3 rounded-full text-sm font-bold text-center">¡Solicita tu Cotización!</a>
+        <div class="lg:hidden flex flex-col p-6 space-y-4 bg-white border-t border-stone-100 shadow-xl absolute w-full">
+            <a href="/" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Inicio</a>
+            <a href="/catalogo" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Catálogo</a>
+            <a href="/soluciones" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Soluciones</a>
+            <a href="/servicios" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Servicios</a>
+            <a href="/educacion" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Educación</a>
+            <a href="/contacto" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Contacto</a>
+            <div class="pt-4 flex flex-col gap-3">
+                <a href="/login" class="text-center text-sm font-semibold text-stone-600 py-2">Iniciar Sesión</a>
+                <a href="/cotizar" class="bg-emerald-700 text-white py-3 rounded-lg text-sm font-bold text-center uppercase tracking-wide">Solicitar Cotización</a>
+            </div>
         </div>
     {/if}
 </nav>
 
-<!-- Contenido -->
-<main class="bg-white min-h-[70vh] text-stone-900">
+<main class="min-h-[70vh]">
     {@render children()}
 </main>
 
 <!-- Footer -->
-<footer class="bg-emerald-950 py-16 text-white border-t-4 border-[#FBB03B]">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-        <h3 class="text-lg md:text-xl font-black uppercase tracking-[0.3em] mb-6">AgroVenz</h3>
-        <p class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-emerald-200/70 mb-8 px-4">
-            Conectamos tierra, capital y sostenibilidad. Tu aliado estratégico en el campo venezolano.
-        </p>
-        <p class="text-[9px] text-emerald-400/50 uppercase tracking-[0.2em]">
-            © 2026 AgroVenz · San Diego, Carabobo, Venezuela
-        </p>
+<footer class="bg-stone-900 py-20 text-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center md:text-left">
+        <div>
+            <h4 class="font-black text-lg mb-4">AGROVENZ</h4>
+            <p class="text-stone-400 text-sm leading-relaxed">
+                Aliado estratégico para el productor venezolano. Insumos de precisión, tecnología y asesoría para un campo rentable.
+            </p>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm uppercase tracking-widest mb-4">Enlaces</h4>
+            <ul class="text-stone-400 text-sm space-y-2">
+                <li><a href="/catalogo" class="hover:text-emerald-500">Catálogo</a></li>
+                <li><a href="/servicios" class="hover:text-emerald-500">Servicios Técnicos</a></li>
+                <li><a href="/contacto" class="hover:text-emerald-500">Contacto Directo</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm uppercase tracking-widest mb-4">Contacto</h4>
+            <p class="text-stone-400 text-sm">San Diego, Carabobo, Venezuela</p>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-stone-800 text-center text-[10px] text-stone-500 uppercase tracking-[0.2em]">
+        © 2026 AgroVenz · Todos los derechos reservados
     </div>
 </footer>
