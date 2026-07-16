@@ -10,41 +10,63 @@
     ];
 
     const proximamente = ["Maquinaria agrícola", "Repuestos", "Equipos de ordeño", "Sistemas de riego", "Cercas inteligentes", "Energía solar para fincas", "Tecnología de precisión"];
-    const servicios = ["Venta al detal", "Venta al mayor", "Atención a productores", "Asesoría nutricional", "Cotizaciones rápidas", "Atención por WhatsApp", "Envíos nacionales", "Soporte postventa"];
-    const educacion = ["Manuales digitales", "Guías técnicas", "Videos educativos", "Consejos de manejo animal", "Nutrición y manejo de potreros", "Administración de fincas", "Tecnología agropecuaria"];
-    
-    // Número para los enlaces de WhatsApp
     const waLink = "https://wa.me/584241860644?text=";
 </script>
 
-<section class="py-24 bg-gradient-to-b from-stone-50 to-white">
+<section class="py-24 bg-stone-50">
     <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl font-black text-stone-900 mb-12 text-center uppercase tracking-widest">Portafolio de Soluciones</h2>
+        <!-- Encabezado con gradiente personalizado -->
+        <div class="text-center mb-20 relative">
+            <h2 class="text-5xl md:text-6xl font-black text-stone-900 uppercase tracking-tighter mb-6 leading-tight">
+                Nuestro 
+                <span class="bg-gradient-to-r from-emerald-700 via-emerald-400 to-stone-900 bg-clip-text text-transparent">
+                    Ecosistema
+                </span> 
+                de soluciones
+            </h2>
+            <div class="w-24 h-1.5 bg-emerald-600 mx-auto rounded-full"></div>
+            <p class="mt-6 text-stone-600 max-w-lg mx-auto text-lg">
+                Tecnología, insumos y asesoría de alto nivel diseñada para elevar la eficiencia operativa de tu finca.
+            </p>
+        </div>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {#each categorias as cat}
-                <div class="bg-white rounded-2xl border border-stone-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-300">
-                    <img src={cat.image} alt={cat.title} class="w-full h-48 object-cover rounded-t-2xl" />
-                    <div class="p-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <Icon icon={cat.icon} class="text-2xl text-emerald-700" />
-                            <h3 class="font-bold text-stone-900 uppercase tracking-wide">{cat.title}</h3>
+                <div class="group bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-emerald-500 transition-all duration-500">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src={cat.image} alt={cat.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 bg-emerald-600 text-white rounded-xl shadow-lg shadow-emerald-600/30">
+                                <Icon icon={cat.icon} class="text-2xl" />
+                            </div>
+                            <h3 class="font-black text-stone-900 uppercase tracking-tight text-lg">{cat.title}</h3>
                         </div>
-                        <ul class="space-y-2">
+                        <ul class="space-y-3">
                             {#each cat.items as item}
-                                <li class="text-sm text-stone-600 flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {item}</li>
+                                <li class="text-sm text-stone-600 flex items-center gap-3"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {item}</li>
                             {/each}
                         </ul>
                     </div>
                 </div>
             {/each}
-            <div class="bg-gradient-to-br from-stone-900 to-emerald-950 rounded-2xl p-8 flex flex-col justify-center shadow-lg">
-                <div class="flex items-center gap-3 mb-6">
-                    <Icon icon="mdi:cog-outline" class="text-3xl text-emerald-500" />
-                    <h3 class="font-black text-white uppercase tracking-wider">Próximamente</h3>
+            
+            <!-- Bloque de Próximamente -->
+            <div class="bg-stone-900 rounded-3xl p-8 flex flex-col justify-center border border-stone-800 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-12 opacity-5 text-emerald-500">
+                    <Icon icon="mdi:cog-refresh" class="text-[150px]" />
                 </div>
-                <ul class="space-y-3">
+                <div class="flex items-center gap-3 mb-8 relative z-10">
+                    <div class="p-3 bg-stone-800 text-emerald-500 rounded-xl">
+                        <Icon icon="mdi:cog-outline" class="text-2xl" />
+                    </div>
+                    <h3 class="font-black text-white uppercase tracking-tight text-xl">Próximamente</h3>
+                </div>
+                <ul class="space-y-4 relative z-10">
                     {#each proximamente as item}
-                        <li class="text-sm text-stone-300 flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {item}</li>
+                        <li class="text-sm text-stone-400 flex items-center gap-3"><span class="w-1.5 h-1.5 bg-stone-700 rounded-full"></span> {item}</li>
                     {/each}
                 </ul>
             </div>
@@ -52,12 +74,15 @@
     </div>
 </section>
 
-<section class="py-24 bg-stone-900 border-t border-emerald-900/30 text-center relative overflow-hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px]"></div>
+<section class="py-24 bg-emerald-950 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
     <div class="max-w-3xl mx-auto px-6 relative z-10">
-        <h2 class="text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">¿Listo para transformar tu producción?</h2>
-        <p class="text-emerald-200/80 mb-10 text-lg font-medium">Nuestros consultores están listos para diseñar un plan a la medida de tu finca.</p>
-        <a href="{waLink}Hola, me gustaría solicitar una consulta técnica." target="_blank" class="inline-block px-10 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-all shadow-xl hover:scale-[1.02]">
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight leading-tight">¿Listo para transformar <br/>tu producción?</h2>
+        <p class="text-emerald-200/70 mb-10 text-lg font-medium">Nuestros consultores están listos para diseñar un plan a la medida de tu finca.</p>
+        
+        <a href="{waLink}Hola, me gustaría solicitar una consulta técnica." 
+            target="_blank" 
+            class="inline-block px-10 py-5 bg-white text-emerald-900 hover:bg-stone-100 font-black rounded-2xl shadow-2xl transition-all hover:scale-[1.02] active:scale-95 text-center uppercase tracking-[0.1em] text-sm">
             SOLICITAR CONSULTA TÉCNICA
         </a>
     </div>

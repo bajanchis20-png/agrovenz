@@ -14,6 +14,7 @@
     ];
 </script>
 
+<!-- HERO SECTION -->
 <section class="relative w-full h-[85vh] flex items-center overflow-hidden bg-stone-900">
     <img src="/educacion2.png" alt="Capacitación" class="absolute inset-0 w-full h-full object-cover opacity-30" />
     <div class="absolute inset-0 bg-gradient-to-r from-stone-900/90 to-transparent"></div>
@@ -31,13 +32,14 @@
             </p>
             <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
                target="_blank"
-               class="inline-block px-8 py-4 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-lg transition-all shadow-lg uppercase tracking-widest text-sm w-full sm:w-auto text-center">
-                Hablar con un experto
+               class="inline-block px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
+               HABLAR CON UN EXPERTO
             </a>
         </div>
     </div>
 </section>
 
+<!-- ÁREAS DE FORMACIÓN -->
 <section class="py-16 md:py-24 bg-gradient-to-b from-stone-50 to-white">
     <div class="max-w-7xl mx-auto px-6">
         <div class="mb-12 text-center md:text-left">
@@ -59,6 +61,7 @@
     </div>
 </section>
 
+<!-- COMPROMISO AGROVENZ -->
 <section class="py-16 md:py-24 bg-stone-950 relative overflow-hidden text-stone-100">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/20 rounded-full blur-[120px] -z-0"></div>
     
@@ -78,8 +81,8 @@
             </ul>
             <a href="https://wa.me/584241860644?text=Hola, me interesa iniciar con AgroVenz." 
                target="_blank"
-               class="block text-center px-6 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-bold rounded-lg uppercase tracking-widest text-xs transition-all hover:scale-[1.02]">
-                Inicia ahora
+               class="block px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
+               INICIA AHORA
             </a>
         </div>
     </div>
