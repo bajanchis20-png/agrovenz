@@ -12,9 +12,11 @@
     const proximamente = ["Maquinaria agrícola", "Repuestos", "Equipos de ordeño", "Sistemas de riego", "Cercas inteligentes", "Energía solar para fincas", "Tecnología de precisión"];
     const servicios = ["Venta al detal", "Venta al mayor", "Atención a productores", "Asesoría nutricional", "Cotizaciones rápidas", "Atención por WhatsApp", "Envíos nacionales", "Soporte postventa"];
     const educacion = ["Manuales digitales", "Guías técnicas", "Videos educativos", "Consejos de manejo animal", "Nutrición y manejo de potreros", "Administración de fincas", "Tecnología agropecuaria"];
+    
+    // Número para los enlaces de WhatsApp
+    const waLink = "https://wa.me/584241860644?text=";
 </script>
 
-<!-- 1. HERO -->
 <section class="relative w-full h-[80vh] md:h-[70vh] flex items-center bg-white overflow-hidden">
     <div class="absolute right-0 top-0 w-full md:w-1/2 h-full">
         <video src="/vaquita3.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
@@ -31,13 +33,12 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
                 <a href="/catalogo" class="px-8 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-lg shadow-md transition-all text-center">Ver Catálogo</a>
-                <a href="/contacto" class="px-8 py-3.5 bg-white border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-bold rounded-lg transition-all text-center">Solicitar Asesoría</a>
+                <a href="{waLink}Hola, deseo solicitar una asesoría técnica." target="_blank" class="px-8 py-3.5 bg-white border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-bold rounded-lg transition-all text-center">Solicitar Asesoría</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 2. CATEGORÍAS (Transición suave) -->
 <section class="py-24 bg-gradient-to-b from-stone-50 to-white">
     <div class="max-w-7xl mx-auto px-6">
         <h2 class="text-3xl font-black text-stone-900 mb-12 text-center uppercase tracking-widest">Portafolio de Soluciones</h2>
@@ -73,7 +74,6 @@
     </div>
 </section>
 
-<!-- 3. SERVICIOS Y EDUCACIÓN (Bloque oscuro de contraste) -->
 <section class="py-24 bg-stone-950 text-stone-100">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
         <div>
@@ -103,13 +103,12 @@
     </div>
 </section>
 
-<!-- 4. CTA FINAL -->
 <section class="py-24 bg-stone-900 border-t border-emerald-900/30 text-center relative overflow-hidden">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px]"></div>
     <div class="max-w-3xl mx-auto px-6 relative z-10">
         <h2 class="text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">¿Listo para transformar tu producción?</h2>
         <p class="text-emerald-200/80 mb-10 text-lg font-medium">Nuestros consultores están listos para diseñar un plan a la medida de tu finca.</p>
-        <a href="/contacto" class="inline-block px-10 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-all shadow-xl hover:scale-[1.02]">
+        <a href="{waLink}Hola, me gustaría solicitar una consulta técnica." target="_blank" class="inline-block px-10 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-all shadow-xl hover:scale-[1.02]">
             SOLICITAR CONSULTA TÉCNICA
         </a>
     </div>

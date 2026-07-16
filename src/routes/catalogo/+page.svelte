@@ -45,10 +45,13 @@
         carrito = carrito.filter(c => c.id !== id);
     }
 
-    function finalizarCompra() {
+   function finalizarCompra() {
+        // Formateamos el número eliminando espacios, guiones y el signo "+" para la URL
+        const numeroWhatsApp = "584241860644";
         const mensaje = carrito.map(c => `${c.title} (x${c.cantidad}) - $${c.price * c.cantidad}`).join("%0A");
         const total = carrito.reduce((acc, c) => acc + (c.price * c.cantidad), 0);
-        window.open(`https://wa.me/58XXXXXXXXXX?text=Hola, deseo comprar:%0A${mensaje}%0A%0ATotal: $${total}`, "_blank");
+        
+        window.open(`https://wa.me/${numeroWhatsApp}?text=Hola, deseo comprar:%0A${mensaje}%0A%0ATotal: $${total}`, "_blank");
     }
 </script>
 

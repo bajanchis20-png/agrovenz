@@ -29,7 +29,9 @@
             <p class="text-stone-300 text-base md:text-lg mb-8 leading-relaxed">
                 Conocimiento de vanguardia para transformar los desafíos de tu terreno en resultados rentables, respaldado por la experiencia AgroVenz.
             </p>
-            <a href="/contacto" class="inline-block px-8 py-4 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-lg transition-all shadow-lg uppercase tracking-widest text-sm w-full sm:w-auto text-center">
+            <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
+               target="_blank"
+               class="inline-block px-8 py-4 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-lg transition-all shadow-lg uppercase tracking-widest text-sm w-full sm:w-auto text-center">
                 Hablar con un experto
             </a>
         </div>
@@ -74,7 +76,9 @@
                 <li class="flex items-center gap-2"> <span class="text-emerald-500">◆</span> Herramientas digitales de gestión</li>
                 <li class="flex items-center gap-2"> <span class="text-emerald-500">◆</span> Optimización de procesos productivos</li>
             </ul>
-            <a href="/contacto" class="block text-center px-6 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-bold rounded-lg uppercase tracking-widest text-xs transition-all hover:scale-[1.02]">
+            <a href="https://wa.me/584241860644?text=Hola, me interesa iniciar con AgroVenz." 
+               target="_blank"
+               class="block text-center px-6 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-bold rounded-lg uppercase tracking-widest text-xs transition-all hover:scale-[1.02]">
                 Inicia ahora
             </a>
         </div>
