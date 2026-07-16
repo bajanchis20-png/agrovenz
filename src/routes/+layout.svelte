@@ -1,7 +1,11 @@
 <script lang="ts">
     import "./layout.css";
+    import Icon from "@iconify/svelte"; // Importamos para los iconos
     let { children } = $props();
     let isMenuOpen = $state(false);
+
+    // Definimos el enlace de WhatsApp para reutilizarlo
+    const waLink = "https://wa.me/584241860644?text=Hola, me gustaría solicitar una cotización.";
 </script>
 
 <svelte:head>
@@ -30,7 +34,7 @@
         <!-- Botones Acción -->
         <div class="hidden lg:flex items-center gap-4">
             <a href="/login" class="text-[12px] font-semibold text-stone-600 hover:text-emerald-700">Acceso</a>
-            <a href="/cotizar" class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-2.5 rounded-lg text-[12px] font-bold tracking-wide transition-all shadow-md hover:shadow-lg">
+            <a href="{waLink}" target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-2.5 rounded-lg text-[12px] font-bold tracking-wide transition-all shadow-md hover:shadow-lg">
                 COTIZAR PEDIDO
             </a>
         </div>
@@ -43,7 +47,7 @@
         </button>
     </div>
 
-    <!-- Menú Móvil Mejorado -->
+    <!-- Menú Móvil -->
     {#if isMenuOpen}
         <div class="lg:hidden flex flex-col p-6 space-y-4 bg-white border-t border-stone-100 shadow-xl absolute w-full">
             <a href="/" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Inicio</a>
@@ -54,7 +58,7 @@
             <a href="/contacto" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Contacto</a>
             <div class="pt-4 flex flex-col gap-3">
                 <a href="/login" class="text-center text-sm font-semibold text-stone-600 py-2">Iniciar Sesión</a>
-                <a href="/cotizar" class="bg-emerald-700 text-white py-3 rounded-lg text-sm font-bold text-center uppercase tracking-wide">Solicitar Cotización</a>
+                <a href="{waLink}" target="_blank" class="bg-emerald-700 text-white py-3 rounded-lg text-sm font-bold text-center uppercase tracking-wide">Solicitar Cotización</a>
             </div>
         </div>
     {/if}
@@ -66,7 +70,7 @@
 
 <!-- Footer -->
 <footer class="bg-stone-900 py-20 text-white">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center md:text-left">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 text-center md:text-left">
         <div>
             <h4 class="font-black text-lg mb-4">AGROVENZ</h4>
             <p class="text-stone-400 text-sm leading-relaxed">
@@ -78,12 +82,29 @@
             <ul class="text-stone-400 text-sm space-y-2">
                 <li><a href="/catalogo" class="hover:text-emerald-500">Catálogo</a></li>
                 <li><a href="/servicios" class="hover:text-emerald-500">Servicios Técnicos</a></li>
-                <li><a href="/contacto" class="hover:text-emerald-500">Contacto Directo</a></li>
+                <!-- Enlace de Contacto Directo hacia WhatsApp -->
+                <li><a href="{waLink}" target="_blank" class="hover:text-emerald-500">Contacto Directo</a></li>
             </ul>
         </div>
         <div>
             <h4 class="font-bold text-sm uppercase tracking-widest mb-4">Contacto</h4>
-            <p class="text-stone-400 text-sm">San Diego, Carabobo, Venezuela</p>
+            <!-- Dirección actualizada -->
+            <p class="text-stone-400 text-sm">Los Guayos, Carabobo, Venezuela</p>
+        </div>
+        <!-- Redes Sociales -->
+        <div>
+            <h4 class="font-bold text-sm uppercase tracking-widest mb-4">Síguenos</h4>
+            <div class="flex justify-center md:justify-start gap-4 text-2xl">
+                <a href="https://www.instagram.com/agrovenz" target="_blank" class="hover:text-emerald-500 transition-colors">
+                    <Icon icon="mdi:instagram" />
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61590730151838" target="_blank" class="hover:text-emerald-500 transition-colors">
+                    <Icon icon="mdi:facebook" />
+                </a>
+                <a href="https://tiktok.com/@agrovenz" target="_blank" class="hover:text-emerald-500 transition-colors">
+                    <Icon icon="mdi:tiktok" />
+                </a>
+            </div>
         </div>
     </div>
     <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-stone-800 text-center text-[10px] text-stone-500 uppercase tracking-[0.2em]">
