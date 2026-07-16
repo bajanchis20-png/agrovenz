@@ -55,7 +55,7 @@
             <a href="/soluciones" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Soluciones</a>
             <a href="/servicios" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Servicios</a>
             <a href="/educacion" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Educación</a>
-            <a href="/contacto" class="text-sm font-bold uppercase text-stone-800 py-2 border-b border-stone-50">Contacto</a>
+    
             <div class="pt-4 flex flex-col gap-3">
                 <a href="/login" class="text-center text-sm font-semibold text-stone-600 py-2">Iniciar Sesión</a>
                 <a href="{waLink}" target="_blank" class="bg-emerald-700 text-white py-3 rounded-lg text-sm font-bold text-center uppercase tracking-wide">Solicitar Cotización</a>

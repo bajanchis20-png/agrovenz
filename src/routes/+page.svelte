@@ -40,3 +40,13 @@
 </section>
 
 
+<section class="py-24 bg-stone-900 border-t border-emerald-900/30 text-center relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px]"></div>
+    <div class="max-w-3xl mx-auto px-6 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">¿Listo para transformar tu producción?</h2>
+        <p class="text-emerald-200/80 mb-10 text-lg font-medium">Nuestros consultores están listos para diseñar un plan a la medida de tu finca.</p>
+        <a href="{waLink}Hola, me gustaría solicitar una consulta técnica." target="_blank" class="inline-block px-10 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-all shadow-xl hover:scale-[1.02]">
+            SOLICITAR CONSULTA TÉCNICA
+        </a>
+    </div>
+</section>
