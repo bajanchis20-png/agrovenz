@@ -19,6 +19,15 @@
         { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y semillas", price: 35, image: "/matsuda.png", desc: "Balance mineral necesario para el desarrollo animal. 20KG" },
         { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: 1200, image: "/bovino.png", desc: "Genética seleccionada para mejorar la productividad." }
     ];
+
+    const categorias = [
+        { title: "Alimentación Animal", icon: "mdi:bowl-mix" },
+        { title: "Pastos y Forrajes", icon: "mdi:grass" },
+        { title: "Cercas Ganaderas", icon: "mdi:fence" },
+        { title: "Insumos Agrícolas", icon: "mdi:leaf" },
+        { title: "Ganadería", icon: "mdi:cow" },
+        { title: "Ver Todo el Catálogo", icon: "mdi:arrow-right-circle" }
+    ];
 </script>
 
 <!-- HERO SECTION -->
@@ -62,7 +71,7 @@
                 </p>
             </div>
             <div class="flex-shrink-0">
-                <a href="{waLink}Hola, me gustaría solicitar mi diagnóstico técnico gratuito." target="_blank" 
+                <a href="{waLink}Hola, me gustaría solicitar mi diagnóstico técnico." target="_blank" 
                     class="inline-block px-8 py-5 bg-white text-emerald-900 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
                     SOLICITAR PLAN A LA MEDIDA
                 </a>
@@ -97,19 +106,25 @@
 </section>
 
 <!-- CATEGORÍAS -->
-<section class="py-20 bg-stone-950 text-white relative overflow-hidden">
-    <!-- Efecto de luz para mantener la consistencia -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px] -z-0"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <h2 class="text-3xl font-black text-white mb-12 uppercase tracking-tight text-center">Soluciones para tu Finca</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            {#each [{title: "Alimentación Animal", icon: "mdi:bowl-mix"}, {title: "Pastos y Forrajes", icon: "mdi:grass"}, {title: "Cercas Ganaderas", icon: "mdi:fence"}, {title: "Insumos Agrícolas", icon: "mdi:leaf"}, {title: "Ganadería", icon: "mdi:cow"}, {title: "Ver Todo el Catálogo", icon: "mdi:arrow-right-circle"}] as cat}
-                <a href="/catalogo" class="group p-8 bg-white/5 border border-white/10 rounded-2xl hover:border-emerald-500 hover:bg-white/10 transition-all flex flex-col items-center text-center backdrop-blur-md">
-                    <div class="w-16 h-16 bg-emerald-900/30 text-emerald-400 rounded-full flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                        <Icon icon={cat.icon} class="text-3xl" />
+<section class="py-24 bg-stone-950 text-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-black mb-16 uppercase tracking-tight text-center">
+            Soluciones para tu <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-400 to-white">
+                Unidad Productiva
+            </span>
+        </h2>
+        
+        <!-- Grid con líneas divisorias profesionales -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+            {#each categorias as cat}
+                <a href="/catalogo" class="bg-stone-950 p-10 hover:bg-emerald-950/30 transition-all duration-300 flex flex-col items-center group">
+                    <div class="mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <Icon icon={cat.icon} class="text-4xl text-emerald-500" />
                     </div>
-                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition-colors">{cat.title}</h3>
+                    <span class="font-bold uppercase tracking-widest text-sm text-center">
+                        {cat.title}
+                    </span>
                 </a>
             {/each}
         </div>

@@ -33,7 +33,7 @@
             <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
                target="_blank"
                class="inline-block px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
-               HABLAR CON UN EXPERTO
+                HABLAR CON UN EXPERTO
             </a>
         </div>
     </div>

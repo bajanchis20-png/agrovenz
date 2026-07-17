@@ -31,9 +31,8 @@
         <!-- Botones Acción -->
         <div class="hidden lg:flex items-center gap-4">
             <a href="/login" class="text-[11px] font-semibold text-stone-500 hover:text-emerald-700 transition-colors uppercase tracking-widest">Acceso</a>
-            <a href="{waLink}" target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-3 rounded-xl text-[11px] font-black tracking-widest uppercase transition-all shadow-lg hover:shadow-emerald-900/20 hover:scale-105 active:scale-95">
-                Cotizar Pedido
-            </a>
+          <a href="{waLink}." target="_blank" class="px-5 py-2 bg-white text-emerald-800 border-2 border-emerald-800 hover:bg-stone-100 font-black rounded-2xl transition-all active:scale-95 text-center uppercase tracking-wider">Cotizar pedido</a>
+           
         </div>
 
         <!-- Botón Hamburguesa -->
