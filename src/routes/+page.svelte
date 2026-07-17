@@ -2,6 +2,23 @@
     import Icon from "@iconify/svelte";
 
     const waLink = "https://wa.me/584241860644?text=";
+
+    // Lista completa de productos
+    const productos = [
+        { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 25, image: "/palmiste.png", desc: "Fuente de proteína y energía ideal para ganado bovino." },
+        { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 40, image: "/alambre.png", desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
+        { id: 3, title: "Brega", cat: "Herbicidas", price: 150, image: "/brega.png", desc: "Formulado para el control de melezas en el maíz." },
+        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 60, image: "/glytotal.png", desc: "No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas." },
+        { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 35, image: "/herbicida.png", desc: "Control efectivo de malezas de hoja ancha, presentación 1L." },
+        { id: 6, title: "Socio", cat: "Herbicidas", price: 45, image: "/socio.png", desc: "De acción sistémica utilizado para control de maleza de hoja ancha." },
+        { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 50, image: "/silo.png", desc: "Presentación de 30KG, fabricado con maleza y maíz." },
+        { id: 8, title: "SiloLact", cat: "Bioinsumos", price: 30, image: "/silolact.png", desc: "Presentación de 500ml. Favorece la fermentación y conservación del forraje." },
+        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 85, image: "/bolsas.png", desc: "Equipo resistente para empaque y conservación." },
+        { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 20, image: "/semilla.png", desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo." },
+        { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 200, image: "/Melaza.png", desc: "Mejora la energía y condición corporal de los animales." },
+        { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y semillas", price: 35, image: "/matsuda.png", desc: "Balance mineral necesario para el desarrollo animal. 20KG" },
+        { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: 1200, image: "/bovino.png", desc: "Genética seleccionada para mejorar la productividad." }
+    ];
 </script>
 
 <!-- HERO SECTION -->
@@ -27,38 +44,72 @@
     </div>
 </section>
 
+
 <!-- SECCIÓN PROMOCIONAL -->
-<section class="py-16 bg-white border-b border-stone-100">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="bg-gradient-to-br from-emerald-900 to-emerald-700 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
-            <div class="relative z-10 max-w-2xl">
-                <div class="inline-block px-4 py-1 mb-4 bg-emerald-500/20 text-emerald-100 text-xs font-bold uppercase tracking-widest">Oportunidad para Productores</div>
+<section class="py-16 bg-stone-950 border-y border-emerald-900/20 relative overflow-hidden">
+    <!-- Fondo con el mismo efecto de luz para consistencia -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px] -z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 border border-emerald-700/30 backdrop-blur-md rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+            <div class="max-w-2xl">
+                <div class="inline-block px-4 py-1 mb-4 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/20">
+                    Oportunidad para Productores
+                </div>
                 <h2 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">¿Buscas elevar la rentabilidad de tu finca?</h2>
-                <p class="text-emerald-100/90 text-lg md:text-xl font-medium leading-relaxed">
-                    Obtén hoy tu <span class="text-white font-bold underline decoration-emerald-400">plan de optimización personalizado</span>. Diagnóstico técnico.
+                <p class="text-stone-300 text-lg md:text-xl font-medium leading-relaxed">
+                    Obtén hoy tu <span class="text-emerald-400 font-bold underline decoration-emerald-500">plan de optimización personalizado</span>. Diagnóstico técnico.
                 </p>
             </div>
-            <div class="relative z-10 flex-shrink-0">
+            <div class="flex-shrink-0">
                 <a href="{waLink}Hola, me gustaría solicitar mi diagnóstico técnico gratuito." target="_blank" 
-                    class="inline-block px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
+                    class="inline-block px-8 py-5 bg-white text-emerald-900 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
                     SOLICITAR PLAN A LA MEDIDA
                 </a>
             </div>
         </div>
     </div>
 </section>
+<!-- VISTA PREVIA DEL CATÁLOGO -->
+<section class="py-20 bg-stone-950 text-white relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px] -z-0"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div class="max-w-lg">
+                <h2 class="text-3xl font-black uppercase mb-4">Productos Destacados</h2>
+                <p class="text-stone-300">Explora nuestra selección de insumos de alta calidad.</p>
+            </div>
+            <a href="/catalogo" class="px-8 py-5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl shadow-lg transition-all active:scale-95 uppercase tracking-wider text-center">
+                Ver Catálogo Completo
+            </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {#each productos.slice(0, 4) as p}
+                <div class="bg-white/5 border border-white/10 p-5 rounded-3xl backdrop-blur-md hover:border-emerald-500 transition-all flex flex-col">
+                    <img src={p.image} alt={p.title} class="w-full h-40 object-cover rounded-2xl mb-4 bg-stone-900/50" />
+                    <h3 class="font-bold text-lg mb-1">{p.title}</h3>
+                    <p class="text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">{p.cat}</p>
+                    <span class="font-black text-xl text-white mt-auto">${p.price}</span>
+                </div>
+            {/each}
+        </div>
+    </div>
+</section>
 
 <!-- CATEGORÍAS -->
-<section class="py-20 bg-stone-50">
-    <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl font-black text-stone-900 mb-12 uppercase tracking-tight text-center">Soluciones para tu Finca</h2>
+<section class="py-20 bg-stone-950 text-white relative overflow-hidden">
+    <!-- Efecto de luz para mantener la consistencia -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px] -z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <h2 class="text-3xl font-black text-white mb-12 uppercase tracking-tight text-center">Soluciones para tu Finca</h2>
         <div class="grid md:grid-cols-3 gap-6">
             {#each [{title: "Alimentación Animal", icon: "mdi:bowl-mix"}, {title: "Pastos y Forrajes", icon: "mdi:grass"}, {title: "Cercas Ganaderas", icon: "mdi:fence"}, {title: "Insumos Agrícolas", icon: "mdi:leaf"}, {title: "Ganadería", icon: "mdi:cow"}, {title: "Ver Todo el Catálogo", icon: "mdi:arrow-right-circle"}] as cat}
-                <a href="/catalogo" class="group p-8 bg-white border border-stone-200 rounded-2xl hover:border-emerald-600 hover:shadow-xl transition-all flex flex-col items-center text-center">
-                    <div class="w-16 h-16 bg-emerald-50 text-emerald-700 rounded-full flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                <a href="/catalogo" class="group p-8 bg-white/5 border border-white/10 rounded-2xl hover:border-emerald-500 hover:bg-white/10 transition-all flex flex-col items-center text-center backdrop-blur-md">
+                    <div class="w-16 h-16 bg-emerald-900/30 text-emerald-400 rounded-full flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                         <Icon icon={cat.icon} class="text-3xl" />
                     </div>
-                    <h3 class="font-bold text-stone-900 group-hover:text-emerald-700">{cat.title}</h3>
+                    <h3 class="font-bold text-white group-hover:text-emerald-400 transition-colors">{cat.title}</h3>
                 </a>
             {/each}
         </div>
@@ -66,22 +117,27 @@
 </section>
 
 <!-- EDUCACIÓN -->
-<section class="py-20 bg-emerald-900 text-white">
-    <div class="max-w-7xl mx-auto px-6">
+<section class="py-20 bg-stone-950 text-white relative overflow-hidden">
+    <!-- Fondo con el mismo efecto de luz -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/20 rounded-full blur-[120px] -z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div class="max-w-lg">
                 <h2 class="text-3xl font-black uppercase mb-4">Educación Agropecuaria</h2>
-                <p class="text-emerald-100">Capacítate con nuestras guías técnicas, manuales digitales y consejos de manejo para optimizar tu producción.</p>
+                <p class="text-stone-300">Capacítate con nuestras guías técnicas, manuales digitales y consejos de manejo para optimizar tu producción.</p>
             </div>
-            <a href="/educacion" class="px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-lg transition-all active:scale-95 uppercase tracking-wider text-center">Ver Centro de Recursos</a>
+            <a href="/educacion" class="px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-lg transition-all active:scale-95 uppercase tracking-wider text-center">
+                Ver Centro de Recursos
+            </a>
         </div>
         
         <div class="grid md:grid-cols-3 gap-8">
             {#each [{title: "Nutrición Animal", desc: "Claves para una alimentación balanceada y rentable."}, {title: "Manejo de Potreros", desc: "Optimiza el aprovechamiento de tus pastos."}, {title: "Administración de Fincas", desc: "Transforma tu explotación en una empresa."}] as educ}
-                <div class="p-8 bg-emerald-800/50 rounded-2xl border border-emerald-700/50">
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md hover:bg-white/10 transition-all">
                     <Icon icon="mdi:book-open-variant" class="text-emerald-400 text-3xl mb-4" />
-                    <h4 class="text-xl font-bold mb-3">{educ.title}</h4>
-                    <p class="text-emerald-100/70 text-sm">{educ.desc}</p>
+                    <h4 class="text-xl font-bold mb-3 text-white">{educ.title}</h4>
+                    <p class="text-stone-300 text-sm">{educ.desc}</p>
                 </div>
             {/each}
         </div>
