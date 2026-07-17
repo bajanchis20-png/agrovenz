@@ -117,8 +117,8 @@
 </section>
 
 <!-- EDUCACIÓN -->
+<!-- EDUCACIÓN -->
 <section class="py-20 bg-stone-950 text-white relative overflow-hidden">
-    <!-- Fondo con el mismo efecto de luz -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/20 rounded-full blur-[120px] -z-0"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
@@ -133,11 +133,25 @@
         </div>
         
         <div class="grid md:grid-cols-3 gap-8">
-            {#each [{title: "Nutrición Animal", desc: "Claves para una alimentación balanceada y rentable."}, {title: "Manejo de Potreros", desc: "Optimiza el aprovechamiento de tus pastos."}, {title: "Administración de Fincas", desc: "Transforma tu explotación en una empresa."}] as educ}
-                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md hover:bg-white/10 transition-all">
-                    <Icon icon="mdi:book-open-variant" class="text-emerald-400 text-3xl mb-4" />
-                    <h4 class="text-xl font-bold mb-3 text-white">{educ.title}</h4>
-                    <p class="text-stone-300 text-sm">{educ.desc}</p>
+            {#each [
+                {title: "Nutrición Animal", desc: "Claves para una alimentación balanceada y rentable.", img: "/nutri.jpeg"}, 
+                {title: "Manejo de Potreros", desc: "Optimiza el aprovechamiento de tus pastos.", img: "/manejo.png"}, 
+                {title: "Administración de Fincas", desc: "Transforma tu explotación en una empresa.", img: "/adm.jpg"}
+            ] as educ}
+                <!-- Tarjeta con imagen de fondo -->
+                <div class="relative p-8 rounded-2xl overflow-hidden group min-h-[300px] flex flex-col justify-end border border-white/10">
+                    <!-- Imagen de fondo -->
+                    <img src={educ.img} alt={educ.title} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    
+                    <!-- Capa oscura para legibilidad -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    
+                    <!-- Contenido -->
+                    <div class="relative z-10">
+                        <Icon icon="mdi:book-open-variant" class="text-emerald-400 text-3xl mb-4" />
+                        <h4 class="text-xl font-bold mb-3 text-white">{educ.title}</h4>
+                        <p class="text-stone-200 text-sm">{educ.desc}</p>
+                    </div>
                 </div>
             {/each}
         </div>
