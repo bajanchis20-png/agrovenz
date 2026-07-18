@@ -56,29 +56,43 @@
 
 <!-- SECCIÓN PROMOCIONAL -->
 <section class="py-16 bg-stone-950 border-y border-emerald-900/20 relative overflow-hidden">
-    <!-- Fondo con el mismo efecto de luz para consistencia -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px] -z-0"></div>
-
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 border border-emerald-700/30 backdrop-blur-md rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
-            <div class="max-w-2xl">
-                <div class="inline-block px-4 py-1 mb-4 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/20">
-                    Oportunidad para Productores
-                </div>
-                <h2 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">¿Buscas elevar la rentabilidad de tu finca?</h2>
-                <p class="text-stone-300 text-lg md:text-xl font-medium leading-relaxed">
-                    Obtén hoy tu <span class="text-emerald-400 font-bold underline decoration-emerald-500">plan de optimización personalizado</span>. Diagnóstico técnico.
+        <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+            
+            <!-- TARJETA DE CONTENIDO -->
+            <div class="bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 border border-emerald-700/30 backdrop-blur-md rounded-3xl p-8 md:p-12 flex flex-col justify-center shadow-2xl">
+               
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+                    ¿Buscas invertir o elevar la <span class="text-emerald-400">rentabilidad</span> de tu finca?
+                </h2>
+                <p class="text-stone-300 text-lg mb-8 leading-relaxed">
+                    Somos expertos en el mercado inmobiliario agropecuario y la optimización de unidades productivas. Ya sea que busques adquirir la unidad ideal o maximizar el rendimiento de tu rebaño y cultivos, tenemos el diagnóstico técnico que necesitas.
                 </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <!-- Enlace a Fincas con target="_blank" -->
+                    <a href="{waLink}Hola, deseo ver catálogo de fincas." target="_blank" rel="noopener noreferrer" class="px-6 py-4 bg-emerald-700 hover:bg-emerald-600 text-white font-black rounded-xl transition-all text-center uppercase tracking-widest text-xs">
+                        VER FINCAS DISPONIBLES
+                    </a>
+                    <!-- Enlace a Diagnóstico con target="_blank" -->
+                    <a href="{waLink}Hola, deseo un diagnóstico técnico." target="_blank" rel="noopener noreferrer" class="px-6 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-black rounded-xl transition-all text-center uppercase tracking-widest text-xs">
+                        SOLICITAR DIAGNÓSTICO
+                    </a>
+                </div>
             </div>
-            <div class="flex-shrink-0">
-                <a href="{waLink}Hola, me gustaría solicitar mi diagnóstico técnico." target="_blank" 
-                    class="inline-block px-8 py-5 bg-white text-emerald-900 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
-                    SOLICITAR PLAN A LA MEDIDA
-                </a>
+
+            <!-- CONTENEDOR DE IMAGEN -->
+            <div class="relative rounded-3xl overflow-hidden min-h-[400px] border border-emerald-700/30">
+                <img 
+                    src="/R.jpg" 
+                    alt="Finca productiva de alta rentabilidad" 
+                    class="absolute inset-0 w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 to-transparent"></div>
             </div>
         </div>
     </div>
 </section>
+
 <!-- VISTA PREVIA DEL CATÁLOGO -->
 <section class="py-20 bg-stone-950 text-white relative overflow-hidden">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px] -z-0"></div>
