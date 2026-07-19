@@ -5,52 +5,65 @@
     let isMenuOpen = $state(false);
 
     const waLink = "https://wa.me/584241860644?text=Hola, me gustaría solicitar una cotización.";
+    
+    const navLinks = [
+        {name: 'Inicio', path: '/'}, 
+        {name: 'Catálogo', path: '/catalogo'}, 
+        {name: 'Soluciones', path: '/soluciones'}, 
+        {name: 'Servicios', path: '/servicios'}, 
+        {name: 'Educación', path: '/educacion'}
+    ];
 </script>
 
 <svelte:head>
     <title>AgroVenz | Soluciones Integrales para el Agro Venezolano</title>
 </svelte:head>
 
-<!-- Header: Estilo Corporativo Refinado -->
-<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<nav class="sticky top-0 z-50 w-full bg-white">
+    <!-- Contenedor de la curva que se extiende a todo el ancho -->
+    <div class="absolute left-0 top-0 w-full h-20 hidden lg:block z-10 pointer-events-none">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="h-full w-full">
+            <path d="M0 0 H350 C450 0, 400 80, 550 80 H1440 V0 Z" fill="#064e3b" />
+        </svg>
+    </div>
+
+    <div class="relative flex items-center h-20 max-w-7xl mx-auto z-20">
         
-        <!-- Logo -->
-        <a href="/" class="flex items-center gap-3 group">
-            <img src="/logo.png" alt="AgroVenz" class="w-10 h-10 object-contain" />
-            <span class="font-black text-xl tracking-tight text-stone-900 group-hover:text-emerald-700 transition-colors">AGROVENZ</span>
-        </a>
+        <!-- Bloque Logo -->
+        <div class="flex-shrink-0 px-6">
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="/logo.png" alt="AgroVenz" class="w-10 h-10 object-contain" />
+                <span class="font-black text-xl tracking-tight text-stone-900 group-hover:text-emerald-800 transition-colors">AGROVENZ</span>
+            </a>
+        </div>
 
         <!-- Menú Desktop -->
-        <div class="hidden lg:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-stone-700">
-            {#each [{name: 'Inicio', path: '/'}, {name: 'Catálogo', path: '/catalogo'}, {name: 'Soluciones', path: '/soluciones'}, {name: 'Servicios', path: '/servicios'}, {name: 'Educación', path: '/educacion'}] as link}
-                <a href={link.path} class="hover:text-emerald-700 transition-colors">{link.name}</a>
-            {/each}
-        </div>
+        <div class="hidden lg:flex flex-grow justify-end items-center px-10 gap-8 h-full">
+            <!-- Letras blancas -->
+            <div class="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-white">
+                {#each navLinks as link}
+                    <a href={link.path} class="hover:text-emerald-200 transition-colors">{link.name}</a>
+                {/each}
+            </div>
 
-        <!-- Botones Acción -->
-        <div class="hidden lg:flex items-center gap-4">
-            <a href="/login" class="text-[11px] font-semibold text-stone-500 hover:text-emerald-700 transition-colors uppercase tracking-widest">Acceso</a>
-          <a href="{waLink}." target="_blank" class="px-5 py-2 bg-white text-emerald-800 border-2 border-emerald-800 hover:bg-stone-100 font-black rounded-2xl transition-all active:scale-95 text-center uppercase tracking-wider">Cotizar pedido</a>
-           
+            <div class="flex items-center gap-4 pl-6 border-l border-white/20">
+                <a href="/login" class="text-[11px] font-semibold text-white hover:text-emerald-200 uppercase tracking-widest">Acceso</a>
+                <a href="{waLink}." target="_blank" class="px-5 py-2 bg-white text-emerald-800 font-black rounded-2xl text-[11px] uppercase tracking-wider hover:bg-emerald-50 transition-all">Cotizar pedido</a>
+            </div>
         </div>
-
+        
         <!-- Botón Hamburguesa -->
-        <button class="lg:hidden p-2 text-stone-900" onclick={() => isMenuOpen = !isMenuOpen} aria-label="Menu">
+        <button class="lg:hidden p-4 text-stone-900 absolute right-4 z-30" onclick={() => isMenuOpen = !isMenuOpen}>
             <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} class="text-3xl" />
         </button>
     </div>
-
-    <!-- Menú Móvil con transiciones -->
+    
+    <!-- Menú Móvil -->
     {#if isMenuOpen}
-        <div class="lg:hidden flex flex-col p-6 space-y-2 bg-white border-t border-stone-100 shadow-xl absolute w-full animate-in fade-in slide-in-from-top-4">
-            {#each [{name: 'Inicio', path: '/'}, {name: 'Catálogo', path: '/catalogo'}, {name: 'Soluciones', path: '/soluciones'}, {name: 'Servicios', path: '/servicios'}, {name: 'Educación', path: '/educacion'}] as link}
-                <a href={link.path} onclick={() => isMenuOpen = false} class="text-sm font-bold uppercase text-stone-800 py-4 border-b border-stone-50 hover:text-emerald-700">{link.name}</a>
+        <div class="lg:hidden flex flex-col p-6 bg-emerald-800 text-white shadow-xl">
+            {#each navLinks as link}
+                <a href={link.path} onclick={() => isMenuOpen = false} class="py-4 border-b border-emerald-700 uppercase font-bold text-sm hover:text-emerald-200">{link.name}</a>
             {/each}
-            <div class="pt-6 flex flex-col gap-3">
-                <a href="/login" class="text-center text-sm font-bold text-stone-500 py-3">Iniciar Sesión</a>
-                <a href="{waLink}" target="_blank" class="bg-emerald-700 text-white py-4 rounded-xl text-sm font-black text-center uppercase tracking-widest">Solicitar Cotización</a>
-            </div>
         </div>
     {/if}
 </nav>
@@ -58,7 +71,6 @@
 <main class="min-h-[70vh]">
     {@render children()}
 </main>
-
 <!-- Footer Mejorado -->
 <footer class="bg-stone-950 pt-24 pb-12 text-stone-400">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
