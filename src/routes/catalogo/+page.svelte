@@ -18,7 +18,7 @@
         { id: 14, title: "Microchips", cat: "Equipos Agropecuarios", price: 1, image: "/chipnew2.jpeg", desc: "Identificacion de ganado." },
         { id: 16, title: "Lector", cat: "Equipos Agropecuarios", price: 70, image: "/lector.jpeg", desc: "Descripción del producto." },
         { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", image: "/R.jpg", desc: "Tu socio estratégico en el sector agropecuario." },
-        { id: 17, title: "Plandula In vitro", cat: "Bioinsumos", price: "Consultar.", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." }
+        { id: 17, title: "Plandula In vitro", cat: "Bioinsumos", price: "Consultar", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." }
     ];
 
     const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Manuales Digitales", "Promociones", "Novedades" ];
