@@ -4,13 +4,13 @@
     const productos: { id: number, title: string, cat: string, price: number | string, image: string, desc: string }[] = [
         { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.9, image: "/palmiste32.png", desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
         { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, image: "/alambre.png", desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
-        { id: 3, title: "Brega", cat: "Herbicidas", price: 150, image: "/brega.png", desc: "Formulado para el control de melezas en el maíz." },
-        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 60, image: "/glytotal.png", desc: "No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
-        { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 35, image: "/herbicida.png", desc: "Control efectivo de malezas de hoja ancha y presentación de 1L ideal para potrero." },
+        { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, image: "/brega.png", desc: " De 1KG Formulado para el control de melezas en el maíz." },
+        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, image: "/glytotal.png", desc: " 1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
+        { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 18, image: "/herbicida.png", desc: "Envase de 1LT. Envases de 4LT Y 10LT Preguntar disponibilidad y precios. Control efectivo de malezas de hoja ancha y presentación de 1L ideal para potrero." },
         { id: 6, title: "Socio", cat: "Herbicidas", price: 1, image: "/socio.png", desc: "De acción sistémica utilizado para control de maleza de hoja ancha y algunas gramíneas." },
-        { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 50, image: "/newsilo.png", desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
+        { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 4, image: "/silodemaiz2.jpeg", desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
         { id: 8, title: "SiloLact", cat: "Bioinsumos", price: 70, image: "/silolact.png", desc: "Presentación de 500ml. para uso pecuario. Favorece la fermentación y conservación del forraje." },
-        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 4, image: "/bolsas.png", desc: "Equipo resistente para empaque y conservación." },
+        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, image: "/bolsas.png", desc: "200 bolsas. Equipo resistente para empaque y conservación." },
         { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 20, image: "/semilla.png", desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
         { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, image: "/Melaza.png", desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
         { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y semillas", price: 12.6, image: "/semilladepasto.png", desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
@@ -39,7 +39,6 @@
         return carrito.reduce((acc, c) => {
             if (typeof c.price !== 'number') return acc;
             let precioUnitario = c.price;
-            // No aplica descuento en id 2 (alambre) ni 14 (chips)
             if (aplicaDescuento && c.id !== 2 && c.id !== 14) {
                 precioUnitario *= 0.9;
             }
@@ -79,7 +78,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 mb-10">
         {#each categorias as cat}
             <button on:click={() => filtroCat = cat} 
-                class="px-3 py-3 rounded-xl text-[10px] md:text-xs font-bold uppercase transition-all shadow-sm border {filtroCat === cat ? 'bg-emerald-700 text-white border-emerald-700' : 'bg-white border-stone-200 hover:border-emerald-500'}">
+                class="px-3 py-3 rounded-xl text-[10px] md:text-xs font-bold uppercase transition-all shadow-sm border {filtroCat === cat ? 'bg-emerald-800 text-white border-emerald-800' : 'bg-white border-stone-200 hover:border-emerald-800 hover:text-emerald-800'}">
                 {cat}
             </button>
         {/each}
@@ -97,7 +96,7 @@
                     </div>
                     <div class="flex justify-between items-center mt-auto pt-4 border-t border-stone-50">
                         <span class="font-black text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
-                        <button on:click={() => agregarAlCarrito(p)} class="bg-stone-900 text-white px-5 py-3 rounded-xl text-[10px] font-bold uppercase hover:bg-emerald-700 transition-colors">AGREGAR</button>
+                        <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
                     </div>
                 </div>
             {/each}
@@ -114,9 +113,9 @@
                         <div class="flex justify-between items-center text-sm pb-2 border-b border-stone-50">
                             <span class="font-medium text-stone-700 w-1/2">{item.title}</span>
                             <div class="flex gap-2 items-center">
-                                <button on:click={() => cambiarCantidad(item.id, -1)} class="w-6 h-6 flex items-center justify-center rounded bg-stone-100 hover:bg-stone-200">-</button>
-                                <span class="font-bold w-4 text-center">{item.cantidad}</span>
-                                <button on:click={() => cambiarCantidad(item.id, 1)} class="w-6 h-6 flex items-center justify-center rounded bg-stone-100 hover:bg-stone-200">+</button>
+                                <button on:click={() => cambiarCantidad(item.id, -1)} class="w-6 h-6 flex items-center justify-center rounded border border-stone-200 hover:bg-stone-100">-</button>
+                                <span class="font-bold w-4 text-center text-xs">{item.cantidad}</span>
+                                <button on:click={() => cambiarCantidad(item.id, 1)} class="w-6 h-6 flex items-center justify-center rounded border border-stone-200 hover:bg-stone-100">+</button>
                                 <button on:click={() => eliminar(item.id)}><Icon icon="mdi:close" class="text-red-500 text-lg"/></button>
                             </div>
                         </div>
@@ -131,11 +130,11 @@
                 </div>
 
                 <div class="text-right mb-6">
-                    <p class="text-[10px] text-stone-400 uppercase">Algunos productos tienen descuento pago en divisas</p>
+                    <p class="text-[10px] text-stone-400 uppercase">Descuento en divisas</p>
                     <span class="text-2xl font-black text-emerald-800">${calcularTotal().toFixed(2)}</span>
                 </div>
 
-                <button on:click={finalizarCompra} class="w-full bg-emerald-700 text-white py-4 rounded-xl font-bold uppercase text-xs hover:bg-emerald-800 transition-all">Finalizar pedido</button>
+                <button on:click={finalizarCompra} class="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold uppercase text-xs hover:bg-emerald-900 transition-all tracking-[0.1em]">Finalizar pedido</button>
             {/if}
         </div>
     </div>

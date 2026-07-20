@@ -3,7 +3,6 @@
 
     const waLink = "https://wa.me/584241860644?text=";
 
-    // Lista completa de productos
     const productos = [
         { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 25, image: "/palmiste.png", desc: "Fuente de proteína y energía ideal para ganado bovino." },
         { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 40, image: "/alambre.png", desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
@@ -28,91 +27,121 @@
         { title: "Ganadería", icon: "mdi:cow" },
         { title: "Ver Todo el Catálogo", icon: "mdi:arrow-right-circle" }
     ];
+
+    const btnPrimary = "inline-block px-8 py-4 bg-emerald-800 text-white hover:bg-emerald-700 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center shadow-lg shadow-emerald-900/20";
+    const btnSecondary = "px-8 py-4 border-2 border-stone-200 text-stone-900 hover:border-emerald-800 hover:text-emerald-800 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center";
+    
+    // Degradado unificado
+    const titleGradient = "bg-gradient-to-r from-emerald-700 via-emerald-400 to-emerald-800 bg-clip-text text-transparent";
 </script>
 
-<!-- HERO SECTION -->
-<section class="relative w-full h-[80vh] md:h-[70vh] flex items-center bg-white overflow-hidden">
-    <div class="absolute right-0 top-0 w-full md:w-1/2 h-full">
-        <video src="/vaquita3.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 md:via-white/10 to-transparent"></div>
+<section class="relative w-full h-[90vh] flex flex-col justify-center bg-stone-950 overflow-hidden">
+    <!-- VIDEO BACKGROUND MEJORADO -->
+    <div class="absolute inset-0 w-full h-full">
+        <video src="/vaquita3.mp4" autoplay loop muted playsinline class="w-full h-full object-cover opacity-50 scale-105"></video>
+        <!-- Degradado radial para enfoque central -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#0c0a09_100%)]"></div>
+        <div class="absolute inset-0 bg-stone-950/40"></div>
     </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full">
-        <div class="max-w-xl">
-            <h1 class="text-4xl md:text-6xl font-black text-stone-900 leading-tight mb-6 uppercase tracking-tight">
-                Soluciones Integrales para la 
-                <span class="bg-gradient-to-r from-emerald-700 via-emerald-400 to-black bg-clip-text text-transparent">Optimización Agropecuaria</span>
-            </h1>
-            <p class="text-stone-600 text-lg md:text-xl mb-8 leading-relaxed max-w-lg">
-                Optimizamos la rentabilidad de su finca con insumos de alta precisión, tecnología avanzada y el respaldo técnico que el productor venezolano necesita.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="/catalogo" class="px-8 py-5 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-2xl shadow-lg transition-all active:scale-95 text-center uppercase tracking-wider">Ver Catálogo</a>
-                <a href="{waLink}Hola, deseo solicitar una asesoría técnica." target="_blank" class="px-8 py-5 bg-white text-emerald-800 border-2 border-emerald-800 hover:bg-stone-100 font-black rounded-2xl transition-all active:scale-95 text-center uppercase tracking-wider">Solicitar Asesoría</a>
-            </div>
+
+    <!-- CONTENIDO -->
+    <div class="relative z-20 w-full px-6 flex flex-col items-center text-center">
+        <!-- LOGO CON LIGERA SOMBRA -->
+        <div class="mb-8 p-3 bg-white/5 backdrop-blur-sm rounded-full">
+            <img src="/logo.png" alt="Logo AgroVenz" class="w-16 h-16 md:w-24 md:h-24 object-contain drop-shadow-2xl" />
         </div>
+
+        <!-- TÍTULO CON AJUSTE DE ESPACIADO -->
+        <h1 class="text-[40px] sm:text-6xl md:text-8xl font-black text-white leading-[0.9] mb-8 uppercase tracking-tighter">
+            Soluciones Estratégicas <br/> 
+            <span class={titleGradient}>para tu Finca</span>
+        </h1>
+        
+        <!-- SUBTÍTULO MÁS ELEGANTE -->
+        <p class="text-stone-300 text-sm md:text-xl mb-10 max-w-lg leading-relaxed font-light tracking-wide">
+            Potenciamos el rendimiento de tu unidad productiva con tecnología, insumos de alta gama y asesoría experta.
+        </p>
+        
+        <!-- BOTONES CON ESTILO PREMIUM -->
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="/catalogo" class="group relative px-8 py-4 bg-white text-stone-950 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all hover:bg-emerald-800 hover:text-white text-center border border-white">
+                Ver Catálogo
+            </a>
+            <a href="{waLink}Hola, deseo solicitar una asesoría técnica." target="_blank" 
+               class="px-8 py-4 bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center">
+                Solicitar Asesoría
+            </a>
+        </div>
+    </div>
+
+    <!-- CURVA DE CIERRE (MÁS SUAVE) -->
+    <div class="absolute bottom-0 w-full h-[100px] z-10">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="w-full h-full block text-white fill-current">
+            <path d="M0 100 H1440 V0 C1000 60, 800 100, 600 100 C400 100, 200 20, 0 0 Z" />
+        </svg>
     </div>
 </section>
 
 
-<!-- SECCIÓN PROMOCIONAL -->
-<section class="py-16 bg-stone-950 border-y border-emerald-900/20 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+<section class="py-12 bg-white border-b border-stone-200">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
             
-            <!-- TARJETA DE CONTENIDO -->
-            <div class="bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 border border-emerald-700/30 backdrop-blur-md rounded-3xl p-8 md:p-12 flex flex-col justify-center shadow-2xl">
-               
-                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
-                    ¿Buscas invertir o elevar la <span class="text-emerald-400">rentabilidad</span> de tu finca?
-                </h2>
-                <p class="text-stone-300 text-lg mb-8 leading-relaxed">
-                    Somos expertos en el mercado inmobiliario agropecuario y la optimización de unidades productivas. Ya sea que busques adquirir la unidad ideal o maximizar el rendimiento de tu rebaño y cultivos, tenemos el diagnóstico técnico que necesitas.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <!-- Enlace a Fincas con target="_blank" -->
-                    <a href="{waLink}Hola, deseo ver catálogo de fincas." target="_blank" rel="noopener noreferrer" class="px-6 py-4 bg-emerald-700 hover:bg-emerald-600 text-white font-black rounded-xl transition-all text-center uppercase tracking-widest text-xs">
-                        VER FINCAS DISPONIBLES
-                    </a>
-                    <!-- Enlace a Diagnóstico con target="_blank" -->
-                    <a href="{waLink}Hola, deseo un diagnóstico técnico." target="_blank" rel="noopener noreferrer" class="px-6 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-black rounded-xl transition-all text-center uppercase tracking-widest text-xs">
-                        SOLICITAR DIAGNÓSTICO
-                    </a>
-                </div>
+            <!-- Etiqueta lateral -->
+            <div class="lg:w-1/4 text-center lg:text-left border-b lg:border-b-0 lg:border-r border-stone-200 pb-6 lg:pb-0 lg:pr-6">
+                <span class="text-xs font-black text-stone-800 uppercase tracking-widest block">
+                    Respaldado por
+                </span>
+                <span class="text-[11px] text-stone-400 block mt-1">
+                    Marcas y aliados de nuestra gestión
+                </span>
             </div>
 
-            <!-- CONTENEDOR DE IMAGEN -->
-            <div class="relative rounded-3xl overflow-hidden min-h-[400px] border border-emerald-700/30">
-                <img 
-                    src="/R.jpg" 
-                    alt="Finca productiva de alta rentabilidad" 
-                    class="absolute inset-0 w-full h-full object-cover"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 to-transparent"></div>
+            <!-- Grilla horizontal de logos -->
+            <div class="lg:w-3/4 w-full grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+                <img src="/matsuda88.png" alt="Matsuda 88" class="h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
+                <img src="/pro.png" alt="PRO" class="h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
+                <img src="/ganaderos.png" alt="Ganaderos" class="h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
+                <img src="/finca.png" alt="La Finca" class="h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <h2 class="text-4xl md:text-5xl font-black text-stone-900 uppercase tracking-tight">
+                    ¿Buscas invertir o elevar la <span class={titleGradient}>rentabilidad</span> de tu finca?
+                </h2>
+                <p class="text-stone-600 text-lg">Diseñamos planes de inversión a la medida de tu realidad productiva.</p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="{waLink}Hola, deseo ver catálogo de fincas." target="_blank" class="px-8 py-4 bg-stone-900 text-white hover:bg-emerald-800 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] transition-all">Ver Fincas</a>
+                </div>
+            </div>
+            <div class="relative h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
+                <img src="/R.jpg" alt="Finca" class="w-full h-full object-cover" />
             </div>
         </div>
     </div>
 </section>
 
 <!-- VISTA PREVIA DEL CATÁLOGO -->
-<section class="py-20 bg-stone-950 text-white relative overflow-hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px] -z-0"></div>
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <div class="max-w-lg">
-                <h2 class="text-3xl font-black uppercase mb-4">Productos Destacados</h2>
-                <p class="text-stone-300">Explora nuestra selección de insumos de alta calidad.</p>
-            </div>
-            <a href="/catalogo" class="px-8 py-5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl shadow-lg transition-all active:scale-95 uppercase tracking-wider text-center">
-                Ver Catálogo Completo
-            </a>
+<section class="py-24 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-end mb-16">
+            <h2 class="text-3xl font-black uppercase tracking-tight">Productos <span class={titleGradient}>Destacados</span></h2>
+            <a href="/catalogo" class={btnSecondary}>Ver Catálogo</a>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {#each productos.slice(0, 4) as p}
-                <div class="bg-white/5 border border-white/10 p-5 rounded-3xl backdrop-blur-md hover:border-emerald-500 transition-all flex flex-col">
-                    <img src={p.image} alt={p.title} class="w-full h-40 object-cover rounded-2xl mb-4 bg-stone-900/50" />
-                    <h3 class="font-bold text-lg mb-1">{p.title}</h3>
-                    <p class="text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">{p.cat}</p>
-                    <span class="font-black text-xl text-white mt-auto">${p.price}</span>
+                <div class="group bg-white p-4 rounded-2xl border border-stone-200 hover:border-emerald-800 transition-all duration-500 shadow-sm hover:shadow-xl">
+                    <img src={p.image} alt={p.title} class="w-full h-48 object-cover rounded-xl mb-6 bg-stone-100" />
+                    <h3 class="font-bold text-stone-900 mb-1">{p.title}</h3>
+                    <p class="text-[10px] text-stone-400 uppercase tracking-widest mb-4">{p.cat}</p>
+                    <span class="block font-black text-lg text-emerald-800">${p.price}</span>
                 </div>
             {/each}
         </div>
@@ -120,25 +149,16 @@
 </section>
 
 <!-- CATEGORÍAS -->
-<section class="py-24 bg-stone-950 text-white relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-4xl md:text-5xl font-black mb-16 uppercase tracking-tight text-center">
-            Soluciones para tu <br/>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-400 to-white">
-                Unidad Productiva
-            </span>
-        </h2>
-        
-        <!-- Grid con líneas divisorias profesionales -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-black mb-16 uppercase">Soluciones para tu <span class={titleGradient}>Unidad Productiva</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
             {#each categorias as cat}
-                <a href="/catalogo" class="bg-stone-950 p-10 hover:bg-emerald-950/30 transition-all duration-300 flex flex-col items-center group">
-                    <div class="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                        <Icon icon={cat.icon} class="text-4xl text-emerald-500" />
+                <a href="/catalogo" class="group flex flex-col items-center p-8 border border-stone-100 rounded-3xl hover:border-emerald-800 transition-all hover:bg-stone-50">
+                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-emerald-100 transition-all">
+                        <Icon icon={cat.icon} class="text-2xl text-stone-600 group-hover:text-emerald-800" />
                     </div>
-                    <span class="font-bold uppercase tracking-widest text-sm text-center">
-                        {cat.title}
-                    </span>
+                    <span class="font-bold uppercase text-xs tracking-widest text-stone-900">{cat.title}</span>
                 </a>
             {/each}
         </div>
@@ -146,41 +166,18 @@
 </section>
 
 <!-- EDUCACIÓN -->
-<!-- EDUCACIÓN -->
-<section class="py-20 bg-stone-950 text-white relative overflow-hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-900/20 rounded-full blur-[120px] -z-0"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <div class="max-w-lg">
-                <h2 class="text-3xl font-black uppercase mb-4">Educación Agropecuaria</h2>
-                <p class="text-stone-300">Capacítate con nuestras guías técnicas, manuales digitales y consejos de manejo para optimizar tu producción.</p>
-            </div>
-            <a href="/educacion" class="px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-lg transition-all active:scale-95 uppercase tracking-wider text-center">
-                Ver Centro de Recursos
-            </a>
+<section class="py-24 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-end mb-16">
+            <h2 class="text-3xl font-black uppercase tracking-tight">Educación <span class={titleGradient}>Agropecuaria</span></h2>
+            <a href="/educacion" class={btnSecondary}>Ver Recursos</a>
         </div>
-        
         <div class="grid md:grid-cols-3 gap-8">
-            {#each [
-                {title: "Nutrición Animal", desc: "Claves para una alimentación balanceada y rentable.", img: "/nutri.jpeg"}, 
-                {title: "Manejo de Potreros", desc: "Optimiza el aprovechamiento de tus pastos.", img: "/manejo.png"}, 
-                {title: "Administración de Fincas", desc: "Transforma tu explotación en una empresa.", img: "/adm.jpg"}
-            ] as educ}
-                <!-- Tarjeta con imagen de fondo -->
-                <div class="relative p-8 rounded-2xl overflow-hidden group min-h-[300px] flex flex-col justify-end border border-white/10">
-                    <!-- Imagen de fondo -->
-                    <img src={educ.img} alt={educ.title} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    
-                    <!-- Capa oscura para legibilidad -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                    
-                    <!-- Contenido -->
-                    <div class="relative z-10">
-                        <Icon icon="mdi:book-open-variant" class="text-emerald-400 text-3xl mb-4" />
-                        <h4 class="text-xl font-bold mb-3 text-white">{educ.title}</h4>
-                        <p class="text-stone-200 text-sm">{educ.desc}</p>
-                    </div>
+            {#each [{title: "Nutrición Animal", img: "/nutri.jpeg"}, {title: "Manejo de Potreros", img: "/manejo.png"}, {title: "Administración", img: "/adm.jpg"}] as educ}
+                <div class="relative p-8 rounded-3xl overflow-hidden min-h-[300px] flex flex-col justify-end border border-stone-200">
+                    <img src={educ.img} alt={educ.title} class="absolute inset-0 w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <h4 class="relative z-10 text-xl font-bold text-white">{educ.title}</h4>
                 </div>
             {/each}
         </div>

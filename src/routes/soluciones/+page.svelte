@@ -28,11 +28,11 @@
             <p class="text-stone-300 text-base md:text-lg mb-8 leading-relaxed">
                Desde el cuidado animal hasta la agricultura de precisión; todo lo que necesitas para transformar tu finca en una empresa eficiente
             </p>
-            <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
-               target="_blank"
-               class="inline-block px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
-               HABLAR CON UN EXPERTO
-            </a>
+        <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
+   target="_blank"
+   class="inline-block px-8 py-4 border-2 border-emerald-800 text-white hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center backdrop-blur-sm">
+   HABLAR CON UN EXPERTO
+</a>
         </div>
     </div>
 </section>
@@ -98,10 +98,10 @@
             Nuestros consultores están listos para diseñar un plan a la medida de tu finca.
         </p>
         
-        <a href="{waLink}Hola, me gustaría solicitar una consulta técnica." 
-           target="_blank" 
-           class="inline-block px-10 py-5 bg-white text-emerald-900 hover:bg-stone-100 font-black rounded-2xl shadow-2xl transition-all hover:scale-[1.02] active:scale-95 text-center uppercase tracking-[0.1em] text-sm">
-            SOLICITAR CONSULTA TÉCNICA
-        </a>
+    <a href="{waLink}Hola, me gustaría solicitar una consulta técnica." 
+   target="_blank" 
+   class="inline-block px-10 py-5 border border-white/30 bg-white/5 text-white hover:bg-white hover:text-emerald-900 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 backdrop-blur-sm text-center">
+   SOLICITAR CONSULTA TÉCNICA
+</a>
     </div>
 </section>

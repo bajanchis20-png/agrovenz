@@ -26,11 +26,11 @@ Servicios Especializados<br />
             <p class="text-stone-300 text-base md:text-lg mb-8 leading-relaxed">
                Acompañamiento profesional desde la planificación hasta la ejecución de tus objetivos
             </p>
-            <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
-               target="_blank"
-               class="inline-block px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
-               HABLAR CON UN EXPERTO
-            </a>
+                 <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
+   target="_blank"
+   class="inline-block px-8 py-4 border-2 border-emerald-800 text-white hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center backdrop-blur-sm">
+   HABLAR CON UN EXPERTO
+</a>
         </div>
     </div>
 </section>

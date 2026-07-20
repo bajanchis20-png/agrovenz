@@ -20,17 +20,16 @@
 </svelte:head>
 
 <nav class="sticky top-0 z-50 w-full bg-white">
-    <!-- Contenedor de la curva que se extiende a todo el ancho -->
+    <!-- Tu diseño original de la curva -->
     <div class="absolute left-0 top-0 w-full h-20 hidden lg:block z-10 pointer-events-none">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="h-full w-full">
             <path d="M0 0 H350 C450 0, 400 80, 550 80 H1440 V0 Z" fill="#064e3b" />
         </svg>
     </div>
 
-    <div class="relative flex items-center h-20 max-w-7xl mx-auto z-20">
-        
+    <div class="relative flex items-center justify-between lg:justify-start h-20 max-w-7xl mx-auto z-20 px-6">
         <!-- Bloque Logo -->
-        <div class="flex-shrink-0 px-6">
+        <div class="flex-shrink-0">
             <a href="/" class="flex items-center gap-3 group">
                 <img src="/logo.png" alt="AgroVenz" class="w-10 h-10 object-contain" />
                 <span class="font-black text-xl tracking-tight text-stone-900 group-hover:text-emerald-800 transition-colors">AGROVENZ</span>
@@ -39,7 +38,6 @@
 
         <!-- Menú Desktop -->
         <div class="hidden lg:flex flex-grow justify-end items-center px-10 gap-8 h-full">
-            <!-- Letras blancas -->
             <div class="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-white">
                 {#each navLinks as link}
                     <a href={link.path} class="hover:text-emerald-200 transition-colors">{link.name}</a>
@@ -48,19 +46,22 @@
 
             <div class="flex items-center gap-4 pl-6 border-l border-white/20">
                 <a href="/login" class="text-[11px] font-semibold text-white hover:text-emerald-200 uppercase tracking-widest">Acceso</a>
-                <a href="{waLink}." target="_blank" class="px-5 py-2 bg-white text-emerald-800 font-black rounded-2xl text-[11px] uppercase tracking-wider hover:bg-emerald-50 transition-all">Cotizar pedido</a>
+                <a href="{waLink}" target="_blank" 
+                   class="px-6 py-2 border border-white/30 bg-white/10 text-white hover:bg-white hover:text-emerald-800 font-semibold rounded-lg text-[11px] uppercase tracking-[0.2em] transition-all duration-300 backdrop-blur-sm">
+                   Cotizar pedido
+                </a>
             </div>
         </div>
         
-        <!-- Botón Hamburguesa -->
-        <button class="lg:hidden p-4 text-stone-900 absolute right-4 z-30" onclick={() => isMenuOpen = !isMenuOpen}>
+        <!-- Botón Hamburguesa corregido -->
+        <button class="lg:hidden p-2 text-stone-900 z-50" onclick={() => isMenuOpen = !isMenuOpen}>
             <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} class="text-3xl" />
         </button>
     </div>
     
     <!-- Menú Móvil -->
     {#if isMenuOpen}
-        <div class="lg:hidden flex flex-col p-6 bg-emerald-800 text-white shadow-xl">
+        <div class="lg:hidden flex flex-col p-6 bg-emerald-800 text-white shadow-xl z-40">
             {#each navLinks as link}
                 <a href={link.path} onclick={() => isMenuOpen = false} class="py-4 border-b border-emerald-700 uppercase font-bold text-sm hover:text-emerald-200">{link.name}</a>
             {/each}
@@ -71,7 +72,7 @@
 <main class="min-h-[70vh]">
     {@render children()}
 </main>
-<!-- Footer Mejorado -->
+
 <footer class="bg-stone-950 pt-24 pb-12 text-stone-400">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-1">

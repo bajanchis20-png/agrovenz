@@ -30,11 +30,11 @@
             <p class="text-stone-300 text-base md:text-lg mb-8 leading-relaxed">
                 Conocimiento de vanguardia para transformar los desafíos de tu terreno en resultados rentables, respaldado por la experiencia AgroVenz.
             </p>
-            <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
-               target="_blank"
-               class="inline-block px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
-                HABLAR CON UN EXPERTO
-            </a>
+              <a href="https://wa.me/584241860644?text=Hola, quiero hablar con un experto de AgroVenz." 
+   target="_blank"
+   class="inline-block px-8 py-4 border-2 border-emerald-800 text-white hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center backdrop-blur-sm">
+   HABLAR CON UN EXPERTO
+</a>
         </div>
     </div>
 </section>
@@ -79,11 +79,10 @@
                 <li class="flex items-center gap-2"> <span class="text-emerald-500">◆</span> Herramientas digitales de gestión</li>
                 <li class="flex items-center gap-2"> <span class="text-emerald-500">◆</span> Optimización de procesos productivos</li>
             </ul>
-            <a href="https://wa.me/584241860644?text=Hola, me interesa iniciar con AgroVenz." 
-               target="_blank"
-               class="block px-8 py-5 bg-white text-emerald-800 hover:bg-stone-100 font-black rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 text-center uppercase tracking-wider">
-               INICIA AHORA
-            </a>
-        </div>
+<a href="https://wa.me/584241860644?text=Hola, me interesa iniciar con AgroVenz." 
+   target="_blank"
+   class="block px-8 py-5 border-2 border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-2xl transition-all duration-300 text-center uppercase tracking-[0.2em] text-[11px]">
+   INICIA AHORA
+</a>
     </div>
 </section>
