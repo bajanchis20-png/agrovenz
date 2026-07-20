@@ -48,12 +48,12 @@
                 <a href="/login" class="text-[11px] font-semibold text-white hover:text-emerald-200 uppercase tracking-widest">Acceso</a>
                 <a href="{waLink}" target="_blank" 
                    class="px-6 py-2 border border-white/30 bg-white/10 text-white hover:bg-white hover:text-emerald-800 font-semibold rounded-lg text-[11px] uppercase tracking-[0.2em] transition-all duration-300 backdrop-blur-sm">
-                   Cotizar pedido
+                    Cotizar pedido
                 </a>
             </div>
         </div>
         
-        <!-- Botón Hamburguesa corregido -->
+        <!-- Botón Hamburguesa -->
         <button class="lg:hidden p-2 text-stone-900 z-50" onclick={() => isMenuOpen = !isMenuOpen}>
             <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} class="text-3xl" />
         </button>
@@ -65,6 +65,18 @@
             {#each navLinks as link}
                 <a href={link.path} onclick={() => isMenuOpen = false} class="py-4 border-b border-emerald-700 uppercase font-bold text-sm hover:text-emerald-200">{link.name}</a>
             {/each}
+            
+            <!-- Botones con diseño diferenciado -->
+            <div class="flex flex-col gap-3 mt-6">
+                <a href="/login" onclick={() => isMenuOpen = false} 
+                   class="py-3 text-center border border-white/30 rounded-lg uppercase font-bold text-xs tracking-widest hover:bg-white/10 transition-all">
+                    Iniciar Sesión
+                </a>
+                <a href="{waLink}" target="_blank" onclick={() => isMenuOpen = false} 
+                   class="py-3 text-center bg-white text-emerald-800 rounded-lg uppercase font-bold text-xs tracking-widest hover:bg-emerald-50 transition-all">
+                    Cotizar Pedido
+                </a>
+            </div>
         </div>
     {/if}
 </nav>
