@@ -7,7 +7,7 @@
         { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.90, image: "/palmiste.png", desc: "Fuente de proteína y energía ideal para ganado bovino." },
         { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, image: "/alambre.png", desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
         { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, image: "/brega.png", desc: "Formulado para el control de melezas en el maíz." },
-        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, image: "/glytotal.png", desc: "No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas." },
+        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, image: "/realgly.png", desc: "No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas." },
         { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 35, image: "/herbicida.png", desc: "Control efectivo de malezas de hoja ancha, presentación 1L." },
         { id: 6, title: "Socio", cat: "Herbicidas", price: 45, image: "/socio.png", desc: "De acción sistémica utilizado para control de maleza de hoja ancha." },
         { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 50, image: "/silo.png", desc: "Presentación de 30KG, fabricado con maleza y maíz." },
@@ -123,6 +123,24 @@
             </div>
             <div class="relative h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
                 <img src="/R.jpg" alt="Finca" class="w-full h-full object-cover" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <h2 class="text-4xl md:text-5xl font-black text-stone-900 uppercase tracking-tight">
+                    Venta de Plantula in Vitro <span class={titleGradient}>de Banano, Platano y Diferente Cultivo</span>                 </h2>
+                <p class="text-stone-600 text-lg">Geoplasma exclusivo.</p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="{waLink}Hola, deseo información sobre Plandula in vitro." target="_blank" class="px-8 py-4 bg-stone-900 text-white hover:bg-emerald-800 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] transition-all">Explorar paquetes</a>
+                </div>
+            </div>
+            <div class="relative h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
+                <img src="/plandulas.jpeg" alt="Finca" class="w-full h-full object-cover" />
             </div>
         </div>
     </div>

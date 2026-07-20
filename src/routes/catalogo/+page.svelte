@@ -5,7 +5,7 @@
         { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.9, image: "/palmiste32.png", desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
         { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, image: "/alambre.png", desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
         { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, image: "/brega.png", desc: " De 1KG Formulado para el control de melezas en el maíz." },
-        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, image: "/glytotal.png", desc: " 1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
+        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, image: "/realgly.png", desc: " 1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
         { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 18, image: "/herbicida.png", desc: "Envase de 1LT. Envases de 4LT Y 10LT Preguntar disponibilidad y precios. Control efectivo de malezas de hoja ancha y presentación de 1L ideal para potrero." },
         { id: 6, title: "Socio", cat: "Herbicidas", price: 1, image: "/socio.png", desc: "De acción sistémica utilizado para control de maleza de hoja ancha y algunas gramíneas." },
         { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 4, image: "/silodemaiz2.jpeg", desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
@@ -14,9 +14,11 @@
         { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 20, image: "/semilla.png", desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
         { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, image: "/Melaza.png", desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
         { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y semillas", price: 12.6, image: "/semilladepasto.png", desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
-        { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: 1200, image: "/bovino.png", desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
-        { id: 14, title: "Microchips y lectores", cat: "Equipos Agropecuarios", price: 71, image: "/microchip.png", desc: "Identificacion de ganado." },
-        { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", image: "/R.jpg", desc: "Tu socio estratégico en el sector agropecuario." }
+        { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: "Consultar", image: "/bovino.png", desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
+        { id: 14, title: "Microchips", cat: "Equipos Agropecuarios", price: 1, image: "/chipnew2.jpeg", desc: "Identificacion de ganado." },
+        { id: 16, title: "Lector", cat: "Equipos Agropecuarios", price: 70, image: "/lector.jpeg", desc: "Descripción del producto." },
+        { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", image: "/R.jpg", desc: "Tu socio estratégico en el sector agropecuario." },
+        { id: 17, title: "Plandula In vitro", cat: "Bioinsumos", price: "Consultar", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." }
     ];
 
     const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Manuales Digitales", "Promociones", "Novedades" ];
@@ -39,7 +41,7 @@
         return carrito.reduce((acc, c) => {
             if (typeof c.price !== 'number') return acc;
             let precioUnitario = c.price;
-            if (aplicaDescuento && c.id !== 2 && c.id !== 14) {
+            if (aplicaDescuento && c.id !== 2 && c.id !== 14 && c.id !== 16) {
                 precioUnitario *= 0.9;
             }
             return acc + (precioUnitario * c.cantidad);
