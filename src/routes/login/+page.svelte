@@ -40,12 +40,12 @@
                     />
                 </div>
 
-                <button 
-                    type="submit" 
-                    class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl shadow-lg transition-all active:scale-[0.98] uppercase tracking-widest text-sm"
-                >
-                    Iniciar Sesión
-                </button>
+            <button 
+    type="submit" 
+    class="px-8 py-4 bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center w-full"
+>
+    Iniciar Sesión
+</button>
             </form>
 
             <div class="mt-8 pt-6 border-t border-white/10 text-center text-sm">
