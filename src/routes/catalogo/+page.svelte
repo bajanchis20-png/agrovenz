@@ -11,7 +11,7 @@
         { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 4, image: "/silodemaiz2.jpeg", desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
         { id: 8, title: "SiloLact", cat: "Bioinsumos", price: 70, image: "/silolact.png", desc: "Presentación de 500ml. para uso pecuario. Favorece la fermentación y conservación del forraje." },
         { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, image: "/bolsas.png", desc: "200 bolsas. Equipo resistente para empaque y conservación." },
-        { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 20, image: "/semilla.png", desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
+        { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 150, image: "/semilla.png", desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
         { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, image: "/Melaza.png", desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
         { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y semillas", price: 12.6, image: "/semilladepasto.png", desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
         { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: "Consultar", image: "/bovino.png", desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
@@ -96,9 +96,12 @@
                         <p class="text-[10px] text-emerald-700 font-bold mb-3 uppercase tracking-wider">{p.cat}</p>
                         <p class="text-xs text-stone-600 leading-relaxed mb-4">{p.desc}</p>
                     </div>
-                    <div class="flex justify-between items-center mt-auto pt-4 border-t border-stone-50">
-                        <span class="font-black text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
-                        <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
+                    <div class="mt-auto pt-4 border-t border-stone-50">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-black text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
+                            <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
+                        </div>
+                        <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">TASA BCV</p>
                     </div>
                 </div>
             {/each}
@@ -118,7 +121,7 @@
                                 <button on:click={() => cambiarCantidad(item.id, -1)} class="w-6 h-6 flex items-center justify-center rounded border border-stone-200 hover:bg-stone-100">-</button>
                                 <span class="font-bold w-4 text-center text-xs">{item.cantidad}</span>
                                 <button on:click={() => cambiarCantidad(item.id, 1)} class="w-6 h-6 flex items-center justify-center rounded border border-stone-200 hover:bg-stone-100">+</button>
-                                <button on:click={() => eliminar(item.id)}><Icon icon="mdi:close" class="text-red-500 text-lg"/></button>
+                                <button on:click={() => eliminar(item.id)}><Icon class="text-red-500 text-lg" icon="mdi:close"/></button>
                             </div>
                         </div>
                     {/each}
