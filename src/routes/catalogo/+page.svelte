@@ -11,7 +11,7 @@
         { id: 6, title: "Socio", cat: "Herbicidas", price: 1, image: "/socio.png", desc: "De acción sistémica utilizado para control de maleza de hoja ancha y algunas gramíneas." },
         { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 4, image: "/silodemaiz2.jpeg", desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
         { id: 8, title: "SiloLact", cat: "Bioinsumos", price: 70, image: "/silolact.png", desc: "Presentación de 500ml. para uso pecuario. Favorece la fermentación y conservación del forraje." },
-        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, image: "/bolsas.png", desc: "200 bolsas. Equipo resistente para empaque y conservación." },
+        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, image: "/bolsas.png", desc: "200 bolsas. Para hacer silo, capacidad 40KG, Calibre 60x120x20. Equipo resistente para empaque y conservación." },
         { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 150, image: "/semilla.png", desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
         { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, image: "/Melaza.png", desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
         { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y Semillas", price: 12.6, image: "/semilladepasto.png", desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
