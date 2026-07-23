@@ -21,7 +21,7 @@
         { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", image: "/R.jpg", desc: "Tu socio estratégico en el sector agropecuario." },
         { id: 17, title: "Plandula In vitro", cat: "Plandula", price: "Consultar", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." },
         // Nueva tarjeta de ejemplo para manuales digitales (puedes cambiar el link, precio y descripción a tu gusto)
-        { id: 18, title: "Manual de Ganadería Avanzada", cat: "Manuales Digitales", price: "", image: "/logo.png", desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" }
+        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Manuales Digitales", price: "", image: "/logo.png", desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" }
     ];
 
     const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Plandula", "Manuales Digitales", "Promociones", "Novedades" ];
