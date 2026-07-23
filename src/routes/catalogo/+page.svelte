@@ -111,7 +111,7 @@
                                 <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
                             {/if}
                         </div>
-                        {#if p.id !== 2 && p.id !== 14 && p.id !== 16 && !p.link}
+                        {#if p.id !== 2 && p.id !== 13 && p.id !== 14 && p.id !== 15 && p.id !== 16 && p.id !== 17 && !p.link}
                             <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">TASA BCV</p>
                         {/if}
                     </div>
