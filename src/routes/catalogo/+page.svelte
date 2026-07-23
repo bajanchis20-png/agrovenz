@@ -1,7 +1,8 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
 
-    const productos: { id: number, title: string, cat: string, price: number | string, image: string, desc: string }[] = [
+    // Se actualizó la interfaz para aceptar opcionalmente un campo 'link'
+    const productos: { id: number, title: string, cat: string, price: number | string, image: string, desc: string, link?: string }[] = [
         { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.9, image: "/palmiste32.png", desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
         { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, image: "/alambre.png", desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
         { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, image: "/brega.png", desc: " De 1KG Formulado para el control de melezas en el maíz." },
@@ -13,15 +14,17 @@
         { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, image: "/bolsas.png", desc: "200 bolsas. Equipo resistente para empaque y conservación." },
         { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 150, image: "/semilla.png", desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
         { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, image: "/Melaza.png", desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
-        { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y semillas", price: 12.6, image: "/semilladepasto.png", desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
+        { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y Semillas", price: 12.6, image: "/semilladepasto.png", desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
         { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: "Consultar", image: "/bovino.png", desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
-        { id: 14, title: "Microchips", cat: "Equipos Agropecuarios", price: 1, image: "/chipnew2.jpeg", desc: "Identificacion de ganado." },
-        { id: 16, title: "Lector", cat: "Equipos Agropecuarios", price: 70, image: "/lector.jpeg", desc: "Descripción del producto." },
+        { id: 14, title: "Microchip de 2.12 mm", cat: "Equipos Agropecuarios", price: 1, image: "/animalchip.png", desc: "Identificacion de ganado." },
+        { id: 16, title: "Lector modelo W90B. 134.2 Khz", cat: "Equipos Agropecuarios", price: 70, image: "/lectornew.jpeg", desc: "Descripción del producto." },
         { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", image: "/R.jpg", desc: "Tu socio estratégico en el sector agropecuario." },
-        { id: 17, title: "Plandula In vitro", cat: "Bioinsumos", price: "Consultar", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." }
+        { id: 17, title: "Plandula In vitro", cat: "Plandula", price: "Consultar", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." },
+        // Nueva tarjeta de ejemplo para manuales digitales (puedes cambiar el link, precio y descripción a tu gusto)
+        { id: 18, title: "Manual de Ganadería Avanzada", cat: "Manuales Digitales", price: "", image: "/logo.png", desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" }
     ];
 
-    const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Manuales Digitales", "Promociones", "Novedades" ];
+    const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Plandula", "Manuales Digitales", "Promociones", "Novedades" ];
     const metodosPago = ["Mercantil", "Venezuela", "Banesco", "Pago Móvil", "Efectivo Divisa", "Binance"];
 
     let busqueda = $state("");
@@ -71,6 +74,8 @@
         const mensaje = carrito.map(c => `${c.title} (x${c.cantidad})`).join("%0A");
         const textoTotal = `%0A%0ATotal: $${total.toFixed(2)}%0AMétodo de pago: ${metodoPago}`;
         window.open(`https://wa.me/${numeroWhatsApp}?text=Hola, deseo comprar:%0A${mensaje}${textoTotal}`, "_blank");
+        
+        carrito = [];
     }
 </script>
 
@@ -99,9 +104,16 @@
                     <div class="mt-auto pt-4 border-t border-stone-50">
                         <div class="flex justify-between items-center mb-1">
                             <span class="font-black text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
-                            <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
+                            
+                            {#if p.link}
+                                <a href={p.link} target="_blank" rel="noopener noreferrer" class="px-5 py-2 bg-emerald-800 text-white hover:bg-emerald-900 font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300 text-center">VER</a>
+                            {:else}
+                                <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
+                            {/if}
                         </div>
-                        <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">TASA BCV</p>
+                        {#if p.id !== 2 && p.id !== 14 && p.id !== 16 && !p.link}
+                            <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">TASA BCV</p>
+                        {/if}
                     </div>
                 </div>
             {/each}
