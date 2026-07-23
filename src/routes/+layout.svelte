@@ -19,67 +19,69 @@
     <title>AgroVenz | Soluciones Integrales para el Agro Venezolano</title>
 </svelte:head>
 
-<nav class="sticky top-0 z-50 w-full bg-white">
-    <!-- Tu diseño original de la curva -->
-    <div class="absolute left-0 top-0 w-full h-20 hidden lg:block z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="h-full w-full">
-            <path d="M0 0 H350 C450 0, 400 80, 550 80 H1440 V0 Z" fill="#064e3b" />
-        </svg>
-    </div>
-
-    <div class="relative flex items-center justify-between lg:justify-start h-20 max-w-7xl mx-auto z-20 px-6">
-        <!-- Bloque Logo -->
-        <div class="flex-shrink-0">
-            <a href="/" class="flex items-center gap-3 group">
-                <img src="/logo.png" alt="AgroVenz" class="w-10 h-10 object-contain" />
-                <span class="font-black text-xl tracking-tight text-stone-900 group-hover:text-emerald-800 transition-colors">AGROVENZ</span>
-            </a>
-        </div>
-
-        <!-- Menú Desktop -->
-        <div class="hidden lg:flex flex-grow justify-end items-center px-10 gap-8 h-full">
-            <div class="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-white">
-                {#each navLinks as link}
-                    <a href={link.path} class="hover:text-emerald-200 transition-colors">{link.name}</a>
-                {/each}
-            </div>
-
-            <div class="flex items-center gap-4 pl-6 border-l border-white/20">
-                <a href="/login" class="text-[11px] font-semibold text-white hover:text-emerald-200 uppercase tracking-widest">Acceso</a>
-                <a href="{waLink}" target="_blank" 
-                   class="px-6 py-2 border border-white/30 bg-white/10 text-white hover:bg-white hover:text-emerald-800 font-semibold rounded-lg text-[11px] uppercase tracking-[0.2em] transition-all duration-300 backdrop-blur-sm">
-                    Cotizar pedido
+<!-- Contenedor general de la barra flotante con margen superior -->
+<header class="sticky top-4 z-50 w-full px-4 sm:px-6">
+    <nav class="max-w-7xl mx-auto bg-white/90 backdrop-blur-md border border-stone-200/80 shadow-2xl shadow-stone-900/10 rounded-2xl lg:rounded-3xl transition-all duration-300">
+        <div class="relative flex items-center justify-between h-20 px-6 lg:px-8">
+            
+            <!-- Bloque Logo -->
+            <div class="flex-shrink-0">
+                <a href="/" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center border border-emerald-100 group-hover:bg-emerald-800 transition-colors">
+                        <img src="/logo.png" alt="AgroVenz" class="w-7 h-7 object-contain" />
+                    </div>
+                    <span class="font-black text-xl tracking-tight text-stone-900 group-hover:text-emerald-800 transition-colors">AGROVENZ</span>
                 </a>
             </div>
+
+            <!-- Menú Desktop con estética flotante -->
+            <div class="hidden lg:flex items-center gap-8 h-full">
+                <div class="flex gap-7 text-[11px] font-bold uppercase tracking-widest text-stone-600">
+                    {#each navLinks as link}
+                        <a href={link.path} class="hover:text-emerald-800 transition-colors relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-800 hover:after:w-full after:transition-all">{link.name}</a>
+                    {/each}
+                </div>
+
+                <div class="flex items-center gap-4 pl-6 border-l border-stone-200">
+                    <a href="/login" class="text-[11px] font-semibold text-stone-700 hover:text-emerald-800 uppercase tracking-widest transition-colors">Acceso</a>
+                    <a href="{waLink}" target="_blank" 
+                       class="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white font-semibold rounded-xl text-[11px] uppercase tracking-[0.2em] shadow-lg shadow-emerald-900/20 transition-all duration-300 hover:scale-105 active:scale-95">
+                        Cotizar pedido
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Botón Hamburguesa -->
+            <button class="lg:hidden p-2 rounded-xl bg-stone-100 text-stone-900 z-50 hover:bg-emerald-50 hover:text-emerald-800 transition-colors" onclick={() => isMenuOpen = !isMenuOpen}>
+                <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} class="text-2xl" />
+            </button>
         </div>
         
-        <!-- Botón Hamburguesa -->
-        <button class="lg:hidden p-2 text-stone-900 z-50" onclick={() => isMenuOpen = !isMenuOpen}>
-            <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} class="text-3xl" />
-        </button>
-    </div>
-    
-    <!-- Menú Móvil -->
-    {#if isMenuOpen}
-        <div class="lg:hidden flex flex-col p-6 bg-emerald-800 text-white shadow-xl z-40">
-            {#each navLinks as link}
-                <a href={link.path} onclick={() => isMenuOpen = false} class="py-4 border-b border-emerald-700 uppercase font-bold text-sm hover:text-emerald-200">{link.name}</a>
-            {/each}
-            
-            <!-- Botones con diseño diferenciado -->
-            <div class="flex flex-col gap-3 mt-6">
-                <a href="/login" onclick={() => isMenuOpen = false} 
-                   class="py-3 text-center border border-white/30 rounded-lg uppercase font-bold text-xs tracking-widest hover:bg-white/10 transition-all">
-                    Iniciar Sesión
-                </a>
-                <a href="{waLink}" target="_blank" onclick={() => isMenuOpen = false} 
-                   class="py-3 text-center bg-white text-emerald-800 rounded-lg uppercase font-bold text-xs tracking-widest hover:bg-emerald-50 transition-all">
-                    Cotizar Pedido
-                </a>
+        <!-- Menú Móvil Desplegable Integrado -->
+        {#if isMenuOpen}
+            <div class="lg:hidden flex flex-col p-6 bg-white border-t border-stone-100 rounded-b-2xl shadow-xl z-40 animate-in fade-in slide-in-from-top-2 duration-200">
+                {#each navLinks as link}
+                    <a href={link.path} onclick={() => isMenuOpen = false} class="py-3 border-b border-stone-50 uppercase font-bold text-xs text-stone-700 hover:text-emerald-800 flex items-center justify-between">
+                        {link.name}
+                        <Icon icon="mdi:chevron-right" class="text-stone-400" />
+                    </a>
+                {/each}
+                
+                <!-- Botones Móviles -->
+                <div class="flex flex-col gap-3 mt-6">
+                    <a href="/login" onclick={() => isMenuOpen = false} 
+                       class="py-3 text-center border border-stone-200 text-stone-800 rounded-xl uppercase font-bold text-xs tracking-widest hover:bg-stone-50 transition-all">
+                        Iniciar Sesión
+                    </a>
+                    <a href="{waLink}" target="_blank" onclick={() => isMenuOpen = false} 
+                       class="py-3 text-center bg-emerald-800 text-white rounded-xl uppercase font-bold text-xs tracking-widest hover:bg-emerald-900 shadow-md shadow-emerald-900/20 transition-all">
+                        Cotizar Pedido
+                    </a>
+                </div>
             </div>
-        </div>
-    {/if}
-</nav>
+        {/if}
+    </nav>
+</header>
 
 <main class="min-h-[70vh]">
     {@render children()}
