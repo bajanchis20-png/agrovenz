@@ -16,8 +16,8 @@
         { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, image: "/Melaza.png", desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
         { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y Semillas", price: 12.6, image: "/semilladepasto.png", desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
         { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: "Consultar", image: "/bovino.png", desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
-        { id: 14, title: "Microchip de 2.12 mm", cat: "Equipos Agropecuarios", price: 1, image: "/animalchip.png", desc: "Identificacion de ganado." },
-        { id: 16, title: "Lector modelo W90B. 134.2 Khz", cat: "Equipos Agropecuarios", price: 70, image: "/lectornew.jpeg", desc: "Descripción del producto." },
+        { id: 14, title: "Microchip de 2.12 mm", cat: "Equipos Agropecuarios", price: 1, image: "/chipnew99.png", desc: "Identificacion de ganado." },
+        { id: 16, title: "Lector modelo W90B. 134.2 Khz", cat: "Equipos Agropecuarios", price: 70, image: "/lectornew.jpeg", desc: "diseñado para la identificación y trazabilidad de animales" },
         { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", image: "/R.jpg", desc: "Tu socio estratégico en el sector agropecuario." },
         { id: 17, title: "Plandula In vitro", cat: "Plandula", price: "Consultar", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." },
         // Nueva tarjeta de ejemplo para manuales digitales (puedes cambiar el link, precio y descripción a tu gusto)
@@ -31,6 +31,7 @@
     let filtroCat = $state("Todos");
     let metodoPago = $state("Mercantil");
     let carrito = $state<{id: number, title: string, price: number | string, cantidad: number}[]>([]);
+    let carritoAbierto = $state(false);
 
     let productosFiltrados = $derived(
         productos.filter(p => 
@@ -38,6 +39,8 @@
             p.title.toLowerCase().includes(busqueda.toLowerCase())
         )
     );
+
+    let cantidadTotalItems = $derived(carrito.reduce((acc, item) => acc + item.cantidad, 0));
 
     function calcularTotal() {
         const aplicaDescuento = (metodoPago === "Efectivo Divisa" || metodoPago === "Binance");
@@ -76,10 +79,11 @@
         window.open(`https://wa.me/${numeroWhatsApp}?text=Hola, deseo comprar:%0A${mensaje}${textoTotal}`, "_blank");
         
         carrito = [];
+        carritoAbierto = false;
     }
 </script>
 
-<div class="p-4 md:p-8 max-w-7xl mx-auto bg-stone-50 min-h-screen">
+<div class="p-4 md:p-8 max-w-7xl mx-auto bg-stone-50 min-h-screen relative">
     <input type="text" bind:value={busqueda} placeholder="Buscar productos..." class="w-full p-4 mb-8 rounded-2xl border border-stone-200 shadow-sm focus:ring-2 focus:ring-emerald-500 outline-none" />
     
     <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 mb-10">
@@ -91,41 +95,59 @@
         {/each}
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {#each productosFiltrados as p}
-                <div class="bg-white p-5 rounded-3xl border border-stone-100 shadow-sm hover:shadow-xl transition-all flex flex-col h-full">
-                    <img src={p.image} alt={p.title} class="w-full h-48 object-cover rounded-2xl mb-4 bg-stone-100" />
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-stone-900 text-lg leading-tight mb-1">{p.title}</h3>
-                        <p class="text-[10px] text-emerald-700 font-bold mb-3 uppercase tracking-wider">{p.cat}</p>
-                        <p class="text-xs text-stone-600 leading-relaxed mb-4">{p.desc}</p>
-                    </div>
-                    <div class="mt-auto pt-4 border-t border-stone-50">
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="font-black text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
-                            
-                            {#if p.link}
-                                <a href={p.link} target="_blank" rel="noopener noreferrer" class="px-5 py-2 bg-emerald-800 text-white hover:bg-emerald-900 font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300 text-center">VER</a>
-                            {:else}
-                                <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
-                            {/if}
-                        </div>
-                        {#if p.id !== 2 && p.id !== 13 && p.id !== 14 && p.id !== 15 && p.id !== 16 && p.id !== 17 && !p.link}
-                            <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">TASA BCV</p>
+    <!-- Catálogo ocupando todo el ancho -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {#each productosFiltrados as p}
+            <div class="bg-white p-5 rounded-3xl border border-stone-100 shadow-sm hover:shadow-xl transition-all flex flex-col h-full">
+                <img src={p.image} alt={p.title} class="w-full h-48 object-cover rounded-2xl mb-4 bg-stone-100" />
+                <div class="flex-grow">
+                    <h3 class="font-bold text-stone-900 text-lg leading-tight mb-1">{p.title}</h3>
+                    <p class="text-[10px] text-emerald-700 font-bold mb-3 uppercase tracking-wider">{p.cat}</p>
+                    <p class="text-xs text-stone-600 leading-relaxed mb-4">{p.desc}</p>
+                </div>
+                <div class="mt-auto pt-4 border-t border-stone-50">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-black text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
+                        
+                        {#if p.link}
+                            <a href={p.link} target="_blank" rel="noopener noreferrer" class="px-5 py-2 bg-emerald-800 text-white hover:bg-emerald-900 font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300 text-center">VER</a>
+                        {:else}
+                            <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
                         {/if}
                     </div>
+                    {#if p.id !== 2 && p.id !== 13 && p.id !== 14 && p.id !== 15 && p.id !== 16 && p.id !== 17 && !p.link}
+                        <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">TASA BCV</p>
+                    {/if}
                 </div>
-            {/each}
-        </div>
+            </div>
+        {/each}
+    </div>
 
-        <div class="bg-white p-6 rounded-3xl border border-stone-100 h-fit md:sticky md:top-6 shadow-sm">
-            <h2 class="font-black text-xl mb-6 text-stone-900 uppercase">Carrito</h2>
+    <!-- Botón Flotante del Carrito -->
+    <button on:click={() => carritoAbierto = !carritoAbierto} class="fixed bottom-6 right-6 bg-emerald-800 text-white p-4 rounded-full shadow-2xl hover:bg-emerald-900 transition-all z-50 flex items-center justify-center gap-2 group">
+        <Icon class="text-2xl" icon="mdi:cart-outline"/>
+        {#if cantidadTotalItems > 0}
+            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md">
+                {cantidadTotalItems}
+            </span>
+        {/if}
+    </button>
+
+    <!-- Panel Lateral Deslizable (Drawer) del Carrito -->
+    {#if carritoAbierto}
+        <div class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 transition-opacity" on:click={() => carritoAbierto = false}></div>
+        <div class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 p-6 flex flex-col transition-transform transform translate-x-0">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-black text-xl text-stone-900 uppercase">Carrito</h2>
+                <button on:click={() => carritoAbierto = false} class="p-2 rounded-full hover:bg-stone-100">
+                    <Icon class="text-stone-500 text-xl" icon="mdi:close"/>
+                </button>
+            </div>
             
             {#if carrito.length === 0}
-                <div class="text-center py-10"><p class="text-stone-400 text-sm italic">Tu carrito está vacío</p></div>
+                <div class="text-center py-20 my-auto"><p class="text-stone-400 text-sm italic">Tu carrito está vacío</p></div>
             {:else}
-                <div class="space-y-4 max-h-[50vh] overflow-y-auto pr-2 mb-6">
+                <div class="space-y-4 flex-grow overflow-y-auto pr-2 mb-6">
                     {#each carrito as item}
                         <div class="flex justify-between items-center text-sm pb-2 border-b border-stone-50">
                             <span class="font-medium text-stone-700 w-1/2">{item.title}</span>
@@ -154,5 +176,5 @@
                 <button on:click={finalizarCompra} class="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold uppercase text-xs hover:bg-emerald-900 transition-all tracking-[0.1em]">Finalizar pedido</button>
             {/if}
         </div>
-    </div>
+    {/if}
 </div>
