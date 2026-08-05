@@ -17,6 +17,8 @@
 
 <svelte:head>
     <title>AgroVenz | Soluciones Integrales para el Agro Venezolano</title>
+    <!-- CORREGIDO: Se cambió %sveltekit.assets% por / -->
+    <link rel="icon" href="/favicon1.png" />
 </svelte:head>
 
 <!-- Header flotante optimizado para móvil -->
