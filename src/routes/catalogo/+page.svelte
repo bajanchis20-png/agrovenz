@@ -20,7 +20,11 @@
         { id: 16, title: "Lector modelo W90B. 134.2 Khz", cat: "Equipos Agropecuarios", price: 70, image: "/lectornew.jpeg", desc: "diseñado para la identificación y trazabilidad de animales" },
         { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", image: "/R.jpg", desc: "Tu socio estratégico en el sector agropecuario." },
         { id: 17, title: "Plandula In vitro", cat: "Plandula", price: "Consultar", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." },
-        // Nueva tarjeta de ejemplo para manuales digitales (puedes cambiar el link, precio y descripción a tu gusto)
+        // Nuevos productos añadidos
+        { id: 19, title: "Jeringas plasticas reutilizables", cat: "Equipos Agropecuarios", price: 10, image: "/jeringa.jpeg", desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." },
+        { id: 20, title: "Aguja ganadera 10 unidades", cat: "Equipos Agropecuarios", price: 6, image: "/aguja.png", desc: "Pack de 10 unidades resistentes y de excelente calidad para tratamientos veterinarios." },
+        { id: 21, title: "Garrocha para ganado", cat: "Equipos Agropecuarios", price: 130, image: "/garrocha.png", desc: "Herramienta resistente y ergonómica para el manejo seguro del rebaño." },
+        // Nueva tarjeta de ejemplo para manuales digitales
         { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Manuales Digitales", price: "", image: "/logo.png", desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" }
     ];
 
@@ -42,13 +46,24 @@
 
     let cantidadTotalItems = $derived(carrito.reduce((acc, item) => acc + item.cantidad, 0));
 
+    function obtenerPrecioEfectivoOBinance(id: number, precioOriginal: number) {
+        if (id === 19) return 8;
+        if (id === 20) return 4;
+        if (id === 21) return 110;
+        return precioOriginal * 0.9;
+    }
+
     function calcularTotal() {
         const aplicaDescuento = (metodoPago === "Efectivo Divisa" || metodoPago === "Binance");
         return carrito.reduce((acc, c) => {
             if (typeof c.price !== 'number') return acc;
             let precioUnitario = c.price;
-            if (aplicaDescuento && c.id !== 2 && c.id !== 14 && c.id !== 16) {
-                precioUnitario *= 0.9;
+            if (aplicaDescuento) {
+                if (c.id === 19 || c.id === 20 || c.id === 21) {
+                    precioUnitario = obtenerPrecioEfectivoOBinance(c.id, c.price);
+                } else if (c.id !== 2 && c.id !== 14 && c.id !== 16) {
+                    precioUnitario *= 0.9;
+                }
             }
             return acc + (precioUnitario * c.cantidad);
         }, 0);
