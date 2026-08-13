@@ -1,31 +1,46 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
 
-    // Se actualizó la interfaz para aceptar opcionalmente un campo 'link'
-    const productos: { id: number, title: string, cat: string, price: number | string, image: string, desc: string, link?: string }[] = [
-        { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.9, image: "/palmiste32.png", desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
-        { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, image: "/alambre.png", desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
-        { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, image: "/brega.png", desc: " De 1KG Formulado para el control de melezas en el maíz." },
-        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, image: "/realgly.png", desc: " 1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
-        { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 18, image: "/herbicida.png", desc: "Envase de 1LT. Envases de 4LT Y 10LT Preguntar disponibilidad y precios. Control efectivo de malezas de hoja ancha y presentación de 1L ideal para potrero." },
-        { id: 6, title: "Socio", cat: "Herbicidas", price: 1, image: "/socio.png", desc: "De acción sistémica utilizado para control de maleza de hoja ancha y algunas gramíneas." },
-        { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 4, image: "/silodemaiz2.jpeg", desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
-        { id: 8, title: "SiloLact", cat: "Bioinsumos", price: 70, image: "/silolact.png", desc: "Presentación de 500ml. para uso pecuario. Favorece la fermentación y conservación del forraje." },
-        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, image: "/bolsas.png", desc: "200 bolsas. Para hacer silo, capacidad 40KG, Calibre 60x120x20. Equipo resistente para empaque y conservación." },
-        { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 150, image: "/semilla.png", desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
-        { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, image: "/Melaza.png", desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
-        { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y Semillas", price: 12.6, image: "/semilladepasto.png", desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
-        { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: "Consultar", image: "/bovino.png", desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
-        { id: 14, title: "Microchip de 2.12 mm", cat: "Equipos Agropecuarios", price: 1, image: "/chipnew99.png", desc: "Identificacion de ganado." },
-        { id: 16, title: "Lector modelo W90B. 134.2 Khz", cat: "Equipos Agropecuarios", price: 70, image: "/lectornew.jpeg", desc: "diseñado para la identificación y trazabilidad de animales" },
-        { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", image: "/R.jpg", desc: "Tu socio estratégico en el sector agropecuario." },
-        { id: 17, title: "Plandula In vitro", cat: "Plandula", price: "Consultar", image: "/pendula.jpeg", desc: "Geoplasma exclusivo." },
+    // Se actualizó la interfaz para aceptar un array de imágenes ('images') en lugar de una sola ('image')
+    const productos: { id: number, title: string, cat: string, price: number | string, images: string[], desc: string, link?: string }[] = [
+        { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
+        { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, images: ["/alambre.png"], desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
+        { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, images: ["/brega.png"], desc: " De 1KG Formulado para el control de melezas en el maíz." },
+        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, images: ["/realgly.png"], desc: " 1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
+        { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 18, images: ["/herbicida.png"], desc: "Envase de 1LT. Envases de 4LT Y 10LT Preguntar disponibilidad y precios. Control efectivo de malezas de hoja ancha y presentación de 1L ideal para potrero." },
+        { id: 6, title: "Socio", cat: "Herbicidas", price: 1, images: ["/socio.png"], desc: "De acción sistémica utilizado para control de maleza de hoja ancha y algunas gramíneas." },
+        { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 4, images: ["/silodemaiz2.jpeg"], desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
+        { id: 8, title: "SiloLact", cat: "Bioinsumos", price: 70, images: ["/silolact.png"], desc: "Presentación de 500ml. para uso pecuario. Favorece la fermentación y conservación del forraje." },
+        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, images: ["/bolsas.png"], desc: "200 bolsas. Para hacer silo, capacidad 40KG, Calibre 60x120x20. Equipo resistente para empaque y conservación." },
+        { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
+        { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, images: ["/Melaza.png"], desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
+        { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y Semillas", price: 12.6, images: ["/semilladepasto.png"], desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
+        { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: "Consultar", images: ["/bovino.png"], desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
+        { id: 14, title: "Microchip de 2.12 mm", cat: "Equipos Agropecuarios", price: 1, images: ["/chipnew99.png"], desc: "Identificacion de ganado." },
+        { id: 16, title: "Lector modelo W90B. 134.2 Khz", cat: "Equipos Agropecuarios", price: 70, images: ["/lectornew.jpeg"], desc: "diseñado para la identificación y trazabilidad de animales" },
+        { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." },
+        { id: 17, title: "Plandula In vitro", cat: "Plandula", price: "Consultar", images: ["/pendula.jpeg"], desc: "Geoplasma exclusivo." },
+        { id: 19, title: "Jeringas plasticas reutilizables", cat: "Equipos Agropecuarios", price: 10, images: ["/jeringa.jpeg"], desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." },
+        { id: 20, title: "Aguja ganadera 10 unidades", cat: "Equipos Agropecuarios", price: 6, images: ["/aguja.png"], desc: "Pack de 10 unidades resistentes y de excelente calidad para tratamientos veterinarios." },
+        { id: 21, title: "Garrocha para ganado", cat: "Equipos Agropecuarios", price: 130, images: ["/garrocha.png"], desc: "Herramienta resistente y ergonómica para el manejo seguro del rebaño." },
         // Nuevos productos añadidos
-        { id: 19, title: "Jeringas plasticas reutilizables", cat: "Equipos Agropecuarios", price: 10, image: "/jeringa.jpeg", desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." },
-        { id: 20, title: "Aguja ganadera 10 unidades", cat: "Equipos Agropecuarios", price: 6, image: "/aguja.png", desc: "Pack de 10 unidades resistentes y de excelente calidad para tratamientos veterinarios." },
-        { id: 21, title: "Garrocha para ganado", cat: "Equipos Agropecuarios", price: 130, image: "/garrocha.png", desc: "Herramienta resistente y ergonómica para el manejo seguro del rebaño." },
-        // Nueva tarjeta de ejemplo para manuales digitales
-        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Manuales Digitales", price: "", image: "/logo.png", desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" }
+        { 
+            id: 22, 
+            title: "Medidor de PH digital portátil", 
+            cat: "Equipos Agropecuarios", 
+            price: 12, 
+            images: ["/numero1.jpeg", "/numero2.jpeg", "/numero3.jpeg"], 
+            desc: "Medición rápida y precisa del PH en suelos y agua." 
+        },
+        { 
+            id: 23, 
+            title: "Botas plásticas Evolution (sin puntera)", 
+            cat: "Equipos Agropecuarios", 
+            price: 17, 
+            images: ["/botas1.jpeg", "/botas2.jpeg"], 
+            desc: "Color negro y marrón, alta resistencia para trabajo de campo." 
+        },
+        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Manuales Digitales", price: "", images: ["/logo.png"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" }
     ];
 
     const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Plandula", "Manuales Digitales", "Promociones", "Novedades" ];
@@ -36,6 +51,14 @@
     let metodoPago = $state("Mercantil");
     let carrito = $state<{id: number, title: string, price: number | string, cantidad: number}[]>([]);
     let carritoAbierto = $state(false);
+
+    // Estado para controlar el índice de la foto activa de cada tarjeta con galería
+    let indicesImagenes = $state<Record<number, number>>({});
+
+    function cambiarImagen(id: number, delta: number, total: number) {
+        const actual = indicesImagenes[id] || 0;
+        indicesImagenes[id] = (actual + delta + total) % total;
+    }
 
     let productosFiltrados = $derived(
         productos.filter(p => 
@@ -50,6 +73,8 @@
         if (id === 19) return 8;
         if (id === 20) return 4;
         if (id === 21) return 110;
+        if (id === 22) return 10; // Medidor de PH
+        if (id === 23) return 15; // Botas Evolution
         return precioOriginal * 0.9;
     }
 
@@ -59,7 +84,7 @@
             if (typeof c.price !== 'number') return acc;
             let precioUnitario = c.price;
             if (aplicaDescuento) {
-                if (c.id === 19 || c.id === 20 || c.id === 21) {
+                if ([19, 20, 21, 22, 23].includes(c.id)) {
                     precioUnitario = obtenerPrecioEfectivoOBinance(c.id, c.price);
                 } else if (c.id !== 2 && c.id !== 14 && c.id !== 16) {
                     precioUnitario *= 0.9;
@@ -114,12 +139,29 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {#each productosFiltrados as p}
             <div class="bg-white p-5 rounded-3xl border border-stone-100 shadow-sm hover:shadow-xl transition-all flex flex-col h-full">
-                <img src={p.image} alt={p.title} class="w-full h-48 object-cover rounded-2xl mb-4 bg-stone-100" />
+                <!-- Imagen o Carrusel de Imágenes -->
+                <div class="relative w-full h-48 mb-4">
+                    <img src={p.images[indicesImagenes[p.id] || 0]} alt={p.title} class="w-full h-48 object-cover rounded-2xl bg-stone-100" />
+                    
+                    {#if p.images.length > 1}
+                        <button on:click={() => cambiarImagen(p.id, -1, p.images.length)} class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all">
+                            <Icon class="text-lg" icon="mdi:chevron-left"/>
+                        </button>
+                        <button on:click={() => cambiarImagen(p.id, 1, p.images.length)} class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all">
+                            <Icon class="text-lg" icon="mdi:chevron-right"/>
+                        </button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[9px] px-2 py-0.5 rounded-full">
+                            {(indicesImagenes[p.id] || 0) + 1} / {p.images.length}
+                        </div>
+                    {/if}
+                </div>
+
                 <div class="flex-grow">
                     <h3 class="font-bold text-stone-900 text-lg leading-tight mb-1">{p.title}</h3>
                     <p class="text-[10px] text-emerald-700 font-bold mb-3 uppercase tracking-wider">{p.cat}</p>
                     <p class="text-xs text-stone-600 leading-relaxed mb-4">{p.desc}</p>
                 </div>
+                
                 <div class="mt-auto pt-4 border-t border-stone-50">
                     <div class="flex justify-between items-center mb-1">
                         <span class="font-black text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
@@ -184,7 +226,7 @@
                 </div>
 
                 <div class="text-right mb-6">
-                    <p class="text-[10px] text-stone-400 uppercase">Descuento en divisas</p>
+                    <p class="text-[10px] text-stone-400 uppercase">Total con descuento aplicado</p>
                     <span class="text-2xl font-black text-emerald-800">${calcularTotal().toFixed(2)}</span>
                 </div>
 
