@@ -1,7 +1,6 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
 
-    // Se actualizó la interfaz para aceptar un array de imágenes ('images') en lugar de una sola ('image')
     const productos: { id: number, title: string, cat: string, price: number | string, images: string[], desc: string, link?: string }[] = [
         { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
         { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, images: ["/alambre.png"], desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
@@ -23,7 +22,6 @@
         { id: 19, title: "Jeringas plasticas reutilizables", cat: "Equipos Agropecuarios", price: 10, images: ["/jeringa.jpeg"], desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." },
         { id: 20, title: "Aguja ganadera 10 unidades", cat: "Equipos Agropecuarios", price: 6, images: ["/aguja.png"], desc: "Pack de 10 unidades resistentes y de excelente calidad para tratamientos veterinarios." },
         { id: 21, title: "Garrocha para ganado", cat: "Equipos Agropecuarios", price: 130, images: ["/garrocha.png"], desc: "Herramienta resistente y ergonómica para el manejo seguro del rebaño." },
-        // Nuevos productos añadidos
         { 
             id: 22, 
             title: "Medidor de PH digital portátil", 
@@ -52,7 +50,6 @@
     let carrito = $state<{id: number, title: string, price: number | string, cantidad: number}[]>([]);
     let carritoAbierto = $state(false);
 
-    // Estado para controlar el índice de la foto activa de cada tarjeta con galería
     let indicesImagenes = $state<Record<number, number>>({});
 
     function cambiarImagen(id: number, delta: number, total: number) {
@@ -73,8 +70,8 @@
         if (id === 19) return 8;
         if (id === 20) return 4;
         if (id === 21) return 110;
-        if (id === 22) return 10; // Medidor de PH
-        if (id === 23) return 15; // Botas Evolution
+        if (id === 22) return 10;
+        if (id === 23) return 15;
         return precioOriginal * 0.9;
     }
 
@@ -123,57 +120,71 @@
     }
 </script>
 
-<div class="p-4 md:p-8 max-w-7xl mx-auto bg-stone-50 min-h-screen relative">
-    <input type="text" bind:value={busqueda} placeholder="Buscar productos..." class="w-full p-4 mb-8 rounded-2xl border border-stone-200 shadow-sm focus:ring-2 focus:ring-emerald-500 outline-none" />
+<div class="px-3 py-4 sm:p-6 md:p-8 max-w-7xl mx-auto bg-stone-50 min-h-screen relative">
+    <input type="text" bind:value={busqueda} placeholder="Buscar productos..." class="w-full p-3 sm:p-4 mb-4 rounded-xl sm:rounded-2xl border border-stone-200 shadow-sm focus:ring-2 focus:ring-emerald-500 outline-none text-xs sm:text-sm bg-white" />
     
-    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 mb-10">
-        {#each categorias as cat}
-            <button on:click={() => filtroCat = cat} 
-                class="px-3 py-3 rounded-xl text-[10px] md:text-xs font-bold uppercase transition-all shadow-sm border {filtroCat === cat ? 'bg-emerald-800 text-white border-emerald-800' : 'bg-white border-stone-200 hover:border-emerald-800 hover:text-emerald-800'}">
-                {cat}
-            </button>
-        {/each}
+    <!-- Categorías: Selector desplegable en móvil y botones de grilla en pantallas medianas/grandes -->
+    <div class="mb-6 sm:mb-10">
+        <!-- Vista Móvil: Selector desplegable completo sin desbordes -->
+        <div class="block sm:hidden">
+            <label class="block text-[10px] font-bold text-stone-400 mb-1.5 uppercase tracking-wider">Filtrar por categoría</label>
+            <select bind:value={filtroCat} class="w-full p-3 bg-white rounded-xl text-xs font-bold border border-stone-200 shadow-sm outline-none text-stone-800">
+                {#each categorias as cat}
+                    <option value={cat}>{cat}</option>
+                {/each}
+            </select>
+        </div>
+
+        <!-- Vista Tablet / Escritorio: Botones originales en grilla -->
+        <div class="hidden sm:grid sm:grid-cols-4 lg:grid-cols-6 gap-2">
+            {#each categorias as cat}
+                <button on:click={() => filtroCat = cat} 
+                    class="px-3 py-3 rounded-xl text-[10px] md:text-xs font-bold uppercase transition-all shadow-sm border {filtroCat === cat ? 'bg-emerald-800 text-white border-emerald-800' : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-800 hover:text-emerald-800'}">
+                    {cat}
+                </button>
+            {/each}
+        </div>
     </div>
 
-    <!-- Catálogo ocupando todo el ancho -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <!-- Catálogo de 2 columnas en móviles (grid-cols-2) y adaptativo en pantallas grandes -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
         {#each productosFiltrados as p}
-            <div class="bg-white p-5 rounded-3xl border border-stone-100 shadow-sm hover:shadow-xl transition-all flex flex-col h-full">
+            <div class="bg-white p-3 sm:p-5 rounded-2xl sm:rounded-3xl border border-stone-100 shadow-sm hover:shadow-xl transition-all flex flex-col h-full">
                 <!-- Imagen o Carrusel de Imágenes -->
-                <div class="relative w-full h-48 mb-4">
-                    <img src={p.images[indicesImagenes[p.id] || 0]} alt={p.title} class="w-full h-48 object-cover rounded-2xl bg-stone-100" />
+                <div class="relative w-full h-32 sm:h-48 mb-3 sm:mb-4">
+                    <img src={p.images[indicesImagenes[p.id] || 0]} alt={p.title} class="w-full h-32 sm:h-48 object-cover rounded-xl sm:rounded-2xl bg-stone-100" />
                     
                     {#if p.images.length > 1}
-                        <button on:click={() => cambiarImagen(p.id, -1, p.images.length)} class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all">
-                            <Icon class="text-lg" icon="mdi:chevron-left"/>
+                        <button on:click={() => cambiarImagen(p.id, -1, p.images.length)} class="absolute left-1.5 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all">
+                            <Icon class="text-sm sm:text-lg" icon="mdi:chevron-left"/>
                         </button>
-                        <button on:click={() => cambiarImagen(p.id, 1, p.images.length)} class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all">
-                            <Icon class="text-lg" icon="mdi:chevron-right"/>
+                        <button on:click={() => cambiarImagen(p.id, 1, p.images.length)} class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all">
+                            <Icon class="text-sm sm:text-lg" icon="mdi:chevron-right"/>
                         </button>
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[9px] px-2 py-0.5 rounded-full">
+                        <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded-full">
                             {(indicesImagenes[p.id] || 0) + 1} / {p.images.length}
                         </div>
                     {/if}
                 </div>
 
                 <div class="flex-grow">
-                    <h3 class="font-bold text-stone-900 text-lg leading-tight mb-1">{p.title}</h3>
-                    <p class="text-[10px] text-emerald-700 font-bold mb-3 uppercase tracking-wider">{p.cat}</p>
-                    <p class="text-xs text-stone-600 leading-relaxed mb-4">{p.desc}</p>
+                    <h3 class="font-bold text-stone-900 text-xs sm:text-lg leading-tight mb-1 line-clamp-2">{p.title}</h3>
+                    <p class="text-[8px] sm:text-[10px] text-emerald-700 font-bold mb-2 sm:mb-3 uppercase tracking-wider">{p.cat}</p>
+                    <p class="text-[10px] sm:text-xs text-stone-600 leading-relaxed mb-3 sm:mb-4 line-clamp-3">{p.desc}</p>
                 </div>
                 
-                <div class="mt-auto pt-4 border-t border-stone-50">
-                    <div class="flex justify-between items-center mb-1">
-                        <span class="font-black text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
+                <div class="mt-auto pt-3 sm:pt-4 border-t border-stone-50">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-1">
+                        <span class="font-black text-sm sm:text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price}` : p.price}</span>
                         
                         {#if p.link}
-                            <a href={p.link} target="_blank" rel="noopener noreferrer" class="px-5 py-2 bg-emerald-800 text-white hover:bg-emerald-900 font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300 text-center">VER</a>
+                            <a href={p.link} target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-3 sm:px-5 py-1.5 sm:py-2 bg-emerald-800 text-white hover:bg-emerald-900 font-bold rounded-lg sm:rounded-xl text-[9px] sm:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 text-center">VER</a>
                         {:else}
-                            <button on:click={() => agregarAlCarrito(p)} class="px-6 py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] transition-all duration-300">AGREGAR</button>
+                            <button on:click={() => agregarAlCarrito(p)} class="w-full sm:w-auto px-3 sm:px-6 py-1.5 sm:py-2 border border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white font-bold rounded-lg sm:rounded-xl text-[9px] sm:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 text-center">AGREGAR</button>
                         {/if}
                     </div>
                     {#if p.id !== 2 && p.id !== 13 && p.id !== 14 && p.id !== 15 && p.id !== 16 && p.id !== 17 && !p.link}
-                        <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">TASA BCV</p>
+                        <p class="text-[8px] sm:text-[9px] text-stone-400 font-bold uppercase tracking-wider">TASA BCV</p>
                     {/if}
                 </div>
             </div>
@@ -181,10 +192,10 @@
     </div>
 
     <!-- Botón Flotante del Carrito -->
-    <button on:click={() => carritoAbierto = !carritoAbierto} class="fixed bottom-6 right-6 bg-emerald-800 text-white p-4 rounded-full shadow-2xl hover:bg-emerald-900 transition-all z-50 flex items-center justify-center gap-2 group">
-        <Icon class="text-2xl" icon="mdi:cart-outline"/>
+    <button on:click={() => carritoAbierto = !carritoAbierto} class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-emerald-800 text-white p-3.5 sm:p-4 rounded-full shadow-2xl hover:bg-emerald-900 transition-all z-50 flex items-center justify-center gap-2 group">
+        <Icon class="text-xl sm:text-2xl" icon="mdi:cart-outline"/>
         {#if cantidadTotalItems > 0}
-            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md">
+            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] sm:text-xs font-bold w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center shadow-md">
                 {cantidadTotalItems}
             </span>
         {/if}
@@ -193,9 +204,9 @@
     <!-- Panel Lateral Deslizable (Drawer) del Carrito -->
     {#if carritoAbierto}
         <div class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 transition-opacity" on:click={() => carritoAbierto = false}></div>
-        <div class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 p-6 flex flex-col transition-transform transform translate-x-0">
+        <div class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 p-4 sm:p-6 flex flex-col transition-transform transform translate-x-0">
             <div class="flex justify-between items-center mb-6">
-                <h2 class="font-black text-xl text-stone-900 uppercase">Carrito</h2>
+                <h2 class="font-black text-lg sm:text-xl text-stone-900 uppercase">Carrito</h2>
                 <button on:click={() => carritoAbierto = false} class="p-2 rounded-full hover:bg-stone-100">
                     <Icon class="text-stone-500 text-xl" icon="mdi:close"/>
                 </button>
@@ -206,7 +217,7 @@
             {:else}
                 <div class="space-y-4 flex-grow overflow-y-auto pr-2 mb-6">
                     {#each carrito as item}
-                        <div class="flex justify-between items-center text-sm pb-2 border-b border-stone-50">
+                        <div class="flex justify-between items-center text-xs sm:text-sm pb-2 border-b border-stone-50 gap-2">
                             <span class="font-medium text-stone-700 w-1/2">{item.title}</span>
                             <div class="flex gap-2 items-center">
                                 <button on:click={() => cambiarCantidad(item.id, -1)} class="w-6 h-6 flex items-center justify-center rounded border border-stone-200 hover:bg-stone-100">-</button>
@@ -220,17 +231,17 @@
                 
                 <div class="mb-4">
                     <label class="block text-[10px] font-bold text-stone-400 mb-2 uppercase">Método de pago</label>
-                    <select bind:value={metodoPago} class="w-full p-2 bg-stone-100 rounded-lg text-xs font-bold border-none outline-none">
+                    <select bind:value={metodoPago} class="w-full p-2.5 sm:p-2 bg-stone-100 rounded-lg text-xs font-bold border-none outline-none">
                         {#each metodosPago as m}<option value={m}>{m}</option>{/each}
                     </select>
                 </div>
 
                 <div class="text-right mb-6">
                     <p class="text-[10px] text-stone-400 uppercase">Total con descuento aplicado</p>
-                    <span class="text-2xl font-black text-emerald-800">${calcularTotal().toFixed(2)}</span>
+                    <span class="text-xl sm:text-2xl font-black text-emerald-800">${calcularTotal().toFixed(2)}</span>
                 </div>
 
-                <button on:click={finalizarCompra} class="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold uppercase text-xs hover:bg-emerald-900 transition-all tracking-[0.1em]">Finalizar pedido</button>
+                <button on:click={finalizarCompra} class="w-full bg-emerald-800 text-white py-3.5 sm:py-4 rounded-xl font-bold uppercase text-xs hover:bg-emerald-900 transition-all tracking-[0.1em]">Finalizar pedido</button>
             {/if}
         </div>
     {/if}

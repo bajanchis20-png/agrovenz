@@ -28,67 +28,53 @@
         { title: "Ver Todo el Catálogo", icon: "mdi:arrow-right-circle" }
     ];
 
-    const btnPrimary = "inline-block px-8 py-4 bg-emerald-800 text-white hover:bg-emerald-700 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center shadow-lg shadow-emerald-900/20";
-    const btnSecondary = "px-8 py-4 border-2 border-stone-200 text-stone-900 hover:border-emerald-800 hover:text-emerald-800 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center";
-    
-    // Degradado unificado
+    const btnSecondary = "px-6 lg:px-8 py-3.5 lg:py-4 border-2 border-stone-200 text-stone-900 hover:border-emerald-800 hover:text-emerald-800 font-bold rounded-xl text-[10px] lg:text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center whitespace-nowrap";
     const titleGradient = "bg-gradient-to-r from-emerald-700 via-emerald-400 to-emerald-800 bg-clip-text text-transparent";
 </script>
 
-<section class="relative w-full h-[90vh] flex flex-col justify-center bg-stone-950 overflow-hidden">
-    <!-- VIDEO BACKGROUND MEJORADO -->
+<section class="relative w-full h-[85vh] sm:h-[80vh] lg:h-[90vh] flex flex-col justify-center bg-stone-950 overflow-hidden">
     <div class="absolute inset-0 w-full h-full">
         <video src="/vaquita3.mp4" autoplay loop muted playsinline class="w-full h-full object-cover opacity-50 scale-105"></video>
-        <!-- Degradado radial para enfoque central -->
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#0c0a09_100%)]"></div>
         <div class="absolute inset-0 bg-stone-950/40"></div>
     </div>
 
-    <!-- CONTENIDO -->
-    <div class="relative z-20 w-full px-6 flex flex-col items-center text-center">
-        <!-- LOGO CON LIGERA SOMBRA -->
-        <div class="mb-8 p-3 bg-white/5 backdrop-blur-sm rounded-full">
-            <img src="/logo.png" alt="Logo AgroVenz" class="w-16 h-16 md:w-24 md:h-24 object-contain drop-shadow-2xl" />
+    <div class="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+        <div class="mb-6 lg:mb-8 p-3 bg-white/5 backdrop-blur-sm rounded-full">
+            <img src="/logo.png" alt="Logo AgroVenz" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain drop-shadow-2xl" />
         </div>
 
-        <!-- TÍTULO CON AJUSTE DE ESPACIADO -->
-        <h1 class="text-[40px] sm:text-6xl md:text-8xl font-black text-white leading-[0.9] mb-8 uppercase tracking-tighter">
-            Soluciones Estratégicas <br/> 
+        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white leading-[1.1] sm:leading-[1] mb-6 lg:mb-8 uppercase tracking-tighter max-w-5xl">
+            Soluciones Estratégicas <br class="hidden sm:inline"/> 
             <span class={titleGradient}>para tu Finca</span>
         </h1>
         
-        <!-- SUBTÍTULO MÁS ELEGANTE -->
-        <p class="text-stone-300 text-sm md:text-xl mb-10 max-w-lg leading-relaxed font-light tracking-wide">
+        <p class="text-stone-300 text-xs sm:text-base lg:text-xl mb-8 lg:mb-10 max-w-md sm:max-w-xl leading-relaxed font-light tracking-wide">
             Potenciamos el rendimiento de tu unidad productiva con tecnología, insumos de alta gama y asesoría experta.
         </p>
         
-        <!-- BOTONES CON ESTILO PREMIUM -->
-        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <a href="/catalogo" class="group relative px-8 py-4 bg-white text-stone-950 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all hover:bg-emerald-800 hover:text-white text-center border border-white">
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
+            <a href="/catalogo" class="w-full sm:w-auto px-8 py-4 bg-white text-stone-950 font-bold rounded-xl text-[10px] lg:text-[11px] uppercase tracking-[0.2em] transition-all hover:bg-emerald-800 hover:text-white text-center border border-white shadow-lg">
                 Ver Catálogo
             </a>
             <a href="{waLink}Hola, deseo solicitar una asesoría técnica." target="_blank" 
-               class="px-8 py-4 bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center">
+               class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white font-bold rounded-xl text-[10px] lg:text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center">
                 Solicitar Asesoría
             </a>
         </div>
     </div>
 
-    <!-- CURVA DE CIERRE (MÁS SUAVE) -->
-    <div class="absolute bottom-0 w-full h-[100px] z-10">
+    <div class="absolute bottom-0 w-full h-[60px] sm:h-[80px] lg:h-[100px] z-10 pointer-events-none">
         <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="w-full h-full block text-white fill-current">
             <path d="M0 100 H1440 V0 C1000 60, 800 100, 600 100 C400 100, 200 20, 0 0 Z" />
         </svg>
     </div>
 </section>
 
-
-<section class="py-12 bg-white border-b border-stone-200">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
-            
-            <!-- Etiqueta lateral -->
-            <div class="lg:w-1/4 text-center lg:text-left border-b lg:border-b-0 lg:border-r border-stone-200 pb-6 lg:pb-0 lg:pr-6">
+<section class="py-10 lg:py-12 bg-white border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
+            <div class="lg:w-1/4 text-center lg:text-left border-b lg:border-b-0 lg:border-r border-stone-200 pb-4 lg:pb-0 lg:pr-6 w-full">
                 <span class="text-xs font-black text-stone-800 uppercase tracking-widest block">
                     Respaldado por
                 </span>
@@ -96,105 +82,102 @@
                     Marcas y aliados de nuestra gestión
                 </span>
             </div>
-
-            <!-- Grilla horizontal de logos -->
-            <div class="lg:w-3/4 w-full grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-                <img src="/matsuda88.png" alt="Matsuda 88" class="h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
-                <img src="/pro.png" alt="PRO" class="h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
-                <img src="/ganaderos.png" alt="Ganaderos" class="h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
-                <img src="/finca.png" alt="La Finca" class="h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
+            <div class="lg:w-3/4 w-full grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 items-center justify-items-center">
+                <img src="/matsuda88.png" alt="Matsuda 88" class="h-7 sm:h-8 lg:h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
+                <img src="/pro.png" alt="PRO" class="h-7 sm:h-8 lg:h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
+                <img src="/ganaderos.png" alt="Ganaderos" class="h-7 sm:h-8 lg:h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
+                <img src="/finca.png" alt="La Finca" class="h-7 sm:h-8 lg:h-9 w-auto object-contain grayscale opacity-50 hover:opacity-100 transition-opacity cursor-pointer" />
             </div>
-
         </div>
     </div>
 </section>
 
-<section class="py-24 bg-white relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-6">
-                <h2 class="text-4xl md:text-5xl font-black text-stone-900 uppercase tracking-tight">
+<section class="py-16 sm:py-20 lg:py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div class="space-y-6 text-center lg:text-left">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 uppercase tracking-tight leading-tight">
                     ¿Buscas invertir o elevar la <span class={titleGradient}>rentabilidad</span> de tu finca?
                 </h2>
-                <p class="text-stone-600 text-lg">Diseñamos planes de inversión a la medida de tu realidad productiva.</p>
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="{waLink}Hola, deseo ver catálogo de fincas." target="_blank" class="px-8 py-4 bg-stone-900 text-white hover:bg-emerald-800 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] transition-all">Ver Fincas</a>
+                <p class="text-stone-600 text-base sm:text-lg">Diseñamos planes de inversión a la medida de tu realidad productiva.</p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                    <a href="{waLink}Hola, deseo ver catálogo de fincas." target="_blank" class="w-full sm:w-auto px-8 py-4 bg-stone-900 text-white hover:bg-emerald-800 rounded-xl text-[10px] lg:text-[11px] font-bold uppercase tracking-[0.2em] transition-all text-center">Ver Fincas</a>
                 </div>
             </div>
-            <div class="relative h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
+            <div class="relative h-[320px] sm:h-[400px] lg:h-[500px] rounded-2xl lg:rounded-[2rem] overflow-hidden shadow-2xl">
                 <img src="/R.jpg" alt="Finca" class="w-full h-full object-cover" />
             </div>
         </div>
     </div>
 </section>
 
-<section class="py-24 bg-white relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-6">
-                <h2 class="text-4xl md:text-5xl font-black text-stone-900 uppercase tracking-tight">
-                    Venta de Plantula in Vitro <span class={titleGradient}>de Banano, Platano y Diferente Cultivo</span>                 </h2>
-                <p class="text-stone-600 text-lg">Geoplasma exclusivo.</p>
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="{waLink}Hola, deseo información sobre Plandula in vitro." target="_blank" class="px-8 py-4 bg-stone-900 text-white hover:bg-emerald-800 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] transition-all">Explorar paquetes</a>
+<section class="py-16 sm:py-20 lg:py-24 bg-stone-50 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div class="space-y-6 text-center lg:text-left order-2 lg:order-1">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 uppercase tracking-tight leading-tight">
+                    Venta de Plántula in Vitro <span class={titleGradient}>de Banano, Plátano y Diferentes Cultivos</span>
+                </h2>
+                <p class="text-stone-600 text-base sm:text-lg">Geoplasma exclusivo.</p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                    <a href="{waLink}Hola, deseo información sobre Plántula in vitro." target="_blank" class="w-full sm:w-auto px-8 py-4 bg-stone-900 text-white hover:bg-emerald-800 rounded-xl text-[10px] lg:text-[11px] font-bold uppercase tracking-[0.2em] transition-all text-center">Explorar paquetes</a>
                 </div>
             </div>
-            <div class="relative h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
-                <img src="/plandulas.jpeg" alt="Finca" class="w-full h-full object-cover" />
+            <div class="relative h-[320px] sm:h-[400px] lg:h-[500px] rounded-2xl lg:rounded-[2rem] overflow-hidden shadow-2xl order-1 lg:order-2">
+                <img src="/plandulas.jpeg" alt="Plántulas" class="w-full h-full object-cover" />
             </div>
         </div>
     </div>
 </section>
 
-<!-- VISTA PREVIA DEL CATÁLOGO -->
-<section class="py-24 bg-stone-50">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-end mb-16">
-            <h2 class="text-3xl font-black uppercase tracking-tight">Productos <span class={titleGradient}>Destacados</span></h2>
+<section class="py-16 sm:py-20 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight">Productos <span class={titleGradient}>Destacados</span></h2>
             <a href="/catalogo" class={btnSecondary}>Ver Catálogo</a>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {#each productos.slice(0, 4) as p}
-                <div class="group bg-white p-4 rounded-2xl border border-stone-200 hover:border-emerald-800 transition-all duration-500 shadow-sm hover:shadow-xl">
-                    <img src={p.image} alt={p.title} class="w-full h-48 object-cover rounded-xl mb-6 bg-stone-100" />
-                    <h3 class="font-bold text-stone-900 mb-1">{p.title}</h3>
-                    <p class="text-[10px] text-stone-400 uppercase tracking-widest mb-4">{p.cat}</p>
-                    <span class="block font-black text-lg text-emerald-800">${p.price}</span>
+                <div class="group bg-white p-4 rounded-2xl border border-stone-200 hover:border-emerald-800 transition-all duration-500 shadow-sm hover:shadow-xl flex flex-col justify-between">
+                    <div>
+                        <img src={p.image} alt={p.title} class="w-full h-48 sm:h-52 object-cover rounded-xl mb-4 bg-stone-100" />
+                        <h3 class="font-bold text-stone-900 mb-1 text-base">{p.title}</h3>
+                        <p class="text-[10px] text-stone-400 uppercase tracking-widest mb-3">{p.cat}</p>
+                    </div>
+                    <span class="block font-black text-lg text-emerald-800 mt-2">${p.price}</span>
                 </div>
             {/each}
         </div>
     </div>
 </section>
 
-<!-- CATEGORÍAS -->
-<section class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-black mb-16 uppercase">Soluciones para tu <span class={titleGradient}>Unidad Productiva</span></h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+<section class="py-16 sm:py-20 lg:py-24 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-black mb-10 sm:mb-16 uppercase">Soluciones para tu <span class={titleGradient}>Unidad Productiva</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {#each categorias as cat}
-                <a href="/catalogo" class="group flex flex-col items-center p-8 border border-stone-100 rounded-3xl hover:border-emerald-800 transition-all hover:bg-stone-50">
-                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-emerald-100 transition-all">
+                <a href="/catalogo" class="group flex flex-col items-center p-6 sm:p-8 bg-white sm:bg-stone-50 border border-stone-200 sm:border-stone-100 rounded-2xl sm:rounded-3xl hover:border-emerald-800 transition-all hover:bg-white shadow-sm sm:shadow-none">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-stone-100 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-emerald-100 transition-all">
                         <Icon icon={cat.icon} class="text-2xl text-stone-600 group-hover:text-emerald-800" />
                     </div>
-                    <span class="font-bold uppercase text-xs tracking-widest text-stone-900">{cat.title}</span>
+                    <span class="font-bold uppercase text-[11px] sm:text-xs tracking-wider sm:tracking-widest text-stone-900">{cat.title}</span>
                 </a>
             {/each}
         </div>
     </div>
 </section>
 
-<!-- EDUCACIÓN -->
-<section class="py-24 bg-stone-50">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-end mb-16">
-            <h2 class="text-3xl font-black uppercase tracking-tight">Educación <span class={titleGradient}>Agropecuaria</span></h2>
+<section class="py-16 sm:py-20 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight">Educación <span class={titleGradient}>Agropecuaria</span></h2>
             <a href="/educacion" class={btnSecondary}>Ver Recursos</a>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {#each [{title: "Nutrición Animal", img: "/nutri.jpeg"}, {title: "Manejo de Potreros", img: "/manejo.png"}, {title: "Administración", img: "/adm.jpg"}] as educ}
-                <div class="relative p-8 rounded-3xl overflow-hidden min-h-[300px] flex flex-col justify-end border border-stone-200">
+                <div class="relative p-6 sm:p-8 rounded-3xl overflow-hidden min-h-[260px] sm:min-h-[300px] flex flex-col justify-end border border-stone-200 shadow-sm">
                     <img src={educ.img} alt={educ.title} class="absolute inset-0 w-full h-full object-cover" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     <h4 class="relative z-10 text-xl font-bold text-white">{educ.title}</h4>
                 </div>
             {/each}
