@@ -3,7 +3,7 @@
 
     const productos: { id: number, title: string, cat: string, price: number | string, images: string[], desc: string, link?: string }[] = [
         { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
-        { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, images: ["/alambre.png"], desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
+        { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, images: ["/alambrenew.jpeg"], desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
         { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, images: ["/brega.png"], desc: " De 1KG Formulado para el control de melezas en el maíz." },
         { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, images: ["/realgly.png"], desc: " 1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
         { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 18, images: ["/herbicida.png"], desc: "Envase de 1LT. Envases de 4LT Y 10LT Preguntar disponibilidad y precios. Control efectivo de malezas de hoja ancha y presentación de 1L ideal para potrero." },
@@ -38,7 +38,11 @@
             images: ["/botas1.jpeg", "/botas2.jpeg"], 
             desc: "Color negro y marrón, alta resistencia para trabajo de campo." 
         },
-        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Manuales Digitales", price: "", images: ["/logo.png"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" }
+        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Manuales Digitales", price: "", images: ["/logo.png"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" },
+        { id: 24, title: "Glytotal 747 WG", cat: "Herbicidas", price: 10.5, images: ["/747gly.jpeg"], desc: "Presentación de 1 KG, formulado para un control amplio y sistémico de malezas." },
+        { id: 25, title: "Socio en polvo", cat: "Herbicidas", price: 31, images: ["/socio.jpeg"], desc: "Presentación en polvo de 1 kg para el control eficiente de malezas." },
+        { id: 26, title: "24D Amina 6 Proficol", cat: "Herbicidas", price: 28.5, images: ["/amina.jpeg"], desc: "Herbicida hormonal selectivo para el control de malezas de hoja ancha en cultivos." },
+        { id: 27, title: "Alisio", cat: "Herbicidas", price: 18, images: ["/alisio.jpeg"], desc: "Presentación de 500 g ideal para aplicaciones agrícolas precisas." }
     ];
 
     const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Plandula", "Manuales Digitales", "Promociones", "Novedades" ];
