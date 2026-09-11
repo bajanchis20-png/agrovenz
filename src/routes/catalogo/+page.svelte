@@ -2,23 +2,21 @@
     import Icon from "@iconify/svelte";
 
     const productos: { id: number, title: string, cat: string, price: number | string, images: string[], desc: string, link?: string }[] = [
+        // Alimentación Animal
         { id: 1, title: "Harina de Palmiste", cat: "Alimentación Animal", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
-        { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, images: ["/alambrenew.jpeg"], desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
-        { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, images: ["/brega.png"], desc: " De 1KG Formulado para el control de melezas en el maíz." },
-        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, images: ["/realgly.png"], desc: " 1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
-        { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 18, images: ["/herbicida.png"], desc: "Envase de 1LT. Envases de 4LT Y 10LT Preguntar disponibilidad y precios. Control efectivo de malezas de hoja ancha y presentación de 1L ideal para potrero." },
-        { id: 6, title: "Socio", cat: "Herbicidas", price: 1, images: ["/socio.png"], desc: "De acción sistémica utilizado para control de maleza de hoja ancha y algunas gramíneas." },
         { id: 7, title: "Silo de maíz", cat: "Alimentación Animal", price: 4, images: ["/silodemaiz2.jpeg"], desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
-        { id: 8, title: "SiloLact", cat: "Bioinsumos", price: 70, images: ["/silolact.png"], desc: "Presentación de 500ml. para uso pecuario. Favorece la fermentación y conservación del forraje." },
-        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, images: ["/bolsas.png"], desc: "200 bolsas. Para hacer silo, capacidad 40KG, Calibre 60x120x20. Equipo resistente para empaque y conservación." },
-        { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
         { id: 11, title: "Melaza", cat: "Alimentación Animal", price: 14, images: ["/Melaza.png"], desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." },
-        { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y Semillas", price: 12.6, images: ["/semilladepasto.png"], desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
-        { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: "Consultar", images: ["/bovino.png"], desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
+        
+        // Bioinsumos
+        { id: 8, title: "SiloLact", cat: "Bioinsumos", price: 70, images: ["/silolact.png"], desc: "Presentación de 500ml. para uso pecuario. Favorece la fermentación y conservación del forraje." },
+
+        // Cercas Eléctricas
+        { id: 2, title: "Alambre electrico", cat: "Cercas Eléctricas", price: 170, images: ["/alambrenew.jpeg"], desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." },
+
+        // Equipos Agropecuarios
+        { id: 9, title: "Bolsas Resistentes", cat: "Equipos Agropecuarios", price: 90, images: ["/bolsas.png"], desc: "200 bolsas. Para hacer silo, capacidad 40KG, Calibre 60x120x20. Equipo resistente para empaque y conservación." },
         { id: 14, title: "Microchip de 2.12 mm", cat: "Equipos Agropecuarios", price: 1, images: ["/chipnew99.png"], desc: "Identificacion de ganado." },
         { id: 16, title: "Lector modelo W90B. 134.2 Khz", cat: "Equipos Agropecuarios", price: 70, images: ["/lectornew.jpeg"], desc: "diseñado para la identificación y trazabilidad de animales" },
-        { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." },
-        { id: 17, title: "Plandula In vitro", cat: "Plandula", price: "Consultar", images: ["/pendula.jpeg"], desc: "Geoplasma exclusivo." },
         { id: 19, title: "Jeringas plasticas reutilizables", cat: "Equipos Agropecuarios", price: 10, images: ["/jeringa.jpeg"], desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." },
         { id: 20, title: "Aguja ganadera 10 unidades", cat: "Equipos Agropecuarios", price: 6, images: ["/aguja.png"], desc: "Pack de 10 unidades resistentes y de excelente calidad para tratamientos veterinarios." },
         { id: 21, title: "Garrocha para ganado", cat: "Equipos Agropecuarios", price: 130, images: ["/garrocha.png"], desc: "Herramienta resistente y ergonómica para el manejo seguro del rebaño." },
@@ -38,14 +36,110 @@
             images: ["/botas1.jpeg", "/botas2.jpeg"], 
             desc: "Color negro y marrón, alta resistencia para trabajo de campo." 
         },
-        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Manuales Digitales", price: "", images: ["/logo.png"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" },
+
+        // Ganadería
+        { id: 13, title: "Bumaute y Bumautas", cat: "Ganadería", price: "Consultar", images: ["/bovino.png"], desc: "Genética seleccionada para mejorar la productividad de tu rebaño." },
+
+        // Herbicidas
+        { id: 3, title: "Brega", cat: "Herbicidas", price: 12.65, images: ["/brega.png"], desc: " De 1KG Formulado para el control de melezas en el maíz." },
+        { id: 4, title: "Glytotal", cat: "Herbicidas", price: 8.8, images: ["/realgly.png"], desc: " 1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas, áreas agrícolas y no agrícolas." },
+        { id: 5, title: "Jonrón 212", cat: "Herbicidas", price: 18, images: ["/herbicida.png"], desc: "Envase de 1LT. Envases de 4LT Y 10LT Preguntar disponibilidad y precios. Control efectivo de malezas de hoja ancha y presentación de 1L ideal para potrero." },
+        { id: 6, title: "Socio", cat: "Herbicidas", price: 1, images: ["/socio.png"], desc: "De acción sistémica utilizado para control de maleza de hoja ancha y algunas gramíneas." },
         { id: 24, title: "Glytotal 747 WG", cat: "Herbicidas", price: 10.5, images: ["/747gly.jpeg"], desc: "Presentación de 1 KG, formulado para un control amplio y sistémico de malezas." },
         { id: 25, title: "Socio en polvo", cat: "Herbicidas", price: 31, images: ["/socio.jpeg"], desc: "Presentación en polvo de 1 kg para el control eficiente de malezas." },
         { id: 26, title: "24D Amina 6 Proficol", cat: "Herbicidas", price: 28.5, images: ["/amina.jpeg"], desc: "Herbicida hormonal selectivo para el control de malezas de hoja ancha en cultivos." },
-        { id: 27, title: "Alisio", cat: "Herbicidas", price: 18, images: ["/alisio.jpeg"], desc: "Presentación de 500 g ideal para aplicaciones agrícolas precisas." }
+        { id: 27, title: "Alisio", cat: "Herbicidas", price: 18, images: ["/alisio.jpeg"], desc: "Presentación de 500 g ideal para aplicaciones agrícolas precisas." },
+
+        // Inversiones y tierras
+        { id: 15, title: "Venta de tierras y asesoría", cat: "Inversiones y tierras", price: "Consultar", images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." },
+
+        // Manuales Digitales
+        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Manuales Digitales", price: "", images: ["/logo.png"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" },
+
+        // Pastos y Semillas
+        { id: 10, title: "Semilla de maíz", cat: "Pastos y Semillas", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
+        { id: 12, title: "Semilla de pasto Matsuda", cat: "Pastos y Semillas", price: 12.6, images: ["/semilladepasto.png"], desc: " Presentación de 20KG. Balance mineral necesario para el desarrollo animal, buena genética." },
+
+        // Plandula
+        { id: 17, title: "Plandula In vitro", cat: "Plandula", price: "Consultar", images: ["/pendula.jpeg"], desc: "Geoplasma exclusivo." },
+
+        // Veterinaria
+        { id: 28, title: "Albendazol 25% + Co (100 ml)", cat: "Veterinaria", price: 9.69, images: ["/remedio.jpg"], desc: "Antiparasitario interno de amplio espectro con cobalto." },
+        { id: 29, title: "Albendazol 25% + Co (500 ml)", cat: "Veterinaria", price: 27.68, images: ["/remedio.jpg"], desc: "Presentación de 500 ml de antiparasitario interno con cobalto." },
+        { id: 30, title: "Albendazol 25% + Co (1 litro)", cat: "Veterinaria", price: 52.31, images: ["/remedio.jpg"], desc: "Presentación de 1 litro de antiparasitario interno con cobalto." },
+        { id: 31, title: "Calbendazole 10% (1 litro)", cat: "Veterinaria", price: 25.55, images: ["/calbendazon.jpg"], desc: "Control efectivo de parásitos gastrointestinales y pulmonares." },
+        { id: 32, title: "Ivermin pasta oral (6 g)", cat: "Veterinaria", price: 4.80, images: ["/invermin2.jpeg"], desc: "Ivermectina en pasta oral para dosificación precisa." },
+        { id: 33, title: "Vermigan - ricobendazol (500 ml)", cat: "Veterinaria", price: 31.67, images: ["/logo.png"], desc: "Ricobendazol al 15% para el tratamiento de parásitos internos." },
+        { id: 34, title: "Calbomax - doramectina (50 ml)", cat: "Veterinaria", price: 9.52, images: ["/logo.png"], desc: "Endectocida de acción prolongada a base de doramectina." },
+        { id: 35, title: "Calbomax - doramectina (250 ml)", cat: "Veterinaria", price: 34.65, images: ["/logo.png"], desc: "Presentación de 250 ml de doramectina." },
+        { id: 36, title: "Calbomax - doramectina (500 ml)", cat: "Veterinaria", price: 59.00, images: ["/logo.png"], desc: "Presentación de 500 ml de doramectina de amplio espectro." },
+        { id: 37, title: "Dectomax (50 ml)", cat: "Veterinaria", price: 16.40, images: ["/logo.png"], desc: "Solución inyectable de doramectina original." },
+        { id: 38, title: "Dectomax (250 ml)", cat: "Veterinaria", price: 75.44, images: ["/logo.png"], desc: "Frasco de 250 ml de doramectina Dectomax." },
+        { id: 39, title: "Dectomax (500 ml)", cat: "Veterinaria", price: 123.00, images: ["/logo.png"], desc: "Frasco de 500 ml de doramectina Dectomax." },
+        { id: 40, title: "Dectomec Gold - ivermectina 3,15% (100 ml)", cat: "Veterinaria", price: 9.13, images: ["/logo.png"], desc: "Ivermectina de alta concentración al 3,15%." },
+        { id: 41, title: "Dectomec Gold - ivermectina 3,15% (500 ml)", cat: "Veterinaria", price: 31.67, images: ["/logo.png"], desc: "Presentación de 500 ml de ivermectina 3,15%." },
+        { id: 42, title: "Dectomec Max - doramectina 2% (100 ml)", cat: "Veterinaria", price: 16.79, images: ["/logo.png"], desc: "Doramectina al 2% inyectable." },
+        { id: 43, title: "Dectomec Max - doramectina 2% (500 ml)", cat: "Veterinaria", price: 70.06, images: ["/logo.png"], desc: "Presentación de 500 ml de doramectina al 2%." },
+        { id: 44, title: "Ivermin Gold 3.15 (500 ml)", cat: "Veterinaria", price: 39.57, images: ["/logo.png"], desc: "Ivermectina de larga acción y alta concentración." },
+        { id: 45, title: "Ivermin (50 ml)", cat: "Veterinaria", price: 3.99, images: ["/logo.png"], desc: "Ivermectina estándar presentación de 50 ml." },
+        { id: 46, title: "Ivermin (200 ml)", cat: "Veterinaria", price: 9.56, images: ["/logo.png"], desc: "Ivermectina presentación de 200 ml." },
+        { id: 47, title: "Ivermin (500 ml)", cat: "Veterinaria", price: 21.68, images: ["/logo.png"], desc: "Ivermectina presentación económica de 500 ml." },
+        { id: 48, title: "Bactermisil 20% (250 ml)", cat: "Veterinaria", price: 10.57, images: ["/logo.png"], desc: "Antibiótico de amplio espectro." },
+        { id: 49, title: "Bactermisil 20% (1 litro)", cat: "Veterinaria", price: 30.73, images: ["/logo.png"], desc: "Presentación de 1 litro de antibiótico." },
+        { id: 50, title: "Flocherry 30% (100 ml)", cat: "Veterinaria", price: 18.59, images: ["/logo.png"], desc: "Florfenicol al 30% para infecciones respiratorias." },
+        { id: 51, title: "Oxitetraciclina 5% Cherry (100 ml)", cat: "Veterinaria", price: 5.02, images: ["/logo.png"], desc: "Antibiótico inyectable de acción corta." },
+        { id: 52, title: "Oxitetraciclina 5% Cherry (500 ml)", cat: "Veterinaria", price: 18.63, images: ["/logo.png"], desc: "Presentación de 500 ml de oxitetraciclina 5%." },
+        { id: 53, title: "Oxitetraciclina LA 20% Cherry (100 ml)", cat: "Veterinaria", price: 8.70, images: ["/logo.png"], desc: "Oxitetraciclina de larga acción 20%." },
+        { id: 54, title: "Oxitetraciclina LA 20% Cherry (250 ml)", cat: "Veterinaria", price: 17.07, images: ["/logo.png"], desc: "Presentación de 250 ml de oxitetraciclina LA." },
+        { id: 55, title: "Babecide (100 ml)", cat: "Veterinaria", price: 8.50, images: ["/logo.png"], desc: "Hemoparasiticida para el control de babesiosis y anaplasmosis." },
+        { id: 56, title: "Babecide (250 ml)", cat: "Veterinaria", price: 19.95, images: ["/logo.png"], desc: "Presentación de 250 ml de Babecide." },
+        { id: 57, title: "Babecide (500 ml)", cat: "Veterinaria", price: 36.75, images: ["/logo.png"], desc: "Presentación de 500 ml de Babecide." },
+        { id: 58, title: "Complejo B B12-B15 (20 ml)", cat: "Veterinaria", price: 6.32, images: ["/logo.png"], desc: "Vitamínico reconstituyente." },
+        { id: 59, title: "Complejo B B12-B15 (100 ml)", cat: "Veterinaria", price: 20.79, images: ["/logo.png"], desc: "Presentación de 100 ml de Complejo B." },
+        { id: 60, title: "Complejo B B12-B15 (250 ml)", cat: "Veterinaria", price: 34.69, images: ["/logo.png"], desc: "Presentación de 250 ml de Complejo B." },
+        { id: 61, title: "Energizante vitamínico (25 ml)", cat: "Veterinaria", price: 6.88, images: ["/logo.png"], desc: "Bebida o inyectable energizante y vitamínico." },
+        { id: 62, title: "Energizante vitamínico (100 ml)", cat: "Veterinaria", price: 16.69, images: ["/logo.png"], desc: "Presentación de 100 ml energizante." },
+        { id: 63, title: "Energizante vitamínico (250 ml)", cat: "Veterinaria", price: 31.17, images: ["/logo.png"], desc: "Presentación de 250 ml energizante." },
+        { id: 64, title: "Hemo 15 (100 ml)", cat: "Veterinaria", price: 41.13, images: ["/logo.png"], desc: "Suplemento hematopoyético y vitamínico." },
+        { id: 65, title: "Minerfun F.M. (100 ml)", cat: "Veterinaria", price: 11.01, images: ["/logo.png"], desc: "Suplemento mineral y vitamínico." },
+        { id: 66, title: "Minerfun F.M. (500 ml)", cat: "Veterinaria", price: 34.59, images: ["/logo.png"], desc: "Presentación de 500 ml Minerfun F.M." },
+        { id: 67, title: "Minerfun MX (250 ml)", cat: "Veterinaria", price: 40.58, images: ["/logo.png"], desc: "Suplemento mineral avanzado." },
+        { id: 68, title: "Minerfun MX (500 ml)", cat: "Veterinaria", price: 70.74, images: ["/logo.png"], desc: "Presentación de 500 ml Minerfun MX." },
+        { id: 69, title: "Minerfun Plus con selenio (100 ml)", cat: "Veterinaria", price: 14.14, images: ["/logo.png"], desc: "Suplemento con minerales y selenio." },
+        { id: 70, title: "Minerfun Plus con selenio (250 ml)", cat: "Veterinaria", price: 25.15, images: ["/logo.png"], desc: "Presentación de 250 ml con selenio." },
+        { id: 71, title: "Minerfun Plus con selenio (500 ml)", cat: "Veterinaria", price: 42.45, images: ["/logo.png"], desc: "Presentación de 500 ml con selenio." },
+        { id: 72, title: "Olivitasan (25 ml)", cat: "Veterinaria", price: 4.91, images: ["/logo.png"], desc: "Reconstituyente general." },
+        { id: 73, title: "Olivitasan (100 ml)", cat: "Veterinaria", price: 10.42, images: ["/logo.png"], desc: "Presentación de 100 ml de Olivitasan." },
+        { id: 74, title: "Olivitasan (300 ml)", cat: "Veterinaria", price: 21.13, images: ["/logo.png"], desc: "Presentación de 300 ml de Olivitasan." },
+        { id: 75, title: "Olivitasan (500 ml)", cat: "Veterinaria", price: 31.82, images: ["/logo.png"], desc: "Presentación de 500 ml de Olivitasan." },
+        { id: 76, title: "Olivitasan Plus (250 ml)", cat: "Veterinaria", price: 37.60, images: ["/logo.png"], desc: "Fórmula reforzada Olivitasan Plus." },
+        { id: 77, title: "Olivitasan Plus (500 ml)", cat: "Veterinaria", price: 64.60, images: ["/logo.png"], desc: "Presentación de 500 ml Olivitasan Plus." },
+        { id: 78, title: "Vitamina B12 5000 importada (50 ml)", cat: "Veterinaria", price: 34.39, images: ["/logo.png"], desc: "Vitamina B12 de alta potencia importada." },
+        { id: 79, title: "Fortemax (500 ml)", cat: "Veterinaria", price: 23.37, images: ["/logo.png"], desc: "Reconstituyente y energizante general." },
+        { id: 80, title: "Levantol (500 ml)", cat: "Veterinaria", price: 11.34, images: ["/logo.png"], desc: "Tónico general y estimulante." },
+        { id: 81, title: "Modificador Orgánico Toro (100 ml)", cat: "Veterinaria", price: 6.24, images: ["/logo.png"], desc: "Mejora el metabolismo y ganancia de peso." },
+        { id: 82, title: "Modificador Orgánico Toro (500 ml)", cat: "Veterinaria", price: 18.24, images: ["/logo.png"], desc: "Presentación de 500 ml Modificador Orgánico Toro." },
+        { id: 83, title: "Buta Cal (100 ml)", cat: "Veterinaria", price: 12.08, images: ["/logo.png"], desc: "Analgésico, antipirético y antirreumático." },
+        { id: 84, title: "Dex-Cal - dexametasona (100 ml)", cat: "Veterinaria", price: 8.82, images: ["/logo.png"], desc: "Corticoide de acción prolongada." },
+        { id: 85, title: "Dibrosal expectorante (1 kg)", cat: "Veterinaria", price: 11.18, images: ["/logo.png"], desc: "Expectorante en polvo para problemas respiratorios." },
+        { id: 86, title: "Neotil F (100 g)", cat: "Veterinaria", price: 4.64, images: ["/logo.png"], desc: "Antibiótico en polvo soluble." },
+        { id: 87, title: "Neotil F (1 kg)", cat: "Veterinaria", price: 36.36, images: ["/logo.png"], desc: "Presentación de 1 kg de Neotil F." },
+        { id: 88, title: "Pata Negra para cerdos (1 kg)", cat: "Veterinaria", price: 4.66, images: ["/logo.png"], desc: "Suplemento especializado para porcinos." },
+        { id: 89, title: "Stop antidiarreico (10 sobres)", cat: "Veterinaria", price: 9.47, images: ["/logo.png"], desc: "Tratamiento eficaz contra diarreas en animales." },
+        { id: 90, title: "Biodil (50 ml)", cat: "Veterinaria", price: 41.00, images: ["/logo.png"], desc: "Especialidad veterinaria de alta efectividad." },
+        { id: 91, title: "Amitraz Calbos (200 ml)", cat: "Veterinaria", price: 10.14, images: ["/logo.png"], desc: "Garrapaticida y sarnicida tópico." },
+        { id: 92, title: "Amitraz Calbos (500 ml)", cat: "Veterinaria", price: 21.50, images: ["/logo.png"], desc: "Presentación de 500 ml de Amitraz Calbos." },
+        { id: 93, title: "Ganasan Baño - cipermetrina 20% (1 litro)", cat: "Veterinaria", price: 23.06, images: ["/logo.png"], desc: "Baño garrapaticida y moscas a base de cipermetrina." },
+        { id: 94, title: "Garrabaño (500 ml)", cat: "Veterinaria", price: 21.51, images: ["/logo.png"], desc: "Control externo de parásitos en presentación de 500 ml." },
+        { id: 95, title: "Garrabaño (1 litro)", cat: "Veterinaria", price: 40.90, images: ["/logo.png"], desc: "Control externo de parásitos en presentación de 1 litro." },
+        { id: 96, title: "Na Mosca Ourofino (20 aretes)", cat: "Veterinaria", price: 57.40, images: ["/logo.png"], desc: "Aretes repelentes y controladores de moscas." },
+        { id: 97, title: "Flechazo spray (160 ml)", cat: "Veterinaria", price: 4.92, images: ["/logo.png"], desc: "Curandero y repelente en spray." },
+        { id: 98, title: "Flechazo spray (354 ml)", cat: "Veterinaria", price: 7.15, images: ["/logo.png"], desc: "Presentación de 354 ml de Flechazo spray." },
+        { id: 99, title: "Lepecid (400 ml)", cat: "Veterinaria", price: 6.15, images: ["/logo.png"], desc: "Curandero, matagusanos y repelente." },
+        { id: 100, title: "Mata Bicheira Calbos* (500 ml)", cat: "Veterinaria", price: 4.85, images: ["/logo.png"], desc: "Tratamiento y prevención de gusaneras y bicheras." }
     ];
 
-    const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Plandula", "Manuales Digitales", "Promociones", "Novedades" ];
+    const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Plandula", "Manuales Digitales", "Promociones", "Novedades", "Veterinaria" ];
     const metodosPago = ["Mercantil", "Venezuela", "Banesco", "Pago Móvil", "Efectivo Divisa", "Binance"];
 
     let busqueda = $state("");
