@@ -96,6 +96,25 @@
     <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div class="space-y-4 sm:space-y-6 text-center lg:text-left">
+                <h2 class="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 uppercase tracking-tight leading-tight">
+                    ¿Quieres vender tu <span class="{titleGradient}">maquinaria</span>?
+                </h2>
+                <p class="text-stone-600 text-sm sm:text-lg">Agrovenz te ayuda a encontrar el comprador. Publicamos, promocionamos y conectamos.</p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                    <a href="{waLink}Hola, deseo vender mi maquinaria." target="_blank" class="w-full sm:w-auto px-6 xs:px-8 py-3.5 xs:py-4 bg-stone-900 text-white hover:bg-emerald-800 rounded-xl text-[9px] xs:text-[10px] lg:text-[11px] font-bold uppercase tracking-[0.155em] lg:tracking-[0.2em] transition-all text-center">Enviar Fotos y Datos</a>
+                </div>
+            </div>
+            <div class="relative h-[260px] xs:h-[320px] sm:h-[400px] lg:h-[500px] rounded-2xl lg:rounded-[2rem] overflow-hidden shadow-2xl">
+                <img src="/maquina2.jpeg" alt="Maquinaria Agrovenz" class="w-full h-full object-cover" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 sm:py-16 lg:py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div class="space-y-4 sm:space-y-6 text-center lg:text-left">
                 
                 <h2 class="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 uppercase tracking-tight leading-tight">
                     Soluciones verdes para <span class={titleGradient}>empresas</span>
