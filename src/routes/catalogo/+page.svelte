@@ -56,7 +56,7 @@
         { id: 15, title: "Venta de tierras y asesoría", cat: "Agro", subcat: "Inversiones", price: "Consultar", images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." },
 
         // Manuales Digitales
-        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Agro", subcat: "Manuales", price: "", images: ["/logo.png"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" },
+        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Agro", subcat: "Manuales", price: "", images: ["/manual.jpeg"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" },
 
         // Pastos y Semillas
         { id: 10, title: "Semilla de maíz", cat: "Agro", subcat: "Semillas", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
