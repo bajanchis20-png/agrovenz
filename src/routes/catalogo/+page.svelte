@@ -169,15 +169,15 @@
         { tituloBase: "Mata Bicheira Calbos", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", variantes: [{ id: 100, volumen: "500 ml", price: 5.82, images: ["/mata.jpeg"], desc: "Tratamiento y prevención de gusaneras y bicheras." }] },
 
         // Repuestos Agro (Desmalezadoras y Motosierras)
-        { tituloBase: "Empuñadura mando", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 101, volumen: "TL33 TL43 TL52", price: 20, images: ["/placeholder.png"], desc: "Empuñadura de mando para desmalezadoras." }] },
-        { tituloBase: "Tuerca cabezal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 102, volumen: "M10X1.25", price: 4, images: ["/placeholder.png"], desc: "Tuerca cabezal M10X1.25 para desmalezadora TL43 TL52." }] },
-        { tituloBase: "Uña de arranque", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 103, volumen: "Estándar", price: 3, images: ["/placeholder.png"], desc: "Uña de arranque para motosierra MS180 MS250 MS390." }] },
-        { tituloBase: "Estopera cigüeñal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 104, volumen: "Estándar", price: 10, images: ["/placeholder.png"], desc: "Estopera de cigüeñal para motosierra MS290 MS310 MS390." }] },
-        { tituloBase: "Manguera combustible con filtro", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 105, volumen: "Estándar", price: 5, images: ["/placeholder.png"], desc: "Manguera de combustible con filtro para desmalezadora." }] },
+        { tituloBase: "Empuñadura mando", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 101, volumen: "TL33 TL43 TL52", price: 20, images: ["/empu.png"], desc: "Empuñadura de mando para desmalezadoras." }] },
+        { tituloBase: "Tuerca cabezal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 102, volumen: "M10X1.25", price: 4, images: ["/tuerca.png"], desc: "Tuerca cabezal M10X1.25 para desmalezadora TL43 TL52." }] },
+        { tituloBase: "Uña de arranque", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 103, volumen: "Estándar", price: 3, images: ["/una.png"], desc: "Uña de arranque para motosierra MS180 MS250 MS390." }] },
+        { tituloBase: "Estopera cigüeñal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 104, volumen: "Estándar", price: 10, images: ["/estopera.png"], desc: "Estopera de cigüeñal para motosierra MS290 MS310 MS390." }] },
+        { tituloBase: "Manguera combustible con filtro", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 105, volumen: "Estándar", price: 5, images: ["/maguera2.png"], desc: "Manguera de combustible con filtro para desmalezadora." }] },
         { tituloBase: "Pipa bujía", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 106, volumen: "Universal", price: 3, images: ["/placeholder.png"], desc: "Pipa bujía universal para desmalezadora y motosierra." }] },
         { tituloBase: "Carburador", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 107, volumen: "TL43 TL52", price: 27, images: ["/placeholder.png"], desc: "Carburador para desmalezadora TL43 TL52 BCH-40T." }] },
         { tituloBase: "Campana embrague", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 108, volumen: "9D", price: 7, images: ["/placeholder.png"], desc: "Campana embrague desmalezadora 9D TL43 TL52." }] },
-        { tituloBase: "Filtro aire", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 109, volumen: "FS120/FS250", price: 7, images: ["/placeholder.png"], desc: "Filtro aire desmalezadora FS120 FS250 FS450." }] },
+        { tituloBase: "Filtro aire", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 109, volumen: "FS120/FS250", price: 7, images: ["/filtro.png"], desc: "Filtro aire desmalezadora FS120 FS250 FS450." }] },
         { tituloBase: "Bujía 2T", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [
             { id: 110, volumen: "Denso", price: 7, images: ["/placeholder.png"], desc: "Bujía 2T Denso para desmalezadora y motosierra." },
             { id: 111, volumen: "Yamaha", price: 7, images: ["/placeholder.png"], desc: "Bujía 2T Yamaha para desmalezadora y motosierra." }
@@ -193,25 +193,25 @@
         { tituloBase: "Nylon", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 118, volumen: "Estándar", price: 30, images: ["/placeholder.png"], desc: "Nylon para desmalezadora." }] },
 
         // Repuestos Agro (Motores a Gasolina)
-        { tituloBase: "Bujía 4T", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 119, volumen: "Denso", price: 7, images: ["/placeholder.png"], desc: "Bujía Denso 4T motor generador motobomba." }] },
-        { tituloBase: "Tanque gasolina", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 120, volumen: "GX160/GX168", price: 29, images: ["/placeholder.png"], desc: "Tanque gasolina motor GX160 GX168." }] },
-        { tituloBase: "Carburador motor", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 121, volumen: "GX120/GX160", price: 20, images: ["/placeholder.png"], desc: "Carburador motor GX120 GX160 GX168." }] },
+        { tituloBase: "Bujía 4T", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 119, volumen: "Denso", price: 7, images: ["/buji.png"], desc: "Bujía Denso 4T motor generador motobomba." }] },
+        { tituloBase: "Tanque gasolina", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 120, volumen: "GX160/GX168", price: 29, images: ["/tanque.png"], desc: "Tanque gasolina motor GX160 GX168." }] },
+        { tituloBase: "Carburador motor", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 121, volumen: "GX120/GX160", price: 20, images: ["/carburador.png"], desc: "Carburador motor GX120 GX160 GX168." }] },
         { tituloBase: "Estopera cigüeñal motor", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 122, volumen: "25X41.25X6", price: 4, images: ["/placeholder.png"], desc: "Estopera cigüeñal motor GX160 GX168." }] },
-        { tituloBase: "Biela", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 123, volumen: "5.5-6.5 HP", price: 10, images: ["/placeholder.png"], desc: "Biela motor GX160 GX168 5,5-6,5 HP." }] },
-        { tituloBase: "Kit anillos", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 124, volumen: "GX160/GX168 67mm", price: 7, images: ["/placeholder.png"], desc: "Kit anillos motor GX160 GX168 67 mm Standard." }] },
+        { tituloBase: "Biela", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 123, volumen: "5.5-6.5 HP", price: 10, images: ["/biela.png"], desc: "Biela motor GX160 GX168 5,5-6,5 HP." }] },
+        { tituloBase: "Kit anillos", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 124, volumen: "GX160/GX168 67mm", price: 7, images: ["/kit.png"], desc: "Kit anillos motor GX160 GX168 67 mm Standard." }] },
         { tituloBase: "Kit empacaduras", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 125, volumen: "GX160/GX168", price: 6, images: ["/placeholder.png"], desc: "Kit empacaduras motor GX160 GX168." }] },
         { tituloBase: "Kit válvulas", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 126, volumen: "Admisión/Escape", price: 13, images: ["/placeholder.png"], desc: "Kit válvulas motor GX160 GX168 GX170 admisión escape." }] },
         { tituloBase: "Arranque manual", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 127, volumen: "GX160/GX168", price: 14, images: ["/placeholder.png"], desc: "Arranque manual motor GX160 GX168 5,5-6,5 HP." }] },
 
         // Otros repuestos y accesorios sueltos añadidos
         { tituloBase: "Manguera fumigadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [
-            { id: 128, volumen: "25 M 200 Bar 8.5 mm", price: 30, images: ["/placeholder.png"], desc: "Manguera fumigadora 25 metros." },
+            { id: 128, volumen: "25 M 200 Bar 8.5 mm", price: 30, images: ["/maguera.png"], desc: "Manguera fumigadora 25 metros." },
             { id: 129, volumen: "100 M 200 Bar 8.5 mm", price: 91, images: ["/placeholder.png"], desc: "Manguera fumigadora 100 metros." }
         ]},
-        { tituloBase: "Lanza fumigadora estacionaria", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 130, volumen: "20 cm", price: 8, images: ["/placeholder.png"], desc: "Lanza fumigadora estacionaria de 20 cm." }] },
+        { tituloBase: "Lanza fumigadora estacionaria", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 130, volumen: "20 cm", price: 8, images: ["/rojo.png"], desc: "Lanza fumigadora estacionaria de 20 cm." }] },
         { tituloBase: "Kit anillos motor diésel", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 131, volumen: "186F 9 HP Standard", price: 12, images: ["/placeholder.png"], desc: "Kit anillos motor diésel 186F 9 HP Standard." }] },
-        { tituloBase: "Kit pistón generador", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 132, volumen: "950 45 mm", price: 8, images: ["/placeholder.png"], desc: "Kit pistón generador 950 45 mm." }] },
-        { tituloBase: "Carbonera generador", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 133, volumen: "3 KVA 6 KVA", price: 4, images: ["/placeholder.png"], desc: "Carbonera generador 3 KVA 6 KVA." }] },
+        { tituloBase: "Kit pistón generador", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 132, volumen: "950 45 mm", price: 8, images: ["/piston.png"], desc: "Kit pistón generador 950 45 mm." }] },
+        { tituloBase: "Carbonera generador", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 133, volumen: "3 KVA 6 KVA", price: 4, images: ["/carbonera.png"], desc: "Carbonera generador 3 KVA 6 KVA." }] },
         { tituloBase: "Pipa bujía universal motor gasolina", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 134, volumen: "Universal", price: 3, images: ["/placeholder.png"], desc: "Pipa bujía universal para motor gasolina." }] },
         { tituloBase: "Filtro aire motor diésel", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 135, volumen: "9 HP 186F/188F/190F", price: 15, images: ["/placeholder.png"], desc: "Filtro aire motor diésel 9 HP 186F 188F 190F." }] },
         { tituloBase: "Llave de paso fumigadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 136, volumen: "DS200 LT22W LT30W", price: 6, images: ["/placeholder.png"], desc: "Llave de paso fumigadora DS200 LT22W LT30W." }] },
