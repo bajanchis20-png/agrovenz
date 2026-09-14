@@ -17,37 +17,37 @@
     }
 
     const productosCatalogo: ProductoAgrupado[] = [
-        { tituloBase: "Harina de Palmiste", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 1, volumen: "36.8 KG", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." }] },
-        { tituloBase: "Silo de maíz", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 7, volumen: "30 KG", price: 4, images: ["/silodemaiz2.jpeg"], desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." }] },
-        { tituloBase: "Melaza", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 11, volumen: "Estándar", price: 14, images: ["/Melaza.png"], desc: "Mejora la energía y condición corporal de los animales, ideal para Bovinos, búfalos, caballos, ovejas y cabras." }] },
-        { tituloBase: "SiloLact", cat: "Agro", subcat: "Bioinsumos", variantes: [{ id: 8, volumen: "500 ml", price: 70, images: ["/silolact.png"], desc: "Presentación de 500ml. para uso pecuario. Favorece la fermentación y conservación del forraje." }] },
-        { tituloBase: "Alambre electrico", cat: "Agro", subcat: "Cercas Eléctricas", variantes: [{ id: 2, volumen: "Estándar", price: 170, images: ["/alambrenew.jpeg"], desc: "Para cerco ganadero. Alta conductividad, resistente a corrosión y a la intemperie." }] },
-        { tituloBase: "Bolsas Resistentes", cat: "Agro", subcat: "Equipos", variantes: [{ id: 9, volumen: "200 bolsas", price: 90, images: ["/bolsas.png"], desc: "200 bolsas. Para hacer silo, capacidad 40KG, Calibre 60x120x20. Equipo resistente para empaque y conservación." }] },
-        { tituloBase: "Microchip de 2.12 mm", cat: "Agro", subcat: "Equipos", variantes: [{ id: 14, volumen: "2.12 mm", price: 1, images: ["/chipnew99.png"], desc: "Identificacion de ganado." }] },
-        { tituloBase: "Lector modelo W90B. 134.2 Khz", cat: "Agro", subcat: "Equipos", variantes: [{ id: 16, volumen: "W90B", price: 70, images: ["/lectornew.jpeg"], desc: "diseñado para la identificación y trazabilidad de animales" }] },
-        { tituloBase: "Jeringas plasticas reutilizables", cat: "Agro", subcat: "Equipos", variantes: [{ id: 19, volumen: "Estándar", price: 10, images: ["/jeringa.jpeg"], desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." }] },
+        { tituloBase: "Harina de Palmiste", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 1, volumen: "36.8 KG", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8 KG. Fuente de proteína y energía ideal para ganado bovino." }] },
+        { tituloBase: "Silo de maíz", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 7, volumen: "30 KG", price: 4, images: ["/silodemaiz2.jpeg"], desc: "Presentación de 30 KG,Contiene SiloLact." }] },
+        { tituloBase: "Melaza", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 11, volumen: "Estándar", price: 14, images: ["/Melaza.png"], desc: "Mejora la energía y condición corporal de los animales, ideal para bovinos, búfalos, caballos, ovejas y cabras." }] },
+        { tituloBase: "SiloLact", cat: "Agro", subcat: "Bioinsumos", variantes: [{ id: 8, volumen: "500 ml", price: 70, images: ["/silolact.png"], desc: "Presentación de 500 ml para uso pecuario. Favorece la fermentación y conservación del forraje." }] },
+        { tituloBase: "Alambre eléctrico", cat: "Agro", subcat: "Cercas Eléctricas", variantes: [{ id: 2, volumen: "Estándar", price: 170, images: ["/alambrenew.jpeg"], desc: "Para cerco ganadero. Alta conductividad, resistente a la corrosión y a la intemperie." }] },
+        { tituloBase: "Bolsas Resistentes", cat: "Agro", subcat: "Equipos", variantes: [{ id: 9, volumen: "200 bolsas", price: 90, images: ["/bolsas.png"], desc: "200 bolsas para ensilaje, capacidad de 40 KG, calibre 60x120x20. Resistentes para empaque y conservación." }] },
+        { tituloBase: "Microchip de 2.12 mm", cat: "Agro", subcat: "Equipos", variantes: [{ id: 14, volumen: "2.12 mm", price: 0, images: ["/chipnew99.png"], desc: "Identificación de ganado (Precio a consultar)." }] },
+        { tituloBase: "Lector modelo W90B. 134.2 Khz", cat: "Agro", subcat: "Equipos", variantes: [{ id: 16, volumen: "W90B", price: 70, images: ["/lectornew.jpeg"], desc: "Diseñado para la identificación y trazabilidad avanzada de animales." }] },
+        { tituloBase: "Jeringas plásticas reutilizables", cat: "Agro", subcat: "Equipos", variantes: [{ id: 19, volumen: "Estándar", price: 10, images: ["/jeringa.jpeg"], desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." }] },
         { tituloBase: "Aguja ganadera 10 unidades", cat: "Agro", subcat: "Equipos", variantes: [{ id: 20, volumen: "Pack 10u", price: 6, images: ["/aguja.png"], desc: "Pack de 10 unidades resistentes y de excelente calidad para tratamientos veterinarios." }] },
         { tituloBase: "Garrocha para ganado", cat: "Agro", subcat: "Equipos", variantes: [{ id: 21, volumen: "Estándar", price: 130, images: ["/garrocha.png"], desc: "Herramienta resistente y ergonómica para el manejo seguro del rebaño." }] },
-        { tituloBase: "Medidor de PH digital portátil", cat: "Agro", subcat: "Equipos", variantes: [{ id: 22, volumen: "Estándar", price: 12, images: ["/numero1.jpeg", "/numero2.jpeg", "/numero3.jpeg"], desc: "Medición rápida y precisa del PH en suelos y agua." }] },
-        { tituloBase: "Botas plásticas Evolution (sin puntera)", cat: "Agro", subcat: "Equipos", variantes: [{ id: 23, volumen: "Par", price: 17, images: ["/botas1.jpeg", "/botas2.jpeg"], desc: "Color negro y marrón, alta resistencia para trabajo de campo." }] },
+        { tituloBase: "Medidor de pH digital portátil", cat: "Agro", subcat: "Equipos", variantes: [{ id: 22, volumen: "Estándar", price: 12, images: ["/numero1.jpeg", "/numero2.jpeg", "/numero3.jpeg"], desc: "Medición rápida y precisa del pH en suelos y agua." }] },
+        { tituloBase: "Botas plásticas Evolution (sin puntera)", cat: "Agro", subcat: "Equipos", variantes: [{ id: 23, volumen: "Par", price: 17, images: ["/botas1.jpeg", "/botas2.jpeg"], desc: "Colores negro y marrón, alta resistencia para trabajo pesado de campo." }] },
         { tituloBase: "Bumaute y Bumautas", cat: "Agro", subcat: "Ganadería", variantes: [{ id: 13, volumen: "Estándar", price: 0, images: ["/bovino.png"], desc: "Genética seleccionada para mejorar la productividad de tu rebaño." }] },
-        { tituloBase: "Brega", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 3, volumen: "1 KG", price: 12.65, images: ["/brega.png"], desc: "De 1KG Formulado para el control de melezas en el maíz." }] },
+        { tituloBase: "Brega", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 3, volumen: "1 KG", price: 12.65, images: ["/brega.png"], desc: "Presentación de 1 KG. Formulado para el control de malezas en el maíz." }] },
         { tituloBase: "Glytotal", cat: "Agro", subcat: "Herbicidas", variantes: [
-            { id: 4, volumen: "1 LT", price: 8.8, images: ["/realgly.png"], desc: "1 LT. No selectivo, de accion sistematica ideal para el control de malezas de hoja ancha y gramíneas." },
+            { id: 4, volumen: "1 LT", price: 8.8, images: ["/realgly.png"], desc: "1 LT. No selectivo, de acción sistémica, ideal para el control de malezas de hoja ancha y gramíneas." },
             { id: 24, volumen: "747 WG (1 KG)", price: 10.5, images: ["/747gly.jpeg"], desc: "Presentación de 1 KG, formulado para un control amplio y sistémico de malezas." }
         ]},
-        { tituloBase: "Jonrón 212", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 5, volumen: "1 LT", price: 18, images: ["/herbicida.png"], desc: "Envase de 1LT. Envases de 4LT Y 10LT Preguntar disponibilidad y precios." }] },
+        { tituloBase: "Jonrón 212", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 5, volumen: "1 LT", price: 18, images: ["/herbicida.png"], desc: "Envase de 1 LT. Disponibles también en 4 LT y 10 LT. Preguntar disponibilidad y precios." }] },
         { tituloBase: "Socio", cat: "Agro", subcat: "Herbicidas", variantes: [
-            { id: 6, volumen: "Líquido", price: 1, images: ["/socio.png"], desc: "De acción sistémica utilizado para control de maleza de hoja ancha y algunas gramíneas." },
+            { id: 6, volumen: "Líquido", price: 0, images: ["/socio.png"], desc: "De acción sistémica utilizado para control de malezas de hoja ancha y algunas gramíneas (Precio a consultar)." },
             { id: 25, volumen: "En polvo (1 kg)", price: 31, images: ["/socio.jpeg"], desc: "Presentación en polvo de 1 kg para el control eficiente de malezas." }
         ]},
         { tituloBase: "24D Amina 6 Proficol", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 26, volumen: "Estándar", price: 28.5, images: ["/amina.jpeg"], desc: "Herbicida hormonal selectivo para el control de malezas de hoja ancha en cultivos." }] },
         { tituloBase: "Alisio", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 27, volumen: "500 g", price: 18, images: ["/alisio.jpeg"], desc: "Presentación de 500 g ideal para aplicaciones agrícolas precisas." }] },
         { tituloBase: "Venta de tierras y asesoría", cat: "Agro", subcat: "Inversiones", variantes: [{ id: 15, volumen: "Estándar", price: 0, images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." }] },
-        { tituloBase: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Agro", subcat: "Manuales", variantes: [{ id: 18, volumen: "Digital", price: 0, images: ["/manual2.jpeg"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" } as any] },
+        { tituloBase: "Guía de alimentación para uso adecuado de harina de palmiste", cat: "Agro", subcat: "Manuales", variantes: [{ id: 18, volumen: "Digital", price: 0, images: ["/manual2.jpeg"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" } as any] },
         { tituloBase: "Semilla de maíz", cat: "Agro", subcat: "Semillas", variantes: [{ id: 10, volumen: "Estándar", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." }] },
-        { tituloBase: "Semilla de pasto Matsuda", cat: "Agro", subcat: "Semillas", variantes: [{ id: 12, volumen: "20 KG", price: 12.6, images: ["/semilladepasto.png"], desc: "Presentación de 20KG. Balance mineral necesario para el desarrollo animal." }] },
-        { tituloBase: "Plandula In vitro", cat: "Agro", subcat: "Plandula", variantes: [{ id: 17, volumen: "Estándar", price: 0, images: ["/pendula.jpeg"], desc: "Geoplasma exclusivo." }] },
+        { tituloBase: "Semilla de pasto Matsuda", cat: "Agro", subcat: "Semillas", variantes: [{ id: 12, volumen: "20 KG", price: 12.6, images: ["/semilladepasto.png"], desc: "Presentación de 20 KG. Semillas de pasto." }] },
+        { tituloBase: "Plántula In vitro", cat: "Agro", subcat: "Plántula", variantes: [{ id: 17, volumen: "Estándar", price: 0, images: ["/pendula.jpeg"], desc: "Germoplasma exclusivo." }] },
 
         // Medicina Veterinaria
         { tituloBase: "Albendazol 25% + Co", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", variantes: [
@@ -155,7 +155,7 @@
             { id: 91, volumen: "200 ml", price: 12.17, images: ["/amitraz.jpeg"], desc: "Garrapaticida y sarnicida tópico." },
             { id: 92, volumen: "500 ml", price: 25.80, images: ["/amitraz.jpeg"], desc: "Presentación de 500 ml de Amitraz Calbos." }
         ]},
-        { tituloBase: "Ganasan Baño - cipermetrina 20%", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", variantes: [{ id: 93, volumen: "1 Litro", price: 27.67, images: ["/ciper.jpeg"], desc: "Baño garrapaticida y moscas a base de cipermetrina." }] },
+        { tituloBase: "Ganasan Baño - cipermetrina 20%", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", variantes: [{ id: 93, volumen: "1 Litro", price: 27.67, images: ["/ciper.jpeg"], desc: "Baño garrapaticida y contra moscas a base de cipermetrina." }] },
         { tituloBase: "Garrabaño", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", variantes: [
             { id: 94, volumen: "500 ml", price: 25.81, images: ["/garrabaño.jpeg"], desc: "Control externo de parásitos en presentación de 500 ml." },
             { id: 95, volumen: "1 Litro", price: 49.08, images: ["/garrabaño.jpeg"], desc: "Control externo de parásitos en presentación de 1 litro." }
@@ -170,7 +170,7 @@
     ];
 
     const macroCategorias = ["TODOS", "AGRO", "MEDICINA VETERINARIA"];
-    const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plandula", "Manuales"];
+    const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plántula", "Manuales"];
     const subCategoriasVet = ["Antiparasitarios", "Antibióticos", "Vitaminas y Suplementos", "Ectoparasiticidas", "Medicamentos"];
     const metodosPago = ["Mercantil", "Venezuela", "Banesco", "Pago Móvil", "Efectivo Divisa", "Binance"];
 
@@ -238,6 +238,7 @@
 
     function agregarAlCarrito(p: ProductoAgrupado, indexOriginal: number) {
         const varianteActiva = obtenerVarianteActiva(indexOriginal, p);
+        if (varianteActiva.price <= 0) return;
         const itemExistente = carrito.find(c => c.id === varianteActiva.id);
         if (itemExistente) {
             itemExistente.cantidad += 1;
@@ -281,7 +282,7 @@
     <header class="sticky top-0 bg-stone-50/95 backdrop-blur-md z-30 pb-3 pt-2 border-b border-stone-200 mb-4 sm:mb-6">
         <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-4 items-center justify-between">
             <div class="flex items-center justify-between w-full sm:w-auto gap-2">
-                <div class="text-sm font-black tracking-tight text-emerald-900 uppercase">Catálogo</div>
+                <div class="text-sm font-black tracking-tight text-emerald-900 uppercase">Catálogo AGROVENZ</div>
                 <button onclick={() => filtrosMovilAbierto = true} class="sm:hidden flex items-center gap-1.5 bg-emerald-800 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-xs active:scale-95 transition-transform touch-manipulation">
                     <Icon icon="mdi:filter-variant" class="text-base"/>
                     <span>Filtros</span>
@@ -311,7 +312,7 @@
                                         <span class="inline-block mt-0.5 text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold uppercase tracking-wider">{r.cat} &bull; {r.subcat}</span>
                                     </div>
                                 </div>
-                                <span class="text-xs font-black text-emerald-800 shrink-0">${r.variantes[0].price.toFixed(2)}</span>
+                                <span class="text-xs font-black text-emerald-800 shrink-0">{r.variantes[0].price > 0 ? `$${r.variantes[0].price.toFixed(2)}` : 'Consultar'}</span>
                             </button>
                         {/each}
                     </div>
@@ -387,12 +388,11 @@
         {/each}
     </div>
 
-    <!-- Drawer de Filtros (Móvil) Estilo Exacto al Capture -->
+    <!-- Drawer de Filtros (Móvil) -->
     {#if filtrosMovilAbierto}
         <div class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 transition-opacity" onclick={() => filtrosMovilAbierto = false}></div>
         <div class="fixed bottom-0 left-0 right-0 max-h-[85vh] bg-white rounded-t-[2.5rem] shadow-2xl z-50 p-6 flex flex-col transition-transform transform translate-y-0 overflow-hidden">
             
-            <!-- Cabecera del Drawer -->
             <div class="flex justify-between items-center mb-6 pb-2 shrink-0">
                 <h2 class="font-black text-base text-stone-900 uppercase tracking-wide">FILTRAR CATÁLOGO</h2>
                 <button onclick={() => filtrosMovilAbierto = false} class="p-1.5 text-stone-700 hover:bg-stone-100 rounded-full transition-colors touch-manipulation">
@@ -400,10 +400,7 @@
                 </button>
             </div>
 
-            <!-- Contenido Scrollable -->
             <div class="overflow-y-auto pr-0.5 space-y-5 flex-grow pb-2">
-                
-                <!-- Categoría General -->
                 <div>
                     <label class="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-2.5">CATEGORÍA GENERAL</label>
                     <div class="flex flex-col gap-2">
@@ -418,7 +415,6 @@
                     </div>
                 </div>
 
-                <!-- Subcategoría Específica -->
                 <div>
                     <label class="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-2.5">SUBCATEGORÍA ESPECÍFICA</label>
                     <div class="flex flex-col gap-1.5">
@@ -440,7 +436,6 @@
                 </div>
             </div>
 
-            <!-- Botones Inferiores Fijos -->
             <div class="pt-4 mt-2 border-t border-stone-100 shrink-0 flex items-center gap-3">
                 <button onclick={() => { macroFiltro = "TODOS"; subFiltro = "Todas"; }} class="w-1/3 py-3.5 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-black uppercase tracking-wider transition-colors text-center touch-manipulation">
                     LIMPIAR
