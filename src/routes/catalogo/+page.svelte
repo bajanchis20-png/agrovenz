@@ -44,7 +44,7 @@
         { tituloBase: "24D Amina 6 Proficol", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 26, volumen: "Estándar", price: 28.5, images: ["/amina.jpeg"], desc: "Herbicida hormonal selectivo para el control de malezas de hoja ancha en cultivos." }] },
         { tituloBase: "Alisio", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 27, volumen: "500 g", price: 18, images: ["/alisio.jpeg"], desc: "Presentación de 500 g ideal para aplicaciones agrícolas precisas." }] },
         { tituloBase: "Venta de tierras y asesoría", cat: "Agro", subcat: "Inversiones", variantes: [{ id: 15, volumen: "Estándar", price: 0, images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." }] },
-        { tituloBase: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Agro", subcat: "Manuales", variantes: [{ id: 18, volumen: "Digital", price: 0, images: ["/logo.png"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" } as any] },
+        { tituloBase: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Agro", subcat: "Manuales", variantes: [{ id: 18, volumen: "Digital", price: 0, images: ["/manual2.jpeg"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" } as any] },
         { tituloBase: "Semilla de maíz", cat: "Agro", subcat: "Semillas", variantes: [{ id: 10, volumen: "Estándar", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." }] },
         { tituloBase: "Semilla de pasto Matsuda", cat: "Agro", subcat: "Semillas", variantes: [{ id: 12, volumen: "20 KG", price: 12.6, images: ["/semilladepasto.png"], desc: "Presentación de 20KG. Balance mineral necesario para el desarrollo animal." }] },
         { tituloBase: "Plandula In vitro", cat: "Agro", subcat: "Plandula", variantes: [{ id: 17, volumen: "Estándar", price: 0, images: ["/pendula.jpeg"], desc: "Geoplasma exclusivo." }] },
@@ -169,14 +169,14 @@
         { tituloBase: "Mata Bicheira Calbos", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", variantes: [{ id: 100, volumen: "500 ml", price: 5.82, images: ["/mata.jpeg"], desc: "Tratamiento y prevención de gusaneras y bicheras." }] }
     ];
 
-    const macroCategorias = ["Todos", "Agro", "Medicina Veterinaria"];
+    const macroCategorias = ["TODOS", "AGRO", "MEDICINA VETERINARIA"];
     const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plandula", "Manuales"];
     const subCategoriasVet = ["Antiparasitarios", "Antibióticos", "Vitaminas y Suplementos", "Ectoparasiticidas", "Medicamentos"];
     const metodosPago = ["Mercantil", "Venezuela", "Banesco", "Pago Móvil", "Efectivo Divisa", "Binance"];
 
     let busqueda = $state("");
-    let macroFiltro = $state("Todos");
-    let subFiltro = $state("Todos");
+    let macroFiltro = $state("TODOS");
+    let subFiltro = $state("Todas");
     let metodoPago = $state("Mercantil");
     let carrito = $state<{id: number, title: string, varianteVolumen: string, cat: string, price: number, cantidad: number}[]>([]);
     let carritoAbierto = $state(false);
@@ -194,8 +194,8 @@
     }
 
     let subCategoriasActuales = $derived(
-        macroFiltro === "Agro" ? subCategoriasAgro :
-        macroFiltro === "Medicina Veterinaria" ? subCategoriasVet :
+        macroFiltro === "AGRO" ? subCategoriasAgro :
+        macroFiltro === "MEDICINA VETERINARIA" ? subCategoriasVet :
         [...subCategoriasAgro, ...subCategoriasVet]
     );
 
@@ -203,8 +203,8 @@
         productosCatalogo.filter(p => {
             const cumpleBusqueda = p.tituloBase.toLowerCase().includes(busqueda.toLowerCase()) || 
                                   p.variantes.some(v => v.desc.toLowerCase().includes(busqueda.toLowerCase()) || v.volumen.toLowerCase().includes(busqueda.toLowerCase()));
-            const cumpleMacro = macroFiltro === "Todos" || p.cat === macroFiltro;
-            const cumpleSub = subFiltro === "Todos" || p.subcat === subFiltro;
+            const cumpleMacro = macroFiltro === "TODOS" || p.cat.toUpperCase() === macroFiltro;
+            const cumpleSub = subFiltro === "Todas" || p.subcat === subFiltro;
             return cumpleBusqueda && cumpleMacro && cumpleSub;
         })
     );
@@ -285,7 +285,7 @@
                 <button onclick={() => filtrosMovilAbierto = true} class="sm:hidden flex items-center gap-1.5 bg-emerald-800 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-xs active:scale-95 transition-transform touch-manipulation">
                     <Icon icon="mdi:filter-variant" class="text-base"/>
                     <span>Filtros</span>
-                    {#if subFiltro !== "Todos" || macroFiltro !== "Todos"}<span class="w-2 h-2 rounded-full bg-amber-400"></span>{/if}
+                    {#if subFiltro !== "Todas" || macroFiltro !== "TODOS"}<span class="w-2 h-2 rounded-full bg-amber-400"></span>{/if}
                 </button>
             </div>
 
@@ -301,7 +301,7 @@
                 {#if resultadosPredictivos.length > 0}
                     <div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-stone-100 overflow-hidden z-40 divide-y divide-stone-100">
                         {#each resultadosPredictivos as r}
-                            <button onclick={() => { busqueda = r.tituloBase; macroFiltro = r.cat; subFiltro = r.subcat; }} class="w-full text-left px-4 py-3 hover:bg-emerald-50/60 transition-colors flex items-center justify-between gap-3 group touch-manipulation">
+                            <button onclick={() => { busqueda = r.tituloBase; macroFiltro = r.cat.toUpperCase(); subFiltro = r.subcat; }} class="w-full text-left px-4 py-3 hover:bg-emerald-50/60 transition-colors flex items-center justify-between gap-3 group touch-manipulation">
                                 <div class="flex items-center gap-3 min-w-0">
                                     <div class="w-10 h-10 rounded-xl bg-stone-100 overflow-hidden shrink-0 border border-stone-200">
                                         <img src={r.variantes[0].images[0]} alt={r.tituloBase} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
@@ -322,13 +322,13 @@
         <!-- Pestañas de Macro-Categorías (Escritorio) -->
         <div class="hidden sm:flex gap-2 mt-4 overflow-x-auto pb-1 scrollbar-none">
             {#each macroCategorias as macro}
-                <button onclick={() => { macroFiltro = macro; subFiltro = "Todos"; }} class={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border ${macroFiltro === macro ? 'bg-emerald-800 text-white border-emerald-800 shadow-xs' : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-800'}`}>{macro}</button>
+                <button onclick={() => { macroFiltro = macro; subFiltro = "Todas"; }} class={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border ${macroFiltro === macro ? 'bg-emerald-800 text-white border-emerald-800 shadow-xs' : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-800'}`}>{macro}</button>
             {/each}
         </div>
 
         <!-- Pestañas de Subcategorías (Escritorio) -->
         <div class="hidden sm:flex gap-1.5 mt-2.5 overflow-x-auto pb-1 scrollbar-none">
-            <button onclick={() => subFiltro = "Todos"} class={`px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all border whitespace-nowrap ${subFiltro === 'Todos' ? 'bg-emerald-900 text-white border-emerald-900' : 'bg-stone-100 text-stone-600 border-stone-200 hover:bg-stone-200'}`}>
+            <button onclick={() => subFiltro = "Todas"} class={`px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all border whitespace-nowrap ${subFiltro === 'Todas' ? 'bg-emerald-900 text-white border-emerald-900' : 'bg-stone-100 text-stone-600 border-stone-200 hover:bg-stone-200'}`}>
                 Todas las subcategorías
             </button>
             {#each subCategoriasActuales as sub}
@@ -387,47 +387,68 @@
         {/each}
     </div>
 
-    <!-- Drawer de Filtros (Móvil) con z-index superior -->
+    <!-- Drawer de Filtros (Móvil) Estilo Exacto al Capture -->
     {#if filtrosMovilAbierto}
-        <div class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 transition-opacity" onclick={() => filtrosMovilAbierto = false}></div>
-        <div class="fixed bottom-0 left-0 right-0 max-h-[85vh] bg-white rounded-t-3xl shadow-2xl z-50 p-5 flex flex-col transition-transform transform translate-y-0 overflow-y-auto">
-            <div class="flex justify-between items-center mb-4 pb-2 border-b border-stone-100">
-                <h2 class="font-black text-lg text-stone-900 uppercase">Filtrar Productos</h2>
-                <button onclick={() => filtrosMovilAbierto = false} class="p-2 rounded-full hover:bg-stone-100 active:bg-stone-200 touch-manipulation">
-                    <Icon class="text-stone-600 text-xl" icon="mdi:close"/>
+        <div class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 transition-opacity" onclick={() => filtrosMovilAbierto = false}></div>
+        <div class="fixed bottom-0 left-0 right-0 max-h-[85vh] bg-white rounded-t-[2.5rem] shadow-2xl z-50 p-6 flex flex-col transition-transform transform translate-y-0 overflow-hidden">
+            
+            <!-- Cabecera del Drawer -->
+            <div class="flex justify-between items-center mb-6 pb-2 shrink-0">
+                <h2 class="font-black text-base text-stone-900 uppercase tracking-wide">FILTRAR CATÁLOGO</h2>
+                <button onclick={() => filtrosMovilAbierto = false} class="p-1.5 text-stone-700 hover:bg-stone-100 rounded-full transition-colors touch-manipulation">
+                    <Icon icon="mdi:close" class="text-xl"/>
                 </button>
             </div>
 
-            <!-- Macro Categorías Móvil -->
-            <div class="mb-4">
-                <label class="block text-xs font-black text-stone-400 uppercase tracking-wider mb-2">Categoría Principal</label>
-                <div class="grid grid-cols-3 gap-2">
-                    {#each macroCategorias as macro}
-                        <button onclick={() => { macroFiltro = macro; subFiltro = "Todos"; }} class={`py-2.5 px-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border text-center ${macroFiltro === macro ? 'bg-emerald-800 text-white border-emerald-800 shadow-xs' : 'bg-stone-50 text-stone-700 border-stone-200'}`}>
-                            {macro}
+            <!-- Contenido Scrollable -->
+            <div class="overflow-y-auto pr-0.5 space-y-5 flex-grow pb-2">
+                
+                <!-- Categoría General -->
+                <div>
+                    <label class="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-2.5">CATEGORÍA GENERAL</label>
+                    <div class="flex flex-col gap-2">
+                        {#each macroCategorias as macro}
+                            <button onclick={() => { macroFiltro = macro; subFiltro = "Todas"; }} class={`w-full py-3.5 px-5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all border text-left flex items-center justify-between ${macroFiltro === macro ? 'bg-[#064e3b] text-white border-[#064e3b] shadow-sm' : 'bg-stone-50/80 text-stone-800 border-stone-200/60 hover:bg-stone-100'}`}>
+                                <span class="tracking-normal">{macro}</span>
+                                {#if macroFiltro === macro}
+                                    <Icon icon="mdi:check" class="text-base shrink-0"/>
+                                {/if}
+                            </button>
+                        {/each}
+                    </div>
+                </div>
+
+                <!-- Subcategoría Específica -->
+                <div>
+                    <label class="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-2.5">SUBCATEGORÍA ESPECÍFICA</label>
+                    <div class="flex flex-col gap-1.5">
+                        <button onclick={() => subFiltro = "Todas"} class={`w-full py-3.5 px-5 rounded-2xl text-xs transition-all text-left flex items-center justify-between ${subFiltro === 'Todas' ? 'bg-[#d1fae5] text-[#022c22] font-bold' : 'bg-stone-50/80 text-stone-700 hover:bg-stone-100 border border-stone-200/60 font-medium'}`}>
+                            <span class="tracking-normal">Todas</span>
+                            {#if subFiltro === 'Todas'}
+                                <span class="w-2 h-2 rounded-full bg-[#047857] shrink-0"></span>
+                            {/if}
                         </button>
-                    {/each}
+                        {#each subCategoriasActuales as sub}
+                            <button onclick={() => subFiltro = sub} class={`w-full py-3.5 px-5 rounded-2xl text-xs transition-all text-left flex items-center justify-between ${subFiltro === sub ? 'bg-[#d1fae5] text-[#022c22] font-bold' : 'bg-stone-50/80 text-stone-700 hover:bg-stone-100 border border-stone-200/60 font-medium'}`}>
+                                <span class="tracking-normal">{sub}</span>
+                                {#if subFiltro === sub}
+                                    <span class="w-2 h-2 rounded-full bg-[#047857] shrink-0"></span>
+                                {/if}
+                            </button>
+                        {/each}
+                    </div>
                 </div>
             </div>
 
-            <!-- Subcategorías Móvil -->
-            <div class="mb-6">
-                <label class="block text-xs font-black text-stone-400 uppercase tracking-wider mb-2">Subcategoría</label>
-                <div class="flex flex-wrap gap-1.5 max-h-48 overflow-y-auto pr-1">
-                    <button onclick={() => subFiltro = "Todos"} class={`px-3 py-2 rounded-xl text-xs font-bold transition-all border ${subFiltro === 'Todos' ? 'bg-emerald-900 text-white border-emerald-900 shadow-xs' : 'bg-stone-50 text-stone-700 border-stone-200'}`}>
-                        Todas
-                    </button>
-                    {#each subCategoriasActuales as sub}
-                        <button onclick={() => subFiltro = sub} class={`px-3 py-2 rounded-xl text-xs font-bold transition-all border ${subFiltro === sub ? 'bg-emerald-900 text-white border-emerald-900 shadow-xs' : 'bg-stone-50 text-stone-700 border-stone-200'}`}>
-                            {sub}
-                        </button>
-                    {/each}
-                </div>
+            <!-- Botones Inferiores Fijos -->
+            <div class="pt-4 mt-2 border-t border-stone-100 shrink-0 flex items-center gap-3">
+                <button onclick={() => { macroFiltro = "TODOS"; subFiltro = "Todas"; }} class="w-1/3 py-3.5 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-black uppercase tracking-wider transition-colors text-center touch-manipulation">
+                    LIMPIAR
+                </button>
+                <button onclick={() => filtrosMovilAbierto = false} class="w-2/3 bg-[#064e3b] text-white py-3.5 rounded-2xl font-black uppercase text-xs hover:bg-emerald-950 transition-all tracking-wider shadow-md text-center active:scale-98">
+                    VER RESULTADOS
+                </button>
             </div>
-
-            <button onclick={() => filtrosMovilAbierto = false} class="w-full bg-emerald-800 text-white py-3.5 rounded-2xl font-black uppercase text-xs hover:bg-emerald-900 transition-all tracking-wider shadow-md text-center">
-                Aplicar Filtros ({productosFiltrados.length} resultados)
-            </button>
         </div>
     {/if}
 
