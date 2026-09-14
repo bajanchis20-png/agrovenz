@@ -1,7 +1,8 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
 
-    const productos: { id: number, title: string, cat: string, subcat: string, price: number | string, images: string[], desc: string, link?: string }[] = [
+    // Productos agrupados/limpios para evitar duplicados en la grilla principal
+    const productos: { id: number, title: string, cat: string, subcat: string, price: number | string, images: string[], desc: string, link?: string, presentaciones?: { label: string, price: number, id: number }[] }[] = [
         // Alimentación Animal
         { id: 1, title: "Harina de Palmiste", cat: "Agro", subcat: "Alimentación Animal", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8KG Fuente de proteína y energía ideal para ganado bovino." },
         { id: 7, title: "Silo de maíz", cat: "Agro", subcat: "Alimentación Animal", price: 4, images: ["/silodemaiz2.jpeg"], desc: "Presentación de 30KG, fabricado con maleza y maíz. contiene Silolact." },
@@ -65,78 +66,320 @@
         // Plandula
         { id: 17, title: "Plandula In vitro", cat: "Agro", subcat: "Plandula", price: "Consultar", images: ["/pendula.jpeg"], desc: "Geoplasma exclusivo." },
 
-        // Medicina Veterinaria (Precios con 20% de incremento)
-        { id: 28, title: "Albendazol 25% + Co (100 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 11.63, images: ["/albendazol25.jpeg"], desc: "Antiparasitario interno de amplio espectro con cobalto." },
-        { id: 29, title: "Albendazol 25% + Co (500 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 33.22, images: ["/albendazol25.jpeg"], desc: "Presentación de 500 ml de antiparasitario interno con cobalto." },
-        { id: 30, title: "Albendazol 25% + Co (1 litro)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 62.77, images: ["/albendazol25.jpeg"], desc: "Presentación de 1 litro de antiparasitario interno con cobalto." },
+        // --- MEDICINA VETERINARIA AGRUPADA ---
+        { 
+            id: 28, 
+            title: "Albendazol 25% + Co", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antiparasitarios", 
+            price: 11.63, 
+            images: ["/albendazol25.jpeg"], 
+            desc: "Antiparasitario interno de amplio espectro con cobalto.",
+            presentaciones: [
+                { id: 28, label: "100 ml", price: 11.63 },
+                { id: 29, label: "500 ml", price: 33.22 },
+                { id: 30, label: "1 litro", price: 62.77 }
+            ]
+        },
         { id: 31, title: "Calbendazole 10% (1 litro)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 30.66, images: ["/calbe.jpeg"], desc: "Control efectivo de parásitos gastrointestinales y pulmonares." },
         { id: 32, title: "Ivermin pasta oral (6 g)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 5.76, images: ["/invermin.jpeg"], desc: "Ivermectina en pasta oral para dosificación precisa." },
         { id: 33, title: "Vermigan - ricobendazol (500 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 38.00, images: ["/vermigan.jpeg"], desc: "Ricobendazol al 15% para el tratamiento de parásitos internos." },
-        { id: 34, title: "Calbomax - doramectina (50 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 11.42, images: ["/calbo50.jpeg"], desc: "Endectocida de acción prolongada a base de doramectina." },
-        { id: 35, title: "Calbomax - doramectina (250 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 41.58, images: ["/calbo250.jpeg"], desc: "Presentación de 250 ml de doramectina." },
-        { id: 36, title: "Calbomax - doramectina (500 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 70.80, images: ["/calbo500.jpeg"], desc: "Presentación de 500 ml de doramectina de amplio espectro." },
-        { id: 37, title: "Dectomax (50 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 19.68, images: ["/dectomax.jpeg"], desc: "Solución inyectable de doramectina original." },
-        { id: 38, title: "Dectomax (250 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 90.53, images: ["/dectomax.jpeg"], desc: "Frasco de 250 ml de doramectina Dectomax." },
-        { id: 39, title: "Dectomax (500 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 147.60, images: ["/deto2.jpg"], desc: "Frasco de 500 ml de doramectina Dectomax." },
-        { id: 40, title: "Dectomec Gold - ivermectina 3,15% (100 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 10.96, images: ["/dectomec.jpeg"], desc: "Ivermectina de alta concentración al 3,15%." },
-        { id: 41, title: "Dectomec Gold - ivermectina 3,15% (500 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 38.00, images: ["/dectomec.jpeg"], desc: "Presentación de 500 ml de ivermectina 3,15%." },
-        { id: 42, title: "Dectomec Max - doramectina 2% (100 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 20.15, images: ["/dectomec.jpeg"], desc: "Doramectina al 2% inyectable." },
-        { id: 43, title: "Dectomec Max - doramectina 2% (500 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 84.07, images: ["/dectomec.jpeg"], desc: "Presentación de 500 ml de doramectina al 2%." },
+        { 
+            id: 34, 
+            title: "Calbomax - doramectina", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antiparasitarios", 
+            price: 11.42, 
+            images: ["/calbo50.jpeg"], 
+            desc: "Endectocida de acción prolongada a base de doramectina.",
+            presentaciones: [
+                { id: 34, label: "50 ml", price: 11.42 },
+                { id: 35, label: "250 ml", price: 41.58 },
+                { id: 36, label: "500 ml", price: 70.80 }
+            ]
+        },
+        { 
+            id: 37, 
+            title: "Dectomax", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antiparasitarios", 
+            price: 19.68, 
+            images: ["/dectomax.jpeg"], 
+            desc: "Solución inyectable de doramectina original.",
+            presentaciones: [
+                { id: 37, label: "50 ml", price: 19.68 },
+                { id: 38, label: "250 ml", price: 90.53 },
+                { id: 39, label: "500 ml", price: 147.60 }
+            ]
+        },
+        { 
+            id: 40, 
+            title: "Dectomec Gold - ivermectina 3,15%", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antiparasitarios", 
+            price: 10.96, 
+            images: ["/dectomec.jpeg"], 
+            desc: "Ivermectina de alta concentración al 3,15%.",
+            presentaciones: [
+                { id: 40, label: "100 ml", price: 10.96 },
+                { id: 41, label: "500 ml", price: 38.00 }
+            ]
+        },
+        { 
+            id: 42, 
+            title: "Dectomec Max - doramectina 2%", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antiparasitarios", 
+            price: 20.15, 
+            images: ["/dectomec.jpeg"], 
+            desc: "Doramectina al 2% inyectable.",
+            presentaciones: [
+                { id: 42, label: "100 ml", price: 20.15 },
+                { id: 43, label: "500 ml", price: 84.07 }
+            ]
+        },
         { id: 44, title: "Ivermin Gold 3.15 (500 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 47.48, images: ["/gold500.jpeg"], desc: "Ivermectina de larga acción y alta concentración." },
-        { id: 45, title: "Ivermin (50 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 4.79, images: ["/50.jpeg"], desc: "Ivermectina estándar presentación de 50 ml." },
-        { id: 46, title: "Ivermin (200 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 11.47, images: ["/gold200.jpeg"], desc: "Ivermectina presentación de 200 ml." },
-        { id: 47, title: "Ivermin (500 ml)", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", price: 26.02, images: ["/50.jpeg"], desc: "Ivermectina presentación económica de 500 ml." },
-        { id: 48, title: "Bactermisil 20% (250 ml)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 12.68, images: ["/biomisil.webp"], desc: "Antibiótico de amplio espectro." },
-        { id: 49, title: "Bactermisil 20% (1 litro)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 36.88, images: ["/biomisil.webp"], desc: "Presentación de 1 litro de antibiótico." },
+        { 
+            id: 45, 
+            title: "Ivermin", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antiparasitarios", 
+            price: 4.79, 
+            images: ["/50.jpeg"], 
+            desc: "Ivermectina estándar para ganadería.",
+            presentaciones: [
+                { id: 45, label: "50 ml", price: 4.79 },
+                { id: 46, label: "200 ml", price: 11.47 },
+                { id: 47, label: "500 ml", price: 26.02 }
+            ]
+        },
+        { 
+            id: 48, 
+            title: "Bactermisil 20%", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antibióticos", 
+            price: 12.68, 
+            images: ["/biomisil.webp"], 
+            desc: "Antibiótico de amplio espectro.",
+            presentaciones: [
+                { id: 48, label: "250 ml", price: 12.68 },
+                { id: 49, label: "1 litro", price: 36.88 }
+            ]
+        },
         { id: 50, title: "Flocherry 30% (100 ml)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 22.31, images: ["/cherry.jpg"], desc: "Florfenicol al 30% para infecciones respiratorias." },
-        { id: 51, title: "Oxitetraciclina 5% Cherry (100 ml)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 6.02, images: ["/oxi.jpeg"], desc: "Antibiótico inyectable de acción corta." },
-        { id: 52, title: "Oxitetraciclina 5% Cherry (500 ml)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 22.36, images: ["/oxi500.jpeg"], desc: "Presentación de 500 ml de oxitetraciclina 5%." },
-        { id: 53, title: "Oxitetraciclina LA 20% Cherry (100 ml)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 10.44, images: ["/oxi20.jpeg"], desc: "Oxitetraciclina de larga acción 20%." },
-        { id: 54, title: "Oxitetraciclina LA 20% Cherry (250 ml)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 20.48, images: ["/oxi250.jpeg"], desc: "Presentación de 250 ml de oxitetraciclina LA." },
-        { id: 55, title: "Babecide (100 ml)", cat: "Medicina Veterinaria", subcat: "Medicamentos", price: 10.20, images: ["/babepeque.jpeg"], desc: "Hemoparasiticida para el control de babesiosis y anaplasmosis." },
-        { id: 56, title: "Babecide (250 ml)", cat: "Medicina Veterinaria", subcat: "Medicamentos", price: 23.94, images: ["/babepeque.jpeg"], desc: "Presentación de 250 ml de Babecide." },
-        { id: 57, title: "Babecide (500 ml)", cat: "Medicina Veterinaria", subcat: "Medicamentos", price: 44.10, images: ["/babe500.jpeg"], desc: "Presentación de 500 ml de Babecide." },
-        { id: 58, title: "Complejo B B12-B15 (20 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 7.58, images: ["/complejo.jpeg"], desc: "Vitamínico reconstituyente." },
-        { id: 59, title: "Complejo B B12-B15 (100 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 24.95, images: ["/complejo.jpeg"], desc: "Presentación de 100 ml de Complejo B." },
-        { id: 60, title: "Complejo B B12-B15 (250 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 41.63, images:["/complejo.jpeg"], desc: "Presentación de 250 ml de Complejo B." },
-        { id: 61, title: "Energizante vitamínico (25 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 8.26, images: ["/energi.jpeg"], desc: "Bebida o inyectable energizante y vitamínico." },
-        { id: 62, title: "Energizante vitamínico (100 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 20.03, images:  ["/energi.jpeg"], desc: "Presentación de 100 ml energizante." },
-        { id: 63, title: "Energizante vitamínico (250 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 37.40, images: ["/energi2.jpeg"], desc: "Presentación de 250 ml energizante." },
+        { 
+            id: 51, 
+            title: "Oxitetraciclina 5% Cherry", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antibióticos", 
+            price: 6.02, 
+            images: ["/oxi.jpeg"], 
+            desc: "Antibiótico inyectable de acción corta.",
+            presentaciones: [
+                { id: 51, label: "100 ml", price: 6.02 },
+                { id: 52, label: "500 ml", price: 22.36 }
+            ]
+        },
+        { 
+            id: 53, 
+            title: "Oxitetraciclina LA 20% Cherry", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antibióticos", 
+            price: 10.44, 
+            images: ["/oxi20.jpeg"], 
+            desc: "Oxitetraciclina de larga acción 20%.",
+            presentaciones: [
+                { id: 53, label: "100 ml", price: 10.44 },
+                { id: 54, label: "250 ml", price: 20.48 }
+            ]
+        },
+        { 
+            id: 55, 
+            title: "Babecide", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Medicamentos", 
+            price: 10.20, 
+            images: ["/babepeque.jpeg"], 
+            desc: "Hemoparasiticida para el control de babesiosis y anaplasmosis.",
+            presentaciones: [
+                { id: 55, label: "100 ml", price: 10.20 },
+                { id: 56, label: "250 ml", price: 23.94 },
+                { id: 57, label: "500 ml", price: 44.10 }
+            ]
+        },
+        { 
+            id: 58, 
+            title: "Complejo B B12-B15", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Vitaminas y Suplementos", 
+            price: 7.58, 
+            images: ["/complejo.jpeg"], 
+            desc: "Vitamínico reconstituyente.",
+            presentaciones: [
+                { id: 58, label: "20 ml", price: 7.58 },
+                { id: 59, label: "100 ml", price: 24.95 },
+                { id: 60, label: "250 ml", price: 41.63 }
+            ]
+        },
+        { 
+            id: 61, 
+            title: "Energizante vitamínico", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Vitaminas y Suplementos", 
+            price: 8.26, 
+            images: ["/energi.jpeg"], 
+            desc: "Bebida o inyectable energizante y vitamínico.",
+            presentaciones: [
+                { id: 61, label: "25 ml", price: 8.26 },
+                { id: 62, label: "100 ml", price: 20.03 },
+                { id: 63, label: "250 ml", price: 37.40 }
+            ]
+        },
         { id: 64, title: "Hemo 15 (100 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 49.36, images: ["/hemo15.jpeg"], desc: "Suplemento hematopoyético y vitamínico." },
-        { id: 65, title: "Minerfun F.M. (100 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 13.21, images: ["/minerfm.jpeg"], desc: "Suplemento mineral y vitamínico." },
-        { id: 66, title: "Minerfun F.M. (500 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 41.51, images: ["/minerfm.jpeg"], desc: "Presentación de 500 ml Minerfun F.M." },
-        { id: 67, title: "Minerfun MX (250 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 48.70, images: ["/minermx.jpeg"], desc: "Suplemento mineral avanzado." },
-        { id: 68, title: "Minerfun MX (500 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 84.89, images: ["/minermx2.jpeg"], desc: "Presentación de 500 ml Minerfun MX." },
-        { id: 69, title: "Minerfun Plus con selenio (100 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 16.97, images: ["/miner100.jpeg"], desc: "Suplemento con minerales y selenio." },
-        { id: 70, title: "Minerfun Plus con selenio (250 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 30.18, images: ["/miner250.jpeg"], desc: "Presentación de 250 ml con selenio." },
-        { id: 71, title: "Minerfun Plus con selenio (500 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 50.94, images: ["/miner500.jpeg"], desc: "Presentación de 500 ml con selenio." },
-        { id: 72, title: "Olivitasan (25 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 5.89, images: ["/oli25.jpeg"], desc: "Reconstituyente general." },
-        { id: 73, title: "Olivitasan (100 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 12.50, images: ["/oli250.jpeg"], desc: "Presentación de 100 ml de Olivitasan." },
-        { id: 74, title: "Olivitasan (300 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 25.36, images: ["/oli250.jpeg"], desc: "Presentación de 300 ml de Olivitasan." },
-        { id: 75, title: "Olivitasan (500 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 38.18, images: ["/oli500.jpeg"], desc: "Presentación de 500 ml de Olivitasan." },
-        { id: 76, title: "Olivitasan Plus (250 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 45.12, images: ["/oli250plus.jpeg"], desc: "Fórmula reforzada Olivitasan Plus." },
-        { id: 77, title: "Olivitasan Plus (500 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 77.52, images: ["/oliplus500.jpeg"], desc: "Presentación de 500 ml Olivitasan Plus." },
+        { 
+            id: 65, 
+            title: "Minerfun F.M.", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Vitaminas y Suplementos", 
+            price: 13.21, 
+            images: ["/minerfm.jpeg"], 
+            desc: "Suplemento mineral y vitamínico.",
+            presentaciones: [
+                { id: 65, label: "100 ml", price: 13.21 },
+                { id: 66, label: "500 ml", price: 41.51 }
+            ]
+        },
+        { 
+            id: 67, 
+            title: "Minerfun MX", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Vitaminas y Suplementos", 
+            price: 48.70, 
+            images: ["/minermx.jpeg"], 
+            desc: "Suplemento mineral avanzado.",
+            presentaciones: [
+                { id: 67, label: "250 ml", price: 48.70 },
+                { id: 68, label: "500 ml", price: 84.89 }
+            ]
+        },
+        { 
+            id: 69, 
+            title: "Minerfun Plus con selenio", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Vitaminas y Suplementos", 
+            price: 16.97, 
+            images: ["/miner100.jpeg"], 
+            desc: "Suplemento con minerales y selenio.",
+            presentaciones: [
+                { id: 69, label: "100 ml", price: 16.97 },
+                { id: 70, label: "250 ml", price: 30.18 },
+                { id: 71, label: "500 ml", price: 50.94 }
+            ]
+        },
+        { 
+            id: 72, 
+            title: "Olivitasan", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Vitaminas y Suplementos", 
+            price: 5.89, 
+            images: ["/oli25.jpeg"], 
+            desc: "Reconstituyente general.",
+            presentaciones: [
+                { id: 72, label: "25 ml", price: 5.89 },
+                { id: 73, label: "100 ml", price: 12.50 },
+                { id: 74, label: "300 ml", price: 25.36 },
+                { id: 75, label: "500 ml", price: 38.18 }
+            ]
+        },
+        { 
+            id: 76, 
+            title: "Olivitasan Plus", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Vitaminas y Suplementos", 
+            price: 45.12, 
+            images: ["/oli250plus.jpeg"], 
+            desc: "Fórmula reforzada Olivitasan Plus.",
+            presentaciones: [
+                { id: 76, label: "250 ml", price: 45.12 },
+                { id: 77, label: "500 ml", price: 77.52 }
+            ]
+        },
         { id: 78, title: "Vitamina B12 5000 importada (50 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 41.27, images: ["/b5000.jpeg"], desc: "Vitamina B12 de alta potencia importada." },
         { id: 79, title: "Fortemax (500 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 28.04, images: ["/fortemax.jpeg"], desc: "Reconstituyente y energizante general." },
         { id: 80, title: "Levantol (500 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 13.61, images: ["/levanton.jpeg"], desc: "Tónico general y estimulante." },
-        { id: 81, title: "Modificador Orgánico Toro (100 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 7.49, images: ["/modi.jpeg"], desc: "Mejora el metabolismo y ganancia de peso." },
-        { id: 82, title: "Modificador Orgánico Toro (500 ml)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 21.89, images: ["/modi.jpeg"], desc: "Presentación de 500 ml Modificador Orgánico Toro." },
+        { 
+            id: 81, 
+            title: "Modificador Orgánico Toro", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Vitaminas y Suplementos", 
+            price: 7.49, 
+            images: ["/modi.jpeg"], 
+            desc: "Mejora el metabolismo y ganancia de peso.",
+            presentaciones: [
+                { id: 81, label: "100 ml", price: 7.49 },
+                { id: 82, label: "500 ml", price: 21.89 }
+            ]
+        },
         { id: 83, title: "Buta Cal (100 ml)", cat: "Medicina Veterinaria", subcat: "Medicamentos", price: 14.50, images: ["/buta.jpeg"], desc: "Analgésico, antipirético y antirreumático." },
         { id: 84, title: "Dex-Cal - dexametasona (100 ml)", cat: "Medicina Veterinaria", subcat: "Medicamentos", price: 10.58, images: ["/dexcal.jpeg"], desc: "Corticoide de acción prolongada." },
         { id: 85, title: "Dibrosal expectorante (1 kg)", cat: "Medicina Veterinaria", subcat: "Medicamentos", price: 13.42, images: ["/dibrosal.jpeg"], desc: "Expectorante en polvo para problemas respiratorios." },
-        { id: 86, title: "Neotil F (100 g)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 5.57, images: ["/neotil.jpeg"], desc: "Antibiótico en polvo soluble." },
-        { id: 87, title: "Neotil F (1 kg)", cat: "Medicina Veterinaria", subcat: "Antibióticos", price: 43.63, images: ["/neotil.jpeg"], desc: "Presentación de 1 kg de Neotil F." },
+        { 
+            id: 86, 
+            title: "Neotil F", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Antibióticos", 
+            price: 5.57, 
+            images: ["/neotil.jpeg"], 
+            desc: "Antibiótico en polvo soluble.",
+            presentaciones: [
+                { id: 86, label: "100 g", price: 5.57 },
+                { id: 87, label: "1 kg", price: 43.63 }
+            ]
+        },
         { id: 88, title: "Pata Negra para cerdos (1 kg)", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", price: 5.59, images: ["/patanegra.webp"], desc: "Suplemento especializado para porcinos." },
         { id: 89, title: "Stop antidiarreico (10 sobres)", cat: "Medicina Veterinaria", subcat: "Medicamentos", price: 11.36, images: ["/stop.jpeg"], desc: "Tratamiento eficaz contra diarreas en animales." },
         { id: 90, title: "Biodil (50 ml)", cat: "Medicina Veterinaria", subcat: "Medicamentos", price: 49.20, images: ["/biodil.jpeg"], desc: "Especialidad veterinaria de alta efectividad." },
-        { id: 91, title: "Amitraz Calbos (200 ml)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 12.17, images: ["/amitraz.jpeg"], desc: "Garrapaticida y sarnicida tópico." },
-        { id: 92, title: "Amitraz Calbos (500 ml)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 25.80, images: ["/amitraz.jpeg"], desc: "Presentación de 500 ml de Amitraz Calbos." },
+        { 
+            id: 91, 
+            title: "Amitraz Calbos", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Ectoparasiticidas", 
+            price: 12.17, 
+            images: ["/amitraz.jpeg"], 
+            desc: "Garrapaticida y sarnicida tópico.",
+            presentaciones: [
+                { id: 91, label: "200 ml", price: 12.17 },
+                { id: 92, label: "500 ml", price: 25.80 }
+            ]
+        },
         { id: 93, title: "Ganasan Baño - cipermetrina 20% (1 litro)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 27.67, images: ["/ciper.jpeg"], desc: "Baño garrapaticida y moscas a base de cipermetrina." },
-        { id: 94, title: "Garrabaño (500 ml)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 25.81, images: ["/garrabaño.jpeg"], desc: "Control externo de parásitos en presentación de 500 ml." },
-        { id: 95, title: "Garrabaño (1 litro)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 49.08, images: ["/garrabaño.jpeg"], desc: "Control externo de parásitos en presentación de 1 litro." },
+        { 
+            id: 94, 
+            title: "Garrabaño", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Ectoparasiticidas", 
+            price: 25.81, 
+            images: ["/garrabaño.jpeg"], 
+            desc: "Control externo de parásitos.",
+            presentaciones: [
+                { id: 94, label: "500 ml", price: 25.81 },
+                { id: 95, label: "1 litro", price: 49.08 }
+            ]
+        },
         { id: 96, title: "Na Mosca Ourofino (20 aretes)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 68.88, images: ["/mosca.jpeg"], desc: "Aretes repelentes y controladores de moscas." },
-        { id: 97, title: "Flechazo spray (160 ml)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 5.90, images: ["/flecha.jpeg"], desc: "Curandero y repelente en spray." },
-        { id: 98, title: "Flechazo spray (354 ml)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 8.58, images: ["/flecha.jpeg"], desc: "Presentación de 354 ml de Flechazo spray." },
+        { 
+            id: 97, 
+            title: "Flechazo spray", 
+            cat: "Medicina Veterinaria", 
+            subcat: "Ectoparasiticidas", 
+            price: 5.90, 
+            images: ["/flecha.jpeg"], 
+            desc: "Curandero y repelente en spray.",
+            presentaciones: [
+                { id: 97, label: "160 ml", price: 5.90 },
+                { id: 98, label: "354 ml", price: 8.58 }
+            ]
+        },
         { id: 99, title: "Lepecid (400 ml)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 7.38, images: ["/lepecid.jpeg"], desc: "Curandero, matagusanos y repelente." },
         { id: 100, title: "Mata Bicheira Calbos* (500 ml)", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", price: 5.82, images: ["/mata.jpeg"], desc: "Tratamiento y prevención de gusaneras y bicheras." }
     ];
@@ -155,6 +398,8 @@
     let filtrosMovilAbierto = $state(false);
 
     let indicesImagenes = $state<Record<number, number>>({});
+    // Estado para guardar la presentación seleccionada de cada tarjeta de producto
+    let seleccionPresentacion = $state<Record<number, number>>({});
 
     function cambiarImagen(id: number, delta: number, total: number) {
         const actual = indicesImagenes[id] || 0;
@@ -204,9 +449,25 @@
     }
 
     function agregarAlCarrito(p: any) {
-        const item = carrito.find(c => c.id === p.id);
-        if (item) item.cantidad += 1;
-        else carrito.push({ ...p, cantidad: 1 });
+        let precioFinal = p.price;
+        let tituloFinal = p.title;
+        let idFinal = p.id;
+
+        // Si tiene presentaciones y hay una seleccionada, usar esa
+        if (p.presentaciones) {
+            const indexPres = seleccionPresentacion[p.id] || 0;
+            const presElegida = p.presentaciones[indexPres];
+            precioFinal = presElegida.price;
+            idFinal = presElegida.id;
+            tituloFinal = `${p.title} (${presElegida.label})`;
+        }
+
+        const item = carrito.find(c => c.id === idFinal);
+        if (item) {
+            item.cantidad += 1;
+        } else {
+            carrito.push({ id: idFinal, title: tituloFinal, cat: p.cat, price: precioFinal, cantidad: 1 });
+        }
     }
 
     function cambiarCantidad(id: number, delta: number) {
@@ -379,49 +640,69 @@
     </div>
 
     <!-- Grilla Ultra Responsiva con IDs únicos para el Autoscroll -->
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6">
-        {#each productosFiltrados as p}
-            <div id="producto-{p.id}" class="bg-white p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-stone-100 shadow-xs hover:shadow-xl transition-all flex flex-col h-full group">
-                <!-- Imagen o Carrusel de Imágenes adaptado a pantallas pequeñas -->
-                <div class="relative w-full h-28 sm:h-48 mb-2.5 sm:mb-4 bg-stone-100 rounded-xl sm:rounded-2xl overflow-hidden">
-                    <img src={p.images[indicesImagenes[p.id] || 0]} alt={p.title} class="w-full h-28 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    
-                    {#if p.images.length > 1}
-                        <button on:click={() => cambiarImagen(p.id, -1, p.images.length)} class="absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all touch-manipulation">
-                            <Icon class="text-xs sm:text-lg" icon="mdi:chevron-left"/>
-                        </button>
-                        <button on:click={() => cambiarImagen(p.id, 1, p.images.length)} class="absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all touch-manipulation">
-                            <Icon class="text-xs sm:text-lg" icon="mdi:chevron-right"/>
-                        </button>
-                        <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-xs text-white text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded-full font-medium">
-                            {(indicesImagenes[p.id] || 0) + 1} / {p.images.length}
-                        </div>
-                    {/if}
-                </div>
+    <!-- Grilla Ultra Responsiva con IDs únicos para el Autoscroll -->
+<div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6">
+    {#each productosFiltrados as p}
+        <div id="producto-{p.id}" class="bg-white p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-stone-100 shadow-xs hover:shadow-xl transition-all flex flex-col h-full group">
+            
+            <!-- Imagen o Carrusel -->
+            <div class="relative w-full h-28 sm:h-48 mb-2.5 sm:mb-4 bg-stone-100 rounded-xl sm:rounded-2xl overflow-hidden">
+                <img src={p.images[indicesImagenes[p.id] || 0]} alt={p.title} class="w-full h-28 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                
+                {#if p.images.length > 1}
+                    <button on:click={() => cambiarImagen(p.id, -1, p.images.length)} class="absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all touch-manipulation">
+                        <Icon class="text-xs sm:text-lg" icon="mdi:chevron-left"/>
+                    </button>
+                    <button on:click={() => cambiarImagen(p.id, 1, p.images.length)} class="absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-stone-800 p-1 rounded-full shadow-md transition-all touch-manipulation">
+                        <Icon class="text-xs sm:text-lg" icon="mdi:chevron-right"/>
+                    </button>
+                    <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-xs text-white text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded-full font-medium">
+                        {(indicesImagenes[p.id] || 0) + 1} / {p.images.length}
+                    </div>
+                {/if}
+            </div>
 
-                <div class="flex-grow flex flex-col">
-                    <h3 class="font-bold text-stone-900 text-xs sm:text-base leading-tight mb-1 line-clamp-2">{p.title}</h3>
-                    <p class="text-[8px] sm:text-[10px] text-emerald-700 font-bold mb-1.5 sm:mb-2 uppercase tracking-wider">{p.subcat}</p>
-                    <p class="text-[10px] sm:text-xs text-stone-500 leading-relaxed mb-3 line-clamp-2 sm:line-clamp-3">{p.desc}</p>
+            <div class="flex-grow flex flex-col">
+                <h3 class="font-bold text-stone-900 text-xs sm:text-base leading-tight mb-1 line-clamp-2">{p.title}</h3>
+                <p class="text-[8px] sm:text-[10px] text-emerald-700 font-bold mb-1.5 sm:mb-2 uppercase tracking-wider">{p.subcat}</p>
+                <p class="text-[10px] sm:text-xs text-stone-500 leading-relaxed mb-3 line-clamp-2 sm:line-clamp-3">{p.desc}</p>
+            </div>
+            
+            <!-- Selector de Presentaciones (Si el producto las posee) -->
+            {#if p.presentaciones}
+                <div class="mb-2">
+                    <label class="block text-[8px] sm:text-[9px] font-bold text-stone-400 uppercase tracking-wider mb-1">Presentación:</label>
+                    <select bind:value={seleccionPresentacion[p.id]} class="w-full p-1.5 bg-stone-50 rounded-xl text-[10px] sm:text-xs font-bold border border-stone-200 outline-none focus:ring-1 focus:ring-emerald-500 touch-manipulation">
+                        {#each p.presentaciones as pres, index}
+                            <option value={index}>{pres.label} — ${pres.price.toFixed(2)}</option>
+                        {/each}
+                    </select>
+                </div>
+            {/if}
+
+            <div class="mt-auto pt-2.5 sm:pt-4 border-t border-stone-50 flex flex-col gap-1.5">
+                <div class="flex items-baseline justify-between gap-1">
+                    <span class="font-black text-xs sm:text-xl text-emerald-800">
+                        {#if p.presentaciones}
+                            ${p.presentaciones[seleccionPresentacion[p.id] || 0].price.toFixed(2)}
+                        {:else}
+                            {typeof p.price === 'number' ? `$${p.price.toFixed(2)}` : p.price}
+                        {/if}
+                    </span>
+                    {#if p.cat !== "Medicina Veterinaria" && p.id !== 2 && p.id !== 13 && p.id !== 14 && p.id !== 15 && p.id !== 16 && p.id !== 17 && !p.link}
+                        <span class="text-[7px] sm:text-[9px] text-stone-400 font-bold uppercase tracking-wider">BCV</span>
+                    {/if}
                 </div>
                 
-                <div class="mt-auto pt-2.5 sm:pt-4 border-t border-stone-50 flex flex-col gap-1.5">
-                    <div class="flex items-baseline justify-between gap-1">
-                        <span class="font-black text-xs sm:text-xl text-emerald-800">{typeof p.price === 'number' ? `$${p.price.toFixed(2)}` : p.price}</span>
-                        {#if p.cat !== "Medicina Veterinaria" && p.id !== 2 && p.id !== 13 && p.id !== 14 && p.id !== 15 && p.id !== 16 && p.id !== 17 && !p.link}
-                            <span class="text-[7px] sm:text-[9px] text-stone-400 font-bold uppercase tracking-wider">BCV</span>
-                        {/if}
-                    </div>
-                    
-                    {#if p.link}
-                        <a href={p.link} target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-emerald-800 text-white hover:bg-emerald-900 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation shadow-xs">VER GUÍA</a>
-                    {:else}
-                        <button on:click={() => agregarAlCarrito(p)} class="w-full py-2 bg-emerald-50 hover:bg-emerald-800 text-emerald-800 hover:text-white border border-emerald-800/20 hover:border-emerald-800 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation active:scale-95">AGREGAR</button>
-                    {/if}
-                </div>
+                {#if p.link}
+                    <a href={p.link} target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-emerald-800 text-white hover:bg-emerald-900 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation shadow-xs">VER GUÍA</a>
+                {:else}
+                    <button on:click={() => agregarAlCarrito(p)} class="w-full py-2 bg-emerald-50 hover:bg-emerald-800 text-emerald-800 hover:text-white border border-emerald-800/20 hover:border-emerald-800 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation active:scale-95">AGREGAR</button>
+                {/if}
             </div>
-        {/each}
-    </div>
+        </div>
+    {/each}
+</div>
 
     <!-- Botón Flotante del Carrito (Diseño cómodo y accesible) -->
     <button on:click={() => carritoAbierto = !carritoAbierto} class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-emerald-800 text-white p-4 sm:p-5 rounded-full shadow-2xl hover:bg-emerald-900 active:scale-95 transition-transform z-50 flex items-center justify-center touch-manipulation">
