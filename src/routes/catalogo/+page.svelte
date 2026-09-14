@@ -299,14 +299,19 @@
                 </div>
                 
                 {#if resultadosPredictivos.length > 0}
-                    <div class="absolute top-full left-0 right-0 mt-1.5 bg-white rounded-2xl shadow-xl border border-stone-100 overflow-hidden z-40 max-h-60 overflow-y-auto">
+                    <div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-stone-100 overflow-hidden z-40 divide-y divide-stone-100">
                         {#each resultadosPredictivos as r}
-                            <button onclick={() => { busqueda = r.tituloBase; busqueda = ""; }} class="w-full text-left px-4 py-3 hover:bg-stone-50 border-b border-stone-50 flex items-center justify-between gap-2 touch-manipulation">
-                                <div>
-                                    <p class="text-xs font-bold text-stone-800 line-clamp-1">{r.tituloBase}</p>
-                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold uppercase">{r.cat} &bull; {r.subcat}</span>
+                            <button onclick={() => { busqueda = r.tituloBase; macroFiltro = r.cat; subFiltro = r.subcat; }} class="w-full text-left px-4 py-3 hover:bg-emerald-50/60 transition-colors flex items-center justify-between gap-3 group touch-manipulation">
+                                <div class="flex items-center gap-3 min-w-0">
+                                    <div class="w-10 h-10 rounded-xl bg-stone-100 overflow-hidden shrink-0 border border-stone-200">
+                                        <img src={r.variantes[0].images[0]} alt={r.tituloBase} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="text-xs font-bold text-stone-800 truncate group-hover:text-emerald-900">{r.tituloBase}</p>
+                                        <span class="inline-block mt-0.5 text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold uppercase tracking-wider">{r.cat} &bull; {r.subcat}</span>
+                                    </div>
                                 </div>
-                                <span class="text-xs font-bold text-emerald-800 whitespace-nowrap">${r.variantes[0].price.toFixed(2)}</span>
+                                <span class="text-xs font-black text-emerald-800 shrink-0">${r.variantes[0].price.toFixed(2)}</span>
                             </button>
                         {/each}
                     </div>
@@ -426,7 +431,7 @@
         </div>
     {/if}
 
-    <!-- Botón Carrito Flotante (Con z-index equilibrado z-40 y posición separada) -->
+    <!-- Botón Carrito Flotante -->
     <button onclick={() => carritoAbierto = !carritoAbierto} class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 bg-emerald-800 text-white p-4 sm:p-5 rounded-full shadow-2xl hover:bg-emerald-900 active:scale-95 transition-transform z-40 flex items-center justify-center touch-manipulation">
         <Icon class="text-2xl sm:text-3xl" icon="mdi:cart-outline"/>
         {#if cantidadTotalItems > 0}
