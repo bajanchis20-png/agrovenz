@@ -125,18 +125,18 @@
         { id: 86, title: "Neotil F (100 g)", cat: "Veterinaria", price: 4.64, images: ["/neotil.jpeg"], desc: "Antibiótico en polvo soluble." },
         { id: 87, title: "Neotil F (1 kg)", cat: "Veterinaria", price: 36.36, images: ["/neotil.jpeg"], desc: "Presentación de 1 kg de Neotil F." },
         { id: 88, title: "Pata Negra para cerdos (1 kg)", cat: "Veterinaria", price: 4.66, images: ["/patanegra.webp"], desc: "Suplemento especializado para porcinos." },
-        { id: 89, title: "Stop antidiarreico (10 sobres)", cat: "Veterinaria", price: 9.47, images: ["/logo.png"], desc: "Tratamiento eficaz contra diarreas en animales." },
-        { id: 90, title: "Biodil (50 ml)", cat: "Veterinaria", price: 41.00, images: ["/logo.png"], desc: "Especialidad veterinaria de alta efectividad." },
-        { id: 91, title: "Amitraz Calbos (200 ml)", cat: "Veterinaria", price: 10.14, images: ["/logo.png"], desc: "Garrapaticida y sarnicida tópico." },
-        { id: 92, title: "Amitraz Calbos (500 ml)", cat: "Veterinaria", price: 21.50, images: ["/logo.png"], desc: "Presentación de 500 ml de Amitraz Calbos." },
-        { id: 93, title: "Ganasan Baño - cipermetrina 20% (1 litro)", cat: "Veterinaria", price: 23.06, images: ["/logo.png"], desc: "Baño garrapaticida y moscas a base de cipermetrina." },
-        { id: 94, title: "Garrabaño (500 ml)", cat: "Veterinaria", price: 21.51, images: ["/logo.png"], desc: "Control externo de parásitos en presentación de 500 ml." },
-        { id: 95, title: "Garrabaño (1 litro)", cat: "Veterinaria", price: 40.90, images: ["/logo.png"], desc: "Control externo de parásitos en presentación de 1 litro." },
-        { id: 96, title: "Na Mosca Ourofino (20 aretes)", cat: "Veterinaria", price: 57.40, images: ["/logo.png"], desc: "Aretes repelentes y controladores de moscas." },
-        { id: 97, title: "Flechazo spray (160 ml)", cat: "Veterinaria", price: 4.92, images: ["/logo.png"], desc: "Curandero y repelente en spray." },
-        { id: 98, title: "Flechazo spray (354 ml)", cat: "Veterinaria", price: 7.15, images: ["/logo.png"], desc: "Presentación de 354 ml de Flechazo spray." },
-        { id: 99, title: "Lepecid (400 ml)", cat: "Veterinaria", price: 6.15, images: ["/logo.png"], desc: "Curandero, matagusanos y repelente." },
-        { id: 100, title: "Mata Bicheira Calbos* (500 ml)", cat: "Veterinaria", price: 4.85, images: ["/logo.png"], desc: "Tratamiento y prevención de gusaneras y bicheras." }
+        { id: 89, title: "Stop antidiarreico (10 sobres)", cat: "Veterinaria", price: 9.47, images: ["/stop.jpeg"], desc: "Tratamiento eficaz contra diarreas en animales." },
+        { id: 90, title: "Biodil (50 ml)", cat: "Veterinaria", price: 41.00, images: ["/biodil.jpeg"], desc: "Especialidad veterinaria de alta efectividad." },
+        { id: 91, title: "Amitraz Calbos (200 ml)", cat: "Veterinaria", price: 10.14, images: ["/amitraz.jpeg"], desc: "Garrapaticida y sarnicida tópico." },
+        { id: 92, title: "Amitraz Calbos (500 ml)", cat: "Veterinaria", price: 21.50, images: ["/amitraz.jpeg"], desc: "Presentación de 500 ml de Amitraz Calbos." },
+        { id: 93, title: "Ganasan Baño - cipermetrina 20% (1 litro)", cat: "Veterinaria", price: 23.06, images: ["/ciper.jpeg"], desc: "Baño garrapaticida y moscas a base de cipermetrina." },
+        { id: 94, title: "Garrabaño (500 ml)", cat: "Veterinaria", price: 21.51, images: ["/garrabaño.jpeg"], desc: "Control externo de parásitos en presentación de 500 ml." },
+        { id: 95, title: "Garrabaño (1 litro)", cat: "Veterinaria", price: 40.90, images: ["/garrabaño.jpeg"], desc: "Control externo de parásitos en presentación de 1 litro." },
+        { id: 96, title: "Na Mosca Ourofino (20 aretes)", cat: "Veterinaria", price: 57.40, images: ["/mosca.jpeg"], desc: "Aretes repelentes y controladores de moscas." },
+        { id: 97, title: "Flechazo spray (160 ml)", cat: "Veterinaria", price: 4.92, images: ["/flecha.jpeg"], desc: "Curandero y repelente en spray." },
+        { id: 98, title: "Flechazo spray (354 ml)", cat: "Veterinaria", price: 7.15, images: ["/flecha.jpeg"], desc: "Presentación de 354 ml de Flechazo spray." },
+        { id: 99, title: "Lepecid (400 ml)", cat: "Veterinaria", price: 6.15, images: ["/lepecid.jpeg"], desc: "Curandero, matagusanos y repelente." },
+        { id: 100, title: "Mata Bicheira Calbos* (500 ml)", cat: "Veterinaria", price: 4.85, images: ["/mata.jpeg"], desc: "Tratamiento y prevención de gusaneras y bicheras." }
     ];
 
     const categorias = ["Todos", "Alimentación Animal", "Ganadería", "Inversiones y tierras", "Pastos y Semillas", "Cercas Eléctricas", "Fertilizantes", "Herbicidas", "Insecticidas", "Fungicidas", "Bioinsumos", "Equipos Agropecuarios", "Plandula", "Manuales Digitales", "Promociones", "Novedades", "Veterinaria" ];
