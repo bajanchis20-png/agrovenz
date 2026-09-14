@@ -56,7 +56,7 @@
         { id: 15, title: "Venta de tierras y asesoría", cat: "Agro", subcat: "Inversiones", price: "Consultar", images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." },
 
         // Manuales Digitales
-        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Agro", subcat: "Manuales", price: "", images: ["/manual.jpeg"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" },
+        { id: 18, title: "Guía de alimentación para uso adecuando de harina de palmiste", cat: "Agro", subcat: "Manuales", price: "", images: ["/logo.png"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" },
 
         // Pastos y Semillas
         { id: 10, title: "Semilla de maíz", cat: "Agro", subcat: "Semillas", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." },
@@ -250,7 +250,7 @@
                 </button>
             </div>
 
-            <!-- Buscador con Autocompletar Predictivo Amigable al Tacto -->
+            <!-- Buscador con Autocompletar Predictivo y Autoscroll -->
             <div class="relative w-full sm:w-96">
                 <div class="relative flex items-center">
                     <Icon icon="mdi:magnify" class="absolute left-3.5 text-stone-400 text-lg pointer-events-none"/>
@@ -265,7 +265,20 @@
                 {#if resultadosPredictivos.length > 0}
                     <div class="absolute top-full left-0 right-0 mt-1.5 bg-white rounded-2xl shadow-xl border border-stone-100 overflow-hidden z-50 max-h-60 overflow-y-auto">
                         {#each resultadosPredictivos as r}
-                            <button on:click={() => { busqueda = r.title; }} class="w-full text-left px-4 py-3 hover:bg-stone-50 border-b border-stone-50 flex items-center justify-between gap-2 touch-manipulation">
+                            <button on:click={() => { 
+                                busqueda = r.title; 
+                                busqueda = ""; // Limpiamos la barra o mantenemos el valor para filtrar la vista
+                                setTimeout(() => {
+                                    const elemento = document.getElementById(`producto-${r.id}`);
+                                    if (elemento) {
+                                        elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                        elemento.classList.add('ring-4', 'ring-emerald-500', 'bg-emerald-50/50');
+                                        setTimeout(() => {
+                                            elemento.classList.remove('ring-4', 'ring-emerald-500', 'bg-emerald-50/50');
+                                        }, 1500);
+                                    }
+                                }, 100);
+                            }} class="w-full text-left px-4 py-3 hover:bg-stone-50 border-b border-stone-50 flex items-center justify-between gap-2 touch-manipulation">
                                 <div>
                                     <p class="text-xs font-bold text-stone-800 line-clamp-1">{r.title}</p>
                                     <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold uppercase">{r.cat} &bull; {r.subcat}</span>
@@ -365,10 +378,10 @@
         </div>
     </div>
 
-    <!-- Grilla Ultra Responsiva adaptada con gap compacto para móviles (gap-2.5) y amplio para tablets/desktop -->
+    <!-- Grilla Ultra Responsiva con IDs únicos para el Autoscroll -->
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6">
         {#each productosFiltrados as p}
-            <div class="bg-white p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-stone-100 shadow-xs hover:shadow-xl transition-all flex flex-col h-full group">
+            <div id="producto-{p.id}" class="bg-white p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-stone-100 shadow-xs hover:shadow-xl transition-all flex flex-col h-full group">
                 <!-- Imagen o Carrusel de Imágenes adaptado a pantallas pequeñas -->
                 <div class="relative w-full h-28 sm:h-48 mb-2.5 sm:mb-4 bg-stone-100 rounded-xl sm:rounded-2xl overflow-hidden">
                     <img src={p.images[indicesImagenes[p.id] || 0]} alt={p.title} class="w-full h-28 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
