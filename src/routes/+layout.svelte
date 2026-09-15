@@ -97,38 +97,54 @@
 </main>
 
 <!-- Footer optimizado para pantallas pequeñas -->
+<!-- Footer optimizado para pantallas pequeñas -->
 <footer class="bg-stone-950 pt-16 sm:pt-24 pb-12 text-stone-400">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 sm:gap-12">
+        
+        <!-- Columna 1: Info Empresa -->
         <div class="col-span-1">
-            <h4 class="font-black text-white text-lg mb-4 sm:mb-6">AGROVENZ</h4>
-            <p class="text-sm leading-relaxed">
+            <h4 class="font-black text-white text-lg mb-2">AGROVENZ</h4>
+            <p class="text-xs font-semibold text-emerald-500 mb-3">Agrovenz 1988 C.A. | RIF: J-508748166</p>
+            <p class="text-sm leading-relaxed mb-4">
                 Aliado estratégico para el productor venezolano. Insumos de precisión, tecnología y asesoría para un campo rentable.
             </p>
         </div>
         
+        <!-- Columna 2: Navegación & Horario -->
         <div>
-            <h4 class="font-black text-white text-sm uppercase tracking-widest mb-4 sm:mb-6">Navegación</h4>
-            <ul class="text-sm space-y-3">
+            <h4 class="font-black text-white text-sm uppercase tracking-widest mb-4 sm:mb-6">Navegación y Horario</h4>
+            <ul class="text-sm space-y-2 mb-4">
                 <li><a href="/catalogo" class="hover:text-emerald-500 transition-colors py-1 inline-block">Catálogo de Productos</a></li>
                 <li><a href="/servicios" class="hover:text-emerald-500 transition-colors py-1 inline-block">Servicios Técnicos</a></li>
                 <li><a href="/educacion" class="hover:text-emerald-500 transition-colors py-1 inline-block">Academia AgroVenz</a></li>
             </ul>
+            <div class="text-xs text-stone-300 bg-stone-900 p-3 rounded-xl border border-stone-800">
+                <span class="font-bold text-white block mb-1">Horario de atención:</span>
+                Lunes a viernes de 9:00 a.m. a 3:00 p.m.
+            </div>
         </div>
 
+        <!-- Columna 3: Ubicación y Pagos/Envíos -->
         <div>
-            <h4 class="font-black text-white text-sm uppercase tracking-widest mb-4 sm:mb-6">Ubicación</h4>
-            <p class="text-sm flex items-start gap-2">
+            <h4 class="font-black text-white text-sm uppercase tracking-widest mb-4 sm:mb-6">Ubicación y Pagos</h4>
+            <p class="text-sm flex items-start gap-2 mb-3">
                 <Icon icon="mdi:map-marker" class="text-emerald-500 text-lg mt-0.5 flex-shrink-0" />
-                Los Guayos, Carabobo, Venezuela
+                Urb. El Molino Nro. 44, Planta Alta Oficina 2, Los Guayos, Carabobo, Venezuela
             </p>
-            <a href="{waLink}" class="text-sm flex items-center gap-2 mt-4 hover:text-emerald-500 transition-colors">
+            <a href="{waLink}" class="text-sm flex items-center gap-2 mb-4 hover:text-emerald-500 transition-colors">
                 <Icon icon="mdi:whatsapp" class="text-emerald-500 text-lg flex-shrink-0" /> +58 424-1860644
             </a>
+            
+            <div class="text-xs text-stone-300 space-y-2 pt-2 border-t border-stone-900">
+                <p><strong class="text-white">Métodos de pago:</strong> Efectivo, Binance, Transferencia y Pago Móvil.</p>
+                <p><strong class="text-white">Envíos nacionales:</strong> A acordar con el comprador.</p>
+            </div>
         </div>
 
+        <!-- Columna 4: Redes Sociales -->
         <div>
             <h4 class="font-black text-white text-sm uppercase tracking-widest mb-4 sm:mb-6">Síguenos</h4>
-            <div class="flex gap-5 text-2xl">
+            <div class="flex gap-5 text-2xl mb-6">
                 <a href="https://www.instagram.com/agrovenz" target="_blank" class="p-1 hover:text-emerald-500 transition-all hover:-translate-y-1" aria-label="Instagram"><Icon icon="mdi:instagram" /></a>
                 <a href="https://www.facebook.com/profile.php?id=61590730151838" target="_blank" class="p-1 hover:text-emerald-500 transition-all hover:-translate-y-1" aria-label="Facebook"><Icon icon="mdi:facebook" /></a>
                 <a href="https://tiktok.com/@agrovenz" target="_blank" class="p-1 hover:text-emerald-500 transition-all hover:-translate-y-1" aria-label="TikTok"><Icon icon="mdi:tiktok" /></a>
@@ -137,6 +153,6 @@
     </div>
     
     <div class="max-w-7xl mx-auto px-6 mt-16 sm:mt-20 pt-8 border-t border-stone-900 text-center text-[10px] text-stone-600 uppercase tracking-[0.2em]">
-        © 2026 AgroVenz · Innovación para el campo venezolano
+        © 2026 Agrovenz 1988 C.A. · RIF: J-508748166 · Innovación para el campo venezolano
     </div>
 </footer>

@@ -46,10 +46,15 @@
 { tituloBase: "Venta de tierras y asesoría", cat: "Agro", subcat: "Inversiones", variantes: [{ id: 15, volumen: "Estándar", price: 0, images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." }] },
 { tituloBase: "Guía de alimentación para uso adecuado de harina de palmiste", cat: "Agro", subcat: "Manuales", variantes: [{ id: 18, volumen: "Digital", price: 0, images: ["/manual2.jpeg"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" } as any] },
 { tituloBase: "Semilla de maíz", cat: "Agro", subcat: "Semillas", variantes: [{ id: 10, volumen: "Estándar", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." }] },
-{ tituloBase: "Semilla de pasto Matsuda", cat: "Agro", subcat: "Semillas", variantes: [{ id: 12, volumen: "20 KG", price: 12.6, images: ["/semilladepasto.png"], desc: "Presentación de 20 KG. Semillas de pasto." }] },
-{ tituloBase: "Plántula In vitro", cat: "Agro", subcat: "Plántula", variantes: [{ id: 17, volumen: "Estándar", price: 0, images: ["/pendula.jpeg"], desc: "Germoplasma exclusivo." }] },
-{ tituloBase: "delTrac Forte", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 28, volumen: "Estándar", price: 0, images: ["/bachaco.jpeg"], desc: "Insecticida agrícola." }] },
-{ tituloBase: "dusTra Bachaco", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 29, volumen: "Estándar", price: 0, images: ["/dustra.jpeg"], desc: "Insecticida para control de bachacos." }] },
+    { tituloBase: "Semilla de pasto Matsuda", cat: "Agro", subcat: "Semillas", variantes: [{ id: 12, volumen: "20 KG", price: 12.6, images: ["/semilladepasto.png"], desc: "Presentación de 20 KG. Semillas de pasto." }] },
+    { tituloBase: "Semilla de pasto Cuba 22", cat: "Agro", subcat: "Semillas", variantes: [{ id: 18, volumen: "Estándar", price: 70, images: ["/cuba22.jpeg"], desc: "Semilla de pasto Cuba 22 de alta calidad." }] },
+    { tituloBase: "Semilla de pasto Rodas", cat: "Agro", subcat: "Semillas", variantes: [{ id: 19, volumen: "Estándar", price: 70, images: ["/roda.jpeg"], desc: "Semilla de pasto Rodas." }] },
+    { tituloBase: "Semilla de pasto Clon 51", cat: "Agro", subcat: "Semillas", variantes: [{ id: 20, volumen: "Estándar", price: 80, images: ["/clon51.jpeg"], desc: "Semilla de pasto Clon 51." }] },
+    { tituloBase: "Semilla de pasto Botón de Oro", cat: "Agro", subcat: "Semillas", variantes: [{ id: 21, volumen: "Estándar", price: 120, images: ["/oroboton.png"], desc: "Semilla de pasto Botón de Oro." }] },
+    { tituloBase: "Plántula In vitro", cat: "Agro", subcat: "Plántula", variantes: [{ id: 17, volumen: "Estándar", price: 0, images: ["/pendula.jpeg"], desc: "Germoplasma exclusivo." }] },
+    { tituloBase: "delTrac Forte", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 28, volumen: "Estándar", price: 0, images: ["/bachaco.jpeg"], desc: "Insecticida agrícola." }] },
+    { tituloBase: "dusTra Bachaco", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 29, volumen: "Estándar", price: 0, images: ["/dustra.jpeg"], desc: "Insecticida para control de bachacos." }] },
+
 
         // Medicina Veterinaria
         { tituloBase: "Albendazol 25% + Co", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", variantes: [
@@ -189,7 +194,7 @@
         { tituloBase: "Resorte embrague", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 115, volumen: "Estándar", price: 3, images: ["/resorte.png"], desc: "Resorte embrague desmalezadora TL33 TL43 TL52." }] },
         { tituloBase: "Cabezal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 116, volumen: "28 mm 9 Estrías", price: 29, images: ["/cabezal.png"], desc: "Cabezal desmalezadora 28 mm 9 estrías TL43 TL52." }] },
         { tituloBase: "Porta nylon aluminio", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 117, volumen: "Universal", price: 8, images: ["/portalinon.png"], desc: "Porta nylon aluminio universal para desmalezadora." }] },
-        { tituloBase: "Nylon", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 118, volumen: "Estándar", price: 30, images: ["/nylon.png"], desc: "Nylon para desmalezadora." }] },
+        { tituloBase: "Nylon", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 118, volumen: "Estándar", price: 47, images: ["/nylon.png"], desc: "Nylon para desmalezadora." }] },
 
         // Repuestos Agro (Motores a Gasolina)
         { tituloBase: "Bujía 4T", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 119, volumen: "Denso", price: 7, images: ["/buji.png"], desc: "Bujía Denso 4T motor generador motobomba." }] },
@@ -220,10 +225,11 @@
         { tituloBase: "Acople motopodadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 140, volumen: "Estándar", price: 119, images: ["/moto.jpeg"], desc: "Acople motopodadora." }] },
         { tituloBase: "Acople tipo hacha", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 141, volumen: "Estándar", price: 119, images: ["/hacha.jpeg"], desc: "Acople tipo hacha." }] },
         { tituloBase: "Acople rotocultor", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 142, volumen: "Estándar", price: 99, images: ["/roto.jpeg"], desc: "Acople rotocultor." }] },
-        { tituloBase: "Acople fuera de borda", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 143, volumen: "Estándar", price: 109, images: ["/borda.jpeg"], desc: "Acople fuera de borda." }] },
-        { tituloBase: "Acople tipo hoz", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 144, volumen: "Estándar", price: 99, images: ["/tipoox.jpeg"], desc: "Acople tipo hoz." }] },
-        { tituloBase: "Acople cortasetos", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 145, volumen: "Estándar", price: 120, images: ["/naranja.jpeg"], desc: "Acople cortasetos." }] }
-    ];
+   { tituloBase: "Acople fuera de borda", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 143, volumen: "Estándar", price: 109, images: ["/borda.jpeg"], desc: "Acople fuera de borda." }] },
+    { tituloBase: "Acople tipo hoz", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 144, volumen: "Estándar", price: 99, images: ["/tipoox.jpeg"], desc: "Acople tipo hoz." }] },
+    { tituloBase: "Acople cortasetos", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 145, volumen: "Estándar", price: 120, images: ["/naranja.jpeg"], desc: "Acople cortasetos." }] },  // <-- ¡Faltaba esta coma aquí!
+    { tituloBase: "Acople desmalezadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 146, volumen: "Estándar", price: 70, images: ["/newacope.jpeg"], desc: "Acople desmalezadora motobomba 28MM 9D" }] }
+];
 
     const macroCategorias = ["TODOS", "AGRO", "MEDICINA VETERINARIA", "REPUESTOS AGRO"];
     const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plántula", "Insecticidas","Manuales"];
