@@ -68,10 +68,6 @@
             { id: 38, volumen: "250 ml", price: 90.53, images: ["/dectomax.jpeg"], desc: "Frasco de 250 ml de doramectina Dectomax." },
             { id: 39, volumen: "500 ml", price: 147.60, images: ["/deto2.jpg"], desc: "Frasco de 500 ml de doramectina Dectomax." }
         ]},
-        { tituloBase: "Dectomec Gold - ivermectina 3,15%", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", variantes: [
-            { id: 40, volumen: "100 ml", price: 10.96, images: ["/dectomec.jpeg"], desc: "Ivermectina de alta concentración al 3,15%." },
-            { id: 41, volumen: "500 ml", price: 38.00, images: ["/dectomec.jpeg"], desc: "Presentación de 500 ml de ivermectina 3,15%." }
-        ]},
         { tituloBase: "Dectomec Max - doramectina 2%", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", variantes: [
             { id: 42, volumen: "100 ml", price: 20.15, images: ["/dectomec.jpeg"], desc: "Doramectina al 2% inyectable." },
             { id: 43, volumen: "500 ml", price: 84.07, images: ["/dectomec.jpeg"], desc: "Presentación de 500 ml de doramectina al 2%." }
@@ -150,7 +146,8 @@
         ]},
         { tituloBase: "Pata Negra para cerdos", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", variantes: [{ id: 88, volumen: "1 kg", price: 5.59, images: ["/patanegra.webp"], desc: "Suplemento especializado para porcinos." }] },
         { tituloBase: "Stop antidiarreico", cat: "Medicina Veterinaria", subcat: "Medicamentos", variantes: [{ id: 89, volumen: "10 sobres", price: 11.36, images: ["/stop.jpeg"], desc: "Tratamiento eficaz contra diarreas en animales." }] },
-        { tituloBase: "Biodil", cat: "Medicina Veterinaria", subcat: "Medicamentos", variantes: [{ id: 90, volumen: "50 ml", price: 49.20, images: ["/biodil.jpeg"], desc: "Especialidad veterinaria de alta efectividad." }] },
+       { tituloBase: "Biodil", cat: "Medicina Veterinaria", subcat: "Medicamentos", variantes: [{ id: 90, volumen: "50 ml", price: 49.20, images: ["/biodil.jpeg"], desc: "Especialidad veterinaria de alta efectividad." }] },
+        { tituloBase: "Boldenona x 250ml", cat: "Medicina Veterinaria", subcat: "Vitaminas y Suplementos", variantes: [{ id: 146, volumen: "250 ml", price: 75.00, images: ["/boldenona.jpeg"], desc: "Boldenona 250 ml (Servisumos)." }] },
         { tituloBase: "Amitraz Calbos", cat: "Medicina Veterinaria", subcat: "Ectoparasiticidas", variantes: [
             { id: 91, volumen: "200 ml", price: 12.17, images: ["/amitraz.jpeg"], desc: "Garrapaticida y sarnicida tópico." },
             { id: 92, volumen: "500 ml", price: 25.80, images: ["/amitraz.jpeg"], desc: "Presentación de 500 ml de Amitraz Calbos." }
@@ -173,35 +170,35 @@
         { tituloBase: "Tuerca cabezal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 102, volumen: "M10X1.25", price: 4, images: ["/tuerca.png"], desc: "Tuerca cabezal M10X1.25 para desmalezadora TL43 TL52." }] },
         { tituloBase: "Uña de arranque", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 103, volumen: "Estándar", price: 3, images: ["/una.png"], desc: "Uña de arranque para motosierra MS180 MS250 MS390." }] },
         { tituloBase: "Estopera cigüeñal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 104, volumen: "Estándar", price: 10, images: ["/estopera.png"], desc: "Estopera de cigüeñal para motosierra MS290 MS310 MS390." }] },
-        { tituloBase: "Manguera combustible con filtro", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 105, volumen: "Estándar", price: 5, images: ["/maguera2.png"], desc: "Manguera de combustible con filtro para desmalezadora." }] },
-        { tituloBase: "Pipa bujía", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 106, volumen: "Universal", price: 3, images: ["/placeholder.png"], desc: "Pipa bujía universal para desmalezadora y motosierra." }] },
-        { tituloBase: "Carburador", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 107, volumen: "TL43 TL52", price: 27, images: ["/placeholder.png"], desc: "Carburador para desmalezadora TL43 TL52 BCH-40T." }] },
-        { tituloBase: "Campana embrague", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 108, volumen: "9D", price: 7, images: ["/placeholder.png"], desc: "Campana embrague desmalezadora 9D TL43 TL52." }] },
+        { tituloBase: "Manguera combustible con filtro", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 105, volumen: "Estándar", price: 5, images: ["/mangurafiltro.png"], desc: "Manguera de combustible con filtro para desmalezadora." }] },
+        { tituloBase: "Pipa bujía", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 106, volumen: "Universal", price: 3, images: ["/bujia.png"], desc: "Pipa bujía universal para desmalezadora y motosierra." }] },
+        { tituloBase: "Carburador", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 107, volumen: "TL43 TL52", price: 27, images: ["/carbutl43.png"], desc: "Carburador para desmalezadora TL43 TL52 BCH-40T." }] },
+        { tituloBase: "Campana embrague", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 108, volumen: "9D", price: 7, images: ["/campana.png"], desc: "Campana embrague desmalezadora 9D TL43 TL52." }] },
         { tituloBase: "Filtro aire", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 109, volumen: "FS120/FS250", price: 7, images: ["/filtro.png"], desc: "Filtro aire desmalezadora FS120 FS250 FS450." }] },
         { tituloBase: "Bujía 2T", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [
-            { id: 110, volumen: "Denso", price: 7, images: ["/placeholder.png"], desc: "Bujía 2T Denso para desmalezadora y motosierra." },
-            { id: 111, volumen: "Yamaha", price: 7, images: ["/placeholder.png"], desc: "Bujía 2T Yamaha para desmalezadora y motosierra." }
+            { id: 110, volumen: "Denso", price: 7, images: ["/bujia25.png"], desc: "Bujía 2T Denso para desmalezadora y motosierra." },
+            { id: 111, volumen: "Yamaha", price: 7, images: ["/bujiyama.png"], desc: "Bujía 2T Yamaha para desmalezadora y motosierra." }
         ]},
         { tituloBase: "Arranque", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [
-            { id: 112, volumen: "TL33/TL43", price: 9, images: ["/placeholder.png"], desc: "Arranque desmalezadora TL33 TL43 BCH-40T." },
-            { id: 113, volumen: "TL52 BC4700", price: 7, images: ["/placeholder.png"], desc: "Arranque desmalezadora TL52 BC4700 52 CC." }
+            { id: 112, volumen: "TL33/TL43", price: 9, images: ["/arranque.png"], desc: "Arranque desmalezadora TL33 TL43 BCH-40T." },
+            { id: 113, volumen: "TL52 BC4700", price: 7, images: ["/arranque.png"], desc: "Arranque desmalezadora TL52 BC4700 52 CC." }
         ]},
-        { tituloBase: "Embrague", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 114, volumen: "Estándar", price: 8, images: ["/placeholder.png"], desc: "Embrague desmalezadora TL33 TL43 TL52 BCH-40T." }] },
-        { tituloBase: "Resorte embrague", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 115, volumen: "Estándar", price: 3, images: ["/placeholder.png"], desc: "Resorte embrague desmalezadora TL33 TL43 TL52." }] },
-        { tituloBase: "Cabezal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 116, volumen: "28 mm 9 Estrías", price: 29, images: ["/placeholder.png"], desc: "Cabezal desmalezadora 28 mm 9 estrías TL43 TL52." }] },
-        { tituloBase: "Porta nylon aluminio", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 117, volumen: "Universal", price: 8, images: ["/placeholder.png"], desc: "Porta nylon aluminio universal para desmalezadora." }] },
-        { tituloBase: "Nylon", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 118, volumen: "Estándar", price: 30, images: ["/placeholder.png"], desc: "Nylon para desmalezadora." }] },
+        { tituloBase: "Embrague", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 114, volumen: "Estándar", price: 8, images: ["/embrague.png"], desc: "Embrague desmalezadora TL33 TL43 TL52 BCH-40T." }] },
+        { tituloBase: "Resorte embrague", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 115, volumen: "Estándar", price: 3, images: ["/resorte.png"], desc: "Resorte embrague desmalezadora TL33 TL43 TL52." }] },
+        { tituloBase: "Cabezal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 116, volumen: "28 mm 9 Estrías", price: 29, images: ["/cabezal.png"], desc: "Cabezal desmalezadora 28 mm 9 estrías TL43 TL52." }] },
+        { tituloBase: "Porta nylon aluminio", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 117, volumen: "Universal", price: 8, images: ["/portalinon.png"], desc: "Porta nylon aluminio universal para desmalezadora." }] },
+        { tituloBase: "Nylon", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 118, volumen: "Estándar", price: 30, images: ["/nylon.png"], desc: "Nylon para desmalezadora." }] },
 
         // Repuestos Agro (Motores a Gasolina)
         { tituloBase: "Bujía 4T", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 119, volumen: "Denso", price: 7, images: ["/buji.png"], desc: "Bujía Denso 4T motor generador motobomba." }] },
         { tituloBase: "Tanque gasolina", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 120, volumen: "GX160/GX168", price: 29, images: ["/tanque.png"], desc: "Tanque gasolina motor GX160 GX168." }] },
         { tituloBase: "Carburador motor", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 121, volumen: "GX120/GX160", price: 20, images: ["/carburador.png"], desc: "Carburador motor GX120 GX160 GX168." }] },
-        { tituloBase: "Estopera cigüeñal motor", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 122, volumen: "25X41.25X6", price: 4, images: ["/placeholder.png"], desc: "Estopera cigüeñal motor GX160 GX168." }] },
+        { tituloBase: "Estopera cigüeñal motor", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 122, volumen: "25X41.25X6", price: 4, images: ["/estopera2.png"], desc: "Estopera cigüeñal motor GX160 GX168." }] },
         { tituloBase: "Biela", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 123, volumen: "5.5-6.5 HP", price: 10, images: ["/biela.png"], desc: "Biela motor GX160 GX168 5,5-6,5 HP." }] },
         { tituloBase: "Kit anillos", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 124, volumen: "GX160/GX168 67mm", price: 7, images: ["/kit.png"], desc: "Kit anillos motor GX160 GX168 67 mm Standard." }] },
-        { tituloBase: "Kit empacaduras", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 125, volumen: "GX160/GX168", price: 6, images: ["/placeholder.png"], desc: "Kit empacaduras motor GX160 GX168." }] },
-        { tituloBase: "Kit válvulas", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 126, volumen: "Admisión/Escape", price: 13, images: ["/placeholder.png"], desc: "Kit válvulas motor GX160 GX168 GX170 admisión escape." }] },
-        { tituloBase: "Arranque manual", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 127, volumen: "GX160/GX168", price: 14, images: ["/placeholder.png"], desc: "Arranque manual motor GX160 GX168 5,5-6,5 HP." }] },
+        { tituloBase: "Kit empacaduras", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 125, volumen: "GX160/GX168", price: 6, images: ["/kitempaca.png"], desc: "Kit empacaduras motor GX160 GX168." }] },
+        { tituloBase: "Kit válvulas", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 126, volumen: "Admisión/Escape", price: 13, images: ["/gx160kit.png"], desc: "Kit válvulas motor GX160 GX168 GX170 admisión escape." }] },
+        { tituloBase: "Arranque manual", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 127, volumen: "GX160/GX168", price: 14, images: ["/arranquemanu.png"], desc: "Arranque manual motor GX160 GX168 5,5-6,5 HP." }] },
 
         // Otros repuestos y accesorios sueltos añadidos
         { tituloBase: "Manguera fumigadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [
@@ -209,21 +206,21 @@
             { id: 129, volumen: "100 M 200 Bar 8.5 mm", price: 91, images: ["/placeholder.png"], desc: "Manguera fumigadora 100 metros." }
         ]},
         { tituloBase: "Lanza fumigadora estacionaria", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 130, volumen: "20 cm", price: 8, images: ["/rojo.png"], desc: "Lanza fumigadora estacionaria de 20 cm." }] },
-        { tituloBase: "Kit anillos motor diésel", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 131, volumen: "186F 9 HP Standard", price: 12, images: ["/placeholder.png"], desc: "Kit anillos motor diésel 186F 9 HP Standard." }] },
+        { tituloBase: "Kit anillos motor diésel", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 131, volumen: "186F 9 HP Standard", price: 12, images: ["/diesel.png"], desc: "Kit anillos motor diésel 186F 9 HP Standard." }] },
         { tituloBase: "Kit pistón generador", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 132, volumen: "950 45 mm", price: 8, images: ["/piston.png"], desc: "Kit pistón generador 950 45 mm." }] },
         { tituloBase: "Carbonera generador", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 133, volumen: "3 KVA 6 KVA", price: 4, images: ["/carbonera.png"], desc: "Carbonera generador 3 KVA 6 KVA." }] },
-        { tituloBase: "Pipa bujía universal motor gasolina", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 134, volumen: "Universal", price: 3, images: ["/bujia.png"], desc: "Pipa bujía universal para motor gasolina." }] },
-        { tituloBase: "Filtro aire motor diésel", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 135, volumen: "9 HP 186F/188F/190F", price: 15, images: ["/placeholder.png"], desc: "Filtro aire motor diésel 9 HP 186F 188F 190F." }] },
-        { tituloBase: "Llave de paso fumigadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 136, volumen: "DS200 LT22W LT30W", price: 6, images: ["/placeholder.png"], desc: "Llave de paso fumigadora DS200 LT22W LT30W." }] },
-        { tituloBase: "Carburador desmalezadora FS", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 137, volumen: "FS160 FS220 FS280", price: 29, images: ["/carburador2.png"], desc: "Carburador desmalezadora FS160 FS220 FS280." }] },
+        { tituloBase: "Pipa bujía universal motor gasolina", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 134, volumen: "Universal", price: 3, images: ["/pipabujia.png"], desc: "Pipa bujía universal para motor gasolina." }] },
+        { tituloBase: "Filtro aire motor diésel", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 135, volumen: "9 HP 186F/188F/190F", price: 15, images: ["/filtrodeaire.png"], desc: "Filtro aire motor diésel 9 HP 186F 188F 190F." }] },
+        { tituloBase: "Llave de paso fumigadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 136, volumen: "DS200 LT22W LT30W", price: 6, images: ["/llavedepaso.png"], desc: "Llave de paso fumigadora DS200 LT22W LT30W." }] },
+        { tituloBase: "Carburador desmalezadora FS", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 137, volumen: "FS160 FS220 FS280", price: 29, images: ["/carburador80.png"], desc: "Carburador desmalezadora FS160 FS220 FS280." }] },
         { tituloBase: "AVR generador", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 138, volumen: "3 KVA 220 UF", price: 17, images: ["/avr.png"], desc: "AVR generador 3 KVA 110-250 220 UF." }] },
-        { tituloBase: "Acople orillador", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 139, volumen: "Estándar", price: 99, images: ["/placeholder.png"], desc: "Acople orillador." }] },
-        { tituloBase: "Acople motopodadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 140, volumen: "Estándar", price: 119, images: ["/placeholder.png"], desc: "Acople motopodadora." }] },
-        { tituloBase: "Acople tipo hacha", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 141, volumen: "Estándar", price: 119, images: ["/placeholder.png"], desc: "Acople tipo hacha." }] },
-        { tituloBase: "Acople rotocultor", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 142, volumen: "Estándar", price: 99, images: ["/placeholder.png"], desc: "Acople rotocultor." }] },
-        { tituloBase: "Acople fuera de borda", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 143, volumen: "Estándar", price: 109, images: ["/placeholder.png"], desc: "Acople fuera de borda." }] },
-        { tituloBase: "Acople tipo hoz", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 144, volumen: "Estándar", price: 99, images: ["/placeholder.png"], desc: "Acople tipo hoz." }] },
-        { tituloBase: "Acople cortasetos", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 145, volumen: "Estándar", price: 120, images: ["/placeholder.png"], desc: "Acople cortasetos." }] }
+        { tituloBase: "Acople orillador", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 139, volumen: "Estándar", price: 99, images: ["/acope.jpeg"], desc: "Acople orillador." }] },
+        { tituloBase: "Acople motopodadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 140, volumen: "Estándar", price: 119, images: ["/moto.jpeg"], desc: "Acople motopodadora." }] },
+        { tituloBase: "Acople tipo hacha", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 141, volumen: "Estándar", price: 119, images: ["/hacha.jpeg"], desc: "Acople tipo hacha." }] },
+        { tituloBase: "Acople rotocultor", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 142, volumen: "Estándar", price: 99, images: ["/roto.jpeg"], desc: "Acople rotocultor." }] },
+        { tituloBase: "Acople fuera de borda", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 143, volumen: "Estándar", price: 109, images: ["/borda.jpeg"], desc: "Acople fuera de borda." }] },
+        { tituloBase: "Acople tipo hoz", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 144, volumen: "Estándar", price: 99, images: ["/tipoox.jpeg"], desc: "Acople tipo hoz." }] },
+        { tituloBase: "Acople cortasetos", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 145, volumen: "Estándar", price: 120, images: ["/naranja.jpeg"], desc: "Acople cortasetos." }] }
     ];
 
     const macroCategorias = ["TODOS", "AGRO", "MEDICINA VETERINARIA", "REPUESTOS AGRO"];
@@ -261,7 +258,7 @@
     let productosFiltrados = $derived(
         productosCatalogo.filter(p => {
             const cumpleBusqueda = p.tituloBase.toLowerCase().includes(busqueda.toLowerCase()) || 
-                                  p.variantes.some(v => v.desc.toLowerCase().includes(busqueda.toLowerCase()) || v.volumen.toLowerCase().includes(busqueda.toLowerCase()));
+                                   p.variantes.some(v => v.desc.toLowerCase().includes(busqueda.toLowerCase()) || v.volumen.toLowerCase().includes(busqueda.toLowerCase()));
             const cumpleMacro = macroFiltro === "TODOS" || p.cat.toUpperCase() === macroFiltro;
             const cumpleSub = subFiltro === "Todas" || p.subcat === subFiltro;
             return cumpleBusqueda && cumpleMacro && cumpleSub;
