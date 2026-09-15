@@ -16,44 +16,197 @@
         variantes: Variante[];
     }
 
-    const productosCatalogo: ProductoAgrupado[] = [
-        { tituloBase: "Harina de Palmiste", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 1, volumen: "36.8 KG", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8 KG. Fuente de proteína y energía ideal para ganado bovino." }] },
-        { tituloBase: "Silo de maíz", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 7, volumen: "30 KG", price: 4, images: ["/silodemaiz2.jpeg"], desc: "Presentación de 30 KG,Contiene SiloLact." }] },
-        { tituloBase: "Melaza", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 11, volumen: "Estándar", price: 14, images: ["/Melaza.png"], desc: "Mejora la energía y condición corporal de los animales, ideal para bovinos, búfalos, caballos, ovejas y cabras." }] },
-        { tituloBase: "SiloLact", cat: "Agro", subcat: "Bioinsumos", variantes: [{ id: 8, volumen: "500 ml", price: 70, images: ["/silolact.png"], desc: "Presentación de 500 ml para uso pecuario. Favorece la fermentación y conservación del forraje." }] },
-        { tituloBase: "Alambre eléctrico", cat: "Agro", subcat: "Cercas Eléctricas", variantes: [{ id: 2, volumen: "Estándar", price: 170, images: ["/alambrenew.jpeg"], desc: "Para cerco ganadero. Alta conductividad, resistente a la corrosión y a la intemperie." }] },
-        { tituloBase: "Bolsas Resistentes", cat: "Agro", subcat: "Equipos", variantes: [{ id: 9, volumen: "200 bolsas", price: 90, images: ["/bolsas.png"], desc: "200 bolsas para ensilaje, capacidad de 40 KG, calibre 60x120x20. Resistentes para empaque y conservación." }] },
-        { tituloBase: "Microchip de 2.12 mm", cat: "Agro", subcat: "Equipos", variantes: [{ id: 14, volumen: "2.12 mm", price: 0, images: ["/chipnew99.png"], desc: "Identificación de ganado (Precio a consultar)." }] },
-        { tituloBase: "Lector modelo W90B. 134.2 Khz", cat: "Agro", subcat: "Equipos", variantes: [{ id: 16, volumen: "W90B", price: 70, images: ["/lectornew.jpeg"], desc: "Diseñado para la identificación y trazabilidad avanzada de animales." }] },
-        { tituloBase: "Jeringas plásticas reutilizables", cat: "Agro", subcat: "Equipos", variantes: [{ id: 19, volumen: "Estándar", price: 10, images: ["/jeringa.jpeg"], desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." }] },
-        { tituloBase: "Aguja ganadera 10 unidades", cat: "Agro", subcat: "Equipos", variantes: [{ id: 20, volumen: "Pack 10u", price: 6, images: ["/aguja.png"], desc: "Pack de 10 unidades resistentes y de excelente calidad para tratamientos veterinarios." }] },
-        { tituloBase: "Garrocha para ganado", cat: "Agro", subcat: "Equipos", variantes: [{ id: 21, volumen: "Estándar", price: 130, images: ["/garrocha.png"], desc: "Herramienta resistente y ergonómica para el manejo seguro del rebaño." }] },
-        { tituloBase: "Medidor de pH digital portátil", cat: "Agro", subcat: "Equipos", variantes: [{ id: 22, volumen: "Estándar", price: 12, images: ["/numero1.jpeg", "/numero2.jpeg", "/numero3.jpeg"], desc: "Medición rápida y precisa del pH en suelos y agua." }] },
-        { tituloBase: "Botas plásticas Evolution (sin puntera)", cat: "Agro", subcat: "Equipos", variantes: [{ id: 23, volumen: "Par", price: 17, images: ["/botas1.jpeg", "/botas2.jpeg"], desc: "Colores negro y marrón, alta resistencia para trabajo pesado de campo." }] },
-        { tituloBase: "Bumaute y Bumautas", cat: "Agro", subcat: "Ganadería", variantes: [{ id: 13, volumen: "Estándar", price: 0, images: ["/bovino.png"], desc: "Genética seleccionada para mejorar la productividad de tu rebaño." }] },
-        { tituloBase: "Brega", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 3, volumen: "1 KG", price: 12.65, images: ["/brega.png"], desc: "Presentación de 1 KG. Formulado para el control de malezas en el maíz." }] },
-        { tituloBase: "Glytotal", cat: "Agro", subcat: "Herbicidas", variantes: [
-            { id: 4, volumen: "1 LT", price: 8.8, images: ["/realgly.png"], desc: "1 LT. No selectivo, de acción sistémica, ideal para el control de malezas de hoja ancha y gramíneas." },
-            { id: 24, volumen: "747 WG (1 KG)", price: 10.5, images: ["/747gly.jpeg"], desc: "Presentación de 1 KG, formulado para un control amplio y sistémico de malezas." }
-        ]},
-        { tituloBase: "Jonrón 212", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 5, volumen: "1 LT", price: 18, images: ["/herbicida.png"], desc: "Envase de 1 LT. Disponibles también en 4 LT y 10 LT. Preguntar disponibilidad y precios." }] },
-        { tituloBase: "Socio", cat: "Agro", subcat: "Herbicidas", variantes: [
-            { id: 6, volumen: "Líquido", price: 0, images: ["/socio.png"], desc: "De acción sistémica utilizado para control de malezas de hoja ancha y algunas gramíneas (Precio a consultar)." },
-            { id: 25, volumen: "En polvo (1 kg)", price: 31, images: ["/socio.jpeg"], desc: "Presentación en polvo de 1 kg para el control eficiente de malezas." }
-        ]},
-       { tituloBase: "24D Amina 6 Proficol", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 26, volumen: "Estándar", price: 28.5, images: ["/amina.jpeg"], desc: "Herbicida hormonal selectivo para el control de malezas de hoja ancha en cultivos." }] },
-{ tituloBase: "Alisio", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 27, volumen: "500 g", price: 18, images: ["/alisio.jpeg"], desc: "Presentación de 500 g ideal para aplicaciones agrícolas precisas." }] },
-{ tituloBase: "Venta de tierras y asesoría", cat: "Agro", subcat: "Inversiones", variantes: [{ id: 15, volumen: "Estándar", price: 0, images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." }] },
-{ tituloBase: "Guía de alimentación para uso adecuado de harina de palmiste", cat: "Agro", subcat: "Manuales", variantes: [{ id: 18, volumen: "Digital", price: 0, images: ["/manual2.jpeg"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" } as any] },
-{ tituloBase: "Semilla de maíz", cat: "Agro", subcat: "Semillas", variantes: [{ id: 10, volumen: "Estándar", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." }] },
+   const productosCatalogo: ProductoAgrupado[] = [
+    { tituloBase: "Harina de Palmiste", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 1, volumen: "36.8 KG", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8 KG. Fuente de proteína y energía ideal para ganado bovino." }] },
+    { tituloBase: "Silo de maíz", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 7, volumen: "30 KG", price: 4, images: ["/silodemaiz2.jpeg"], desc: "Presentación de 30 KG,Contiene SiloLact." }] },
+    { tituloBase: "Melaza", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 11, volumen: "Estándar", price: 14, images: ["/Melaza.png"], desc: "Mejora la energía y condición corporal de los animales, ideal para bovinos, búfalos, caballos, ovejas y cabras." }] },
+    { tituloBase: "SiloLact", cat: "Agro", subcat: "Bioinsumos", variantes: [{ id: 8, volumen: "500 ml", price: 70, images: ["/silolact.png"], desc: "Presentación de 500 ml para uso pecuario. Favorece la fermentación y conservación del forraje." }] },
+    { tituloBase: "Alambre eléctrico", cat: "Agro", subcat: "Cercas Eléctricas", variantes: [{ id: 2, volumen: "Estándar", price: 170, images: ["/alambrenew.jpeg"], desc: "Para cerco ganadero. Alta conductividad, resistente a la corrosión y a la intemperie." }] },
+    { tituloBase: "Bolsas Resistentes", cat: "Agro", subcat: "Equipos", variantes: [{ id: 9, volumen: "200 bolsas", price: 90, images: ["/bolsas.png"], desc: "200 bolsas para ensilaje, capacidad de 40 KG, calibre 60x120x20. Resistentes para empaque y conservación." }] },
+    { tituloBase: "Microchip de 2.12 mm", cat: "Agro", subcat: "Equipos", variantes: [{ id: 14, volumen: "2.12 mm", price: 0, images: ["/chipnew99.png"], desc: "Identificación de ganado (Precio a consultar)." }] },
+    { tituloBase: "Lector modelo W90B. 134.2 Khz", cat: "Agro", subcat: "Equipos", variantes: [{ id: 16, volumen: "W90B", price: 70, images: ["/lectornew.jpeg"], desc: "Diseñado para la identificación y trazabilidad avanzada de animales." }] },
+    { tituloBase: "Jeringas plásticas reutilizables", cat: "Agro", subcat: "Equipos", variantes: [{ id: 19, volumen: "Estándar", price: 10, images: ["/jeringa.jpeg"], desc: "De alta durabilidad y fácil limpieza, ideales para dosificación en campo." }] },
+    { tituloBase: "Aguja ganadera 10 unidades", cat: "Agro", subcat: "Equipos", variantes: [{ id: 20, volumen: "Pack 10u", price: 6, images: ["/aguja.png"], desc: "Pack de 10 unidades resistentes y de excelente calidad para tratamientos veterinarios." }] },
+    { tituloBase: "Garrocha para ganado", cat: "Agro", subcat: "Equipos", variantes: [{ id: 21, volumen: "Estándar", price: 130, images: ["/garrocha.png"], desc: "Herramienta resistente y ergonómica para el manejo seguro del rebaño." }] },
+    { tituloBase: "Medidor de pH digital portátil", cat: "Agro", subcat: "Equipos", variantes: [{ id: 22, volumen: "Estándar", price: 12, images: ["/numero1.jpeg", "/numero2.jpeg", "/numero3.jpeg"], desc: "Medición rápida y precisa del pH en suelos y agua." }] },
+    { tituloBase: "Botas plásticas Evolution (sin puntera)", cat: "Agro", subcat: "Equipos", variantes: [{ id: 23, volumen: "Par", price: 17, images: ["/botas1.jpeg", "/botas2.jpeg"], desc: "Colores negro y marrón, alta resistencia para trabajo pesado de campo." }] },
+    { tituloBase: "Bumaute y Bumautas", cat: "Agro", subcat: "Ganadería", variantes: [{ id: 13, volumen: "Estándar", price: 0, images: ["/bovino.png"], desc: "Genética seleccionada para mejorar la productividad de tu rebaño." }] },
+
+    // Tratamiento de Semillas
+    { tituloBase: "Fortenza Duo Aplicado x Saco de 60 MK Semilla", cat: "Agro", subcat: "Tratamiento de Semillas", variantes: [{ id: 200, volumen: "Saco 60 MK Aplicado", price: 36.65, images: ["/fortenza.jpeg"], desc: "Tratamiento aplicado por saco de 60 MK." }] },
+
+    // Bioestimulante Foliar
+    { tituloBase: "Quantis", cat: "Agro", subcat: "Bioestimulante Foliar", variantes: [{ id: 201, volumen: "Envase 1 lt", price: 21.35, images: ["/nuevo2.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Stimplex", cat: "Agro", subcat: "Bioestimulante Foliar", variantes: [{ id: 202, volumen: "Envase 5 lt", price: 185.75, images: ["/stimplex.jpeg"], desc: "Envase 5 lt." }] },
+
+    // Regulador de Crecimiento
+    { tituloBase: "Progibb Plus", cat: "Agro", subcat: "Regulador de Crecimiento", variantes: [{ id: 203, volumen: "Sobre 10 gr", price: 3.50, images: ["/progib.jpeg"], desc: "Sobre de 10 gr." }] },
+
+    // Coadyuvantes
+    { tituloBase: "Surfer 350", cat: "Agro", subcat: "Coadyuvantes", variantes: [{ id: 204, volumen: "Envase 1 Lt", price: 9.95, images: ["/sur.jpeg"], desc: "Envase 1 Lt." }] },
+
+    // Sustrato para Semilleros
+    { tituloBase: "Sustrato Berger BM2 HP 10FP", cat: "Agro", subcat: "Semillas", variantes: [{ id: 205, volumen: "Fardo Vol Comp 107 L", price: 92.45, images: ["/berger.jpeg"], desc: "Fardo - Volumen Compactado 107 L." }] },
+
+    // Rodenticida de Uso Industrial
+    { tituloBase: "Stryker Pellets", cat: "Agro", subcat: "Rodenticida de Uso Industrial", variantes: [{ id: 206, volumen: "Envase 1 Kg", price: 15.95, images: ["/sky.jpeg"], desc: "Envase 1 Kg. (A los precios indicados debe adicionarse I.V.A. 16%)" }] },
+
+    // Insecticidas de Uso Industrial
+    { tituloBase: "Dustra Bachacos", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 29, volumen: "Envase 1 Kg", price: 20.70, images: ["/dustra.jpeg"], desc: "Envase 1 Kg. (A los precios indicados debe adicionarse I.V.A. 16%)" }] },
+    { tituloBase: "Deltrac Forte", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 28, volumen: "Envase 500 gr", price: 13.35, images: ["/bachaco.jpeg"], desc: "Envase 500 gr. (A los precios indicados debe adicionarse I.V.A. 16%)" }] },
+
+    // Insecticidas
+    { tituloBase: "Actara 250 WG", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 100, volumen: "Envase 100 grs", price: 10.45, images: ["/actara.jpeg"], desc: "Envase 100 grs." }] },
+    { tituloBase: "Curacron", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 101, volumen: "Envase 1 lt", price: 49.45, images: ["/cuca.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Curtail 25 EC", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 102, volumen: "Envase 1 lt", price: 13.70, images: ["/curtail.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Engeo XT", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 103, volumen: "Envase 250 cc", price: 16.75, images: ["/engeo.jpeg"], desc: "Envase 250 cc." }] },
+    { tituloBase: "Malathion 57%", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 104, volumen: "Envase 1 lt", price: 19.25, images: ["/malathi.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Match EC", cat: "Agro", subcat: "Insecticidas", variantes: [
+        { id: 105, volumen: "Envase 1 lt", price: 28.75, images: ["/match.jpeg"], desc: "Envase 1 lt." },
+        { id: 106, volumen: "Envase 250 cc", price: 7.70, images: ["/match.jpeg"], desc: "Envase 250 cc." }
+    ]},
+    { tituloBase: "Nocaut-L", cat: "Agro", subcat: "Insecticidas", variantes: [
+        { id: 107, volumen: "Envase 1 lt", price: 13.35, images: ["/nocaut.jpeg"], desc: "Envase 1 lt." },
+        { id: 108, volumen: "Envase 10 lt", price: 121.20, images: ["/nocaut.jpeg"], desc: "Envase 10 lt." }
+    ]},
+    { tituloBase: "Nufos 4 EC", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 109, volumen: "Envase 1 lt", price: 17.60, images: ["/nufos.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Phostoxim Tr-333", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 110, volumen: "Envase 1 Kg", price: 58.50, images: ["/poti.jpeg"], desc: "Envase 1 Kg." }] },
+    { tituloBase: "Proclaim", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 111, volumen: "Envase 500 grs", price: 59.35, images: ["/proclaim2.jpeg"], desc: "Envase 500 grs." }] },
+    { tituloBase: "Proclaim Fit", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 112, volumen: "Envase 80 grs", price: 12.95, images: ["/proclaim.jpeg"], desc: "Envase 80 grs." }] },
+    { tituloBase: "Radiant 60 SC", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 113, volumen: "Envase 100 cc", price: 19.65, images: ["/radian.jpeg"], desc: "Envase 100 cc." }] },
+    { tituloBase: "Trigard", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 114, volumen: "Envase 50 gr", price: 16.75, images: ["/trigard.jpeg"], desc: "Envase 50 gr." }] },
+    { tituloBase: "Varero 200 SC", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 115, volumen: "Envase 1 lt", price: 75.40, images: ["/verero.jpeg"], desc: "Envase 1 lt." }] },
+
+    // Herbicidas
+    { tituloBase: "2,4-D Amina 6", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 26, volumen: "Envase 4 lt", price: 28.50, images: ["/amina.jpeg"], desc: "Herbicida hormonal selectivo para el control de malezas de hoja ancha en cultivos." },
+        { id: 116, volumen: "Envase 20 lt", price: 137.15, images: ["/amina.jpeg"], desc: "Envase 20 lt." }
+    ]},
+    { tituloBase: "Afalon 50 PM", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 117, volumen: "Envase 1 Kg", price: 40.70, images: ["/afalon.jpeg"], desc: "Envase 1 Kg." }] },
+    { tituloBase: "Agil", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 118, volumen: "Envase 1 lt", price: 32.90, images: ["/agil.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Alisio", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 27, volumen: "Sobre 500 g", price: 16.25, images: ["/alisio.jpeg"], desc: "Presentación de 500 g ideal para aplicaciones agrícolas precisas." }] },
+    { tituloBase: "Atilus 380 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 119, volumen: "Envase 1 lt", price: 49.60, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Basagran 480", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 120, volumen: "Envase 1 lt", price: 35.45, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Bazinga 400 EC", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 121, volumen: "Envase 1 lt", price: 12.90, images: ["/herbicida.png"], desc: "Envase 1 lt." },
+        { id: 122, volumen: "Envase 10 lt", price: 118.90, images: ["/herbicida.png"], desc: "Envase 10 lt." }
+    ]},
+    { tituloBase: "Branson 500 WG", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 123, volumen: "Envase 500 grs", price: 26.50, images: ["/herbicida.png"], desc: "Envase 500 grs." }] },
+    { tituloBase: "Bengala 25 OD", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 124, volumen: "Envase 1 lt", price: 41.60, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Brega", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 3, volumen: "1 KG", price: 12.65, images: ["/brega.png"], desc: "Presentación de 1 KG. Formulado para el control de malezas en el maíz." },
+        { id: 125, volumen: "Brega 90 WG (1 Kg)", price: 12.65, images: ["/brega.png"], desc: "Envase 1 Kg." }
+    ]},
+    { tituloBase: "Cerrero 200 SL", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 126, volumen: "Envase 1 lt", price: 9.10, images: ["/herbicida.png"], desc: "Envase 1 lt." },
+        { id: 127, volumen: "Envase 4 lt", price: 35.35, images: ["/herbicida.png"], desc: "Envase 4 lt." }
+    ]},
+    { tituloBase: "Dual Gold", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 128, volumen: "Envase 1 lt", price: 47.90, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Duron", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 129, volumen: "Envase 1 Kg", price: 22.90, images: ["/herbicida.png"], desc: "Envase 1 Kg." }] },
+    { tituloBase: "Elumis", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 130, volumen: "Envase 5 lt", price: 201.55, images: ["/herbicida.png"], desc: "Envase 5 lt." }] },
+    { tituloBase: "Foker CE", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 131, volumen: "Envase 1 lt", price: 24.10, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Flex", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 132, volumen: "Envase 1 lt", price: 32.80, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Gesaprim MOF", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 133, volumen: "Envase 1 kg", price: 26.75, images: ["/herbicida.png"], desc: "Envase 1 kg." }] },
+    { tituloBase: "Gesapax 500 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 134, volumen: "Envase 20 lt", price: 255.95, images: ["/herbicida.png"], desc: "Envase 20 lt." }] },
+    { tituloBase: "Glytotal", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 4, volumen: "Glytotal 480 SL (1 LT)", price: 6.55, images: ["/realgly.png"], desc: "Envase 1 Lt." },
+        { id: 135, volumen: "Glytotal 480 SL (4 LT)", price: 25.45, images: ["/realgly.png"], desc: "Envase 4 Lt." },
+        { id: 136, volumen: "Glytotal 480 SL (10 LT)", price: 61.05, images: ["/realgly.png"], desc: "Envase 10 Lt." },
+        { id: 137, volumen: "Glytotal Extra (1 LT)", price: 8.80, images: ["/realgly.png"], desc: "Envase 1 Lt." },
+        { id: 138, volumen: "Glytotal Extra (4 LT)", price: 34.35, images: ["/realgly.png"], desc: "Envase 4 Lt." },
+        { id: 139, volumen: "Glytotal Extra (10 LT)", price: 82.40, images: ["/realgly.png"], desc: "Envase 10 Lt." },
+        { id: 24, volumen: "747 WG (50 grs)", price: 0.73, images: ["/747gly.jpeg"], desc: "Envase 50 grs." },
+        { id: 140, volumen: "747 WG (1 Kg)", price: 10.15, images: ["/747gly.jpeg"], desc: "Envase 1 Kg." },
+        { id: 141, volumen: "747 WG (4 Kg)", price: 39.60, images: ["/747gly.jpeg"], desc: "Envase 4 Kg." }
+    ]},
+    { tituloBase: "Granslam", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 142, volumen: "Envase 1 lt", price: 7.30, images: ["/herbicida.png"], desc: "Envase 1 lt." },
+        { id: 143, volumen: "Envase 4 lt", price: 26.25, images: ["/herbicida.png"], desc: "Envase 4 lt." }
+    ]},
+    { tituloBase: "Herbadox 400", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 144, volumen: "Envase 20 lt", price: 343.40, images: ["/herbicida.png"], desc: "Envase 20 lt." }] },
+    { tituloBase: "Jonrón 212", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 5, volumen: "Envase 1 lt", price: 17.60, images: ["/herbicida.png"], desc: "Envase 1 lt." },
+        { id: 30, volumen: "Envase 4 lt", price: 64.69, images: ["/herbicida.png"], desc: "Envase 4 lt." },
+        { id: 31, volumen: "Envase 10 lt", price: 153.94, images: ["/herbicida.png"], desc: "Envase 10 lt." }
+    ]},
+    { tituloBase: "Jonron 101", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 32, volumen: "Envase 1 lt", price: 15.15, images: ["/herbicida.png"], desc: "Envase 1 lt." },
+        { id: 33, volumen: "Envase 4 lt", price: 53.70, images: ["/herbicida.png"], desc: "Envase 4 lt." },
+        { id: 34, volumen: "Envase 10 lt", price: 130.69, images: ["/herbicida.png"], desc: "Envase 10 lt." }
+    ]},
+    { tituloBase: "Masai 240 EC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 35, volumen: "Envase 1 lt", price: 21.35, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Mesamate 720", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 36, volumen: "Envase 20 lt", price: 190.95, images: ["/herbicida.png"], desc: "Envase 20 lt." }] },
+    { tituloBase: "Nicanor", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 37, volumen: "Envase 15 grs", price: 1.10, images: ["/herbicida.png"], desc: "Envase 15 grs." }] },
+    { tituloBase: "Penalty 2E", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 38, volumen: "Envase 1 lt", price: 18.40, images: ["/herbicida.png"], desc: "Envase 1 lt." },
+        { id: 39, volumen: "Envase 4 lt", price: 72.25, images: ["/herbicida.png"], desc: "Envase 4 lt." }
+    ]},
+    { tituloBase: "Plenum ME", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 40, volumen: "Envase 4 lt", price: 114.65, images: ["/herbicida.png"], desc: "Envase 4 lt." }] },
+    { tituloBase: "Propanil 480", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 41, volumen: "Envase 20 Lts", price: 246.40, images: ["/herbicida.png"], desc: "Envase 20 Lts." }] },
+    { tituloBase: "Socio", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 6, volumen: "Líquido", price: 0, images: ["/socio.png"], desc: "De acción sistémica utilizado para control de malezas de hoja ancha y algunas gramíneas (Precio a consultar)." },
+        { id: 25, volumen: "En polvo (1 kg)", price: 31, images: ["/socio.jpeg"], desc: "Presentación en polvo de 1 kg para el control eficiente de malezas." },
+        { id: 42, volumen: "WG 15 grs", price: 0.98, images: ["/socio.png"], desc: "Envase 15 grs." },
+        { id: 43, volumen: "WG 1 Kg", price: 30.80, images: ["/socio.png"], desc: "Envase 1 Kg." }
+    ]},
+    { tituloBase: "Quemazone SL", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 44, volumen: "Envase 1 Lt", price: 7.20, images: ["/herbicida.png"], desc: "Envase 1 Lt." },
+        { id: 45, volumen: "Envase 4 Lt", price: 27.00, images: ["/herbicida.png"], desc: "Envase 4 Lt." }
+    ]},
+    { tituloBase: "Tothem 400 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 46, volumen: "Envase 1 Lt", price: 67.30, images: ["/herbicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Tornado 40", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 47, volumen: "Envase 4 Lt", price: 52.00, images: ["/herbicida.png"], desc: "Envase 4 Lt." },
+        { id: 48, volumen: "Envase 20 Lt", price: 260.05, images: ["/herbicida.png"], desc: "Envase 20 Lt." }
+    ]},
+    { tituloBase: "Tordon 101", cat: "Agro", subcat: "Herbicidas", variantes: [
+        { id: 49, volumen: "Envase 4 Lt", price: 70.97, images: ["/herbicida.png"], desc: "Envase 4 Lt." },
+        { id: 50, volumen: "Envase 20 Lt", price: 354.60, images: ["/herbicida.png"], desc: "Envase 20 Lt." }
+    ]},
+    { tituloBase: "Troll 80 WG", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 51, volumen: "Envase 1 Kg", price: 12.40, images: ["/herbicida.png"], desc: "Envase 1 Kg." }] },
+    { tituloBase: "Verdict R", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 52, volumen: "Envase 1 Lt", price: 32.90, images: ["/herbicida.png"], desc: "Envase 1 Lt." }] },
+
+    // Fungicidas
+    { tituloBase: "Alto 100", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 53, volumen: "Envase 1 Lt", price: 99.60, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Amistar Top", cat: "Agro", subcat: "Fungicidas", variantes: [
+        { id: 54, volumen: "Envase 250 cc", price: 21.50, images: ["/fungicida.png"], desc: "Envase 250 cc." },
+        { id: 55, volumen: "Envase 1 Lt", price: 81.25, images: ["/fungicida.png"], desc: "Envase 1 Lt." }
+    ]},
+    { tituloBase: "Control 500", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 56, volumen: "Envase 1 Lt", price: 14.75, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Curagol", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 57, volumen: "Envase 1 kg", price: 12.40, images: ["/fungicida.png"], desc: "Envase 1 kg." }] },
+    { tituloBase: "Dispersul 80 WG", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 58, volumen: "Envase 25 kg", price: 129.95, images: ["/fungicida.png"], desc: "Envase 25 kg." }] },
+    { tituloBase: "Fungizate M-45", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 59, volumen: "Envase 1 kg", price: 10.45, images: ["/fungicida.png"], desc: "Envase 1 kg." }] },
+    { tituloBase: "Linear 20 SL", cat: "Agro", subcat: "Fungicidas", variantes: [
+        { id: 60, volumen: "Envase 1 Lt", price: 10.15, images: ["/fungicida.png"], desc: "Envase 1 Lt." },
+        { id: 61, volumen: "Envase 10 Lt", price: 92.45, images: ["/fungicida.png"], desc: "Envase 10 Lt." }
+    ]},
+    { tituloBase: "Revus 250", cat: "Agro", subcat: "Fungicidas", variantes: [
+        { id: 62, volumen: "Envase 250 cc", price: 26.35, images: ["/fungicida.png"], desc: "Envase 250 cc." },
+        { id: 63, volumen: "Envase 1 Lt", price: 99.15, images: ["/fungicida.png"], desc: "Envase 1 Lt." }
+    ]},
+    { tituloBase: "Ridomil Gold 680 WP", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 64, volumen: "Envase 375 grs", price: 16.60, images: ["/fungicida.png"], desc: "Envase 375 grs." }] },
+    { tituloBase: "Score 250", cat: "Agro", subcat: "Fungicidas", variantes: [
+        { id: 65, volumen: "Envase 250 cc", price: 19.15, images: ["/fungicida.png"], desc: "Envase 250 cc." },
+        { id: 66, volumen: "Envase 1 Lt", price: 72.10, images: ["/fungicida.png"], desc: "Envase 1 Lt." }
+    ]},
+    { tituloBase: "Taspa", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 67, volumen: "Envase 1 Lt", price: 98.05, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Tilt 250 EC", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 68, volumen: "Envase 1 Lt", price: 49.25, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
+
+    // Fungicida Biológico
+    { tituloBase: "Serenade", cat: "Agro", subcat: "Fungicida Biológico", variantes: [{ id: 69, volumen: "Envase 1 Lt", price: 34.10, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
+
+    // Fungicida + Insecticida
+    { tituloBase: "Verdadero", cat: "Agro", subcat: "Fungicida + Insecticida", variantes: [{ id: 70, volumen: "Envase 50 gr", price: 11.75, images: ["/fungicida.png"], desc: "Envase 50 gr." }] },
+
+    // Otros, Manuales y Semillas
+    { tituloBase: "Venta de tierras y asesoría", cat: "Agro", subcat: "Inversiones", variantes: [{ id: 15, volumen: "Estándar", price: 0, images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." }] },
+    { tituloBase: "Guía de alimentación para uso adecuado de harina de palmiste", cat: "Agro", subcat: "Manuales", variantes: [{ id: 18, volumen: "Digital", price: 0, images: ["/manual2.jpeg"], desc: "Guía completa en formato digital para optimizar la producción pecuaria.", link: "https://online.fliphtml5.com/fjomd/zejc/" } as any] },
+    { tituloBase: "Semilla de maíz", cat: "Agro", subcat: "Semillas", variantes: [{ id: 10, volumen: "Estándar", price: 150, images: ["/semilla.png"], desc: "Semillas seleccionadas de alta calidad para un rendimiento óptimo en campo." }] },
     { tituloBase: "Semilla de pasto Matsuda", cat: "Agro", subcat: "Semillas", variantes: [{ id: 12, volumen: "20 KG", price: 12.6, images: ["/semilladepasto.png"], desc: "Presentación de 20 KG. Semillas de pasto." }] },
     { tituloBase: "Semilla de pasto Cuba 22", cat: "Agro", subcat: "Semillas", variantes: [{ id: 18, volumen: "Estándar", price: 70, images: ["/cuba22.jpeg"], desc: "Semilla de pasto Cuba 22 de alta calidad." }] },
     { tituloBase: "Semilla de pasto Rodas", cat: "Agro", subcat: "Semillas", variantes: [{ id: 19, volumen: "Estándar", price: 70, images: ["/roda.jpeg"], desc: "Semilla de pasto Rodas." }] },
     { tituloBase: "Semilla de pasto Clon 51", cat: "Agro", subcat: "Semillas", variantes: [{ id: 20, volumen: "Estándar", price: 80, images: ["/clon51.jpeg"], desc: "Semilla de pasto Clon 51." }] },
     { tituloBase: "Semilla de pasto Botón de Oro", cat: "Agro", subcat: "Semillas", variantes: [{ id: 21, volumen: "Estándar", price: 120, images: ["/oroboton.png"], desc: "Semilla de pasto Botón de Oro." }] },
     { tituloBase: "Plántula In vitro", cat: "Agro", subcat: "Plántula", variantes: [{ id: 17, volumen: "Estándar", price: 0, images: ["/pendula.jpeg"], desc: "Germoplasma exclusivo." }] },
-    { tituloBase: "delTrac Forte", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 28, volumen: "Estándar", price: 0, images: ["/bachaco.jpeg"], desc: "Insecticida agrícola." }] },
-    { tituloBase: "dusTra Bachaco", cat: "Agro", subcat: "Insecticidas", variantes: [{ id: 29, volumen: "Estándar", price: 0, images: ["/dustra.jpeg"], desc: "Insecticida para control de bachacos." }] },
 
 
         // Medicina Veterinaria
@@ -232,7 +385,7 @@
 ];
 
     const macroCategorias = ["TODOS", "AGRO", "MEDICINA VETERINARIA", "REPUESTOS AGRO"];
-    const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plántula", "Insecticidas","Manuales"];
+    const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plántula", "Insecticidas","Fungicidas","Fungicida Biológico","Fungicida + Insecticida","Tratamiento de Semillas","Bioestimulante Foliar","Regulador de Crecimiento","Coadyuvantes","Rodenticida de Uso Industrial","Manuales"];
     const subCategoriasVet = ["Antiparasitarios", "Antibióticos", "Vitaminas y Suplementos", "Ectoparasiticidas", "Medicamentos"];
     const subCategoriasRepuestos = ["Desmalezadoras y Motosierras", "Motores a Gasolina"];
     const metodosPago = ["Mercantil", "Venezuela", "Banesco", "Pago Móvil", "Efectivo Divisa", "Binance"];
