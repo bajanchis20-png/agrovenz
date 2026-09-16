@@ -85,29 +85,29 @@
     { tituloBase: "Afalon 50 PM", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 117, volumen: "Envase 1 Kg", price: 40.70, images: ["/afalon.jpeg"], desc: "Envase 1 Kg." }] },
     { tituloBase: "Agil", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 118, volumen: "Envase 1 lt", price: 32.90, images: ["/agil.jpeg"], desc: "Envase 1 lt." }] },
     { tituloBase: "Alisio", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 27, volumen: "Sobre 500 g", price: 16.25, images: ["/alisio.jpeg"], desc: "Presentación de 500 g ideal para aplicaciones agrícolas precisas." }] },
-    { tituloBase: "Atilus 380 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 119, volumen: "Envase 1 lt", price: 49.60, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
-    { tituloBase: "Basagran 480", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 120, volumen: "Envase 1 lt", price: 35.45, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Atilus 380 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 119, volumen: "Envase 1 lt", price: 49.60, images: ["/atilus.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Basagran 480", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 120, volumen: "Envase 1 lt", price: 35.45, images: ["/basagran.jpeg"], desc: "Envase 1 lt." }] },
     { tituloBase: "Bazinga 400 EC", cat: "Agro", subcat: "Herbicidas", variantes: [
-        { id: 121, volumen: "Envase 1 lt", price: 12.90, images: ["/herbicida.png"], desc: "Envase 1 lt." },
-        { id: 122, volumen: "Envase 10 lt", price: 118.90, images: ["/herbicida.png"], desc: "Envase 10 lt." }
+        { id: 121, volumen: "Envase 1 lt", price: 12.90, images: ["/bazinga.jpeg"], desc: "Envase 1 lt." },
+        { id: 122, volumen: "Envase 10 lt", price: 118.90, images: ["/bazinga.jpeg"], desc: "Envase 10 lt." }
     ]},
-    { tituloBase: "Branson 500 WG", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 123, volumen: "Envase 500 grs", price: 26.50, images: ["/herbicida.png"], desc: "Envase 500 grs." }] },
-    { tituloBase: "Bengala 25 OD", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 124, volumen: "Envase 1 lt", price: 41.60, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Branson 500 WG", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 123, volumen: "Envase 500 grs", price: 26.50, images: ["/armazon.jpeg"], desc: "Envase 500 grs." }] },
+    { tituloBase: "Bengala 25 OD", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 124, volumen: "Envase 1 lt", price: 41.60, images: ["/bengala.jpeg"], desc: "Envase 1 lt." }] },
     { tituloBase: "Brega", cat: "Agro", subcat: "Herbicidas", variantes: [
         { id: 3, volumen: "1 KG", price: 12.65, images: ["/brega.png"], desc: "Presentación de 1 KG. Formulado para el control de malezas en el maíz." },
         { id: 125, volumen: "Brega 90 WG (1 Kg)", price: 12.65, images: ["/brega.png"], desc: "Envase 1 Kg." }
     ]},
     { tituloBase: "Cerrero 200 SL", cat: "Agro", subcat: "Herbicidas", variantes: [
-        { id: 126, volumen: "Envase 1 lt", price: 9.10, images: ["/herbicida.png"], desc: "Envase 1 lt." },
-        { id: 127, volumen: "Envase 4 lt", price: 35.35, images: ["/herbicida.png"], desc: "Envase 4 lt." }
+        { id: 126, volumen: "Envase 1 lt", price: 9.10, images: ["/cerrero.jpeg"], desc: "Envase 1 lt." },
+        { id: 127, volumen: "Envase 4 lt", price: 35.35, images: ["/cerrero.jpeg"], desc: "Envase 4 lt." }
     ]},
-    { tituloBase: "Dual Gold", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 128, volumen: "Envase 1 lt", price: 47.90, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
-    { tituloBase: "Duron", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 129, volumen: "Envase 1 Kg", price: 22.90, images: ["/herbicida.png"], desc: "Envase 1 Kg." }] },
-    { tituloBase: "Elumis", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 130, volumen: "Envase 5 lt", price: 201.55, images: ["/herbicida.png"], desc: "Envase 5 lt." }] },
-    { tituloBase: "Foker CE", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 131, volumen: "Envase 1 lt", price: 24.10, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
-    { tituloBase: "Flex", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 132, volumen: "Envase 1 lt", price: 32.80, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
-    { tituloBase: "Gesaprim MOF", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 133, volumen: "Envase 1 kg", price: 26.75, images: ["/herbicida.png"], desc: "Envase 1 kg." }] },
-    { tituloBase: "Gesapax 500 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 134, volumen: "Envase 20 lt", price: 255.95, images: ["/herbicida.png"], desc: "Envase 20 lt." }] },
+    { tituloBase: "Dual Gold", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 128, volumen: "Envase 1 lt", price: 47.90, images: ["/dualgold.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Duron", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 129, volumen: "Envase 1 Kg", price: 22.90, images: ["/duron.jpeg"], desc: "Envase 1 Kg." }] },
+    { tituloBase: "Elumis", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 130, volumen: "Envase 5 lt", price: 201.55, images: ["/elumnis.jpeg"], desc: "Envase 5 lt." }] },
+    { tituloBase: "Foker CE", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 131, volumen: "Envase 1 lt", price: 24.10, images: ["/foker.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Flex", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 132, volumen: "Envase 1 lt", price: 32.80, images: ["/flex.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Gesaprim MOF", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 133, volumen: "Envase 1 kg", price: 26.75, images: ["/gesaprim.jpeg"], desc: "Envase 1 kg." }] },
+    { tituloBase: "Gesapax 500 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 134, volumen: "Envase 20 lt", price: 255.95, images: ["/gesa.jpeg"], desc: "Envase 20 lt." }] },
     { tituloBase: "Glytotal", cat: "Agro", subcat: "Herbicidas", variantes: [
         { id: 4, volumen: "Glytotal 480 SL (1 LT)", price: 6.55, images: ["/realgly.png"], desc: "Envase 1 Lt." },
         { id: 135, volumen: "Glytotal 480 SL (4 LT)", price: 25.45, images: ["/realgly.png"], desc: "Envase 4 Lt." },
@@ -120,29 +120,29 @@
         { id: 141, volumen: "747 WG (4 Kg)", price: 39.60, images: ["/747gly.jpeg"], desc: "Envase 4 Kg." }
     ]},
     { tituloBase: "Granslam", cat: "Agro", subcat: "Herbicidas", variantes: [
-        { id: 142, volumen: "Envase 1 lt", price: 7.30, images: ["/herbicida.png"], desc: "Envase 1 lt." },
-        { id: 143, volumen: "Envase 4 lt", price: 26.25, images: ["/herbicida.png"], desc: "Envase 4 lt." }
+        { id: 142, volumen: "Envase 1 lt", price: 7.30, images: ["/granslam.jpeg"], desc: "Envase 1 lt." },
+        { id: 143, volumen: "Envase 4 lt", price: 26.25, images: ["/granslam.jpeg"], desc: "Envase 4 lt." }
     ]},
-    { tituloBase: "Herbadox 400", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 144, volumen: "Envase 20 lt", price: 343.40, images: ["/herbicida.png"], desc: "Envase 20 lt." }] },
+    { tituloBase: "Herbadox 400", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 144, volumen: "Envase 20 lt", price: 343.40, images: ["/herbadox.jpeg"], desc: "Envase 20 lt." }] },
     { tituloBase: "Jonrón 212", cat: "Agro", subcat: "Herbicidas", variantes: [
         { id: 5, volumen: "Envase 1 lt", price: 17.60, images: ["/herbicida.png"], desc: "Envase 1 lt." },
         { id: 30, volumen: "Envase 4 lt", price: 64.69, images: ["/herbicida.png"], desc: "Envase 4 lt." },
         { id: 31, volumen: "Envase 10 lt", price: 153.94, images: ["/herbicida.png"], desc: "Envase 10 lt." }
     ]},
     { tituloBase: "Jonron 101", cat: "Agro", subcat: "Herbicidas", variantes: [
-        { id: 32, volumen: "Envase 1 lt", price: 15.15, images: ["/herbicida.png"], desc: "Envase 1 lt." },
-        { id: 33, volumen: "Envase 4 lt", price: 53.70, images: ["/herbicida.png"], desc: "Envase 4 lt." },
-        { id: 34, volumen: "Envase 10 lt", price: 130.69, images: ["/herbicida.png"], desc: "Envase 10 lt." }
+        { id: 32, volumen: "Envase 1 lt", price: 15.15, images: ["/joron.jpeg"], desc: "Envase 1 lt." },
+        { id: 33, volumen: "Envase 4 lt", price: 53.70, images: ["/joron.jpeg"], desc: "Envase 4 lt." },
+        { id: 34, volumen: "Envase 10 lt", price: 130.69, images: ["/joron.jpeg"], desc: "Envase 10 lt." }
     ]},
-    { tituloBase: "Masai 240 EC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 35, volumen: "Envase 1 lt", price: 21.35, images: ["/herbicida.png"], desc: "Envase 1 lt." }] },
-    { tituloBase: "Mesamate 720", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 36, volumen: "Envase 20 lt", price: 190.95, images: ["/herbicida.png"], desc: "Envase 20 lt." }] },
-    { tituloBase: "Nicanor", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 37, volumen: "Envase 15 grs", price: 1.10, images: ["/herbicida.png"], desc: "Envase 15 grs." }] },
+    { tituloBase: "Masai 240 EC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 35, volumen: "Envase 1 lt", price: 21.35, images: ["/macai.jpeg"], desc: "Envase 1 lt." }] },
+    { tituloBase: "Mesamate 720", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 36, volumen: "Envase 20 lt", price: 190.95, images: ["/mesamate.jpg"], desc: "Envase 20 lt." }] },
+    { tituloBase: "Nicanor", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 37, volumen: "Envase 15 grs", price: 1.10, images: ["/nicanor.jpeg"], desc: "Envase 15 grs." }] },
     { tituloBase: "Penalty 2E", cat: "Agro", subcat: "Herbicidas", variantes: [
-        { id: 38, volumen: "Envase 1 lt", price: 18.40, images: ["/herbicida.png"], desc: "Envase 1 lt." },
-        { id: 39, volumen: "Envase 4 lt", price: 72.25, images: ["/herbicida.png"], desc: "Envase 4 lt." }
+        { id: 38, volumen: "Envase 1 lt", price: 18.40, images: ["/penalty.jpeg"], desc: "Envase 1 lt." },
+        { id: 39, volumen: "Envase 4 lt", price: 72.25, images: ["/penalty.jpeg"], desc: "Envase 4 lt." }
     ]},
-    { tituloBase: "Plenum ME", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 40, volumen: "Envase 4 lt", price: 114.65, images: ["/herbicida.png"], desc: "Envase 4 lt." }] },
-    { tituloBase: "Propanil 480", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 41, volumen: "Envase 20 Lts", price: 246.40, images: ["/herbicida.png"], desc: "Envase 20 Lts." }] },
+    { tituloBase: "Plenum ME", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 40, volumen: "Envase 4 lt", price: 114.65, images: ["/plenum.jpeg"], desc: "Envase 4 lt." }] },
+    { tituloBase: "Propanil 480", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 41, volumen: "Envase 20 Lts", price: 246.40, images: ["/propanil.jpeg"], desc: "Envase 20 Lts." }] },
     { tituloBase: "Socio", cat: "Agro", subcat: "Herbicidas", variantes: [
         { id: 6, volumen: "Líquido", price: 0, images: ["/socio.png"], desc: "De acción sistémica utilizado para control de malezas de hoja ancha y algunas gramíneas (Precio a consultar)." },
         { id: 25, volumen: "En polvo (1 kg)", price: 31, images: ["/socio.jpeg"], desc: "Presentación en polvo de 1 kg para el control eficiente de malezas." },
@@ -150,43 +150,43 @@
         { id: 43, volumen: "WG 1 Kg", price: 30.80, images: ["/socio.png"], desc: "Envase 1 Kg." }
     ]},
     { tituloBase: "Quemazone SL", cat: "Agro", subcat: "Herbicidas", variantes: [
-        { id: 44, volumen: "Envase 1 Lt", price: 7.20, images: ["/herbicida.png"], desc: "Envase 1 Lt." },
-        { id: 45, volumen: "Envase 4 Lt", price: 27.00, images: ["/herbicida.png"], desc: "Envase 4 Lt." }
+        { id: 44, volumen: "Envase 1 Lt", price: 7.20, images: ["/quemazone.jpeg"], desc: "Envase 1 Lt." },
+        { id: 45, volumen: "Envase 4 Lt", price: 27.00, images: ["/quemazone.jpeg"], desc: "Envase 4 Lt." }
     ]},
-    { tituloBase: "Tothem 400 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 46, volumen: "Envase 1 Lt", price: 67.30, images: ["/herbicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Tothem 400 SC", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 46, volumen: "Envase 1 Lt", price: 67.30, images: ["/totem.jpeg"], desc: "Envase 1 Lt." }] },
     { tituloBase: "Tornado 40", cat: "Agro", subcat: "Herbicidas", variantes: [
-        { id: 47, volumen: "Envase 4 Lt", price: 52.00, images: ["/herbicida.png"], desc: "Envase 4 Lt." },
-        { id: 48, volumen: "Envase 20 Lt", price: 260.05, images: ["/herbicida.png"], desc: "Envase 20 Lt." }
+        { id: 47, volumen: "Envase 4 Lt", price: 52.00, images: ["/tornado.jpeg"], desc: "Envase 4 Lt." },
+        { id: 48, volumen: "Envase 20 Lt", price: 260.05, images: ["/tornado.jpeg"], desc: "Envase 20 Lt." }
     ]},
     { tituloBase: "Tordon 101", cat: "Agro", subcat: "Herbicidas", variantes: [
-        { id: 49, volumen: "Envase 4 Lt", price: 70.97, images: ["/herbicida.png"], desc: "Envase 4 Lt." },
-        { id: 50, volumen: "Envase 20 Lt", price: 354.60, images: ["/herbicida.png"], desc: "Envase 20 Lt." }
+        { id: 49, volumen: "Envase 4 Lt", price: 70.97, images: ["/tordon.jpeg"], desc: "Envase 4 Lt." },
+        { id: 50, volumen: "Envase 20 Lt", price: 354.60, images: ["/tordon.jpeg"], desc: "Envase 20 Lt." }
     ]},
-    { tituloBase: "Troll 80 WG", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 51, volumen: "Envase 1 Kg", price: 12.40, images: ["/herbicida.png"], desc: "Envase 1 Kg." }] },
-    { tituloBase: "Verdict R", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 52, volumen: "Envase 1 Lt", price: 32.90, images: ["/herbicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Troll 80 WG", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 51, volumen: "Envase 1 Kg", price: 12.40, images: ["/trilla.jpeg"], desc: "Envase 1 Kg." }] },
+    { tituloBase: "Verdict R", cat: "Agro", subcat: "Herbicidas", variantes: [{ id: 52, volumen: "Envase 1 Lt", price: 32.90, images: ["/verdict.png"], desc: "Envase 1 Lt." }] },
 
     // Fungicidas
-    { tituloBase: "Alto 100", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 53, volumen: "Envase 1 Lt", price: 99.60, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Alto 100", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 53, volumen: "Envase 1 Lt", price: 99.60, images: ["/alto.jpeg"], desc: "Envase 1 Lt." }] },
     { tituloBase: "Amistar Top", cat: "Agro", subcat: "Fungicidas", variantes: [
-        { id: 54, volumen: "Envase 250 cc", price: 21.50, images: ["/fungicida.png"], desc: "Envase 250 cc." },
-        { id: 55, volumen: "Envase 1 Lt", price: 81.25, images: ["/fungicida.png"], desc: "Envase 1 Lt." }
+        { id: 54, volumen: "Envase 250 cc", price: 21.50, images: ["/amistar.webp"], desc: "Envase 250 cc." },
+        { id: 55, volumen: "Envase 1 Lt", price: 81.25, images: ["/amistar.webp"], desc: "Envase 1 Lt." }
     ]},
-    { tituloBase: "Control 500", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 56, volumen: "Envase 1 Lt", price: 14.75, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
-    { tituloBase: "Curagol", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 57, volumen: "Envase 1 kg", price: 12.40, images: ["/fungicida.png"], desc: "Envase 1 kg." }] },
-    { tituloBase: "Dispersul 80 WG", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 58, volumen: "Envase 25 kg", price: 129.95, images: ["/fungicida.png"], desc: "Envase 25 kg." }] },
-    { tituloBase: "Fungizate M-45", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 59, volumen: "Envase 1 kg", price: 10.45, images: ["/fungicida.png"], desc: "Envase 1 kg." }] },
+    { tituloBase: "Control 500", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 56, volumen: "Envase 1 Lt", price: 14.75, images: ["/control2.jpeg"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Curagol", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 57, volumen: "Envase 1 kg", price: 12.40, images: ["/gol.jpeg"], desc: "Envase 1 kg." }] },
+    { tituloBase: "Dispersul 80 WG", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 58, volumen: "Envase 25 kg", price: 129.95, images: ["/disperful.jpeg"], desc: "Envase 25 kg." }] },
+    { tituloBase: "Fungizate M-45", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 59, volumen: "Envase 1 kg", price: 10.45, images: ["/fungizante.jpeg"], desc: "Envase 1 kg." }] },
     { tituloBase: "Linear 20 SL", cat: "Agro", subcat: "Fungicidas", variantes: [
-        { id: 60, volumen: "Envase 1 Lt", price: 10.15, images: ["/fungicida.png"], desc: "Envase 1 Lt." },
-        { id: 61, volumen: "Envase 10 Lt", price: 92.45, images: ["/fungicida.png"], desc: "Envase 10 Lt." }
+        { id: 60, volumen: "Envase 1 Lt", price: 10.15, images: ["/linear.jpeg"], desc: "Envase 1 Lt." },
+        { id: 61, volumen: "Envase 10 Lt", price: 92.45, images: ["/linear.jpeg"], desc: "Envase 10 Lt." }
     ]},
     { tituloBase: "Revus 250", cat: "Agro", subcat: "Fungicidas", variantes: [
-        { id: 62, volumen: "Envase 250 cc", price: 26.35, images: ["/fungicida.png"], desc: "Envase 250 cc." },
-        { id: 63, volumen: "Envase 1 Lt", price: 99.15, images: ["/fungicida.png"], desc: "Envase 1 Lt." }
+        { id: 62, volumen: "Envase 250 cc", price: 26.35, images: ["/revus.jpeg"], desc: "Envase 250 cc." },
+        { id: 63, volumen: "Envase 1 Lt", price: 99.15, images: ["/revus.jpeg"], desc: "Envase 1 Lt." }
     ]},
-    { tituloBase: "Ridomil Gold 680 WP", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 64, volumen: "Envase 375 grs", price: 16.60, images: ["/fungicida.png"], desc: "Envase 375 grs." }] },
+    { tituloBase: "Ridomil Gold 680 WP", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 64, volumen: "Envase 375 grs", price: 16.60, images: ["/ridi.jpeg"], desc: "Envase 375 grs." }] },
     { tituloBase: "Score 250", cat: "Agro", subcat: "Fungicidas", variantes: [
-        { id: 65, volumen: "Envase 250 cc", price: 19.15, images: ["/fungicida.png"], desc: "Envase 250 cc." },
-        { id: 66, volumen: "Envase 1 Lt", price: 72.10, images: ["/fungicida.png"], desc: "Envase 1 Lt." }
+        { id: 65, volumen: "Envase 250 cc", price: 19.15, images: ["/score.jpeg"], desc: "Envase 250 cc." },
+        { id: 66, volumen: "Envase 1 Lt", price: 72.10, images: ["/score.jpeg"], desc: "Envase 1 Lt." }
     ]},
     { tituloBase: "Taspa", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 67, volumen: "Envase 1 Lt", price: 98.05, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
     { tituloBase: "Tilt 250 EC", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 68, volumen: "Envase 1 Lt", price: 49.25, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
