@@ -188,14 +188,14 @@
         { id: 65, volumen: "Envase 250 cc", price: 19.15, images: ["/score.jpeg"], desc: "Envase 250 cc." },
         { id: 66, volumen: "Envase 1 Lt", price: 72.10, images: ["/score.jpeg"], desc: "Envase 1 Lt." }
     ]},
-    { tituloBase: "Taspa", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 67, volumen: "Envase 1 Lt", price: 98.05, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
-    { tituloBase: "Tilt 250 EC", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 68, volumen: "Envase 1 Lt", price: 49.25, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Taspa", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 67, volumen: "Envase 1 Lt", price: 98.05, images: ["/taspa.jpeg"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Tilt 250 EC", cat: "Agro", subcat: "Fungicidas", variantes: [{ id: 68, volumen: "Envase 1 Lt", price: 49.25, images: ["/tilt.jpeg"], desc: "Envase 1 Lt." }] },
 
     // Fungicida Biológico
-    { tituloBase: "Serenade", cat: "Agro", subcat: "Fungicida Biológico", variantes: [{ id: 69, volumen: "Envase 1 Lt", price: 34.10, images: ["/fungicida.png"], desc: "Envase 1 Lt." }] },
+    { tituloBase: "Serenade", cat: "Agro", subcat: "Fungicida Biológico", variantes: [{ id: 69, volumen: "Envase 1 Lt", price: 34.10, images: ["/sere.webp"], desc: "Envase 1 Lt." }] },
 
     // Fungicida + Insecticida
-    { tituloBase: "Verdadero", cat: "Agro", subcat: "Fungicida + Insecticida", variantes: [{ id: 70, volumen: "Envase 50 gr", price: 11.75, images: ["/fungicida.png"], desc: "Envase 50 gr." }] },
+    { tituloBase: "Verdadero", cat: "Agro", subcat: "Fungicida + Insecticida", variantes: [{ id: 70, volumen: "Envase 50 gr", price: 11.75, images: ["/verdadero5.webp"], desc: "Envase 50 gr." }] },
 
     // Otros, Manuales y Semillas
     { tituloBase: "Venta de tierras y asesoría", cat: "Agro", subcat: "Inversiones", variantes: [{ id: 15, volumen: "Estándar", price: 0, images: ["/R.jpg"], desc: "Tu socio estratégico en el sector agropecuario." }] },
