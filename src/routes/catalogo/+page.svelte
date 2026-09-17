@@ -349,7 +349,7 @@
         { tituloBase: "Porta nylon aluminio", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 117, volumen: "Universal", price: 8, images: ["/portalinon.png"], desc: "Porta nylon aluminio universal para desmalezadora." }] },
         { tituloBase: "Nylon", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 118, volumen: "Estándar", price: 47, images: ["/nylon.png"], desc: "Nylon para desmalezadora." }] },
         // Guantes de palpación agregados
-        { tituloBase: "Guantes largos para palpación", cat: "Medicina Veterinaria", subcat: "Instrumental Veterinario", variantes: [{ id: 119, volumen: "Caja x 100", price: 0.00, images: ["/guantes.jpeg"], desc: "Guantes largos de polietileno para palpación, obstetricia e inseminación veterinaria." }] },
+       { tituloBase: "Guantes largos para palpación", cat: "Medicina Veterinaria", subcat: "Instrumental Veterinario", variantes: [{ id: 119, volumen: "Caja x 100", price: 17.00, images: ["/guantes.jpeg"], desc: "Guantes largos de polietileno para palpación, obstetricia e inseminación veterinaria." }] },
 
         // Repuestos Agro (Motores a Gasolina)
         { tituloBase: "Bujía 4T", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 119, volumen: "Denso", price: 7, images: ["/buji.png"], desc: "Bujía Denso 4T motor generador motobomba." }] },
