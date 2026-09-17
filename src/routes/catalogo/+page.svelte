@@ -209,7 +209,7 @@
     { tituloBase: "Plántula In vitro", cat: "Agro", subcat: "Plántula", variantes: [{ id: 17, volumen: "Estándar", price: 0, images: ["/pendula.jpeg"], desc: "Germoplasma exclusivo." }] },
 
 
-        // Medicina Veterinaria
+    // Medicina Veterinaria
         { tituloBase: "Albendazol 25% + Co", cat: "Medicina Veterinaria", subcat: "Antiparasitarios", variantes: [
             { id: 28, volumen: "100 ml", price: 11.63, images: ["/albendazol25.jpeg"], desc: "Antiparasitario interno de amplio espectro con cobalto." },
             { id: 29, volumen: "500 ml", price: 33.22, images: ["/albendazol25.jpeg"], desc: "Presentación de 500 ml de antiparasitario interno con cobalto." },
@@ -348,6 +348,8 @@
         { tituloBase: "Cabezal", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 116, volumen: "28 mm 9 Estrías", price: 29, images: ["/cabezal.png"], desc: "Cabezal desmalezadora 28 mm 9 estrías TL43 TL52." }] },
         { tituloBase: "Porta nylon aluminio", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 117, volumen: "Universal", price: 8, images: ["/portalinon.png"], desc: "Porta nylon aluminio universal para desmalezadora." }] },
         { tituloBase: "Nylon", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 118, volumen: "Estándar", price: 47, images: ["/nylon.png"], desc: "Nylon para desmalezadora." }] },
+        // Guantes de palpación agregados
+        { tituloBase: "Guantes largos para palpación", cat: "Medicina Veterinaria", subcat: "Instrumental Veterinario", variantes: [{ id: 119, volumen: "Caja x 100", price: 0.00, images: ["/guantes.jpeg"], desc: "Guantes largos de polietileno para palpación, obstetricia e inseminación veterinaria." }] },
 
         // Repuestos Agro (Motores a Gasolina)
         { tituloBase: "Bujía 4T", cat: "Repuestos Agro", subcat: "Motores a Gasolina", variantes: [{ id: 119, volumen: "Denso", price: 7, images: ["/buji.png"], desc: "Bujía Denso 4T motor generador motobomba." }] },
@@ -386,7 +388,7 @@
 
     const macroCategorias = ["TODOS", "AGRO", "MEDICINA VETERINARIA", "REPUESTOS AGRO"];
     const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plántula", "Insecticidas","Fungicidas","Fungicida Biológico","Fungicida + Insecticida","Tratamiento de Semillas","Bioestimulante Foliar","Regulador de Crecimiento","Coadyuvantes","Rodenticida de Uso Industrial","Manuales"];
-    const subCategoriasVet = ["Antiparasitarios", "Antibióticos", "Vitaminas y Suplementos", "Ectoparasiticidas", "Medicamentos"];
+    const subCategoriasVet = ["Antiparasitarios", "Antibióticos", "Vitaminas y Suplementos", "Ectoparasiticidas", "Medicamentos", "Instrumental Veterinario"];
     const subCategoriasRepuestos = ["Desmalezadoras y Motosierras", "Motores a Gasolina"];
     const metodosPago = ["Mercantil", "Venezuela", "Banesco", "Pago Móvil", "Efectivo Divisa", "Binance"];
 
