@@ -2,24 +2,17 @@
     import Icon from "@iconify/svelte";
     import { supabase } from '$lib/supabase';
     import { goto } from '$app/navigation';
-    import { onMount } from 'svelte';
     import { iniciarSesionSimulada } from '$lib/auth';
 
     let email = $state('');
     let password = $state('');
     let errorMessage = $state('');
 
-    // Pre-llenar automáticamente con "Ale de ADM" al entrar a la vista
-    onMount(() => {
-        email = 'ale.adm@agrovenz.com';
-        password = 'adminpassword123';
-    });
-
     async function handleLogin(e: Event) {
         e.preventDefault();
         errorMessage = '';
         
-        // Acceso rápido para el usuario Ale de ADM (ahora conectado con la tienda global)
+        // Acceso rápido para el usuario Ale de ADM (conectado con la tienda global)
         if (email === 'ale.adm@agrovenz.com') {
             iniciarSesionSimulada({
                 nombre: "Ale",
@@ -36,7 +29,6 @@
         if (error) {
             errorMessage = error.message;
         } else {
-            // Si entra por Supabase, también actualizamos la tienda global con sus datos reales
             iniciarSesionSimulada({
                 nombre: data.user?.email?.split('@')[0] || "Usuario",
                 rol: "USER",
