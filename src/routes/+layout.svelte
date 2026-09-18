@@ -48,14 +48,21 @@
                 </div>
 
                 <div class="flex items-center gap-4 pl-6 border-l border-stone-200">
-                    {#if $usuarioActivo && $usuarioActivo.rol === 'ADM'}
+                    {#if $usuarioActivo}
                         <div class="flex items-center gap-3 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl">
                             <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
                             <div class="text-left">
-                                <span class="block text-[11px] font-bold text-stone-900 leading-none">{$usuarioActivo.nombre}</span>
-                                <span class="text-[9px] font-black uppercase text-emerald-800 tracking-wider">ADM ON</span>
+                                <span class="block text-[11px] font-bold text-stone-900 leading-none">{$usuarioActivo.nombre || 'Usuario'}</span>
+                                <span class="text-[9px] font-black uppercase text-emerald-800 tracking-wider">{$usuarioActivo.rol || 'ACTIVO'}</span>
                             </div>
-                            <button onclick={cerrarSesion} title="Cerrar sesión" class="ml-2 text-stone-400 hover:text-red-600 transition-colors cursor-pointer">
+                            <button 
+                                onclick={() => {
+                                    cerrarSesion();
+                                    window.location.href = '/';
+                                }} 
+                                title="Cerrar sesión" 
+                                class="ml-2 text-stone-400 hover:text-red-600 transition-colors cursor-pointer"
+                            >
                                 <Icon icon="mdi:logout" class="text-base" />
                             </button>
                         </div>
@@ -91,13 +98,22 @@
                 {/each}
                 
                 <div class="flex flex-col gap-3 mt-5 pt-3 border-t border-stone-100">
-                    {#if $usuarioActivo && $usuarioActivo.rol === 'ADM'}
+                    {#if $usuarioActivo}
                         <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-xl border border-emerald-200">
                             <div>
-                                <span class="block text-xs font-bold text-stone-900">{$usuarioActivo.nombre} <span class="text-emerald-800 font-black">(ADM ON)</span></span>
-                                <span class="text-[10px] text-stone-500">Sesión de administración activa</span>
+                                <span class="block text-xs font-bold text-stone-900">{$usuarioActivo.nombre || 'Usuario'} <span class="text-emerald-800 font-black">({$usuarioActivo.rol || 'ACTIVO'})</span></span>
+                                <span class="text-[10px] text-stone-500">Sesión activa</span>
                             </div>
-                            <button onclick={() => { cerrarSesion(); isMenuOpen = false; }} class="p-2 text-stone-500 hover:text-red-600 cursor-pointer">
+                            <button 
+                                type="button"
+                                onclick={() => { 
+                                    cerrarSesion(); 
+                                    isMenuOpen = false; 
+                                    window.location.href = '/'; 
+                                }} 
+                                class="p-2 text-stone-500 hover:text-red-600 cursor-pointer"
+                                title="Cerrar sesión"
+                            >
                                 <Icon icon="mdi:logout" class="text-xl" />
                             </button>
                         </div>
