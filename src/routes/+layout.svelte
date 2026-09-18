@@ -2,7 +2,9 @@
     import "./layout.css";
     import Icon from "@iconify/svelte";
     import { page } from "$app/state";
+    import { goto } from "$app/navigation";
     import { onMount } from "svelte";
+    import { browser } from "$app/environment";
     import { usuarioActivo, cerrarSesion } from "$lib/auth";
 
     let { children } = $props();
@@ -17,6 +19,12 @@
         {name: 'Servicios', path: '/servicios'}, 
         {name: 'Educación', path: '/educacion'}
     ];
+
+    function handleLogout() {
+        cerrarSesion();
+        isMenuOpen = false;
+        goto('/');
+    }
 </script>
 
 <svelte:head>
@@ -56,10 +64,7 @@
                                 <span class="text-[9px] font-black uppercase text-emerald-800 tracking-wider">{$usuarioActivo.rol || 'ACTIVO'}</span>
                             </div>
                             <button 
-                                onclick={() => {
-                                    cerrarSesion();
-                                    window.location.href = '/';
-                                }} 
+                                onclick={handleLogout} 
                                 title="Cerrar sesión" 
                                 class="ml-2 text-stone-400 hover:text-red-600 transition-colors cursor-pointer"
                             >
@@ -106,11 +111,7 @@
                             </div>
                             <button 
                                 type="button"
-                                onclick={() => { 
-                                    cerrarSesion(); 
-                                    isMenuOpen = false; 
-                                    window.location.href = '/'; 
-                                }} 
+                                onclick={handleLogout} 
                                 class="p-2 text-stone-500 hover:text-red-600 cursor-pointer"
                                 title="Cerrar sesión"
                             >
