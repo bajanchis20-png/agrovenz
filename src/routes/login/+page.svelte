@@ -2,7 +2,7 @@
     import Icon from "@iconify/svelte";
     import { supabase } from '$lib/supabase';
     import { goto } from '$app/navigation';
-    import { iniciarSesionSimulada } from '$lib/auth';
+    import { usuarioActivo, iniciarSesionSimulada, cerrarSesion } from '$lib/auth';
 
     let email = $state('');
     let password = $state('');
@@ -37,6 +37,11 @@
             goto('/');
         }
     }
+
+    function handleLogout() {
+        cerrarSesion();
+        goto('/');
+    }
 </script>
 
 <main class="min-h-screen bg-stone-950 text-white flex items-center justify-center p-6 relative overflow-hidden">
@@ -49,47 +54,75 @@
             <a href="/" class="inline-block">
                 <img src="/logo.png" alt="Logo AgroVenz" class="h-16 w-auto mx-auto" />
             </a>
-            <p class="text-stone-400 mt-6 text-sm uppercase tracking-widest">Acceso de administrador - Ale (ADM)</p>
+            <p class="text-stone-400 mt-6 text-sm uppercase tracking-widest">
+                {#if $usuarioActivo}
+                    Gestión de Sesión Activa
+                {:else}
+                    Acceso de administrador - Ale (ADM)
+                {/if}
+            </p>
         </div>
 
-        <!-- Formulario -->
+        <!-- Contenido condicional: Si hay sesión vs Si no hay sesión -->
         <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md shadow-2xl">
-            <form class="space-y-6" onsubmit={handleLogin}>
-                <div>
-                    <label for="email" class="block text-xs font-bold uppercase text-stone-400 mb-2">Correo electrónico</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        bind:value={email}
-                        required
-                        class="w-full bg-stone-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-emerald-500 transition-all"
-                        placeholder="ejemplo@finca.com"
-                    />
+            {#if $usuarioActivo}
+                <!-- VISTA CUANDO YA ESTÁ LOGUEADO (Muestra info y botón de cerrar sesión) -->
+                <div class="space-y-6 text-center">
+                    <div class="p-4 bg-emerald-950/40 border border-emerald-500/30 rounded-2xl">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse mx-auto mb-3"></div>
+                        <span class="block text-sm font-bold text-white mb-1">¡Hola, {$usuarioActivo.nombre || 'Usuario'}!</span>
+                        <span class="text-xs uppercase tracking-wider text-emerald-400 font-semibold">Rol: {$usuarioActivo.rol || 'ACTIVO'}</span>
+                        <p class="text-xs text-stone-400 mt-2">Ya tienes una sesión iniciada en este dispositivo.</p>
+                    </div>
+
+                    <button 
+                        type="button"
+                        onclick={handleLogout} 
+                        class="px-8 py-4 bg-red-600/80 border border-red-500 text-white hover:bg-red-700 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 w-full cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-red-900/30"
+                    >
+                        <Icon icon="mdi:logout" class="text-lg" />
+                        Cerrar Sesión
+                    </button>
                 </div>
+            {:else}
+                <!-- VISTA DE FORMULARIO DE LOGIN NORMAL -->
+                <form class="space-y-6" onsubmit={handleLogin}>
+                    <div>
+                        <label for="email" class="block text-xs font-bold uppercase text-stone-400 mb-2">Correo electrónico</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            bind:value={email}
+                            required
+                            class="w-full bg-stone-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-emerald-500 transition-all"
+                            placeholder="ejemplo@finca.com"
+                        />
+                    </div>
 
-                <div>
-                    <label for="password" class="block text-xs font-bold uppercase text-stone-400 mb-2">Contraseña</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        bind:value={password}
-                        required
-                        class="w-full bg-stone-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-emerald-500 transition-all"
-                        placeholder="••••••••"
-                    />
-                </div>
+                    <div>
+                        <label for="password" class="block text-xs font-bold uppercase text-stone-400 mb-2">Contraseña</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            bind:value={password}
+                            required
+                            class="w-full bg-stone-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-emerald-500 transition-all"
+                            placeholder="••••••••"
+                        />
+                    </div>
 
-                {#if errorMessage}
-                    <p class="text-red-400 text-xs text-center uppercase tracking-wider">{errorMessage}</p>
-                {/if}
+                    {#if errorMessage}
+                        <p class="text-red-400 text-xs text-center uppercase tracking-wider">{errorMessage}</p>
+                    {/if}
 
-                <button 
-                    type="submit" 
-                    class="px-8 py-4 bg-emerald-800 border border-emerald-700 text-white hover:bg-emerald-900 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center w-full cursor-pointer shadow-lg shadow-emerald-900/30"
-                >
-                    Iniciar Sesión
-                </button>
-            </form>
+                    <button 
+                        type="submit" 
+                        class="px-8 py-4 bg-emerald-800 border border-emerald-700 text-white hover:bg-emerald-900 font-bold rounded-xl text-[11px] uppercase tracking-[0.2em] transition-all duration-300 text-center w-full cursor-pointer shadow-lg shadow-emerald-900/30"
+                    >
+                        Iniciar Sesión
+                    </button>
+                </form>
+            {/if}
         </div>
 
         <!-- Botón de retorno -->
