@@ -1,5 +1,8 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
+    import { onMount } from "svelte";
+    import { supabase } from "$lib/supabase"; 
+    import { usuarioActivo } from '$lib/auth';
 
     interface Variante {
         id: number;
@@ -7,6 +10,7 @@
         price: number;
         desc: string;
         images: string[];
+        link?: string;
     }
 
     interface ProductoAgrupado {
@@ -14,9 +18,94 @@
         cat: string;
         subcat: string;
         variantes: Variante[];
+        activo?: boolean;
     }
 
-   const productosCatalogo: ProductoAgrupado[] = [
+    // AQUÍ ES DONDE VA EL ONMOUNT QUE CARGA DESDE SUPABASE:
+    onMount(async () => {
+        cargando = true;
+        try {
+            const { data: prodsDB, error: errProds } = await supabase.from('productos').select('*');
+            if (errProds) throw errProds;
+
+            const { data: varsDB, error: errVars } = await supabase.from('variantes').select('*');
+            if (errVars) throw errVars;
+
+            if (prodsDB) {
+                productosCatalogo = prodsDB.map(p => {
+                    const variantesDelProducto = varsDB?.filter(v => v.producto_titulo === p.titulo_base) || [];
+                    
+                    return {
+                        tituloBase: p.titulo_base,
+                        cat: p.cat,
+                        subcat: p.subcat,
+                        activo: p.activo ?? true,
+                        variantes: variantesDelProducto.map(v => ({
+                            id: v.id,
+                            volumen: v.volumen,
+                            price: v.precio,
+                            desc: v.descripcion || '',
+                            images: v.imagenes || []
+                        }))
+                    };
+                });
+            }
+        } catch (error) {
+            console.error("Error al cargar el catálogo desde Supabase:", error);
+        } finally {
+            cargando = false;
+        }
+    });
+
+  async function migrarMasivoDefinitivo() {
+    console.log("Iniciando migración completa de los 180 productos...");
+    
+    for (const item of productosCatalogo) {
+        // 1. Guardar o actualizar el producto base
+        const { error: errorProd } = await supabase
+            .from('productos')
+            .upsert([
+                { 
+                    titulo_base: item.tituloBase, 
+                    cat: item.cat, 
+                    subcat: item.subcat,
+                    activo: item.activo ?? true 
+                }
+            ], { onConflict: 'titulo_base' });
+
+        if (errorProd) {
+            console.error("Error en producto base:", item.tituloBase, errorProd);
+            continue;
+        }
+
+        // 2. Guardar sus variantes asegurando que no se dupliquen masivamente
+        if (item.variantes && item.variantes.length > 0) {
+            for (const v of item.variantes) {
+                // Verificamos si ya existe esta variante exacta para este producto
+                const { data: existente } = await supabase
+                    .from('variantes')
+                    .select('id')
+                    .eq('producto_titulo', item.tituloBase)
+                    .eq('volumen', v.volumen)
+                    .maybeSingle();
+
+                if (!existente) {
+                    // Si no existe, la insertamos
+                    await supabase.from('variantes').insert({
+                        producto_titulo: item.tituloBase,
+                        volumen: v.volumen,
+                        precio: v.price,
+                        descripcion: v.desc || "",
+                        imagenes: v.images || []
+                    });
+                }
+            }
+        }
+    }
+    alert("¡Migración masiva finalizada con éxito! Revisa Supabase.");
+}
+    
+   let productosCatalogo = $state<ProductoAgrupado[]>([
     { tituloBase: "Harina de Palmiste", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 1, volumen: "36.8 KG", price: 12.9, images: ["/palmiste32.png"], desc: "Presentación de 36.8 KG. Fuente de proteína y energía ideal para ganado bovino." }] },
     { tituloBase: "Silo de maíz", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 7, volumen: "30 KG", price: 4, images: ["/silodemaiz2.jpeg"], desc: "Presentación de 30 KG,Contiene SiloLact." }] },
     { tituloBase: "Melaza", cat: "Agro", subcat: "Alimentación Animal", variantes: [{ id: 11, volumen: "Estándar", price: 14, images: ["/Melaza.png"], desc: "Mejora la energía y condición corporal de los animales, ideal para bovinos, búfalos, caballos, ovejas y cabras." }] },
@@ -384,7 +473,9 @@
     { tituloBase: "Acople tipo hoz", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 144, volumen: "Estándar", price: 99, images: ["/tipoox.jpeg"], desc: "Acople tipo hoz." }] },
     { tituloBase: "Acople cortasetos", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 145, volumen: "Estándar", price: 120, images: ["/naranja.jpeg"], desc: "Acople cortasetos." }] },  // <-- ¡Faltaba esta coma aquí!
     { tituloBase: "Acople desmalezadora", cat: "Repuestos Agro", subcat: "Desmalezadoras y Motosierras", variantes: [{ id: 146, volumen: "Estándar", price: 70, images: ["/newacope.jpeg"], desc: "Acople desmalezadora motobomba 28MM 9D" }] }
-];
+]);
+
+let cargando = $state(true);
 
     const macroCategorias = ["TODOS", "AGRO", "MEDICINA VETERINARIA", "REPUESTOS AGRO"];
     const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plántula", "Insecticidas","Fungicidas","Fungicida Biológico","Fungicida + Insecticida","Tratamiento de Semillas","Bioestimulante Foliar","Regulador de Crecimiento","Coadyuvantes","Rodenticida de Uso Industrial","Manuales"];
@@ -392,15 +483,136 @@
     const subCategoriasRepuestos = ["Desmalezadoras y Motosierras", "Motores a Gasolina"];
     const metodosPago = ["Mercantil", "Venezuela", "Banesco", "Pago Móvil", "Efectivo Divisa", "Binance"];
 
-    let busqueda = $state("");
-    let macroFiltro = $state("TODOS");
-    let subFiltro = $state("Todas");
-    let metodoPago = $state("Mercantil");
-    let carrito = $state<{id: number, title: string, varianteVolumen: string, cat: string, price: number, cantidad: number}[]>([]);
-    let carritoAbierto = $state(false);
-    let filtrosMovilAbierto = $state(false);
+let busqueda = $state("");
+let macroFiltro = $state("TODOS");
+let subFiltro = $state("Todas");
+let metodoPago = $state("Mercantil");
+let carrito = $state<any[]>([]);
+let carritoAbierto = $state(false);
+let filtrosMovilAbierto = $state(false);
+let seleccionVariantes = $state<Record<number, number>>({});
 
-    let seleccionVariantes = $state<Record<number, number>>({});
+    // Variables para el formulario del Modo Admin y la imagen por archivo
+    let nuevoTitulo = $state('');
+    let nuevaCat = $state('AGRO');
+    let nuevaSubcat = $state('Alimentación Animal');
+    let nuevoPrecio = $state(0);
+    let nuevoVolumen = $state('Estándar');
+    let nuevaDesc = $state('');
+    let archivoImagen = $state<File | null>(null);
+    let errorMessage = $state('');
+
+    onMount(async () => {
+        try {
+            const { data, error } = await supabase
+                .from('productos')
+                .select(`
+                    tituloBase:titulo_base,
+                    cat,
+                    subcat,
+                    activo,
+                    variantes (
+                        id,
+                        volumen,
+                        price:precio,
+                        desc:descripcion,
+                        images:imagenes,
+                        link
+                    )
+                `);
+
+            if (error) throw error;
+            if (data && data.length > 0) {
+                productosCatalogo = data as ProductoAgrupado[];
+            }
+        } catch (error) {
+            console.warn("Usando catálogo local de respaldo:", error);
+        } finally {
+            cargando = false;
+        }
+    });
+
+    async function agregarProductoAdmin(e: Event) {
+        e.preventDefault();
+        if (!$usuarioActivo) {
+            alert("Debes iniciar sesión para agregar productos.");
+            return;
+        }
+
+        errorMessage = '';
+
+        try {
+            let imagenUrl = '/placeholder.png';
+
+            if (archivoImagen) {
+                const nombreArchivo = `${Date.now()}-${archivoImagen.name}`;
+                const { error: uploadError } = await supabase.storage
+                    .from('productos')
+                    .upload(nombreArchivo, archivoImagen);
+
+                if (uploadError) throw uploadError;
+
+                const { data: publicUrlData } = supabase.storage
+                    .from('productos')
+                    .getPublicUrl(nombreArchivo);
+
+                imagenUrl = publicUrlData.publicUrl;
+            }
+
+            const { error: prodError } = await supabase
+                .from('productos')
+                .insert([
+                    { 
+                        titulo_base: nuevoTitulo.trim(), 
+                        cat: nuevaCat, 
+                        subcat: nuevaSubcat, 
+                        activo: true 
+                    }
+                ]);
+
+            if (prodError) throw prodError;
+
+            const { error: varError } = await supabase
+                .from('variantes')
+                .insert([
+                    {
+                        producto_titulo: nuevoTitulo.trim(),
+                        volumen: nuevoVolumen.trim(),
+                        precio: Number(nuevoPrecio) || 0,
+                        descripcion: nuevaDesc.trim(),
+                        imagenes: [imagenUrl]
+                    }
+                ]);
+
+            if (varError) throw varError;
+
+            alert("¡Producto y foto publicados con éxito en Supabase!");
+            window.location.reload();
+        } catch (err: any) {
+            errorMessage = err.message || "Error al guardar en la base de datos o subir la imagen.";
+        }
+    }
+
+    async function toggleAgotado(nombreBase: string, estadoActual: boolean) {
+        if (!$usuarioActivo) return;
+
+        const nuevoEstado = !estadoActual;
+        const { error } = await supabase
+            .from('productos')
+            .update({ activo: nuevoEstado })
+            .eq('titulo_base', nombreBase);
+
+        if (error) {
+            console.warn("Actualizando estado de forma local.");
+        }
+
+        productosCatalogo = productosCatalogo.map(p => {
+            if (p.tituloBase === nombreBase) {
+                return { ...p, activo: nuevoEstado };
+            }
+            return p;
+        });
+    }
 
     function obtenerVarianteActiva(index: number, p: ProductoAgrupado): Variante {
         const varIndex = seleccionVariantes[index] || 0;
@@ -420,10 +632,26 @@
 
     let productosFiltrados = $derived(
         productosCatalogo.filter(p => {
-            const cumpleBusqueda = p.tituloBase.toLowerCase().includes(busqueda.toLowerCase()) || 
-                                   p.variantes.some(v => v.desc.toLowerCase().includes(busqueda.toLowerCase()) || v.volumen.toLowerCase().includes(busqueda.toLowerCase()));
-            const cumpleMacro = macroFiltro === "TODOS" || p.cat.toUpperCase() === macroFiltro;
-            const cumpleSub = subFiltro === "Todas" || p.subcat === subFiltro;
+            // 1. Limpiamos y normalizamos la búsqueda de texto
+            const query = busqueda.toLowerCase().trim();
+            const coincideTitulo = p.tituloBase?.toLowerCase().includes(query) || false;
+            const coincideVariante = p.variantes?.some(v => 
+                v.desc?.toLowerCase().includes(query) || 
+                v.volumen?.toLowerCase().includes(query)
+            ) || false;
+
+            const cumpleBusqueda = query === "" || coincideTitulo || coincideVariante;
+
+            // 2. Filtro por macro categoría (asegurando mayúsculas/minúsculas)
+            const catProducto = p.cat?.trim().toUpperCase() || "";
+            const macroSeleccionado = macroFiltro?.trim().toUpperCase() || "TODOS";
+            const cumpleMacro = macroSeleccionado === "TODOS" || catProducto === macroSeleccionado;
+
+            // 3. Filtro por subcategoría de forma flexible
+            const subcatProducto = p.subcat?.trim().toLowerCase() || "";
+            const subSeleccionado = subFiltro?.trim().toLowerCase() || "todas";
+            const cumpleSub = subSeleccionado === "todas" || subcatProducto === subSeleccionado;
+
             return cumpleBusqueda && cumpleMacro && cumpleSub;
         })
     );
@@ -439,48 +667,52 @@
         return carrito.reduce((acc, c) => {
             let precioUnitario = c.price;
             if (aplicaDescuento) {
-                if (c.cat !== "Medicina Veterinaria" && ![2, 14, 16].includes(c.id)) {
-                    if ([19, 20, 21, 22, 23].includes(c.id)) {
-                        if (c.id === 19) precioUnitario = 8;
-                        else if (c.id === 20) precioUnitario = 4;
-                        else if (c.id === 21) precioUnitario = 110;
-                        else if (c.id === 22) precioUnitario = 10;
-                        else if (c.id === 23) precioUnitario = 15;
-                    } else {
-                        precioUnitario *= 0.9;
-                    }
+                if (c.cat !== "Medicina Veterinaria") {
+                    precioUnitario *= 0.9;
                 }
             }
             return acc + (precioUnitario * c.cantidad);
         }, 0);
     }
 
-    function agregarAlCarrito(p: ProductoAgrupado, indexOriginal: number) {
+function agregarAlCarrito(p: ProductoAgrupado, indexOriginal: number) {
         const varianteActiva = obtenerVarianteActiva(indexOriginal, p);
-        if (varianteActiva.price <= 0) return;
-        const itemExistente = carrito.find(c => c.id === varianteActiva.id);
+        if (!varianteActiva || Number(varianteActiva.price) <= 0) return;
+        
+        const varianteId = varianteActiva.id;
+        const itemExistente = carrito.find(c => c.id === varianteId);
+        
         if (itemExistente) {
-            itemExistente.cantidad += 1;
+            carrito = carrito.map(c => c.id === varianteId ? { ...c, cantidad: c.cantidad + 1 } : c);
         } else {
-            carrito.push({
-                id: varianteActiva.id,
-                title: `${p.tituloBase} (${varianteActiva.volumen})`,
-                varianteVolumen: varianteActiva.volumen,
-                cat: p.cat,
-                price: varianteActiva.price,
-                cantidad: 1
-            });
+            carrito = [
+                ...carrito,
+                {
+                    id: varianteId,
+                    title: `${p.tituloBase} (${varianteActiva.volumen})`,
+                    varianteVolumen: varianteActiva.volumen,
+                    cat: p.cat,
+                    price: Number(varianteActiva.price),
+                    cantidad: 1
+                }
+            ];
         }
+        // Ya no incluye "carritoAbierto = true;", por lo que la ventana 
+        // no se abrirá sola; el usuario podrá seguir comprando con tranquilidad 
+        // y solo abrir el carrito cuando él lo decida haciendo clic en el botón flotante.
     }
 
-    function cambiarCantidad(id: number, delta: number) {
-        const item = carrito.find(c => c.id === id);
-        if (item) {
-            item.cantidad = Math.max(1, item.cantidad + delta);
-        }
+    function cambiarCantidad(id: any, delta: number) {
+        carrito = carrito.map(c => {
+            if (c.id === id) {
+                const nuevaCantidad = Math.max(1, c.cantidad + delta);
+                return { ...c, cantidad: nuevaCantidad };
+            }
+            return c;
+        });
     }
 
-    function eliminar(id: number) {
+    function eliminar(id: any) {
         carrito = carrito.filter(c => c.id !== id);
     }
 
@@ -498,235 +730,411 @@
 <div class="px-2 py-3 sm:p-4 md:p-8 max-w-7xl mx-auto bg-stone-50 min-h-screen relative font-sans text-stone-900 selection:bg-emerald-100 selection:text-emerald-900 pb-24 sm:pb-12">
     
     <!-- Cabecera y Buscador Predictivo -->
-    <header class="sticky top-0 bg-stone-50/95 backdrop-blur-md z-30 pb-3 pt-2 border-b border-stone-200 mb-4 sm:mb-6">
-        <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-4 items-center justify-between">
-            <div class="flex items-center justify-between w-full sm:w-auto gap-2">
-                <div class="text-sm font-black tracking-tight text-emerald-900 uppercase">Catálogo AGROVENZ</div>
-                <button onclick={() => filtrosMovilAbierto = true} class="sm:hidden flex items-center gap-1.5 bg-emerald-800 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-xs active:scale-95 transition-transform touch-manipulation">
-                    <Icon icon="mdi:filter-variant" class="text-base"/>
-                    <span>Filtros</span>
-                    {#if subFiltro !== "Todas" || macroFiltro !== "TODOS"}<span class="w-2 h-2 rounded-full bg-amber-400"></span>{/if}
-                </button>
-            </div>
-
-            <div class="relative w-full sm:w-96">
-                <div class="relative flex items-center">
-                    <Icon icon="mdi:magnify" class="absolute left-3.5 text-stone-400 text-lg pointer-events-none"/>
-                    <input type="text" bind:value={busqueda} placeholder="Buscar producto, uso o activo..." class="w-full pl-10 pr-9 py-2.5 sm:py-3 rounded-2xl border border-stone-200 shadow-xs focus:ring-2 focus:ring-emerald-500 outline-none text-xs sm:text-sm bg-white touch-manipulation" />
-                    {#if busqueda}
-                        <button onclick={() => busqueda = ""} class="absolute right-3 p-1 text-stone-400 hover:text-stone-600"><Icon icon="mdi:close-circle" class="text-base"/></button>
-                    {/if}
-                </div>
-                
-                {#if resultadosPredictivos.length > 0}
-                    <div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-stone-100 overflow-hidden z-40 divide-y divide-stone-100">
-                        {#each resultadosPredictivos as r}
-                            <button onclick={() => { busqueda = r.tituloBase; macroFiltro = r.cat.toUpperCase(); subFiltro = r.subcat; }} class="w-full text-left px-4 py-3 hover:bg-emerald-50/60 transition-colors flex items-center justify-between gap-3 group touch-manipulation">
-                                <div class="flex items-center gap-3 min-w-0">
-                                    <div class="w-10 h-10 rounded-xl bg-stone-100 overflow-hidden shrink-0 border border-stone-200">
-                                        <img src={r.variantes[0].images[0]} alt={r.tituloBase} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                                    </div>
-                                    <div class="min-w-0">
-                                        <p class="text-xs font-bold text-stone-800 truncate group-hover:text-emerald-900">{r.tituloBase}</p>
-                                        <span class="inline-block mt-0.5 text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold uppercase tracking-wider">{r.cat} &bull; {r.subcat}</span>
-                                    </div>
-                                </div>
-                                <span class="text-xs font-black text-emerald-800 shrink-0">{r.variantes[0].price > 0 ? `$${r.variantes[0].price.toFixed(2)}` : 'Consultar'}</span>
-                            </button>
-                        {/each}
-                    </div>
-                {/if}
-            </div>
-        </div>
-
-        <!-- Pestañas de Macro-Categorías (Escritorio) -->
-        <div class="hidden sm:flex gap-2 mt-4 overflow-x-auto pb-1 scrollbar-none">
-            {#each macroCategorias as macro}
-                <button onclick={() => { macroFiltro = macro; subFiltro = "Todas"; }} class={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border ${macroFiltro === macro ? 'bg-emerald-800 text-white border-emerald-800 shadow-xs' : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-800'}`}>{macro}</button>
-            {/each}
-        </div>
-
-        <!-- Pestañas de Subcategorías (Escritorio) -->
-        <div class="hidden sm:flex gap-1.5 mt-2.5 overflow-x-auto pb-1 scrollbar-none">
-            <button onclick={() => subFiltro = "Todas"} class={`px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all border whitespace-nowrap ${subFiltro === 'Todas' ? 'bg-emerald-900 text-white border-emerald-900' : 'bg-stone-100 text-stone-600 border-stone-200 hover:bg-stone-200'}`}>
-                Todas las subcategorías
+  <header class="sticky top-0 bg-stone-50/95 backdrop-blur-md z-30 pb-3 pt-2 border-b border-stone-200 mb-4 sm:mb-6">
+    <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-4 items-center justify-between">
+        <div class="flex items-center justify-between w-full sm:w-auto gap-2">
+            <div class="text-sm font-black tracking-tight text-emerald-900 uppercase">Catálogo AGROVENZ</div>
+            <button type="button" onclick={() => filtrosMovilAbierto = true} class="sm:hidden flex items-center gap-1.5 bg-emerald-800 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-xs active:scale-95 transition-transform touch-manipulation cursor-pointer">
+                <Icon icon="mdi:filter-variant" class="text-base"/>
+                <span>Filtros</span>
+                {#if subFiltro !== "Todas" || macroFiltro !== "TODOS"}<span class="w-2 h-2 rounded-full bg-amber-400"></span>{/if}
             </button>
-            {#each subCategoriasActuales as sub}
-                <button onclick={() => subFiltro = sub} class={`px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all border whitespace-nowrap ${subFiltro === sub ? 'bg-emerald-900 text-white border-emerald-900' : 'bg-stone-100 text-stone-600 border-stone-200 hover:bg-stone-200'}`}>
-                    {sub}
-                </button>
-            {/each}
         </div>
-    </header>
 
-    <!-- Grilla de Productos Agrupados con Selector de Presentación -->
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6">
-        {#each productosFiltrados as p, index (p.tituloBase)}
-            {@const varActiva = obtenerVarianteActiva(index, p)}
-            <div class="bg-white p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-stone-100 shadow-xs hover:shadow-xl transition-all flex flex-col h-full group">
-                
-                <!-- Imagen -->
-                <div class="relative w-full h-28 sm:h-48 mb-2.5 sm:mb-4 bg-stone-100 rounded-xl sm:rounded-2xl overflow-hidden">
-                    <img src={varActiva.images[0]} alt={p.tituloBase} class="w-full h-28 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-                </div>
-
-                <div class="flex-grow flex flex-col">
-                    <h3 class="font-bold text-stone-900 text-xs sm:text-base leading-tight mb-1 line-clamp-2">{p.tituloBase}</h3>
-                    <p class="text-[8px] sm:text-[10px] text-emerald-700 font-bold mb-1.5 uppercase tracking-wider">{p.subcat}</p>
-                    <p class="text-[10px] sm:text-xs text-stone-500 leading-relaxed mb-3 line-clamp-2">{varActiva.desc}</p>
-                </div>
-
-                <!-- SELECTOR DE PRESENTACIONES -->
-                {#if p.variantes.length > 1}
-                    <div class="mb-2">
-                        <label class="block text-[8px] font-black text-stone-400 uppercase tracking-wider mb-1">Presentación:</label>
-                        <div class="flex flex-wrap gap-1">
-                            {#each p.variantes as v, vIdx}
-                                <button onclick={() => cambiarVariante(index, vIdx)} class={`px-2 py-1 rounded-lg text-[9px] font-bold transition-all touch-manipulation ${(seleccionVariantes[index] || 0) === vIdx ? 'bg-emerald-800 text-white shadow-xs' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'}`}>
-                                    {v.volumen}
-                                </button>
-                            {/each}
-                        </div>
-                    </div>
+        <div class="relative w-full sm:w-96">
+            <div class="relative flex items-center">
+                <Icon icon="mdi:magnify" class="absolute left-3.5 text-stone-400 text-lg pointer-events-none"/>
+                <input 
+                    type="text" 
+                    bind:value={busqueda} 
+                    placeholder="Buscar producto, uso o activo..." 
+                    class="w-full pl-10 pr-9 py-2.5 sm:py-3 rounded-2xl border border-stone-200 shadow-xs focus:ring-2 focus:ring-emerald-500 outline-none text-xs sm:text-sm bg-white touch-manipulation" 
+                />
+                {#if busqueda}
+                    <button type="button" onclick={() => busqueda = ""} class="absolute right-3 p-1 text-stone-400 hover:text-stone-600 cursor-pointer">
+                        <Icon icon="mdi:close-circle" class="text-base"/>
+                    </button>
                 {/if}
-                
-                <div class="mt-auto pt-2.5 sm:pt-4 border-t border-stone-50 flex flex-col gap-1.5">
-                    <div class="flex items-baseline justify-between gap-1">
-                        <span class="font-black text-xs sm:text-xl text-emerald-800">{varActiva.price > 0 ? `$${varActiva.price.toFixed(2)}` : 'Consultar'}</span>
-                    </div>
-                    
-                    {#if (varActiva as any).link}
-                        <a href={(varActiva as any).link} target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-emerald-800 text-white hover:bg-emerald-900 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation shadow-xs">VER GUÍA</a>
-                    {:else if varActiva.price > 0}
-                        <button onclick={() => agregarAlCarrito(p, index)} class="w-full py-2 bg-emerald-50 hover:bg-emerald-800 text-emerald-800 hover:text-white border border-emerald-800/20 hover:border-emerald-800 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation active:scale-95">AGREGAR</button>
-                    {:else}
-                        <a href={`https://wa.me/584241860644?text=Hola, deseo consultar precio de ${p.tituloBase}`} target="_blank" class="w-full py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation">CONSULTAR</a>
-                    {/if}
-                </div>
             </div>
+            
+            {#if resultadosPredictivos && resultadosPredictivos.length > 0}
+                <div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-stone-100 overflow-hidden z-40 divide-y divide-stone-100">
+                    {#each resultadosPredictivos as r}
+                        <button 
+                            type="button" 
+                            onclick={() => { 
+                                busqueda = r.tituloBase; 
+                                macroFiltro = r.cat ? r.cat.toUpperCase() : "TODOS"; 
+                                subFiltro = r.subcat || "Todas";
+                            }} 
+                            class="w-full text-left px-4 py-3 hover:bg-emerald-50/60 transition-colors flex items-center justify-between gap-3 group touch-manipulation cursor-pointer"
+                        >
+                            <div class="flex items-center gap-3 min-w-0">
+                                <div class="w-10 h-10 rounded-xl bg-stone-100 overflow-hidden shrink-0 border border-stone-200 flex items-center justify-center">
+                                    {#if r.variantes?.[0]?.images?.[0]}
+                                        <img src={r.variantes[0].images[0]} alt={r.tituloBase} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                                    {:else}
+                                        <Icon icon="mdi:image-off-outline" class="text-stone-300 text-lg"/>
+                                    {/if}
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs font-bold text-stone-800 truncate group-hover:text-emerald-900">{r.tituloBase}</p>
+                                    <span class="inline-block mt-0.5 text-[9px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold uppercase tracking-wider">{r.cat} &bull; {r.subcat}</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-black text-emerald-800 shrink-0">
+                                {r.variantes?.[0]?.price > 0 ? `$${Number(r.variantes[0].price).toFixed(2)}` : 'Consultar'}
+                            </span>
+                        </button>
+                    {/each}
+                </div>
+            {/if}
+        </div>
+    </div>
+
+    <!-- Pestañas de Macro-Categorías (Escritorio) -->
+    <div class="hidden sm:flex gap-2 mt-4 overflow-x-auto pb-1 scrollbar-none">
+        {#each macroCategorias as macro}
+            <button 
+                type="button" 
+                onclick={() => { macroFiltro = macro; subFiltro = "Todas"; }} 
+                class={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border cursor-pointer ${macroFiltro === macro ? 'bg-emerald-800 text-white border-emerald-800 shadow-xs' : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-800'}`}
+            >
+                {macro}
+            </button>
         {/each}
     </div>
 
-    <!-- Drawer de Filtros (Móvil) -->
-    {#if filtrosMovilAbierto}
-        <div class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 transition-opacity" onclick={() => filtrosMovilAbierto = false}></div>
-        <div class="fixed bottom-0 left-0 right-0 max-h-[85vh] bg-white rounded-t-[2.5rem] shadow-2xl z-50 p-6 flex flex-col transition-transform transform translate-y-0 overflow-hidden">
-            
-            <div class="flex justify-between items-center mb-6 pb-2 shrink-0">
-                <h2 class="font-black text-base text-stone-900 uppercase tracking-wide">FILTRAR CATÁLOGO</h2>
-                <button onclick={() => filtrosMovilAbierto = false} class="p-1.5 text-stone-700 hover:bg-stone-100 rounded-full transition-colors touch-manipulation">
-                    <Icon icon="mdi:close" class="text-xl"/>
-                </button>
+    <!-- Pestañas de Subcategorías (Escritorio) -->
+    <div class="hidden sm:flex gap-1.5 mt-2.5 overflow-x-auto pb-1 scrollbar-none">
+        <button 
+            type="button" 
+            onclick={() => subFiltro = "Todas"} 
+            class={`px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all border whitespace-nowrap cursor-pointer ${subFiltro === 'Todas' ? 'bg-emerald-900 text-white border-emerald-900' : 'bg-stone-100 text-stone-600 border-stone-200 hover:bg-stone-200'}`}
+        >
+            Todas las subcategorías
+        </button>
+        {#each subCategoriasActuales as sub}
+            <button 
+                type="button" 
+                onclick={() => subFiltro = sub} 
+                class={`px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all border whitespace-nowrap cursor-pointer ${subFiltro === sub ? 'bg-emerald-900 text-white border-emerald-900' : 'bg-stone-100 text-stone-600 border-stone-200 hover:bg-stone-200'}`}
+            >
+                {sub}
+            </button>
+        {/each}
+    </div>
+</header>
+
+    <!-- PANEL DE ADMINISTRACIÓN (SOLO SE MUESTRA SI INICIA SESIÓN) -->
+    {#if $usuarioActivo}
+        <div class="mb-8 p-6 bg-emerald-950/20 border-2 border-emerald-800/40 rounded-3xl shadow-xl">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-sm font-black text-emerald-800 uppercase tracking-widest">Panel de Administración</h3>
+                    <p class="text-[11px] text-stone-500">Sesión activa: <strong class="text-stone-800">{$usuarioActivo.nombre}</strong></p>
+                </div>
+                <span class="text-[10px] bg-emerald-800 text-white px-3 py-1 rounded-full font-bold uppercase tracking-wider">Modo Editor</span>
             </div>
 
-            <div class="overflow-y-auto pr-0.5 space-y-5 flex-grow pb-2">
+            <form onsubmit={agregarProductoAdmin} class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
-                    <label class="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-2.5">CATEGORÍA GENERAL</label>
-                    <div class="flex flex-col gap-2">
-                        {#each macroCategorias as macro}
-                            <button onclick={() => { macroFiltro = macro; subFiltro = "Todas"; }} class={`w-full py-3.5 px-5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all border text-left flex items-center justify-between ${macroFiltro === macro ? 'bg-[#064e3b] text-white border-[#064e3b] shadow-sm' : 'bg-stone-50/80 text-stone-800 border-stone-200/60 hover:bg-stone-100'}`}>
-                                <span class="tracking-normal">{macro}</span>
-                                {#if macroFiltro === macro}
-                                    <Icon icon="mdi:check" class="text-base shrink-0"/>
-                                {/if}
-                            </button>
-                        {/each}
-                    </div>
+                    <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Título del Producto</label>
+                    <input type="text" bind:value={nuevoTitulo} placeholder="Ej: Abono Orgánico" required class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-emerald-500" />
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-2.5">SUBCATEGORÍA ESPECÍFICA</label>
-                    <div class="flex flex-col gap-1.5">
-                        <button onclick={() => subFiltro = "Todas"} class={`w-full py-3.5 px-5 rounded-2xl text-xs transition-all text-left flex items-center justify-between ${subFiltro === 'Todas' ? 'bg-[#d1fae5] text-[#022c22] font-bold' : 'bg-stone-50/80 text-stone-700 hover:bg-stone-100 border border-stone-200/60 font-medium'}`}>
-                            <span class="tracking-normal">Todas</span>
-                            {#if subFiltro === 'Todas'}
-                                <span class="w-2 h-2 rounded-full bg-[#047857] shrink-0"></span>
+                    <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Macro Categoría</label>
+                    <select bind:value={nuevaCat} class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-emerald-500">
+                        <option value="AGRO">AGRO</option>
+                        <option value="MEDICINA VETERINARIA">MEDICINA VETERINARIA</option>
+                        <option value="REPUESTOS AGRO">REPUESTOS AGRO</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Subcategoría</label>
+                    <input type="text" bind:value={nuevaSubcat} placeholder="Ej: Alimentación Animal" required class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-emerald-500" />
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Precio ($)</label>
+                    <input type="number" step="0.01" bind:value={nuevoPrecio} placeholder="0.00" required class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-emerald-500" />
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Presentación / Volumen</label>
+                    <input type="text" bind:value={nuevoVolumen} placeholder="Ej: 30 KG o 1 Litro" required class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-emerald-500" />
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Imagen del Producto (Archivo)</label>
+                    <input 
+                        type="file" 
+                        accept="image/*"
+                        onchange={(e) => archivoImagen = e.currentTarget.files?.[0] || null} 
+                        class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-2 text-white text-xs focus:outline-none focus:border-emerald-500 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-emerald-800 file:text-white hover:file:bg-emerald-700 cursor-pointer" 
+                    />
+                </div>
+
+                <div class="sm:col-span-2 lg:col-span-3">
+                    <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Descripción del Producto</label>
+                    <textarea bind:value={nuevaDesc} placeholder="Detalles técnicos y presentación..." rows="2" class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+                </div>
+
+                <div class="sm:col-span-2 lg:col-span-3">
+                    <button type="submit" class="w-full py-3.5 bg-emerald-800 hover:bg-emerald-900 text-white font-bold rounded-xl text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg">
+                        + Guardar Producto y Subir Imagen a Supabase
+                    </button>
+                </div>
+            </form>
+
+            {#if errorMessage}
+                <p class="text-red-500 text-xs mt-3 uppercase font-semibold text-center">{errorMessage}</p>
+            {/if}
+        </div>
+    {/if}
+
+    <!-- Estado de Carga -->
+    {#if cargando}
+        <div class="flex flex-col items-center justify-center py-24">
+            <Icon icon="mdi:loading" class="text-4xl text-emerald-800 animate-spin mb-2"/>
+            <p class="text-stone-500 text-xs sm:text-sm font-bold uppercase tracking-wider">Cargando catálogo...</p>
+        </div>
+    {:else if productosFiltrados.length === 0}
+        <div class="flex flex-col items-center justify-center py-24 text-center">
+            <Icon icon="mdi:package-variant-closed" class="text-5xl text-stone-300 mb-2"/>
+            <p class="text-stone-500 text-sm font-bold">No se encontraron productos</p>
+        </div>
+    {:else}
+        <!-- Grilla de Productos -->
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-6">
+            {#each productosFiltrados as p, index (p.tituloBase)}
+                {@const varActiva = obtenerVarianteActiva(index, p)}
+                <div class="bg-white p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-stone-100 shadow-xs hover:shadow-xl transition-all flex flex-col h-full group relative overflow-hidden">
+                    
+                    {#if p.activo === false}
+                        <div class="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider z-10 shadow-md">
+                            Agotado
+                        </div>
+                    {/if}
+
+                    <div class="relative w-full h-28 sm:h-48 mb-2.5 sm:mb-4 bg-stone-100 rounded-xl sm:rounded-2xl overflow-hidden">
+                        <img src={varActiva?.images[0]} alt={p.tituloBase} class="w-full h-28 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 {p.activo === false ? 'opacity-40 grayscale' : ''}" />
+                    </div>
+
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-bold text-stone-900 text-xs sm:text-base leading-tight mb-1 line-clamp-2">{p.tituloBase}</h3>
+                        <p class="text-[8px] sm:text-[10px] text-emerald-700 font-bold mb-1.5 uppercase tracking-wider">{p.subcat}</p>
+                        <p class="text-[10px] sm:text-xs text-stone-500 leading-relaxed mb-3 line-clamp-2">{varActiva?.desc}</p>
+                    </div>
+
+                    <!-- SELECTOR DE PRESENTACIONES -->
+                    {#if p.variantes.length > 1}
+                        <div class="mb-2">
+                            <label class="block text-[8px] font-black text-stone-400 uppercase tracking-wider mb-1">Presentación:</label>
+                            <div class="flex flex-wrap gap-1">
+                                {#each p.variantes as v, vIdx}
+                                    <button onclick={() => cambiarVariante(index, vIdx)} class={`px-2 py-1 rounded-lg text-[9px] font-bold transition-all touch-manipulation ${(seleccionVariantes[index] || 0) === vIdx ? 'bg-emerald-800 text-white shadow-xs' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'}`}>
+                                        {v.volumen}
+                                    </button>
+                                {/each}
+                            </div>
+                        </div>
+                    {/if}
+                    
+                    <div class="mt-auto pt-2.5 sm:pt-4 border-t border-stone-50 flex flex-col gap-1.5">
+                        <span class="font-black text-xs sm:text-xl text-emerald-800">{varActiva?.price > 0 ? `$${varActiva.price.toFixed(2)}` : 'Consultar'}</span>
+                        
+                        <div class="flex items-center gap-1.5">
+                            {#if varActiva?.price > 0}
+                                <button onclick={() => agregarAlCarrito(p, index)} class="flex-1 py-2 bg-emerald-50 hover:bg-emerald-800 text-emerald-800 hover:text-white border border-emerald-800/20 hover:border-emerald-800 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation">AGREGAR</button>
+                            {:else}
+                                <a href={`https://wa.me/584241860644?text=Hola, deseo consultar precio de ${p.tituloBase}`} target="_blank" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold rounded-xl text-[9px] sm:text-xs uppercase tracking-wider transition-all text-center touch-manipulation">CONSULTAR</a>
                             {/if}
-                        </button>
-                        {#each subCategoriasActuales as sub}
-                            <button onclick={() => subFiltro = sub} class={`w-full py-3.5 px-5 rounded-2xl text-xs transition-all text-left flex items-center justify-between ${subFiltro === sub ? 'bg-[#d1fae5] text-[#022c22] font-bold' : 'bg-stone-50/80 text-stone-700 hover:bg-stone-100 border border-stone-200/60 font-medium'}`}>
-                                <span class="tracking-normal">{sub}</span>
-                                {#if subFiltro === sub}
-                                    <span class="w-2 h-2 rounded-full bg-[#047857] shrink-0"></span>
-                                {/if}
-                            </button>
-                        {/each}
+
+                            {#if $usuarioActivo}
+                                <button 
+                                    type="button"
+                                    onclick={() => toggleAgotado(p.tituloBase, p.activo !== false)}
+                                    class="px-2.5 py-2 bg-stone-900 text-white rounded-xl text-[10px] font-bold uppercase tracking-wider hover:bg-red-700 transition-colors cursor-pointer"
+                                    title="Cambiar disponibilidad"
+                                >
+                                    {p.activo !== false ? 'Agotar' : 'Activar'}
+                                </button>
+                            {/if}
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="pt-4 mt-2 border-t border-stone-100 shrink-0 flex items-center gap-3">
-                <button onclick={() => { macroFiltro = "TODOS"; subFiltro = "Todas"; }} class="w-1/3 py-3.5 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-black uppercase tracking-wider transition-colors text-center touch-manipulation">
-                    LIMPIAR
-                </button>
-                <button onclick={() => filtrosMovilAbierto = false} class="w-2/3 bg-[#064e3b] text-white py-3.5 rounded-2xl font-black uppercase text-xs hover:bg-emerald-950 transition-all tracking-wider shadow-md text-center active:scale-98">
-                    VER RESULTADOS
-                </button>
-            </div>
+            {/each}
         </div>
     {/if}
 
     <!-- Botón Carrito Flotante -->
-    <button onclick={() => carritoAbierto = !carritoAbierto} class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 bg-emerald-800 text-white p-4 sm:p-5 rounded-full shadow-2xl hover:bg-emerald-900 active:scale-95 transition-transform z-40 flex items-center justify-center touch-manipulation">
-        <Icon class="text-2xl sm:text-3xl" icon="mdi:cart-outline"/>
-        {#if cantidadTotalItems > 0}
-            <span class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] sm:text-xs font-black w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center shadow-md animate-pulse">{cantidadTotalItems}</span>
-        {/if}
-    </button>
 
-    <!-- Drawer Carrito -->
-    {#if carritoAbierto}
-        <div class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 transition-opacity" onclick={() => carritoAbierto = false}></div>
-        <div class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white shadow-2xl z-50 p-4 sm:p-6 flex flex-col transition-transform transform translate-x-0">
-            <div class="flex justify-between items-center mb-4 sm:mb-6 pb-2 border-b border-stone-100">
-                <div class="flex items-center gap-2">
-                    <h2 class="font-black text-base sm:text-xl text-stone-900 uppercase">Tu Carrito</h2>
-                    <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">{cantidadTotalItems}</span>
-                </div>
-                <button onclick={() => carritoAbierto = false} class="p-2 rounded-full hover:bg-stone-100 active:bg-stone-200 touch-manipulation"><Icon class="text-stone-600 text-xl" icon="mdi:close"/></button>
-            </div>
+<button 
+    type="button" 
+    onclick={() => { carritoAbierto = true; }} 
+    class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 bg-emerald-800 text-white p-4 sm:p-5 rounded-full shadow-2xl hover:bg-emerald-900 active:scale-95 transition-transform z-40 flex items-center justify-center cursor-pointer"
+>
+    <Icon class="text-2xl sm:text-3xl" icon="mdi:cart-outline"/>
+    {#if cantidadTotalItems > 0}
+        <span class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] sm:text-xs font-black w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center shadow-md animate-pulse">
+            {cantidadTotalItems}
+        </span>
+    {/if}
+</button>
+
+<!-- MODAL LATERAL DEL CARRITO -->
+{#if carritoAbierto}
+    <div class="fixed inset-0 bg-black/50 z-50 flex justify-end backdrop-blur-xs transition-opacity">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col p-5 overflow-y-auto">
             
-            {#if carrito.length === 0}
-                <div class="text-center py-24 my-auto">
-                    <Icon icon="mdi:cart-off" class="text-4xl text-stone-300 mx-auto mb-2"/>
-                    <p class="text-stone-400 text-xs sm:text-sm font-medium">Tu carrito está vacío</p>
-                </div>
-            {:else}
-                <div class="space-y-3 flex-grow overflow-y-auto pr-1 mb-4">
+            <!-- Cabecera -->
+            <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+                <h2 class="text-sm font-black uppercase text-emerald-900 flex items-center gap-2">
+                    <Icon icon="mdi:cart" class="text-lg"/> Tu Carrito ({cantidadTotalItems})
+                </h2>
+                <button type="button" onclick={() => { carritoAbierto = false; }} class="p-2 text-stone-400 hover:text-stone-700 cursor-pointer">
+                    <Icon icon="mdi:close" class="text-xl"/>
+                </button>
+            </div>
+
+            <!-- Lista de Productos -->
+            <div class="flex-1 overflow-y-auto py-4 space-y-4">
+                {#if carrito.length === 0}
+                    <p class="text-center text-stone-400 py-10 text-sm">Tu carrito está vacío</p>
+                {:else}
                     {#each carrito as item}
-                        <div class="flex justify-between items-center bg-stone-50 p-3 rounded-2xl border border-stone-100 gap-2">
-                            <div class="w-3/5">
-                                <p class="font-bold text-stone-800 text-xs sm:text-sm line-clamp-1">{item.title}</p>
-                                <span class="text-[10px] text-emerald-700 font-bold">${item.price.toFixed(2)} c/u</span>
+                        <div class="flex items-center justify-between border-b pb-3 gap-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-stone-800">{item.title}</h4>
+                                <p class="text-xs text-emerald-700 font-semibold">${item.price} c/u</p>
                             </div>
-                            <div class="flex gap-2 items-center">
-                                <button onclick={() => cambiarCantidad(item.id, -1)} class="w-7 h-7 flex items-center justify-center rounded-lg bg-white border border-stone-200 font-bold text-xs">-</button>
-                                <span class="font-bold w-4 text-center text-xs text-stone-800">{item.cantidad}</span>
-                                <button onclick={() => cambiarCantidad(item.id, 1)} class="w-7 h-7 flex items-center justify-center rounded-lg bg-white border border-stone-200 font-bold text-xs">+</button>
-                                <button onclick={() => eliminar(item.id)} class="p-1 hover:bg-red-50 rounded-lg transition-colors"><Icon class="text-red-500 text-lg" icon="mdi:trash-can-outline"/></button>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick={() => cambiarCantidad(item.id, -1)} class="px-2 py-1 bg-stone-100 rounded text-xs font-bold">-</button>
+                                <span class="text-xs font-bold">{item.cantidad}</span>
+                                <button type="button" onclick={() => cambiarCantidad(item.id, 1)} class="px-2 py-1 bg-stone-100 rounded text-xs font-bold">+</button>
+                                <button type="button" onclick={() => eliminar(item.id)} class="text-red-500 ml-2">
+                                    <Icon icon="mdi:trash-can-outline" class="text-lg"/>
+                                </button>
                             </div>
                         </div>
                     {/each}
-                </div>
-                
-                <div class="bg-stone-50 p-3 sm:p-4 rounded-2xl border border-stone-100 mb-4 space-y-3">
-                    <div>
-                        <label class="block text-[10px] font-black text-stone-400 mb-1.5 uppercase tracking-wider">Método de pago</label>
-                        <select bind:value={metodoPago} class="w-full p-2.5 bg-white rounded-xl text-xs font-bold border border-stone-200 outline-none">
-                            {#each metodosPago as m}<option value={m}>{m}</option>{/each}
-                        </select>
-                    </div>
-                    <div class="flex justify-between items-center pt-2 border-t border-stone-200/60">
-                        <span class="text-xs font-bold text-stone-500 uppercase tracking-wider">Total Final:</span>
-                        <span class="text-xl sm:text-2xl font-black text-emerald-800">${calcularTotal().toFixed(2)}</span>
-                    </div>
-                </div>
+                {/if}
+            </div>
 
-                <button onclick={finalizarCompra} class="w-full bg-emerald-800 text-white py-3.5 sm:py-4 rounded-2xl font-black uppercase text-xs sm:text-sm hover:bg-emerald-900 transition-all tracking-wider shadow-md flex items-center justify-center gap-2">
-                    <Icon icon="mdi:whatsapp" class="text-lg"/>
-                    <span>Finalizar pedido por WhatsApp</span>
-                </button>
+            <!-- Resumen y Total -->
+            {#if carrito.length > 0}
+                <div class="pt-4 border-t border-stone-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-sm font-bold text-stone-700">Total a Pagar:</span>
+                        <span class="text-lg font-black text-emerald-900">${calcularTotal().toFixed(2)}</span>
+                    </div>
+                    <button type="button" onclick={finalizarCompra} class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg cursor-pointer">
+                        <Icon icon="mdi:whatsapp" class="text-xl"/> Finalizar Pedido por WhatsApp
+                    </button>
+                </div>
             {/if}
+
         </div>
-    {/if}
+    </div>
+{/if}
+<!-- MODAL DE FILTROS PARA MÓVIL -->
+<!-- MODAL DE FILTROS PARA MÓVIL -->
+{#if filtrosMovilAbierto}
+    <div class="fixed inset-0 bg-black/50 z-50 flex items-end sm:hidden backdrop-blur-xs transition-opacity">
+        <div class="bg-white w-full max-h-[90vh] rounded-t-3xl shadow-2xl flex flex-col p-6 overflow-y-auto">
+            
+            <!-- Cabecera del Modal -->
+            <div class="flex items-center justify-between pb-4 border-b border-stone-100 mb-5">
+                <h3 class="text-base font-black tracking-tight text-stone-900 uppercase">
+                    FILTRAR CATÁLOGO
+                </h3>
+                <button type="button" onclick={() => filtrosMovilAbierto = false} class="p-1 text-stone-400 hover:text-stone-700 cursor-pointer">
+                    <Icon icon="mdi:close" class="text-xl"/>
+                </button>
+            </div>
+
+            <!-- 1. Categoría General (Lista Vertical con estilo de la imagen) -->
+            <div class="mb-5">
+                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider block mb-3">CATEGORÍA GENERAL</label>
+                <div class="flex flex-col gap-2.5">
+                    {#each macroCategorias as macro}
+                        <button 
+                            type="button" 
+                            onclick={() => { macroFiltro = macro; subFiltro = "Todas"; }} 
+                            class={`w-full px-5 py-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all border text-left flex items-center justify-between cursor-pointer ${
+                                macroFiltro === macro 
+                                    ? 'bg-[#093a23] text-white border-[#093a23] shadow-md' 
+                                    : 'bg-white text-stone-800 border-stone-200 hover:bg-stone-50'
+                            }`}
+                        >
+                            <span>{macro}</span>
+                            {#if macroFiltro === macro}
+                                <Icon icon="mdi:check" class="text-base text-white"/>
+                            {/if}
+                        </button>
+                    {/each}
+                </div>
+            </div>
+
+            <!-- 2. Subcategoría Específica -->
+            <div class="mb-8">
+                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider block mb-3">SUBCATEGORÍA ESPECÍFICA</label>
+                <div class="flex flex-col gap-2 max-h-48 overflow-y-auto pr-1">
+                    <button 
+                        type="button" 
+                        onclick={() => subFiltro = "Todas"} 
+                        class={`w-full px-5 py-3.5 rounded-2xl text-xs font-bold transition-all border text-left flex items-center justify-between cursor-pointer ${
+                            subFiltro === 'Todas' 
+                                ? 'bg-[#d1fae5] text-stone-900 border-[#d1fae5]' 
+                                : 'bg-white text-stone-800 border-stone-200 hover:bg-stone-50'
+                        }`}
+                    >
+                        <span>Todas</span>
+                        {#if subFiltro === 'Todas'}
+                            <span class="w-2 h-2 rounded-full bg-[#093a23]"></span>
+                        {/if}
+                    </button>
+                    {#each subCategoriasActuales as sub}
+                        <button 
+                            type="button" 
+                            onclick={() => subFiltro = sub} 
+                            class={`w-full px-5 py-3.5 rounded-2xl text-xs font-bold transition-all border text-left flex items-center justify-between cursor-pointer ${
+                                subFiltro === sub 
+                                    ? 'bg-[#d1fae5] text-stone-900 border-[#d1fae5]' 
+                                    : 'bg-white text-stone-800 border-stone-200 hover:bg-stone-50'
+                            }`}
+                        >
+                            <span>{sub}</span>
+                            {#if subFiltro === sub}
+                                <span class="w-2 h-2 rounded-full bg-[#093a23]"></span>
+                            {/if}
+                        </button>
+                    {/each}
+                </div>
+            </div>
+
+            <!-- Botones inferiores: Limpiar y Ver Resultados -->
+            <div class="grid grid-cols-3 gap-3 mt-auto pt-2">
+                <button 
+                    type="button" 
+                    onclick={() => { macroFiltro = "TODOS"; subFiltro = "Todas"; }} 
+                    class="col-span-1 bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold py-4 rounded-2xl text-xs uppercase tracking-wider transition-colors cursor-pointer text-center"
+                >
+                    LIMPIAR
+                </button>
+                <button 
+                    type="button" 
+                    onclick={() => filtrosMovilAbierto = false} 
+                    class="col-span-2 bg-[#093a23] hover:bg-[#062c1a] text-white font-bold py-4 rounded-2xl text-xs uppercase tracking-wider shadow-lg cursor-pointer text-center"
+                >
+                    VER RESULTADOS
+                </button>
+            </div>
+
+        </div>
+    </div>
+{/if}
 </div>

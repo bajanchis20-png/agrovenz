@@ -1,6 +1,10 @@
 <script lang="ts">
     import "./layout.css";
     import Icon from "@iconify/svelte";
+    import { page } from "$app/state";
+    import { onMount } from "svelte";
+    import { usuarioActivo, cerrarSesion } from "$lib/auth";
+
     let { children } = $props();
     let isMenuOpen = $state(false);
 
@@ -17,7 +21,6 @@
 
 <svelte:head>
     <title>AgroVenz | Soluciones Integrales para el Agro Venezolano</title>
-    <!-- CORREGIDO: Se cambió %sveltekit.assets% por / -->
     <link rel="icon" href="/favicon1.png" />
 </svelte:head>
 
@@ -45,7 +48,21 @@
                 </div>
 
                 <div class="flex items-center gap-4 pl-6 border-l border-stone-200">
-                    <a href="/login" class="text-[11px] font-semibold text-stone-700 hover:text-emerald-800 uppercase tracking-widest transition-colors">Acceso</a>
+                    {#if $usuarioActivo && $usuarioActivo.rol === 'ADM'}
+                        <div class="flex items-center gap-3 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                            <div class="text-left">
+                                <span class="block text-[11px] font-bold text-stone-900 leading-none">{$usuarioActivo.nombre}</span>
+                                <span class="text-[9px] font-black uppercase text-emerald-800 tracking-wider">ADM ON</span>
+                            </div>
+                            <button onclick={cerrarSesion} title="Cerrar sesión" class="ml-2 text-stone-400 hover:text-red-600 transition-colors cursor-pointer">
+                                <Icon icon="mdi:logout" class="text-base" />
+                            </button>
+                        </div>
+                    {:else}
+                        <a href="/login" class="text-[11px] font-semibold text-stone-700 hover:text-emerald-800 uppercase tracking-widest transition-colors">Acceso</a>
+                    {/if}
+
                     <a href="{waLink}" target="_blank" 
                        class="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white font-semibold rounded-xl text-[11px] uppercase tracking-[0.2em] shadow-lg shadow-emerald-900/20 transition-all duration-300 hover:scale-105 active:scale-95">
                         Cotizar pedido
@@ -53,8 +70,8 @@
                 </div>
             </div>
             
-            <!-- Botón Hamburguesa optimizado (Área táctil más amplia) -->
-            <button class="lg:hidden p-2.5 rounded-xl bg-stone-100 text-stone-900 z-50 hover:bg-emerald-50 hover:text-emerald-800 active:scale-95 transition-all" 
+            <!-- Botón Hamburguesa optimizado -->
+            <button class="lg:hidden p-2.5 rounded-xl bg-stone-100 text-stone-900 z-50 hover:bg-emerald-50 hover:text-emerald-800 active:scale-95 transition-all cursor-pointer" 
                     onclick={() => isMenuOpen = !isMenuOpen}
                     aria-label="Abrir menú de navegación">
                 <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} class="text-2xl" />
@@ -73,13 +90,25 @@
                     </a>
                 {/each}
                 
-                <!-- Botones Móviles con mejor separación táctil -->
                 <div class="flex flex-col gap-3 mt-5 pt-3 border-t border-stone-100">
-                    <a href="/login" 
-                       onclick={() => isMenuOpen = false} 
-                       class="py-3.5 text-center border border-stone-200 text-stone-800 rounded-xl uppercase font-bold text-xs tracking-widest hover:bg-stone-50 active:scale-[0.98] transition-all">
-                        Iniciar Sesión
-                    </a>
+                    {#if $usuarioActivo && $usuarioActivo.rol === 'ADM'}
+                        <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-xl border border-emerald-200">
+                            <div>
+                                <span class="block text-xs font-bold text-stone-900">{$usuarioActivo.nombre} <span class="text-emerald-800 font-black">(ADM ON)</span></span>
+                                <span class="text-[10px] text-stone-500">Sesión de administración activa</span>
+                            </div>
+                            <button onclick={() => { cerrarSesion(); isMenuOpen = false; }} class="p-2 text-stone-500 hover:text-red-600 cursor-pointer">
+                                <Icon icon="mdi:logout" class="text-xl" />
+                            </button>
+                        </div>
+                    {:else}
+                        <a href="/login" 
+                           onclick={() => isMenuOpen = false} 
+                           class="py-3.5 text-center border border-stone-200 text-stone-800 rounded-xl uppercase font-bold text-xs tracking-widest hover:bg-stone-50 active:scale-[0.98] transition-all">
+                            Iniciar Sesión
+                        </a>
+                    {/if}
+
                     <a href="{waLink}" 
                        target="_blank" 
                        onclick={() => isMenuOpen = false} 
@@ -96,7 +125,6 @@
     {@render children()}
 </main>
 
-<!-- Footer optimizado para pantallas pequeñas -->
 <!-- Footer optimizado para pantallas pequeñas -->
 <footer class="bg-stone-950 pt-16 sm:pt-24 pb-12 text-stone-400">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 sm:gap-12">
