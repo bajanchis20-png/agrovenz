@@ -480,7 +480,7 @@ let cargando = $state(true);
     const macroCategorias = ["TODOS", "AGRO", "MEDICINA VETERINARIA", "REPUESTOS AGRO"];
     const subCategoriasAgro = ["Alimentación Animal", "Ganadería", "Inversiones", "Semillas", "Cercas Eléctricas", "Herbicidas", "Bioinsumos", "Equipos", "Plántula", "Insecticidas","Fungicidas","Fungicida Biológico","Fungicida + Insecticida","Tratamiento de Semillas","Bioestimulante Foliar","Regulador de Crecimiento","Coadyuvantes","Rodenticida de Uso Industrial","Manuales"];
     const subCategoriasVet = ["Antiparasitarios", "Antibióticos", "Vitaminas y Suplementos", "Ectoparasiticidas", "Medicamentos", "Instrumental Veterinario"];
-    const subCategoriasRepuestos = ["Desmalezadoras y Motosierras", "Motores a Gasolina"];
+    const subCategoriasRepuestos = ["Desmalezadoras y Motosierras", "Motores a Gasolina", "Lubricantes y Aceites"];
     const metodosPago = ["Mercantil", "Venezuela", "Banesco", "Pago Móvil", "Efectivo Divisa", "Binance"];
 
 let busqueda = $state("");
@@ -663,17 +663,12 @@ let seleccionVariantes = $state<Record<number, number>>({});
     let cantidadTotalItems = $derived(carrito.reduce((acc, item) => acc + item.cantidad, 0));
 
     function calcularTotal() {
-        const aplicaDescuento = (metodoPago === "Efectivo Divisa" || metodoPago === "Binance");
-        return carrito.reduce((acc, c) => {
-            let precioUnitario = c.price;
-            if (aplicaDescuento) {
-                if (c.cat !== "Medicina Veterinaria") {
-                    precioUnitario *= 0.9;
-                }
-            }
-            return acc + (precioUnitario * c.cantidad);
-        }, 0);
-    }
+    return carrito.reduce((acc, c) => {
+        let precioUnitario = c.price;
+        return acc + (precioUnitario * c.cantidad);
+    }, 0);
+}
+           
 
 function agregarAlCarrito(p: ProductoAgrupado, indexOriginal: number) {
         const varianteActiva = obtenerVarianteActiva(indexOriginal, p);
@@ -986,37 +981,83 @@ function agregarAlCarrito(p: ProductoAgrupado, indexOriginal: number) {
 </button>
 
 <!-- MODAL LATERAL DEL CARRITO -->
+<!-- MODAL LATERAL DEL CARRITO -->
 {#if carritoAbierto}
-    <div class="fixed inset-0 bg-black/50 z-50 flex justify-end backdrop-blur-xs transition-opacity">
-        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col p-5 overflow-y-auto">
+    <div class="fixed inset-0 bg-stone-950/40 backdrop-blur-sm z-50 flex justify-end transition-all duration-300">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between overflow-hidden border-l border-stone-100">
             
             <!-- Cabecera -->
-            <div class="flex items-center justify-between pb-4 border-b border-stone-200">
-                <h2 class="text-sm font-black uppercase text-emerald-900 flex items-center gap-2">
-                    <Icon icon="mdi:cart" class="text-lg"/> Tu Carrito ({cantidadTotalItems})
-                </h2>
-                <button type="button" onclick={() => { carritoAbierto = false; }} class="p-2 text-stone-400 hover:text-stone-700 cursor-pointer">
-                    <Icon icon="mdi:close" class="text-xl"/>
+            <div class="flex items-center justify-between px-6 py-5 border-b border-stone-100 bg-stone-50/80 backdrop-blur-md">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-md shadow-emerald-600/20">
+                        <Icon icon="mdi:cart" class="text-xl"/>
+                    </div>
+                    <div>
+                        <h2 class="text-xs font-black uppercase tracking-widest text-stone-900">Tu Carrito</h2>
+                        <p class="text-[11px] text-stone-500 font-medium">{cantidadTotalItems} {cantidadTotalItems === 1 ? 'artículo' : 'artículos'}</p>
+                    </div>
+                </div>
+                <button 
+                    type="button" 
+                    onclick={() => { carritoAbierto = false; }} 
+                    class="w-9 h-9 flex items-center justify-center text-stone-400 hover:text-stone-700 hover:bg-stone-200/60 rounded-full transition cursor-pointer"
+                    aria-label="Cerrar carrito"
+                >
+                    <Icon icon="mdi:close" class="text-lg"/>
                 </button>
             </div>
 
             <!-- Lista de Productos -->
-            <div class="flex-1 overflow-y-auto py-4 space-y-4">
+            <div class="flex-1 overflow-y-auto px-6 py-4 space-y-4 divide-y divide-stone-100">
                 {#if carrito.length === 0}
-                    <p class="text-center text-stone-400 py-10 text-sm">Tu carrito está vacío</p>
+                    <div class="h-full flex flex-col items-center justify-center text-center py-16 space-y-4">
+                        <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center shadow-inner">
+                            <Icon icon="mdi:cart-outline" class="text-3xl"/>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-sm font-bold text-stone-800">Tu carrito está vacío</p>
+                            <p class="text-xs text-stone-400 max-w-[220px] leading-relaxed">Explora el catálogo y añade productos para armar tu pedido.</p>
+                        </div>
+                    </div>
                 {:else}
                     {#each carrito as item}
-                        <div class="flex items-center justify-between border-b pb-3 gap-2">
-                            <div>
-                                <h4 class="text-xs font-bold text-stone-800">{item.title}</h4>
-                                <p class="text-xs text-emerald-700 font-semibold">${item.price} c/u</p>
+                        <div class="pt-4 first:pt-0 flex items-center justify-between gap-3 group">
+                            <div class="space-y-1 flex-1">
+                                <h4 class="text-xs font-bold text-stone-800 leading-snug">{item.title}</h4>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-black text-emerald-700">${item.price}</span>
+                                    <span class="text-[10px] text-stone-400">c/u</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <button type="button" onclick={() => cambiarCantidad(item.id, -1)} class="px-2 py-1 bg-stone-100 rounded text-xs font-bold">-</button>
-                                <span class="text-xs font-bold">{item.cantidad}</span>
-                                <button type="button" onclick={() => cambiarCantidad(item.id, 1)} class="px-2 py-1 bg-stone-100 rounded text-xs font-bold">+</button>
-                                <button type="button" onclick={() => eliminar(item.id)} class="text-red-500 ml-2">
-                                    <Icon icon="mdi:trash-can-outline" class="text-lg"/>
+                            
+                            <div class="flex items-center gap-3 shrink-0">
+                                <!-- Control de cantidad -->
+                                <div class="flex items-center bg-stone-100/80 rounded-xl p-1 border border-stone-200/60">
+                                    <button 
+                                        type="button" 
+                                        onclick={() => cambiarCantidad(item.id, -1)} 
+                                        class="w-6 h-6 flex items-center justify-center text-stone-600 hover:bg-white rounded-lg font-bold text-xs transition shadow-2xs cursor-pointer"
+                                    >
+                                        -
+                                    </button>
+                                    <span class="w-7 text-center text-xs font-bold text-stone-800">{item.cantidad}</span>
+                                    <button 
+                                        type="button" 
+                                        onclick={() => cambiarCantidad(item.id, 1)} 
+                                        class="w-6 h-6 flex items-center justify-center text-stone-600 hover:bg-white rounded-lg font-bold text-xs transition shadow-2xs cursor-pointer"
+                                    >
+                                        +
+                                    </button>
+                                </div>
+
+                                <!-- Botón eliminar -->
+                                <button 
+                                    type="button" 
+                                    onclick={() => eliminar(item.id)} 
+                                    class="w-8 h-8 flex items-center justify-center text-stone-300 hover:text-red-600 hover:bg-red-50 rounded-xl transition cursor-pointer"
+                                    aria-label="Eliminar producto"
+                                >
+                                    <Icon icon="mdi:trash-can-outline" class="text-base"/>
                                 </button>
                             </div>
                         </div>
@@ -1024,15 +1065,102 @@ function agregarAlCarrito(p: ProductoAgrupado, indexOriginal: number) {
                 {/if}
             </div>
 
-            <!-- Resumen y Total -->
+            <!-- Resumen, Botones de Pago y Total -->
             {#if carrito.length > 0}
-                <div class="pt-4 border-t border-stone-200">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-sm font-bold text-stone-700">Total a Pagar:</span>
-                        <span class="text-lg font-black text-emerald-900">${calcularTotal().toFixed(2)}</span>
+                <div class="p-6 bg-stone-50/90 border-t border-stone-100 space-y-4 backdrop-blur-md">
+                    
+                    <!-- Selección de Método de Pago con Botones Grid -->
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-stone-400 block">
+                            Selecciona Método de Pago - Tasa BCV - Algunos productos tienen descuento por pago en efectivo o USDT
+                        </label>
+                        <div class="grid grid-cols-2 gap-2">
+                            
+                            <!-- Botón Efectivo -->
+                            <button 
+                                type="button"
+                                onclick={() => metodoPago = 'Efectivo'}
+                                class={`flex items-center gap-2.5 p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                                    metodoPago === 'Efectivo' 
+                                        ? 'bg-emerald-50 border-emerald-600 text-emerald-900 shadow-sm' 
+                                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                                }`}
+                            >
+                                <span class="text-lg">💵</span>
+                                <div>
+                                    <p class="text-xs font-bold leading-tight">Efectivo</p>
+                                    <p class="text-[10px] text-stone-400">Divisas / Cash</p>
+                                </div>
+                            </button>
+
+                            <!-- Botón Binance -->
+                            <button 
+                                type="button"
+                                onclick={() => metodoPago = 'Binance'}
+                                class={`flex items-center gap-2.5 p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                                    metodoPago === 'Binance' 
+                                        ? 'bg-emerald-50 border-emerald-600 text-emerald-900 shadow-sm' 
+                                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                                }`}
+                            >
+                                <span class="text-lg">🪙</span>
+                                <div>
+                                    <p class="text-xs font-bold leading-tight">Binance</p>
+                                    <p class="text-[10px] text-stone-400">USDT / Pay</p>
+                                </div>
+                            </button>
+
+                            <!-- Botón Transferencia -->
+                            <button 
+                                type="button"
+                                onclick={() => metodoPago = 'Transferencia'}
+                                class={`flex items-center gap-2.5 p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                                    metodoPago === 'Transferencia' 
+                                        ? 'bg-emerald-50 border-emerald-600 text-emerald-900 shadow-sm' 
+                                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                                }`}
+                            >
+                                <span class="text-lg">🏦</span>
+                                <div>
+                                    <p class="text-xs font-bold leading-tight">Transferencia</p>
+                                    <p class="text-[10px] text-stone-400">Bancaria</p>
+                                </div>
+                            </button>
+
+                            <!-- Botón Pago Móvil -->
+                            <button 
+                                type="button"
+                                onclick={() => metodoPago = 'Pago Móvil'}
+                                class={`flex items-center gap-2.5 p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                                    metodoPago === 'Pago Móvil' 
+                                        ? 'bg-emerald-50 border-emerald-600 text-emerald-900 shadow-sm' 
+                                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                                }`}
+                            >
+                                <span class="text-lg">📱</span>
+                                <div>
+                                    <p class="text-xs font-bold leading-tight">Pago Móvil</p>
+                                    <p class="text-[10px] text-stone-400">Nacional</p>
+                                </div>
+                            </button>
+
+                        </div>
                     </div>
-                    <button type="button" onclick={finalizarCompra} class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg cursor-pointer">
-                        <Icon icon="mdi:whatsapp" class="text-xl"/> Finalizar Pedido por WhatsApp
+
+                    <!-- Total -->
+                    <div class="flex justify-between items-center pt-3 border-t border-stone-200/60">
+                        <span class="text-xs font-bold uppercase tracking-wider text-stone-500">Total a Pagar</span>
+                        <span class="text-xl font-black text-emerald-900 tracking-tight">${calcularTotal().toFixed(2)}</span>
+                    </div>
+
+                    <!-- Botón de WhatsApp -->
+                    <button 
+                        type="button" 
+                        onclick={finalizarCompra} 
+                        class="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-600/25 transition-all cursor-pointer"
+                    >
+                        <Icon icon="mdi:whatsapp" class="text-xl"/> 
+                        <span class="text-xs uppercase tracking-wider font-extrabold">Finalizar Pedido por WhatsApp</span>
                     </button>
                 </div>
             {/if}
