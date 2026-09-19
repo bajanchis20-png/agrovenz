@@ -879,7 +879,7 @@ function agregarAlCarrito(p: ProductoAgrupado, indexOriginal: number) {
 
                 <div class="sm:col-span-2 lg:col-span-3">
                     <button type="submit" class="w-full py-3.5 bg-emerald-800 hover:bg-emerald-900 text-white font-bold rounded-xl text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg">
-                        + Guardar Producto y Subir Imagen a Supabase
+                        + Guardar Producto y Subir Imagen
                     </button>
                 </div>
             </form>

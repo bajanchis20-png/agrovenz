@@ -245,8 +245,14 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-6 lg:gap-8">
-            {#each productosCatalogo.slice(0, 4) as p}
+            <!-- CAMBIO AQUÍ: Cambiamos el rango para mostrar otros productos (del índice 4 al 8) -->
+            {#each productosCatalogo.slice(4, 8) as p}
                 {@const varP = p.variantes[0]}
+                
+                <!-- Lógica para distinguir tipos de ítems -->
+                {@const esGratis = p.tipo === 'gratis'} 
+                {@const esConsultar = !varP?.price || varP.price === 0} 
+
                 <div class="group bg-white p-4 rounded-2xl border border-stone-200 hover:border-emerald-800 transition-all duration-500 shadow-sm hover:shadow-xl flex flex-col justify-between relative overflow-hidden">
                     
                     {#if p.activo === false}
@@ -262,13 +268,25 @@
                     </div>
 
                     <div class="flex items-center justify-between mt-2 pt-3 border-t border-stone-100">
-                        <span class="font-black text-sm sm:text-base text-emerald-800">
-                            {(!varP?.price || varP.price === 0) ? 'Consultar' : `$${varP.price}`}
+                        <!-- Precio o estado dinámico -->
+                        <span class="font-black text-sm sm:text-base {esGratis ? 'text-amber-600' : 'text-emerald-800'}">
+                            {#if esGratis}
+                                ¡Gratis!
+                            {:else if esConsultar}
+                                Consultar
+                            {:else}
+                                ${varP.price}
+                            {/if}
                         </span>
                         
                         <div class="flex items-center gap-1.5">
-                            <!-- CAMBIO AQUÍ: Ahora el botón de Comprar redirige al /catalogo en lugar de abrir WhatsApp -->
-                            <a href="/catalogo" class="px-3 py-1.5 bg-emerald-50 text-emerald-800 rounded-lg text-xs font-bold hover:bg-emerald-800 hover:text-white transition-colors">Comprar</a>
+                            <!-- Botón dinámico según el tipo -->
+                            <a href="/catalogo" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-colors
+                                {esGratis ? 'bg-amber-50 text-amber-800 hover:bg-amber-800 hover:text-white' : 
+                                 esConsultar ? 'bg-blue-50 text-blue-800 hover:bg-blue-800 hover:text-white' : 
+                                 'bg-emerald-50 text-emerald-800 hover:bg-emerald-800 hover:text-white'}">
+                                {esGratis ? 'Descargar' : esConsultar ? 'Consultar' : 'Comprar'}
+                            </a>
                             
                             {#if $usuarioActivo}
                                 <button 
@@ -289,22 +307,59 @@
 </section>
 
 <!-- SOLUCIONES PARA TU UNIDAD PRODUCTIVA -->
-<section class="py-12 sm:py-16 lg:py-24 bg-stone-50">
-    <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-2xl xs:text-3xl sm:text-4xl font-black mb-8 sm:mb-16 uppercase">Soluciones para tu <span class={titleGradient}>Unidad Productiva</span></h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 xs:gap-4 sm:gap-6">
+<section class="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-stone-50 to-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado de la sección -->
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+       
+            <h2 class="text-2xl xs:text-3xl sm:text-4xl font-black uppercase tracking-tight text-stone-900">
+                Soluciones para tu <span class={titleGradient}>Unidad Productiva</span>
+            </h2>
+            <p class="text-stone-500 text-xs sm:text-sm mt-3">
+                Explora nuestras líneas especializadas diseñadas para potenciar el rendimiento y la rentabilidad de tu proyecto.
+            </p>
+        </div>
+
+        <!-- Grilla optimizada exactamente para 6 ítems (2 columnas en móviles, 3 en tablets/desktop) -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 max-w-5xl mx-auto">
             {#each categorias as cat}
-                <a href="{waLink}Hola, necesito información sobre {cat.title}" target="_blank" class="group flex flex-col items-center p-5 xs:p-6 sm:p-8 bg-white sm:bg-stone-50 border border-stone-200 sm:border-stone-100 rounded-2xl sm:rounded-3xl hover:border-emerald-800 transition-all hover:bg-white shadow-sm sm:shadow-none">
-                    <div class="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-stone-100 rounded-full flex items-center justify-center mb-3 xs:mb-4 sm:mb-6 group-hover:bg-emerald-100 transition-all text-stone-600 group-hover:text-emerald-800 font-bold">
-                        🌱
+                <a 
+                    href="/catalogo?categoria={encodeURIComponent(cat.title)}" 
+                    class="group relative flex flex-col justify-between p-5 xs:p-6 sm:p-8 bg-white border border-stone-200/80 rounded-2xl sm:rounded-3xl hover:border-emerald-700/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden"
+                >
+                    <!-- Fondo sutil al hacer hover -->
+                    <div class="absolute inset-0 bg-emerald-50/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                    <!-- Icono o Imagen de la categoría -->
+                    <div class="relative z-10 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-stone-100 group-hover:bg-emerald-800 text-stone-700 group-hover:text-white rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 shadow-sm">
+                        {#if cat.icon && cat.icon.startsWith('/')}
+                            <img src={cat.icon} alt={cat.title} class="w-6 h-6 object-contain filter group-hover:brightness-0 group-hover:invert transition-all" />
+                        {:else}
+                            <span class="text-xl sm:text-2xl transition-transform duration-300 group-hover:scale-110">
+                                {cat.icon || '🌱'}
+                            </span>
+                        {/if}
                     </div>
-                    <span class="font-bold uppercase text-[10px] xs:text-[11px] sm:text-xs tracking-wider sm:tracking-widest text-stone-900">{cat.title}</span>
+
+                    <!-- Título y llamada a la acción -->
+                    <div class="relative z-10">
+                        <h3 class="font-bold uppercase text-xs sm:text-sm tracking-wide text-stone-900 group-hover:text-emerald-900 transition-colors mb-2 line-clamp-2">
+                            {cat.title}
+                        </h3>
+                        
+                        <div class="flex items-center text-[10px] sm:text-xs font-bold text-emerald-800 gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span>Ver opciones</span>
+                            <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </a>
             {/each}
         </div>
     </div>
 </section>
-
 <!-- EDUCACIÓN AGROPECUARIA -->
 <section class="py-12 sm:py-16 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
