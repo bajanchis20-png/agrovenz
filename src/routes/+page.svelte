@@ -174,6 +174,101 @@
     </div>
 </section>
 
+<section class="py-12 sm:py-16 lg:py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <!-- Contenedor para dos imágenes (invertido para darle variedad de diseño) -->
+            <div class="grid grid-cols-2 gap-4 h-[260px] xs:h-[320px] sm:h-[400px] lg:h-[500px] order-2 lg:order-1">
+                <div class="relative rounded-2xl lg:rounded-[2rem] overflow-hidden shadow-xl mt-6 lg:mt-8">
+                    <img src="/medicina1.jpg" alt="Medicamentos y antibióticos veterinarios" class="w-full h-full object-cover" />
+                </div>
+                <div class="relative rounded-2xl lg:rounded-[2rem] overflow-hidden shadow-xl">
+                    <img src="/doctor.jpg" alt="Antiparasitarios y vitaminas" class="w-full h-full object-cover" />
+                </div>
+            </div>
+
+            <div class="space-y-4 sm:space-y-6 text-center lg:text-left order-1 lg:order-2">
+                <h2 class="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 uppercase tracking-tight leading-tight">
+                    Salud y bienestar animal para <span class={titleGradient}>tu rebaño</span>
+                </h2>
+                <p class="text-stone-600 text-sm sm:text-lg">Soluciones farmacéuticas y clínicas de alta calidad para garantizar la salud integral, el rendimiento y la protección de tus animales.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 py-2 text-left">
+                    <div class="flex items-center space-x-3 p-3 rounded-xl bg-stone-50 border border-stone-100">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-800/10 flex items-center justify-center text-emerald-800">✓</div>
+                        <span class="text-xs sm:text-sm text-stone-800 font-semibold">Antiparasitarios y ectoparasiticidas</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 rounded-xl bg-stone-50 border border-stone-100">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-800/10 flex items-center justify-center text-emerald-800">✓</div>
+                        <span class="text-xs sm:text-sm text-stone-800 font-semibold">Antibióticos de amplio espectro</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 rounded-xl bg-stone-50 border border-stone-100">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-800/10 flex items-center justify-center text-emerald-800">✓</div>
+                        <span class="text-xs sm:text-sm text-stone-800 font-semibold">Vitaminas y suplementos nutricionales</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 rounded-xl bg-stone-50 border border-stone-100">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-800/10 flex items-center justify-center text-emerald-800">✓</div>
+                        <span class="text-xs sm:text-sm text-stone-800 font-semibold">Instrumental veterinario especializado</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                    <a href="/catalogo" class="w-full sm:w-auto px-6 xs:px-8 py-3.5 xs:py-4 bg-emerald-800 text-white hover:bg-stone-900 rounded-xl text-[9px] xs:text-[10px] lg:text-[11px] font-bold uppercase tracking-[0.155em] lg:tracking-[0.2em] transition-all text-center">
+                        Ver Catálogo Veterinario
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-12 sm:py-16 lg:py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div class="space-y-4 sm:space-y-6 text-center lg:text-left">
+                <h2 class="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 uppercase tracking-tight leading-tight">
+                    Máximo rendimiento y potencia para <span class={titleGradient}>tu campo</span>
+                </h2>
+                <p class="text-stone-600 text-sm sm:text-lg">Impulsa tu maquinaria con repuestos agrícolas de alta durabilidad y la tecnología avanzada de aceites AKRON.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 py-2 text-left">
+                    <div class="flex items-center space-x-3 p-3 rounded-xl bg-stone-50 border border-stone-100">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-800/10 flex items-center justify-center text-emerald-800">✓</div>
+                        <span class="text-xs sm:text-sm text-stone-800 font-semibold">Repuestos para tractores y cosechadoras</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 rounded-xl bg-stone-50 border border-stone-100">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-800/10 flex items-center justify-center text-emerald-800">✓</div>
+                        <span class="text-xs sm:text-sm text-stone-800 font-semibold">Lubricantes y aceites AKRON originales</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 rounded-xl bg-stone-50 border border-stone-100">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-800/10 flex items-center justify-center text-emerald-800">✓</div>
+                        <span class="text-xs sm:text-sm text-stone-800 font-semibold">Filtros y partes de alta resistencia</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 rounded-xl bg-stone-50 border border-stone-100">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-800/10 flex items-center justify-center text-emerald-800">✓</div>
+                        <span class="text-xs sm:text-sm text-stone-800 font-semibold">Asesoría especializada agroindustrial</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                    <a href="/catalogo" class="w-full sm:w-auto px-6 xs:px-8 py-3.5 xs:py-4 bg-emerald-800 text-white hover:bg-stone-900 rounded-xl text-[9px] xs:text-[10px] lg:text-[11px] font-bold uppercase tracking-[0.155em] lg:tracking-[0.2em] transition-all text-center">
+                        Ver Catálogo
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Contenedor para dos imágenes -->
+            <div class="grid grid-cols-2 gap-4 h-[260px] xs:h-[320px] sm:h-[400px] lg:h-[500px]">
+                <div class="relative rounded-2xl lg:rounded-[2rem] overflow-hidden shadow-xl">
+                    <img src="/partes1.jpg" alt="Repuestos agrícolas" class="w-full h-full object-cover" />
+                </div>
+                <div class="relative rounded-2xl lg:rounded-[2rem] overflow-hidden shadow-xl mt-6 lg:mt-8">
+                    <img src="/akron.webp" alt="Aceites AKRON" class="w-full h-full object-cover" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- SECCIÓN VENTA DE MAQUINARIA -->
 <section class="py-12 sm:py-16 lg:py-24 bg-white relative">
     <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
