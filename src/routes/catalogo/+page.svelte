@@ -586,7 +586,7 @@ let seleccionVariantes = $state<Record<number, number>>({});
 
             if (varError) throw varError;
 
-            alert("¡Producto y foto publicados con éxito en Supabase!");
+            alert("¡Producto y foto publicados con éxito!");
             window.location.reload();
         } catch (err: any) {
             errorMessage = err.message || "Error al guardar en la base de datos o subir la imagen.";
